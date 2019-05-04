@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Zero-config CLI for TypeScript node.js application development.",
   "bin": {
-    "tsbb": "bin/tsbb"
+    "tsbb": "src/command/index"
   },
   "scripts": {
     "prepare": "npm run build",
@@ -13,6 +13,10 @@
     "tsc": "tsc -p ./ --types --outDir lib",
     "start": "npm run tsc -- --watch & npm run type-check -- --watch"
   },
+  "files": [
+    "lib",
+    "bin"
+  ],
   "keywords": [
     "typescript"
   ],

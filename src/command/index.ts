@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import yargs, { Argv } from 'yargs';
 import color from 'colors-cli';
 import buildProject  from './build';
