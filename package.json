@@ -1,9 +1,9 @@
 {
   "name": "tsbb",
   "version": "0.0.1",
-  "description": "Zero configuration node.js application.",
+  "description": "Zero-config CLI for TypeScript node.js application development.",
   "bin": {
-    "tsbb": "lib/command/index.js"
+    "tsbb": "bin/tsbb"
   },
   "scripts": {
     "prepare": "npm run build",
