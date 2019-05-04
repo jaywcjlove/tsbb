@@ -1,7 +1,7 @@
 {
   "name": "tsbb",
   "version": "0.0.1",
-  "description": "",
+  "description": "Zero configuration node.js application.",
   "bin": {
     "tsbb": "lib/command/index.js"
   },
