@@ -1,0 +1,36 @@
+{
+  "name": "tsbb",
+  "version": "0.0.1",
+  "description": "",
+  "bin": {
+    "tsbb": "lib/command/index.js"
+  },
+  "scripts": {
+    "prepare": "npm run build",
+    "type-check": "tsc --noEmit",
+    "build": "npm run tsc && npm run build:types",
+    "build:types": "tsc -p ./ -t es2015 --types --emitDeclarationOnly --outDir lib",
+    "tsc": "tsc -p ./ --types --outDir lib",
+    "start": "npm run tsc -- --watch & npm run type-check -- --watch"
+  },
+  "keywords": [
+    "typescript"
+  ],
+  "author": "kenny wang <wowohoo@qq.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-typescript": "^7.3.3",
+    "colors-cli": "^1.0.21",
+    "fs-extra": "^7.0.1",
+    "typescript": "^3.4.5",
+    "yargs": "^13.2.2"
+  },
+  "devDependencies": {
+    "@types/babel__core": "^7.1.1",
+    "@types/fs-extra": "^5.0.5",
+    "@types/node": "^11.13.8",
+    "@types/yargs": "^13.0.0"
+  }
+}
