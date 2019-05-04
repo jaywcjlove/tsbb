@@ -1,0 +1,16 @@
+{
+  "name": "basic",
+  "version": "1.0.0",
+  "description": "Basic Example.",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsbb watch",
+    "build": "tsbb build"
+  },
+  "keywords": [],
+  "dependencies": {
+    "tsbb": "file:../../"
+  },
+  "author": "",
+  "license": "MIT"
+}

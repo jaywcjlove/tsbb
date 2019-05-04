@@ -1,6 +1,10 @@
 tsbb
 ---
 
-Zero configuration node.js application.
+Zero-config CLI for TypeScript [Node.js](https://nodejs.org/en/) application development.
 
-> `tsbb` -> `TypeScript` + `Babel`
+`TypeScript + Babel` = `tsbb`
+
+## Example
+
+- [basic](example/basic) - The [Node.js](https://nodejs.org/en/) base application.
