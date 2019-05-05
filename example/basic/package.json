@@ -7,6 +7,10 @@
     "start": "tsbb watch",
     "build": "tsbb build"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaywcjlove/tsbb/tree/master/example/basic"
+  },
   "keywords": [],
   "dependencies": {
     "tsbb": "file:../../"

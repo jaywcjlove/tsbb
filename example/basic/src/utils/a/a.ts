@@ -1,5 +1,9 @@
 
-
-export function a(a: number, b: number) {
+/**
+ * 这里是注释
+ * @param a 
+ * @param b 
+ */
+export function abs(a: number, b: number) {
   return a + b;
 }
