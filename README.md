@@ -15,4 +15,5 @@ $ npm install tsbb --save-dev
 
 ## Example
 
-- [basic](example/basic) - The [Node.js](https://nodejs.org/en/) base application.
+- [Basic](example/basic) - The [Node.js](https://nodejs.org/en/) base application example.
+- [Koa](example/koa) - The [Koa](https://nodejs.org/en/) base application example.
