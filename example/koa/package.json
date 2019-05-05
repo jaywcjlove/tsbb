@@ -25,6 +25,7 @@
     "delay": "2500"
   },
   "devDependencies": {
+    "@types/koa": "^2.0.48",
     "nodemon": "^1.19.0",
     "tsbb": "file:../../"
   },
