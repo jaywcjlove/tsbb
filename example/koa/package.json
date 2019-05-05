@@ -1,0 +1,34 @@
+{
+  "name": "koa-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "npm run build",
+    "start": "node lib/index.js",
+    "dev": "nodemon --inspect lib/index.js",
+    "watch": "tsbb watch --timer 200",
+    "build": "tsbb build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaywcjlove/tsbb/tree/master/example/koa"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "test/*",
+      "node_modules/*"
+    ],
+    "delay": "2500"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0",
+    "tsbb": "file:../../"
+  },
+  "dependencies": {
+    "koa": "^2.7.0"
+  }
+}
