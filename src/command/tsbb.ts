@@ -33,7 +33,7 @@ const command = yargs
         alias: 't',
         describe: 'Compile interval.',
         type: 'number',
-        default: 800,
+        default: 300,
       })
       .option('comments', {
         describe: 'decide whether a given comment should be included in the output code.',

@@ -26,6 +26,6 @@ export default async (args: ICompletePathArgs) => {
       // console.log('args:', args);
       await babel(catchFiles, args);
       catchFiles = []
-    }, 800);
+    }, args.timer);
   });
 }
