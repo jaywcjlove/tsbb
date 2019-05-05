@@ -4,7 +4,8 @@
   "description": "Basic Example.",
   "main": "index.js",
   "scripts": {
-    "start": "tsbb watch",
+    "prepare": "npm run build",
+    "watch": "tsbb watch",
     "build": "tsbb build"
   },
   "repository": {
@@ -12,9 +13,9 @@
     "url": "https://github.com/jaywcjlove/tsbb/tree/master/example/basic"
   },
   "keywords": [],
-  "dependencies": {
+  "license": "MIT",
+  "devDependencies": {
     "tsbb": "file:../../"
   },
-  "author": "",
-  "license": "MIT"
+  "author": ""
 }
