@@ -3,22 +3,32 @@
   "version": "0.0.1",
   "description": "Zero-config CLI for TypeScript node.js application development.",
   "bin": {
-    "tsbb": "src/command/index"
+    "tsbb": "./lib/command/tsbb.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaywcjlove/tsbb.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jaywcjlove/tsbb/issues"
+  },
+  "homepage": "https://github.com/jaywcjlove/tsbb",
   "scripts": {
     "prepare": "npm run build",
     "type-check": "tsc --noEmit",
-    "build": "npm run tsc && npm run build:types",
+    "build": "npm run tsc",
     "build:types": "tsc -p ./ -t es2015 --types --emitDeclarationOnly --outDir lib",
     "tsc": "tsc -p ./ --types --outDir lib",
-    "start": "npm run tsc -- --watch & npm run type-check -- --watch"
+    "start": "npm run tsc -- --watch"
   },
   "files": [
     "lib",
     "bin"
   ],
   "keywords": [
-    "typescript"
+    "typescript",
+    "babel",
+    "node.js"
   ],
   "author": "kenny wang <wowohoo@qq.com>",
   "license": "MIT",
@@ -26,6 +36,7 @@
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-typescript": "^7.3.3",
+    "chokidar": "^3.0.0",
     "colors-cli": "^1.0.21",
     "fs-extra": "^7.0.1",
     "typescript": "^3.4.5",
