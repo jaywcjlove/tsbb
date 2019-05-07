@@ -19,6 +19,11 @@ const command = yargs
     type: 'string',
     default: 'src',
   })
+  .option('copy-files', {
+    describe: 'When compiling a directory copy over non-compilable files.',
+    type: 'boolean',
+    default: true,
+  })
   .option('source-maps', { describe: 'Source Map options.', type: 'string', default: true })
   .choices('source-maps', [true, false, 'inline', 'both'])
   .option('output', {

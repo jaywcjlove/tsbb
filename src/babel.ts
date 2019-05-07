@@ -9,6 +9,10 @@ export interface IBabelOption extends ICompletePathArgs {}
 
 export default async (files: IFileDirStat[], args: IBabelOption) => {
   await Promise.all(files.map(async (item: IFileDirStat) => {
+    if (item.ext !== 'ts' && args.copyFiles) {
+      await fs.copy(item.path, item.outputPath);
+      return item;
+    }
     try {
       const source = await transform(item.path, {
         outputPath: item.outputPath,

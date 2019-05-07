@@ -44,9 +44,10 @@ async function getFiles(rootPath: string, outpuPath: string, files: IFileDirStat
     if (stat.isDirectory()) {
       // item.ext = 'dir';
       // item.isDirectory = true;
-      files = files.concat(await getFiles(item.path, outpuPath, [], root));
+      const childFiles = await getFiles(item.path, outpuPath, [], root);
+      files = files.concat(childFiles);
     } else if (stat.isFile()) {
-      item.ext = getExt(item.path);
+      item.ext = await getExt(item.path);
       item.isFile = true;
       item.outputPath = item.path.replace(root, outpuPath);
       files.push(item);
