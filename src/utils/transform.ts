@@ -15,6 +15,11 @@ export default (filePath: string, options: ITransformOptions) => {
   return new Promise<ITransformResult>((resolve, reject) => {
     transformFile(filePath, {
       presets: ['@babel/preset-env', '@babel/preset-typescript'],
+      plugins: [
+        '@babel/plugin-transform-runtime',
+        '@babel/plugin-proposal-class-properties',
+        '@babel/plugin-proposal-object-rest-spread'
+      ],
       // comments: process.env.NODE_ENV === 'development' ? false : true,
       // comments: false,
       sourceMaps: options.sourceMaps,
