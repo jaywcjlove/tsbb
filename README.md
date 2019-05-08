@@ -2,19 +2,19 @@
 
 <p align="center">
   <a href="https://github.com/jaywcjlove/tsbb/issues">
-    <img src="https://badgen.net/github/issues/jaywcjlove/tsbb">
+    <img src="https://img.shields.io/github/issues/jaywcjlove/tsbb.svg">
   </a>
   <a href="https://github.com/jaywcjlove/tsbb/network">
-    <img src="https://badgen.net/github/forks/jaywcjlove/tsbb">
+    <img src="https://img.shields.io/github/forks/jaywcjlove/tsbb.svg">
   </a>
   <a href="https://github.com/jaywcjlove/tsbb/stargazers">
-    <img src="https://badgen.net/github/stars/jaywcjlove/tsbb">
+    <img src="https://img.shields.io/github/stars/jaywcjlove/tsbb.svg">
   </a>
   <a href="https://github.com/jaywcjlove/tsbb/releases">
-    <img src="https://badgen.net/github/release/jaywcjlove/tsbb">
+    <img src="https://img.shields.io/github/release/jaywcjlove/tsbb.svg">
   </a>
   <a href="https://www.npmjs.com/package/tsbb">
-    <img src="https://badgen.net/npm/v/tsbb">
+    <img src="https://img.shields.io/npm/v/tsbb.svg">
   </a>
 </p>
 
