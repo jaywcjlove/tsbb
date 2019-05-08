@@ -1,9 +1,9 @@
 import chokidar, { FSWatcher } from 'chokidar';
-import babel from '../babel';
 import { ICompletePathArgs } from '../utils';
 import { IFileDirStat, getFileStat } from '../utils/getFileDirectory';
-import build from './build';
 import { clearScreenConsole } from '../utils/clearConsole';
+import babel from '../babel';
+import build from './build';
 
 export default async (args: ICompletePathArgs) => {
   await build(args);

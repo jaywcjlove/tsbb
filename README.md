@@ -36,23 +36,16 @@ $ npm install tsbb --save-dev
 
 ```shell
 ▶ tsbb --help
-
 Usage: tsbb [options]
 
 Commands:
-  tsbb.js watch  Recompile directory on changes.
-  tsbb.js build  Build your project once and exit.
+  tsbb create <project-name>  Create a new project with TSBB
+  tsbb watch [options]        Recompile directory on changes.
+  tsbb build [options]        Build your project once and exit.
 
 Options:
-  --version          Show version number                               [boolean]
-  --source-root, -s  The root from which all sources are relative.
-                                                       [string] [default: "src"]
-  --copy-files       When compiling a directory copy over non-compilable files.
-                                                       [boolean] [default: true]
-  --source-maps      Source Map options.
-               [string] [choices: true, false, "inline", "both"] [default: true]
-  --output, -o       Output directory.                 [string] [default: "lib"]
-  --help             Show help                                         [boolean]
+  --version  Show version number                                       [boolean]
+  --help     Show help                                                 [boolean]
 
 Examples:
 
@@ -63,25 +56,47 @@ Examples:
 Copyright 2019
 ```
 
+### `tsbb create`
+
+```shell
+▶ tsbb create --help
+tsbb create <project-name>
+
+Create a new project with TSBB
+
+Options:
+  --version    Show version number                                     [boolean]
+  --help, -h   Show help.                                              [boolean]
+  --force, -f  force create.                          [boolean] [default: false]
+  --example    Example from
+               https://github.com/jaywcjlove/tsbb/tree/master/example
+               example-path.                         [string] [default: "basic"]
+
+Examples:
+  $ tsbb create my-app                    Create my project.
+  $ tsbb create my-app --example express  Create an Express example project.
+```
+
 ### `tsbb build`
 
 ```shell
 ▶ tsbb build --help
+tsbb build [options]
 
 Build your project once and exit.
 
 Options:
   --version          Show version number                               [boolean]
+  --help, -h         Show help.                                        [boolean]
   --source-root, -s  The root from which all sources are relative.
                                                        [string] [default: "src"]
   --copy-files       When compiling a directory copy over non-compilable files.
                                                        [boolean] [default: true]
   --source-maps      Source Map options.
-               [string] [choices: true, false, "inline", "both"] [default: true]
+              [string] [choices: true, "inline", "both", "none"] [default: true]
   --output, -o       Output directory.                 [string] [default: "lib"]
-  --help             Show help                                         [boolean]
   --comments         decide whether a given comment should be included in the
-                     output code.                     [boolean] [default: false]
+                     output code.                      [boolean] [default: true]
 
 Examples:
   $ tsbb build                Build your project.
@@ -90,24 +105,25 @@ Examples:
 
 ### `tsbb watch`
 
-```
+```bash
 ▶ tsbb watch --help
+tsbb watch [options]
 
 Recompile directory on changes.
 
 Options:
   --version          Show version number                               [boolean]
+  --help, -h         Show help.                                        [boolean]
   --source-root, -s  The root from which all sources are relative.
                                                        [string] [default: "src"]
   --copy-files       When compiling a directory copy over non-compilable files.
                                                        [boolean] [default: true]
   --source-maps      Source Map options.
-               [string] [choices: true, false, "inline", "both"] [default: true]
+              [string] [choices: true, "inline", "both", "none"] [default: true]
   --output, -o       Output directory.                 [string] [default: "lib"]
-  --help             Show help                                         [boolean]
-  --timer, -t        Compile interval.                   [number] [default: 300]
   --comments         decide whether a given comment should be included in the
                      output code.                      [boolean] [default: true]
+  --timer, -t        Compile interval.                   [number] [default: 300]
 
 Examples:
   $ tsbb watch   Rebuilds on any change.
