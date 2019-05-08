@@ -18,7 +18,7 @@
   </a>
 </p>
 
-Zero-config CLI for TypeScript [Node.js](https://nodejs.org/en/) application development.
+TSBB is a zero-config CLI that helps you develop, test, and publish modern TypeScript [Node.js](https://nodejs.org/en/) project.
 
 `TypeScript + Babel` = `TSBB`
 
