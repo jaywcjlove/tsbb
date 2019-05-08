@@ -1,8 +1,9 @@
+import chokidar, { FSWatcher } from 'chokidar';
 import babel from '../babel';
 import { ICompletePathArgs } from '../utils';
-import chokidar, { FSWatcher } from 'chokidar';
 import { IFileDirStat, getFileStat } from '../utils/getFileDirectory';
 import build from './build';
+import { clearScreenConsole } from '../utils/clearConsole';
 
 export default async (args: ICompletePathArgs) => {
   await build(args);
@@ -14,8 +15,9 @@ export default async (args: ICompletePathArgs) => {
   });
   let timer: NodeJS.Timeout = null;
   let catchFiles: IFileDirStat[] = [];
-  console.log(`\nStarting in watch mode.\n`)
+  clearScreenConsole('\nStarting in watch mode.')
   watcher.on('change', async (path: string, stats) => {
+    clearScreenConsole()
     const fileStat = await getFileStat(args.sourceRoot, args.output, path);
     const inc = catchFiles.find((item: IFileDirStat) => item.path === fileStat.path);
     if (!inc) {
@@ -23,7 +25,6 @@ export default async (args: ICompletePathArgs) => {
     }
     clearTimeout(timer);
     timer = setTimeout(async () => {
-      // console.log('args:', args);
       await babel(catchFiles, args);
       catchFiles = []
     }, args.timer);

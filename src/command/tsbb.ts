@@ -58,7 +58,8 @@ const command = yargs
         type: 'boolean',
         default: false,
       })
-      .example('$ tsbb build ', 'Build your project.'),
+      .example('$ tsbb build ', 'Build your project.')
+      .example('$ tsbb build --no-comments', 'Build your project and remove the comments.'),
     (args: ICompletePathArgs) => {
       args = completePath(args);
       buildProject(args);
