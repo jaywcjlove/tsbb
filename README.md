@@ -39,9 +39,9 @@ $ npm install tsbb --save-dev
 Usage: tsbb [options]
 
 Commands:
-  tsbb create <project-name>  Create a new project with TSBB
-  tsbb watch [options]        Recompile directory on changes.
-  tsbb build [options]        Build your project once and exit.
+  tsbb create <project-name> [options]  Create a new project with TSBB
+  tsbb build [options]                  Build your project once and exit.
+  tsbb watch [options]                  Build your project once and exit.
 
 Options:
   --version  Show version number                                       [boolean]
@@ -60,7 +60,7 @@ Copyright 2019
 
 ```shell
 ▶ tsbb create --help
-tsbb create <project-name>
+tsbb create <project-name> [options]
 
 Create a new project with TSBB
 
@@ -109,7 +109,7 @@ Examples:
 ▶ tsbb watch --help
 tsbb watch [options]
 
-Recompile directory on changes.
+Build your project once and exit.
 
 Options:
   --version          Show version number                               [boolean]
