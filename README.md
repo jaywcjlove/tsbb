@@ -1,4 +1,4 @@
-![tsbb](https://user-images.githubusercontent.com/1680273/57375829-048d8d80-71d1-11e9-8f8c-b62c7197e96f.png)
+![tsbb](https://user-images.githubusercontent.com/1680273/57388344-9229a700-71ea-11e9-8495-1d299aed7888.png)
 
 <p align="center">
   <a href="https://github.com/jaywcjlove/tsbb/issues">
