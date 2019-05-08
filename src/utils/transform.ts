@@ -8,7 +8,7 @@ export interface ITransformResult extends BabelFileResult {
 export interface ITransformOptions {
   outputPath: string;
   comments: boolean;
-  sourceMaps: boolean | 'inline' | 'both';
+  sourceMaps: boolean | 'inline' | 'both' | 'none';
 }
 
 export default (filePath: string, options: ITransformOptions) => {
@@ -22,7 +22,7 @@ export default (filePath: string, options: ITransformOptions) => {
       ],
       // comments: process.env.NODE_ENV === 'development' ? false : true,
       // comments: false,
-      sourceMaps: options.sourceMaps,
+      sourceMaps: options.sourceMaps === 'none' ? false : options.sourceMaps,
       sourceFileName: path.relative(path.dirname(options.outputPath), filePath),
     }, (err, result: ITransformResult) => {
       if (err) {

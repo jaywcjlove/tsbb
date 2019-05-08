@@ -24,10 +24,6 @@ export interface IMyYargsArgs extends Arguments {
 }
 
 export function completePath(args: IMyYargsArgs): IMyYargsArgs {
-  if(args.sourceMaps === 'none') {
-    args.sourceMaps = false;
-    args['source-maps'] = false;
-  }
   args.sourceRoot = path.resolve(process.cwd(), args.sourceRoot || '');
   args.s = args.sourceRoot;
   args.output = path.resolve(process.cwd(), args.output || '');

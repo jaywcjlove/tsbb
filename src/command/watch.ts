@@ -1,12 +1,32 @@
 import chokidar, { FSWatcher } from 'chokidar';
-import { ICompletePathArgs } from '../utils';
+import { Argv } from 'yargs';
 import { IFileDirStat, getFileStat } from '../utils/getFileDirectory';
 import { clearScreenConsole } from '../utils/clearConsole';
+import { IMyYargsArgs, completePath } from '../utils';
+import { publicOptions, helpOption } from './options';
 import babel from '../babel';
-import build from './build';
+import * as build from './build';
 
-export default async (args: ICompletePathArgs) => {
-  await build(args);
+export const command = 'watch [options]';
+export const describe = 'Build your project once and exit.';
+
+export function builder(yarg: Argv) {
+  return yarg.option({
+    ...helpOption,
+    ...publicOptions,
+    'timer': {
+      alias: 't',
+      describe: 'Compile interval.',
+      type: 'number',
+      default: 300,
+    },
+  })
+  .example('$ tsbb watch ', 'Rebuilds on any change.')
+}
+
+export async function handler(args: IMyYargsArgs) {
+  args = completePath(args);
+  await build.handler(args);
   // Initialize watcher.
   // Watch the target directory for changes and trigger reload
   const watcher: FSWatcher = chokidar.watch(args.sourceRoot, {

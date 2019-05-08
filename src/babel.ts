@@ -1,13 +1,11 @@
 
 import fs from 'fs-extra';
 import path from 'path';
-import { ICompletePathArgs } from './utils';
+import { IMyYargsArgs } from './utils';
 import { IFileDirStat } from './utils/getFileDirectory';
 import transform from './utils/transform';
 
-export interface IBabelOption extends ICompletePathArgs {}
-
-export default async (files: IFileDirStat[], args: IBabelOption) => {
+export default async (files: IFileDirStat[], args: IMyYargsArgs) => {
   await Promise.all(files.map(async (item: IFileDirStat) => {
     if (item.ext !== 'ts' && args.copyFiles) {
       await fs.copy(item.path, item.outputPath);
