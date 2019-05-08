@@ -1,5 +1,22 @@
-TSBB
----
+![tsbb](https://user-images.githubusercontent.com/1680273/57375829-048d8d80-71d1-11e9-8f8c-b62c7197e96f.png)
+
+<p align="center">
+  <a href="https://github.com/jaywcjlove/tsbb/issues">
+    <img src="https://badgen.net/github/issues/jaywcjlove/tsbb">
+  </a>
+  <a href="https://github.com/jaywcjlove/tsbb/network">
+    <img src="https://badgen.net/github/forks/jaywcjlove/tsbb">
+  </a>
+  <a href="https://github.com/jaywcjlove/tsbb/stargazers">
+    <img src="https://badgen.net/github/stars/jaywcjlove/tsbb">
+  </a>
+  <a href="https://github.com/jaywcjlove/tsbb/releases">
+    <img src="https://badgen.net/github/release/jaywcjlove/tsbb">
+  </a>
+  <a href="https://www.npmjs.com/package/tsbb">
+    <img src="https://badgen.net/npm/v/tsbb">
+  </a>
+</p>
 
 Zero-config CLI for TypeScript [Node.js](https://nodejs.org/en/) application development.
 
@@ -15,7 +32,7 @@ $ npm install tsbb --save-dev
 
 ## Command Help
 
-```
+```shell
 ▶ tsbb --help
 Usage: tsbb [options]
 
@@ -48,3 +65,7 @@ Copyright 2019
 - [Basic](example/basic) - The [Node.js](https://nodejs.org/en/) base application example.
 - [Koa](example/koa) - The [Koa](https://koajs.com/) base application example.
 - [Express](example/express) - The [Express](https://expressjs.com/) base application example.
+
+## License
+
+MIT © Kenny Wong
