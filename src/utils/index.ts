@@ -1,4 +1,5 @@
 import path from 'path';
+import execa from 'execa';
 import { Arguments } from 'yargs';
 
 /**
@@ -13,6 +14,7 @@ export interface IMyYargsArgs extends Arguments {
   s?: string;
   sourceRoot?: string;
   force?: boolean;
+  example?: string;
   'copy-files'?: boolean;
   copyFiles?: boolean;
   'source-maps'?: boolean | 'inline' | 'both' | 'none';
@@ -29,4 +31,9 @@ export function completePath(args: IMyYargsArgs): IMyYargsArgs {
   args.output = path.resolve(process.cwd(), args.output || '');
   args.o = args.output;
   return args;
+}
+
+export function run(command: string, args: string[]) {
+  if (!args) { [command, ...args] = command.split(/\s+/) }
+  return execa(command, args, { cwd: this.context })
 }

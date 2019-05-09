@@ -1,8 +1,7 @@
 {
   "name": "koa-example",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Koa Example",
   "scripts": {
     "prepare": "npm run build",
     "start": "node lib/index.js",

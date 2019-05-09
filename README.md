@@ -137,4 +137,4 @@ Examples:
 
 ## License
 
-MIT © Kenny Wong
+MIT © [Kenny Wong](https://wangchujiang.com)
