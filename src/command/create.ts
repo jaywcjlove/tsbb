@@ -2,7 +2,7 @@ import path from 'path';
 import color from 'colors-cli';
 import fs from 'fs-extra';
 import ora from 'ora';
-import yargs, { Argv } from 'yargs';
+import { Argv } from 'yargs';
 import { IMyYargsArgs, completePath, run } from '../utils';
 import { helpOption } from './options';
 import { moverDir } from '../utils/moverDir';
@@ -11,7 +11,8 @@ export const command = 'create <project-name> [options]';
 export const describe = 'Create a new project with TSBB';
 
 export function builder(yarg: Argv) {
-  return yarg.option({
+  const pkgs = fs.readJSONSync(path.join(__dirname, '..', '..', 'package.json'));
+  return yarg.config({ tsbbVersion: pkgs.version }).option({
     ...helpOption,
     'force': {
       alias: 'f',
@@ -23,15 +24,13 @@ export function builder(yarg: Argv) {
       describe: 'Example from https://github.com/jaywcjlove/tsbb/tree/master/example example-path.',
       type: 'string',
       default: 'basic',
-    }
+    },
   })
   .example('$ tsbb create my-app ', 'Create my project.')
-  .example('$ tsbb create my-app --example express', 'Create an Express example project.')
+  .example('$ tsbb create my-app --example express', 'Create an Express example project.');
 }
 
 export async function handler(args: IMyYargsArgs) {
-  console.log('args:', args.__proto__);
-  console.log('this:', yargs);
   args = completePath(args);
   const projectPath = path.join(process.cwd(), args.projectName);
   const cacheDir = path.join(projectPath, '.cache-tsbb');
@@ -48,6 +47,7 @@ export async function handler(args: IMyYargsArgs) {
       );
       process.exit(1);
     }
+    console.log();
     const spinner = ora(`Downloading files for ${color.green(args.example)} example`).start();
     await fs.ensureDir(projectPath);
     await fs.ensureDir(cacheDir);
@@ -58,15 +58,34 @@ export async function handler(args: IMyYargsArgs) {
       spinner.fail(`Error: The example ${color.red(args.example)} does not exist!`);
       return;
     }
-    spinner.succeed(`Creating a new ${args.example} app in ${color.green(projectPath)}`);
+    spinner.succeed(` Creating a new ${color.green(args.example)} app in ${color.green(projectPath)}`);
     const files = await moverDir(exampleDir, projectPath);
     const pkgPath = files.find((filePath) => /package\.json$/.test(filePath));
     if (pkgPath) {
       const pkg = await fs.readJSON(pkgPath);
-      console.log('pkg:', pkg);
+      if (pkg.devDependencies && pkg.devDependencies['tsbb']) {
+        pkg.devDependencies['tsbb'] = args.tsbbVersion;
+      }
+      if (pkg.dependencies && pkg.dependencies['tsbb']) {
+        pkg.dependencies['tsbb'] = args.tsbbVersion;
+      }
+      await fs.outputJSON(pkgPath, pkg, { spaces: '  ', EOL: '\n' });
     }
     await fs.remove(cacheDir);
-
+    spinner.stopAndPersist({
+      symbol: '🎉',
+      text: `Successfully created project ${color.yellow(args.projectName)}`
+    });
+    console.log(
+      '\n Inside that directory, you can run several commands:\n\n',
+      `  ${color.x243('$')} ${color.green('npm watch')}\n`,
+      `     Starts the development\n\n`,
+      `  ${color.x243('$')} ${color.green('npm build')}\n`,
+      `     Bundles the app files for production.\n\n`,
+      ` We suggest that you begin by typing:\n\n`,
+      `   ${color.green('cd')} my-app\n`,
+      `   ${color.green('npm install')}\n`,
+    );
   } catch (error) {
     console.log(error);
   }
