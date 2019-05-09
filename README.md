@@ -22,12 +22,22 @@ TSBB is a zero-config CLI that helps you develop, test, and publish modern TypeS
 
 `TypeScript + Babel` = `TSBB`
 
-## Usage
+## Quick Start
 
 You will need `Node.js` installed on your system.
 
 ```bash
-$ npm install tsbb --save-dev
+$ npx tsbb create my-project
+$ cd my-project
+$ npm run watch # Listen compile .ts files.
+$ npm run build # compile .ts files.
+$ npm start
+```
+
+or
+
+```bash
+$ npm install tsbb -g
 ```
 
 ## Command Help
