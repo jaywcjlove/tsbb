@@ -22,6 +22,12 @@ TSBB is a zero-config CLI that helps you develop, test, and publish modern TypeS
 
 `TypeScript + Babel` = `TSBB`
 
+#### `Features`
+
+🚀 Faster compilation speed.  
+🌱 Recompile files on changes automatic transforms.  
+🔥 Zero-config, single dependency.  
+
 ## Quick Start
 
 You will need `Node.js` installed on your system.
