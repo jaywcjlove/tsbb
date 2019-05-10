@@ -54,6 +54,8 @@ or
 
 ```bash
 $ npm install tsbb -g
+
+$ tsbb create my-project --example=Express
 ```
 
 ## Command Help
@@ -133,7 +135,7 @@ Examples:
 
 ### `tsbb watch`
 
-```bash
+```shell
 ▶ tsbb watch --help
 tsbb watch [options]
 
@@ -159,7 +161,7 @@ Examples:
 
 ### `tsbb test`
 
-```
+```shell
 ▶ tsbb test --help
 tsbb test [options]
 
@@ -181,9 +183,17 @@ Examples:
 
 ## Example
 
-- [Basic](example/basic) - The [Node.js](https://nodejs.org/en/) base application example.
-- [Koa](example/koa) - The [Koa](https://koajs.com/) base application example.
-- [Express](example/express) - The [Express](https://expressjs.com/) base application example.
+Initialize the project from one of the examples:
+
+```shell
+$ npx tsbb create my-app -e <Example Name>
+# --- E.g: ----------------┴ˇˇˇˇˇˇˇˇˇˇˇˇˇˇ
+# npx tsbb create my-app -e Basic
+```
+
+- [**`Basic`**](example/basic) - The [Node.js](https://nodejs.org/en/) base application example.
+- [**`Koa`**](example/koa) - The [Koa](https://koajs.com/) base application example.
+- [**`Express`**](example/express) - The [Express](https://expressjs.com/) base application example.
 
 ## License
 

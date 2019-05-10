@@ -6,6 +6,7 @@ import { Argv } from 'yargs';
 import { IMyYargsArgs, completePath, run } from '../utils';
 import { helpOption } from './options';
 import { moverDir } from '../utils/moverDir';
+import installDeps from '../utils/installDeps';
 
 export const command = 'create <project-name> [options]';
 export const describe = 'Create a new project with TSBB';
@@ -34,7 +35,7 @@ export async function handler(args: IMyYargsArgs) {
   args = completePath(args);
   const projectPath = path.join(process.cwd(), args.projectName);
   const cacheDir = path.join(projectPath, '.cache-tsbb');
-  const exampleDir: string = path.join(cacheDir, 'example', args.example || '');
+  const exampleDir: string = path.join(cacheDir, 'example', (args.example || '').toLowerCase());
   try {
     if (args.force) {
       await fs.remove(projectPath);
@@ -72,6 +73,7 @@ export async function handler(args: IMyYargsArgs) {
       await fs.outputJSON(pkgPath, pkg, { spaces: '  ', EOL: '\n' });
     }
     await fs.remove(cacheDir);
+    await installDeps(projectPath, 'npm');
     spinner.stopAndPersist({
       symbol: '🎉',
       text: `Successfully created project ${color.yellow(args.projectName)}`
@@ -83,7 +85,7 @@ export async function handler(args: IMyYargsArgs) {
       `  ${color.x243('$')} ${color.green('npm build')}\n`,
       `     Bundles the app files for production.\n\n`,
       ` We suggest that you begin by typing:\n\n`,
-      `   ${color.green('cd')} my-app\n`,
+      `   ${color.green('cd')} ${args.projectName}\n`,
       `   ${color.green('npm install')}\n`,
     );
   } catch (error) {
