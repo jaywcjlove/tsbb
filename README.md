@@ -18,6 +18,13 @@
   </a>
 </p>
 
+<p align="center">
+  <a href="#quick-start">Quick Start</a> · 
+  <a href="#command-help">Command Help</a> · 
+  <a href="#example">Example</a> · 
+  <a href="#license">License</a>
+</p>
+
 TSBB is a zero-config CLI that helps you develop, test, and publish modern TypeScript [Node.js](https://nodejs.org/en/) project.
 
 `TypeScript + Babel` = `TSBB`
@@ -26,7 +33,7 @@ TSBB is a zero-config CLI that helps you develop, test, and publish modern TypeS
 
 ⏱ Quickly initialize the example project and quickly enter the development mode.  
 ♻️ Recompile the code when project files get added, removed or modified.  
-📚 Readable source code that encourages learning and contribution
+📚 Readable source code that encourages learning and contribution  
 🚀 Faster, Faster compilation speed.  
 🔥 Zero-config, single dependency.  
 
