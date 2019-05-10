@@ -8,7 +8,7 @@ import babel from '../babel';
 import * as build from './build';
 
 export const command = 'watch [options]';
-export const describe = 'Build your project once and exit.';
+export const describe = 'Recompile files on changes.';
 
 export function builder(yarg: Argv) {
   return yarg.option({

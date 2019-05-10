@@ -5,13 +5,17 @@
   "main": "index.js",
   "scripts": {
     "prepare": "npm run build",
+    "start": "node lib/index.js",
     "watch": "tsbb watch",
-    "build": "tsbb build"
+    "build": "tsbb build",
+    "test": "tsbb test",
+    "coverage": "tsbb test --coverage"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/jaywcjlove/tsbb/tree/master/example/basic"
   },
+  "jest": {},
   "keywords": [],
   "license": "MIT",
   "devDependencies": {

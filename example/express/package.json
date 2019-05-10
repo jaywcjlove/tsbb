@@ -7,7 +7,9 @@
     "start": "node lib/app.js",
     "dev": "nodemon --inspect lib/app.js",
     "watch": "tsbb watch --timer 200",
-    "build": "tsbb build"
+    "build": "tsbb build",
+    "test": "tsbb test",
+    "coverage": "tsbb test --coverage"
   },
   "keywords": [],
   "author": "",

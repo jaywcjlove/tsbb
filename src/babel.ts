@@ -7,6 +7,9 @@ import transform from './utils/transform';
 
 export default async (files: IFileDirStat[], args: IMyYargsArgs) => {
   await Promise.all(files.map(async (item: IFileDirStat) => {
+    if (/\.test\.ts$/.test(item.path)) {
+      return item;
+    }
     if (item.ext !== 'ts' && args.copyFiles) {
       await fs.copy(item.path, item.outputPath);
       return item;

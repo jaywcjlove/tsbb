@@ -7,7 +7,9 @@
     "start": "node lib/index.js",
     "dev": "nodemon --inspect lib/index.js",
     "watch": "tsbb watch --timer 200",
-    "build": "tsbb build"
+    "build": "tsbb build",
+    "test": "tsbb test",
+    "coverage": "tsbb test --coverage"
   },
   "keywords": [],
   "author": "",

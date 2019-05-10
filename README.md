@@ -24,8 +24,10 @@ TSBB is a zero-config CLI that helps you develop, test, and publish modern TypeS
 
 #### `Features`
 
-🚀 Faster compilation speed.  
-🌱 Recompile files on changes automatic transforms.  
+⏱ Quickly initialize the example project and quickly enter the development mode.  
+♻️ Recompile the code when project files get added, removed or modified.  
+📚 Readable source code that encourages learning and contribution
+🚀 Faster, Faster compilation speed.  
 🔥 Zero-config, single dependency.  
 
 ## Quick Start
@@ -35,6 +37,7 @@ You will need `Node.js` installed on your system.
 ```bash
 $ npx tsbb create my-project
 $ cd my-project
+
 $ npm run watch # Listen compile .ts files.
 $ npm run build # compile .ts files.
 $ npm start
@@ -57,7 +60,8 @@ Usage: tsbb [options]
 Commands:
   tsbb create <project-name> [options]  Create a new project with TSBB
   tsbb build [options]                  Build your project once and exit.
-  tsbb watch [options]                  Build your project once and exit.
+  tsbb watch [options]                  Recompile files on changes.
+  tsbb test [options]                   Run jest test runner in watch mode.
 
 Options:
   --version  Show version number                                       [boolean]
@@ -65,9 +69,10 @@ Options:
 
 Examples:
 
-  $ tsdd build                Build your project once and exit.
-  $ tsdd watch                Rebuilds on any change.
-  $ tsdd watch --no-comments  Rebuilds on any change.
+  $ tsdd build            Build your project once and exit.
+  $ tsdd watch            Rebuilds on any change.
+  $ tsdd test             Rebuilds on any change.
+  $ tsdd test --coverage  Test coverage information should be collected
 
 Copyright 2019
 ```
@@ -143,6 +148,28 @@ Options:
 
 Examples:
   $ tsbb watch   Rebuilds on any change.
+```
+
+### `tsbb test`
+
+```
+▶ tsbb test --help
+tsbb test [options]
+
+Run jest test runner in watch mode.
+
+Options:
+  --version   Show version number                                      [boolean]
+  --help, -h  Show help.                                               [boolean]
+  --coverage  Indicates that test coverage information should be collected and
+              reported in the output.                 [boolean] [default: false]
+  --env       The test environment used for all tests.[string] [default: "node"]
+  --config    The path to a Jest config file specifying how to find and execute
+              tests.                                                    [string]
+
+Examples:
+  $ tsbb test             Run test suites related
+  $ tsbb test --coverage  Test coverage information should be collected
 ```
 
 ## Example
