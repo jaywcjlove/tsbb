@@ -43,18 +43,20 @@ export async function handler(args: ITestArgs) {
   const jestArgs: string[] = [];
   jestArgs.push(`--env=${args.env}`);
 
-  const jestConfPath: string = path.resolve(args.sourceRoot, args.config);
+  if (args.config) {
+    const jestConfPath: string = path.join(args.sourceRoot, args.config);
+    if (!fs.existsSync(jestConfPath)) {
+      console.log(
+        `\n Uh oh! Looks like there's your configuration does not exist.\n`,
+        `Path: ${color.yellow(jestConfPath)}\n`
+      );
+      return;
+    }
+    if (fs.existsSync(jestConfPath)) {
+      jestArgs.push(`--config=${jestConfPath}`);
+    }
+  }
 
-  if (args.config && !fs.existsSync(jestConfPath)) {
-    console.log(
-      `\n Uh oh! Looks like there's your configuration does not exist.\n`,
-      `Path: ${color.yellow(jestConfPath)}`
-    );
-    process.exit(1);
-  }
-  if (args.config && fs.existsSync(path.resolve(args.sourceRoot, args.config))) {
-    jestArgs.push(`--config=${jestConfPath}`);
-  }
   if (args.coverage) {
     jestArgs.push('--coverage');
   } else if (!process.env.CI) {
