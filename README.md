@@ -61,6 +61,10 @@ $ tsbb create my-project --example=Express
 
 ## Command Help
 
+Below is a help of commands you might find useful.
+
+[create](#tsbb-create) · [watch](#tsbb-watch) · [build](#tsbb-build) · [test](#tsbb-test)
+
 ### `tsbb`
 
 ```shell
@@ -161,6 +165,8 @@ Examples:
 ```
 
 ### `tsbb test`
+
+Runs the test watcher (Jest) in an interactive mode.
 
 ```shell
 ▶ tsbb test --help
