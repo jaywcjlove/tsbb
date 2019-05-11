@@ -6,7 +6,7 @@ import { Arguments } from 'yargs';
  * Get ext
  * @param {String} filePath `/a/b.jpg` => `jpg`
  */
-export const getExt = (filePath: string) => filePath.replace(/^.*[\.\/\\]/, "").toLowerCase();
+export const getExt = (filePath: string) => path.extname(filePath).replace(/^\./, '').toLowerCase();
 
 export interface IMyYargsArgs extends Arguments {
   projectName?: string; // create project
