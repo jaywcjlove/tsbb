@@ -9,10 +9,10 @@ const command = yargs
   .command(require('./build'))
   .command(require('./watch'))
   .command(require('./test'))
-  .example(`\n$ ${color.green('tsdd build')}`, '\nBuild your project once and exit.')
-  .example(`$ ${color.green('tsdd watch')}`, 'Rebuilds on any change.')
-  .example(`$ ${color.green('tsdd test')}`, 'Rebuilds on any change.')
-  .example(`$ ${color.green('tsdd test --coverage')}`, 'Test coverage information should be collected')
+  .example(`\n$ ${color.green('tsbb build')}`, '\nBuild your project once and exit.')
+  .example(`$ ${color.green('tsbb watch')}`, 'Rebuilds on any change.')
+  .example(`$ ${color.green('tsbb test')}`, 'Rebuilds on any change.')
+  .example(`$ ${color.green('tsbb test --coverage')}`, 'Test coverage information should be collected')
   .updateStrings({
     // 'Commands:': 'Commands:\n',
     // 'Options:': 'Options:\n',

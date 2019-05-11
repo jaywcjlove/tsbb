@@ -87,10 +87,10 @@ Options:
 
 Examples:
 
-  $ tsdd build            Build your project once and exit.
-  $ tsdd watch            Rebuilds on any change.
-  $ tsdd test             Rebuilds on any change.
-  $ tsdd test --coverage  Test coverage information should be collected
+  $ tsbb build            Build your project once and exit.
+  $ tsbb watch            Rebuilds on any change.
+  $ tsbb test             Rebuilds on any change.
+  $ tsbb test --coverage  Test coverage information should be collected
 
 Copyright 2019
 ```
