@@ -54,8 +54,9 @@ or
 
 ```bash
 $ npm install tsbb -g
-
+# Create project
 $ tsbb create my-project --example=Express
+# --- Example name ----------------┴ˇˇˇˇˇˇ
 ```
 
 ## Command Help

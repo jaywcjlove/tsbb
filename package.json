@@ -19,7 +19,9 @@
     "build": "npm run tsc",
     "build:types": "tsc -p ./ -t es2015 --types --emitDeclarationOnly --outDir lib",
     "tsc": "tsc -p ./ --types --outDir lib",
-    "start": "npm run tsc -- --watch"
+    "start": "npm run tsc -- --watch",
+    "test": "node lib/command/tsbb.js test",
+    "coverage": "node lib/command/tsbb.js test --coverage"
   },
   "files": [
     "lib",
@@ -32,6 +34,15 @@
   ],
   "author": "kenny wang <wowohoo@qq.com>",
   "license": "MIT",
+  "jest": {
+    "testMatch": [
+      "<rootDir>/**/__tests__/**/*.{ts,tsx}",
+      "<rootDir>/**/(*.)(spec|test).{ts,tsx}"
+    ],
+    "modulePathIgnorePatterns": [
+      "[/\\\\](node_modules|example)[/\\\\].+\\.(js|jsx|ts|tsx)$"
+    ]
+  },
   "dependencies": {
     "@babel/core": "^7.4.4",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
