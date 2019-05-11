@@ -1,6 +1,9 @@
 [![tsbb](https://user-images.githubusercontent.com/1680273/57547188-94c60100-7390-11e9-93b2-5ebf085bb925.png)](https://github.com/jaywcjlove/tsbb)
 
 <p align="center">
+  <a href="https://www.travis-ci.org/jaywcjlove/tsbb">
+    <img src="https://www.travis-ci.org/jaywcjlove/tsbb.svg?branch=master">
+  </a>
   <a href="https://github.com/jaywcjlove/tsbb/issues">
     <img src="https://img.shields.io/github/issues/jaywcjlove/tsbb.svg">
   </a>
@@ -35,6 +38,7 @@ TSBB is a zero-config CLI that helps you develop, test, and publish modern TypeS
 ♻️ Recompile the code when project files get added, removed or modified.  
 📚 Readable source code that encourages learning and contribution  
 🚀 Faster, Faster compilation speed.  
+⛑ [Jest](https://jestjs.io/) test runner setup with defaults `tsbb test`  
 🔥 Zero-config, single dependency.  
 
 ## Quick Start
