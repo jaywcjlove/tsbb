@@ -36,6 +36,7 @@ export default (resolve: Function, rootDir: string) => {
       'globals',
       'mapCoverage',
       'moduleFileExtensions',
+      'modulePathIgnorePatterns',
       'moduleNameMapper',
       'modulePaths',
       'snapshotSerializers',
