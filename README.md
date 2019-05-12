@@ -80,6 +80,7 @@ Commands:
   tsbb create <project-name> [options]  Create a new project with TSBB
   tsbb build [options]                  Build your project once and exit.
   tsbb watch [options]                  Recompile files on changes.
+  tsbb types [options]                  Create type files for the project.
   tsbb test [options]                   Run jest test runner in watch mode.
 
 Options:
@@ -90,7 +91,7 @@ Examples:
 
   $ tsbb build            Build your project once and exit.
   $ tsbb watch            Rebuilds on any change.
-  $ tsbb test             Rebuilds on any change.
+  $ tsbb test             Run test suites related.
   $ tsbb test --coverage  Test coverage information should be collected
 
 Copyright 2019
