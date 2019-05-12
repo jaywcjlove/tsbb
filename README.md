@@ -235,8 +235,9 @@ $ npx tsbb create my-app -e <Example Name>
 ```
 
 - [**`Basic`**](example/basic) - The [Node.js](https://nodejs.org/en/) base application example.
-- [**`Koa`**](example/koa) - The [Koa](https://koajs.com/) base application example.
 - [**`Express`**](example/express) - The [Express](https://expressjs.com/) base application example.
+- [**`Koa`**](example/koa) - The [Koa](https://koajs.com/) base application example.
+- [**`Hapi`**](example/hapi) - The [Hapi](https://hapijs.com/) base application example.
 
 ## License
 

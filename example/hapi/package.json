@@ -1,0 +1,40 @@
+{
+  "name": "basic",
+  "version": "1.0.0",
+  "description": "Basic Example.",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "npm run build",
+    "start": "node lib/index.js",
+    "types": "tsbb types",
+    "types:watch": "tsbb types --watch",
+    "dev": "nodemon --inspect lib/app.js",
+    "watch": "tsbb watch",
+    "build": "tsbb build",
+    "test": "tsbb test",
+    "coverage": "tsbb test --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaywcjlove/tsbb/tree/master/example/basic"
+  },
+  "jest": {},
+  "keywords": [],
+  "license": "MIT",
+  "author": "",
+  "nodemonConfig": {
+    "ignore": [
+      "test/*",
+      "node_modules/*"
+    ],
+    "delay": "2500"
+  },
+  "devDependencies": {
+    "@types/hapi__hapi": "^18.2.1",
+    "nodemon": "^1.19.0",
+    "tsbb": "file:../../"
+  },
+  "dependencies": {
+    "@hapi/hapi": "^18.3.1"
+  }
+}
