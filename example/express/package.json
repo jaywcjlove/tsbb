@@ -6,6 +6,8 @@
     "prepare": "npm run build",
     "start": "node lib/app.js",
     "dev": "nodemon --inspect lib/app.js",
+    "types": "tsbb types",
+    "types:watch": "tsbb types --watch",
     "watch": "tsbb watch --timer 200",
     "build": "tsbb build",
     "test": "tsbb test",

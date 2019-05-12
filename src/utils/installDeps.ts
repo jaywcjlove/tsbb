@@ -1,21 +1,5 @@
 import execa from 'execa';
-
-function executeCommand(command: string, args: string[], targetDir: string) {
-  return new Promise((resolve, reject) => {
-    const child = execa(command, args, {
-      cwd: targetDir,
-      stdio: ['inherit', 'inherit', command === 'yarn' ? 'pipe' : 'inherit'],
-    });
-
-    child.on('close', (code) => {
-      if (code !== 0) {
-        reject(new Error(`command failed: ${command} ${args.join(' ')}`));
-        return;
-      }
-      resolve();
-    });
-  });
-}
+import { executeCommand } from './executeCommand';
 
 export default async (targetDir: string, command: string) => {
   const args = [];

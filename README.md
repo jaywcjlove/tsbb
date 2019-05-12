@@ -25,6 +25,7 @@
   <a href="#quick-start">Quick Start</a> · 
   <a href="#command-help">Command Help</a> · 
   <a href="#example">Example</a> · 
+  <a href="https://www.npmjs.com/package/tsbb">npm</a> · 
   <a href="#license">License</a>
 </p>
 
@@ -67,7 +68,7 @@ $ tsbb create my-project --example=Express
 
 Below is a help of commands you might find useful.
 
-[create](#tsbb-create) · [watch](#tsbb-watch) · [build](#tsbb-build) · [test](#tsbb-test)
+[create](#tsbb-create) · [watch](#tsbb-watch) · [build](#tsbb-build) · [types](#tsbb-types) · [test](#tsbb-test)
 
 ### `tsbb`
 
@@ -190,6 +191,36 @@ Options:
 Examples:
   $ tsbb test             Run test suites related
   $ tsbb test --coverage  Test coverage information should be collected
+```
+
+### `tsbb types`
+
+```shell
+▶ tsbb types --help
+tsbb types [options]
+
+Create type files for the project.
+
+Options:
+  --version                Show version number                         [boolean]
+  --help, -h               Show help.                                  [boolean]
+  --project                Compile the project given the path to its
+                           configuration file, or to a folder with a
+                           'tsconfig.json'.             [string] [default: "./"]
+  --out-dir                Redirect output structure to the directory.
+                                                       [string] [default: "lib"]
+  --target                 Specify ECMAScript target version.
+        [string] [choices: "ES3", "ES5", "ES2015", "ES2016", "ES2017", "ES2018",
+                                         "ES2019", "ESNEXT"] [default: "ES2015"]
+  --watch                  Watch input files.         [boolean] [default: false]
+  --emit-declaration-only  to enable declarations only output
+                                                       [boolean] [default: true]
+  --tsconf                 TypeScript other options.                    [string]
+
+Examples:
+  $ tsbb types          Create types your project.
+  $ tsbb types --watch  Create type files for the project And to run in --watch
+                        mode.
 ```
 
 ## Example

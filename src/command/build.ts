@@ -18,6 +18,10 @@ export function builder(yarg: Argv) {
 
 export async function handler(args: IMyYargsArgs) {
   args = completePath(args);
-  const files = (await getFileDirectory(args.sourceRoot, args.output)) as [] as IFileDirStat[];
-  await babel(files, args);
+  try {
+    const files = (await getFileDirectory(args.sourceRoot, args.output)) as [] as IFileDirStat[];
+    await babel(files, args);
+  } catch (error) {
+    console.log(error);
+  }
 }

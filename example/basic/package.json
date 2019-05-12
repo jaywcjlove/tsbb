@@ -6,6 +6,8 @@
   "scripts": {
     "prepare": "npm run build",
     "start": "node lib/index.js",
+    "types": "tsbb types",
+    "types:watch": "tsbb types --watch",
     "watch": "tsbb watch",
     "build": "tsbb build",
     "test": "tsbb test",
