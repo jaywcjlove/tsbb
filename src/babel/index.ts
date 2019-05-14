@@ -3,7 +3,7 @@ import fs from 'fs-extra';
 import path from 'path';
 import { IMyYargsArgs } from '../utils';
 import { IFileDirStat } from '../utils/getFileDirectory';
-import transform from '../utils/transform';
+import transform from './transform';
 
 export default async (files: IFileDirStat[], args: IMyYargsArgs) => {
   await Promise.all(files.map(async (item: IFileDirStat) => {
