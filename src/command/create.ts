@@ -7,6 +7,7 @@ import { IMyYargsArgs, completePath, run } from '../utils';
 import { helpOption } from './options';
 import { moverDir } from '../utils/moverDir';
 import installDeps from '../utils/installDeps';
+import { ITargets } from '../babel/transform';
 
 export const command = 'create <project-name> [options]';
 export const describe = 'Create a new project with TSBB';
@@ -31,8 +32,14 @@ export function builder(yarg: Argv) {
   .example('$ tsbb create my-app --example express', 'Create an Express example project.');
 }
 
-export async function handler(args: IMyYargsArgs) {
-  args = completePath(args);
+
+export interface ICreateArgs extends IMyYargsArgs {
+  force?: boolean;
+  example?: string;
+}
+
+export async function handler(args: ICreateArgs) {
+  args = completePath(args) as ICreateArgs;
   const projectPath = path.join(process.cwd(), args.projectName);
   const cacheDir = path.join(projectPath, '.cache-tsbb');
   const exampleDir: string = path.join(cacheDir, 'example', (args.example || '').toLowerCase());

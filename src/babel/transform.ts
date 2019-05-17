@@ -11,8 +11,39 @@ export interface ITransformOptions {
   sourceMaps: boolean | 'inline' | 'both' | 'none';
 }
 
-export default (filePath: string, options: ITransformOptions) => {
-  return new Promise<ITransformResult>((resolve, reject) => {
+export type ITargets = 'node' | 'react';
+
+export interface IEnv {
+  esm?: any;
+  cjs?: any;
+  [key: string]: any;
+}
+
+export default (filePath: string, options: ITransformOptions, targets: ITargets) => {
+  let env: IEnv = {}
+  if (targets === 'react') {
+    env = {
+      esm: {
+        presets: [
+          ["@babel/preset-env", { "modules": false }],
+          "@babel/preset-react",
+        ],
+        plugins: [
+          ["@babel/plugin-transform-runtime", { "useESModules": true }]
+        ]
+      },
+      cjs: {
+        presets: [
+          "@babel/preset-env",
+          "@babel/preset-react",
+        ],
+        plugins: [
+          ["@babel/plugin-transform-runtime", { "useESModules": true }],
+        ]
+      }
+    }
+  }
+  return new Promise<ITransformResult>((resolve: (value?: ITransformResult) => ITransformResult | any, reject) => {
     transformFile(filePath, {
       presets: ['@babel/preset-env', '@babel/preset-typescript'],
       plugins: [
@@ -20,6 +51,9 @@ export default (filePath: string, options: ITransformOptions) => {
         '@babel/plugin-proposal-class-properties',
         '@babel/plugin-proposal-object-rest-spread'
       ],
+      env: {
+        ...env
+      },
       // comments: process.env.NODE_ENV === 'development' ? false : true,
       // comments: false,
       sourceMaps: options.sourceMaps === 'none' ? false : options.sourceMaps,

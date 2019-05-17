@@ -37,6 +37,11 @@ export const publicOptions: IYargsOptions = {
     type: 'string',
     default: 'lib',
   },
+  'target': {
+    describe: 'Specify your target environment.',
+    type: 'string',
+    choices: ['react', 'node'],
+  },
   'comments': {
     describe: 'decide whether a given comment should be included in the output code.',
     type: 'boolean',

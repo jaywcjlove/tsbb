@@ -13,8 +13,6 @@ export interface IMyYargsArgs extends Arguments {
   'source-root'?: string;
   s?: string;
   sourceRoot?: string;
-  force?: boolean;
-  example?: string;
   'copy-files'?: boolean;
   copyFiles?: boolean;
   'source-maps'?: boolean | 'inline' | 'both' | 'none';

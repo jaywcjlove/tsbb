@@ -2,10 +2,11 @@ import chokidar, { FSWatcher } from 'chokidar';
 import { Argv } from 'yargs';
 import { IFileDirStat, getFileStat } from '../utils/getFileDirectory';
 import { clearScreenConsole } from '../utils/clearConsole';
-import { IMyYargsArgs, completePath } from '../utils';
+import { completePath } from '../utils';
 import { publicOptions, helpOption } from './options';
 import babel from '../babel';
 import * as build from './build';
+import { IBuildArgs } from './build';
 
 export const command = 'watch [options]';
 export const describe = 'Recompile files on changes.';
@@ -24,8 +25,8 @@ export function builder(yarg: Argv) {
   .example('$ tsbb watch ', 'Rebuilds on any change.')
 }
 
-export async function handler(args: IMyYargsArgs) {
-  args = completePath(args);
+export async function handler(args: IBuildArgs) {
+  args = completePath(args) as IBuildArgs;
   await build.handler(args);
   // Initialize watcher.
   // Watch the target directory for changes and trigger reload

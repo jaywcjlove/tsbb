@@ -3,6 +3,7 @@ import babel from '../babel';
 import getFileDirectory, { IFileDirStat } from '../utils/getFileDirectory';
 import { IMyYargsArgs, completePath } from '../utils';
 import { publicOptions, helpOption } from './options';
+import { ITargets } from '../babel/transform';
 
 export const command = 'build [options]';
 export const describe = 'Build your project once and exit.';
@@ -16,8 +17,12 @@ export function builder(yarg: Argv) {
   .example('$ tsbb build --no-comments', 'Build your project and remove the comments.')
 }
 
-export async function handler(args: IMyYargsArgs) {
-  args = completePath(args);
+export interface IBuildArgs extends IMyYargsArgs {
+  target: ITargets
+}
+
+export async function handler(args: IBuildArgs) {
+  args = completePath(args) as IBuildArgs;
   try {
     const files = (await getFileDirectory(args.sourceRoot, args.output)) as [] as IFileDirStat[];
     await babel(files, args);

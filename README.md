@@ -39,6 +39,7 @@ TSBB is a zero-config CLI that helps you develop, test, and publish modern TypeS
 ♻️ Recompile the code when project files get added, removed or modified.  
 📚 Readable source code that encourages learning and contribution  
 🚀 Faster, Faster compilation speed.  
+⚛️ Support [react](https://reactjs.org/) component compilation.  
 ⛑ [Jest](https://jestjs.io/) test runner setup with defaults `tsbb test`  
 🔥 Zero-config, single dependency.  
 
@@ -136,6 +137,8 @@ Options:
   --source-maps      Source Map options.
               [string] [choices: true, "inline", "both", "none"] [default: true]
   --output, -o       Output directory.                 [string] [default: "lib"]
+  --target           Specify your target environment.
+                                             [string] [choices: "react", "node"]
   --comments         decide whether a given comment should be included in the
                      output code.                      [boolean] [default: true]
 
@@ -150,7 +153,7 @@ Examples:
 ▶ tsbb watch --help
 tsbb watch [options]
 
-Build your project once and exit.
+Recompile files on changes.
 
 Options:
   --version          Show version number                               [boolean]
@@ -162,6 +165,8 @@ Options:
   --source-maps      Source Map options.
               [string] [choices: true, "inline", "both", "none"] [default: true]
   --output, -o       Output directory.                 [string] [default: "lib"]
+  --target           Specify your target environment.
+                                             [string] [choices: "react", "node"]
   --comments         decide whether a given comment should be included in the
                      output code.                      [boolean] [default: true]
   --timer, -t        Compile interval.                   [number] [default: 300]
@@ -238,6 +243,7 @@ $ npx tsbb create my-app -e <Example Name>
 - [**`Express`**](example/express) - The [Express](https://expressjs.com/) base application example.
 - [**`Koa`**](example/koa) - The [Koa](https://koajs.com/) base application example.
 - [**`Hapi`**](example/hapi) - The [Hapi](https://hapijs.com/) base application example.
+- [**`react-component`**](example/react-component) - The react component base application example.
 
 ## License
 

@@ -22,9 +22,9 @@ export interface IFileDirStat {
 export async function getFileStat(root: string, outpuPath: string, filePath: string): Promise<IFileDirStat> {
   const stat = await fs.stat(filePath);
   return {
-    name: filePath,
+    name: path.basename(filePath),
     path: filePath,
-    outputPath: filePath.replace(root, outpuPath).replace(/.ts$/, '.js'),
+    outputPath: filePath.replace(root, outpuPath).replace(/.(ts|tsx)$/, '.js'),
     ext: getExt(filePath),
     size: stat.size,
     isFile: true,
@@ -51,7 +51,7 @@ async function getFiles(rootPath: string, outpuPath: string, files: IFileDirStat
       item.isFile = true;
       item.outputPath = item.path.replace(root, outpuPath);
       files.push(item);
-      if (/ts$/.test(item.ext)) {
+      if (/(ts|tsx)$/.test(item.ext)) {
         item.outputPath = item.outputPath.replace(new RegExp(`.${item.ext}$`), '.js');
       }
     }
