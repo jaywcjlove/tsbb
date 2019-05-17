@@ -1,0 +1,49 @@
+{
+  "name": "react-component",
+  "version": "1.0.0",
+  "description": "React Component Example.",
+  "author": "",
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
+  "scripts": {
+    "prepare": "npm run build",
+    "watch": "npm run watch:types & npm run watch:ts",
+    "build": "npm run build:ts & npm run build:types",
+    "watch:types": "npm run build:types -- --watch",
+    "build:types": "tsbb types --outDir typings --target ESNEXT",
+    "watch:ts": "tsbb watch --target react",
+    "build:ts": "tsbb build --target react",
+    "test": "tsbb test",
+    "coverage": "tsbb test --coverage",
+    "doc": "npm run doc:build",
+    "doc:dev": "NODE_ENV=development parcel website/index.html --out-dir doc --no-cache",
+    "doc:build": "NODE_ENV=production parcel build website/index.html --out-dir doc --public-url ./ --no-cache --no-source-maps"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaywcjlove/tsbb/tree/master/example/basic"
+  },
+  "files": [
+    "typings",
+    "lib"
+  ],
+  "keywords": [],
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=16.7.0",
+    "react-dom": ">=16.7.0"
+  },
+  "devDependencies": {
+    "@types/classnames": "^2.2.7",
+    "@types/react": "^16.8.17",
+    "@types/react-dom": "^16.8.4",
+    "less": "^3.9.0",
+    "parcel-bundler": "^1.12.3",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "tsbb": "file:../../"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6"
+  }
+}
