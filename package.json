@@ -16,7 +16,7 @@
   "scripts": {
     "prepare": "npm run build",
     "type-check": "tsc --noEmit",
-    "build": "npm run tsc",
+    "build": "npm run tsc && npm run build:types",
     "build:types": "tsc -p ./ -t es2015 --types --emitDeclarationOnly --outDir lib",
     "tsc": "tsc -p ./ --types --outDir lib",
     "start": "npm run tsc -- --watch",
