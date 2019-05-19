@@ -88,7 +88,6 @@ export async function handler(args: ITypesArgs) {
   }
   const projectPath = path.resolve(process.cwd(), args.sourceRoot || '');
   try {
-    console.log('~~:', tscArgs, projectPath)
     await executeCommand('tsc', tscArgs, projectPath);
     if (!args.watch) {
       console.log('🎉', 'Successfully created a project type files!');
