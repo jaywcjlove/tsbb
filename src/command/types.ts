@@ -59,13 +59,18 @@ export function builder(yarg: Argv) {
 
 export async function handler(args: ITypesArgs) {
   let tscArgs: string[] = [];
-  if (args.emitDeclarationOnly) {
-    tscArgs.push('--emitDeclarationOnly');
-  }
+
   if (args.target) {
     tscArgs.push('--target');
     tscArgs.push(args.target);
   }
+  
+  tscArgs.push('--types');
+
+  if (args.emitDeclarationOnly) {
+    tscArgs.push('--emitDeclarationOnly');
+  }
+
   if (args.project) {
     tscArgs.push('--project');
     tscArgs.push(args.project);
@@ -83,6 +88,7 @@ export async function handler(args: ITypesArgs) {
   }
   const projectPath = path.resolve(process.cwd(), args.sourceRoot || '');
   try {
+    console.log('~~:', tscArgs, projectPath)
     await executeCommand('tsc', tscArgs, projectPath);
     if (!args.watch) {
       console.log('🎉', 'Successfully created a project type files!');
