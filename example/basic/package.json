@@ -2,7 +2,6 @@
   "name": "basic",
   "version": "1.0.0",
   "description": "Basic Example.",
-  "main": "index.js",
   "scripts": {
     "prepare": "npm run build",
     "start": "node lib/index.js",

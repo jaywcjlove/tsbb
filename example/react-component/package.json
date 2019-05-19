@@ -5,6 +5,7 @@
   "author": "",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
+  "typings": "typings/index.d.ts",
   "scripts": {
     "prepare": "npm run build",
     "watch": "npm run watch:types & npm run watch:ts",
