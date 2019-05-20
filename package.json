@@ -1,6 +1,6 @@
 {
   "name": "tsbb",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "TSBB is a zero-config CLI that helps you develop, test, and publish modern TypeScript project.",
   "bin": {
     "tsbb": "./lib/command/tsbb.js"
@@ -25,7 +25,8 @@
   },
   "files": [
     "lib",
-    "bin"
+    "bin",
+    "src"
   ],
   "keywords": [
     "typescript",
