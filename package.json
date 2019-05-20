@@ -1,6 +1,6 @@
 {
   "name": "tsbb",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "TSBB is a zero-config CLI that helps you develop, test, and publish modern TypeScript project.",
   "bin": {
     "tsbb": "./lib/command/tsbb.js"
@@ -60,6 +60,7 @@
     "core-js": "^3.0.1",
     "execa": "^1.0.0",
     "fs-extra": "^7.0.1",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^24.8.0",
     "ora": "^3.4.0",
     "request": "^2.88.0",
