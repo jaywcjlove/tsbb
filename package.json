@@ -1,6 +1,6 @@
 {
   "name": "tsbb",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "TSBB is a zero-config CLI that helps you develop, test, and publish modern TypeScript project.",
   "bin": {
     "tsbb": "./lib/command/tsbb.js"
@@ -53,6 +53,7 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
     "@babel/runtime": "^7.4.4",
+    "@types/jest": "^24.0.13",
     "babel-jest": "^24.8.0",
     "chokidar": "^3.0.0",
     "colors-cli": "^1.0.23",
@@ -69,7 +70,6 @@
     "@types/babel__core": "^7.1.1",
     "@types/execa": "^0.9.0",
     "@types/fs-extra": "^5.1.0",
-    "@types/jest": "^24.0.13",
     "@types/node": "^12.0.0",
     "@types/request": "^2.48.1",
     "@types/yargs": "^13.0.0"
