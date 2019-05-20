@@ -20,12 +20,15 @@ export default (resolve: Function, rootDir: string) => {
     testURL: 'http://localhost',
     transform: {
       '^.+\\.(js|jsx|ts|tsx)$': resolve('lib/jest/babelTransform.js'),
-      '\\.(css|less)$': 'identity-obj-proxy',
+      '^.+\\.(css|less|sass|scss)$': resolve('lib/jest/cssTransform.js'),
       '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': resolve('lib/jest/fileTransform.js'),
     },
     transformIgnorePatterns: [
       '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$',
     ],
+    moduleNameMapper: {
+      '^.+\\.module\\.(css|less|sass|scss)$': 'identity-obj-proxy',
+    }
   }
 
   const overrides: IJestConfig = Object.assign({}, require(path.join(rootDir, 'package.json')).jest);
