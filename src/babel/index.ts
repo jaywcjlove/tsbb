@@ -1,7 +1,7 @@
 import fs from 'fs-extra';
 import path from 'path';
 import { IFileDirStat } from '../utils/getFileDirectory';
-import transform, { ITransformResult } from './transform';
+import transform from './transform';
 import { IBuildArgs } from '../command/build';
 
 async function transformFile(fileStat: IFileDirStat, args: IBuildArgs, cjsPath?: string) {
@@ -16,33 +16,37 @@ async function transformFile(fileStat: IFileDirStat, args: IBuildArgs, cjsPath?:
     await fs.outputFile(outputPath.replace(/.js$/, '.js.map'), JSON.stringify(source.map));
   }
   await fs.outputFile(outputPath, source.code);
+  console.log(`♻️  ${path.relative(source.options.root, fileStat.path)} -> \x1b[32;1m${path.relative(source.options.root, outputPath)}\x1b[0m`);
   return source;
 }
 
 export default async (files: IFileDirStat[], args: IBuildArgs) => {
   await Promise.all(files.map(async (item: IFileDirStat) => {
     // Exclude test files from the project directory.
-    if (/\.test\.(ts|tsx)$/.test(item.path)) {
-      return item;
-    }
-    if (!/(ts|tsx)/.test(item.ext) && args.copyFiles) {
-      await fs.copy(item.path, item.outputPath);
+    if (/\.test\.(ts|tsx|js)$/.test(item.path)) {
       return item;
     }
     try {
       if (args.target === 'node') {
-        const source: ITransformResult = await transformFile(item, args);
-        console.log(`♻️  ${path.relative(source.options.root, item.path)} -> \x1b[32;1m${path.relative(source.options.root, item.outputPath)}\x1b[0m`);
+        if (!/(ts|tsx)/.test(item.ext) && args.copyFiles) {
+          await fs.copy(item.path, item.outputPath);
+          return item;
+        }
+        await transformFile(item, args);
       } else if (args.target === 'react') {
-        process.env.BABEL_ENV = 'cjs';
         const cjsPath = path.join(args.output, 'cjs', item.outputPath.replace(args.output, ''));
-        let source: ITransformResult = await transformFile(item, args, cjsPath);
-        console.log(`♻️  ${path.relative(source.options.root, item.outputPath)} -> \x1b[32;1m${path.relative(source.options.root, cjsPath)}\x1b[0m`);
+        const esmPath = path.join(args.output, 'esm', item.outputPath.replace(args.output, ''));
+        if (!/(ts|tsx)/.test(item.ext) && args.copyFiles) {
+          await fs.copy(item.path, cjsPath);
+          await fs.copy(item.path, esmPath);
+          return item;
+        }
+
+        process.env.BABEL_ENV = 'cjs';
+        await transformFile(item, args, cjsPath);
 
         process.env.BABEL_ENV = 'esm';
-        const esmPath = path.join(args.output, 'esm', item.outputPath.replace(args.output, ''));
-        source = await transformFile(item, args, esmPath);
-        console.log(`♻️  ${path.relative(source.options.root, item.outputPath)} -> \x1b[32;1m${path.relative(source.options.root, esmPath)}\x1b[0m`);
+        await transformFile(item, args, esmPath);
       }
     } catch (error) {
       console.log('⛑', error.message, error);
