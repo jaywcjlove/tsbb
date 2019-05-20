@@ -20,6 +20,8 @@ export default (resolve: Function, rootDir: string) => {
     testURL: 'http://localhost',
     transform: {
       '^.+\\.(js|jsx|ts|tsx)$': resolve('lib/jest/babelTransform.js'),
+      '\\.(css|less)$': 'identity-obj-proxy',
+      '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': resolve('lib/jest/fileTransform.js'),
     },
     transformIgnorePatterns: [
       '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$',

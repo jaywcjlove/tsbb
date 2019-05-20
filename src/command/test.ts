@@ -60,7 +60,7 @@ export async function handler(args: ITestArgs) {
   if (args.coverage) {
     jestArgs.push('--coverage');
   } else if (!process.env.CI) {
-    jestArgs.push('--watch');
+    jestArgs.push('--watchAll');
   }
   jestArgs.push(
     '--config',
