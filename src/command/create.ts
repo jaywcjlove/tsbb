@@ -23,6 +23,7 @@ export function builder(yarg: Argv) {
       default: false,
     },
     'example': {
+      alias: 'e',
       describe: 'Example from https://github.com/jaywcjlove/tsbb/tree/master/example example-path.',
       type: 'string',
       default: 'basic',
