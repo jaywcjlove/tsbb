@@ -38,10 +38,12 @@
     "@types/classnames": "^2.2.7",
     "@types/react": "^16.8.17",
     "@types/react-dom": "^16.8.4",
+    "@types/react-test-renderer": "^16.8.1",
     "less": "^3.9.0",
     "parcel-bundler": "^1.12.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-test-renderer": "^16.8.6",
     "tsbb": "file:../../"
   },
   "dependencies": {
