@@ -2,10 +2,8 @@ import React from 'react';
 import TestRenderer from 'react-test-renderer';
 import Button from './';
 
-
-
-describe('<Badge />', () => {
-  it('Should output a Badge', () => {
+describe('<Button />', () => {
+  it('Should output a Button', () => {
     const component = TestRenderer.create(
       <Button type="danger">BUTTON</Button>
     );
@@ -17,6 +15,7 @@ describe('<Badge />', () => {
       expect(tree.children).toHaveLength(1);
       if (tree.children) {
         expect(tree.children[0].type).toBe('span');
+        expect(tree.children[0].children).toEqual(['BUTTON']);
       }
     }
   });
