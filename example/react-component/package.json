@@ -14,8 +14,8 @@
     "build:types": "tsbb types --outDir typings --target ESNEXT",
     "watch:ts": "tsbb watch --target react",
     "build:ts": "tsbb build --target react",
-    "test": "tsbb test",
-    "coverage": "tsbb test --coverage",
+    "test": "tsbb test --env=jsdom",
+    "coverage": "tsbb test --env=jsdom --coverage",
     "doc": "npm run doc:build",
     "doc:dev": "NODE_ENV=development parcel website/index.html --out-dir doc --no-cache",
     "doc:build": "NODE_ENV=production parcel build website/index.html --out-dir doc --public-url ./ --no-cache --no-source-maps"
