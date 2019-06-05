@@ -36,9 +36,6 @@ export default (filePath: string, options: ITransformOptions, targets: ITargets)
         presets: [
           "@babel/preset-env",
           "@babel/preset-react",
-        ],
-        plugins: [
-          ["@babel/plugin-transform-runtime", { "useESModules": true }],
         ]
       }
     }
