@@ -1,6 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import { IProps } from './common/props';
+import { sum } from './sum';
 import './index.less';
 
 export type TSize = 'large' | 'default' | 'small';
@@ -31,7 +32,7 @@ export default class Button extends React.PureComponent<IButton, {}> {
         {children && React.Children.map(children, (child) => {
           if (!child) return child;
           if(React.isValidElement(child)) return child;
-          return <span>{child}</span>;
+          return <span>{child}<span>{sum(1, 3)}</span></span>;
         })}
       </button>
     )
