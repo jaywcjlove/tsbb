@@ -33,20 +33,18 @@ export default async (files: IFileDirStat[], args: IBuildArgs) => {
           return item;
         }
         await transformFile(item, args);
-      } else if (args.target === 'react') {
-        const cjsPath = path.join(args.output, 'cjs', item.outputPath.replace(args.output, ''));
-        const esmPath = path.join(args.output, 'esm', item.outputPath.replace(args.output, ''));
-        if (!/(ts|tsx)/.test(item.ext) && args.copyFiles) {
-          await fs.copy(item.path, cjsPath);
-          await fs.copy(item.path, esmPath);
-          return item;
-        }
-
-        process.env.BABEL_ENV = 'cjs';
-        await transformFile(item, args, cjsPath);
-
-        process.env.BABEL_ENV = 'esm';
-        await transformFile(item, args, esmPath);
+      } else if (args.target === 'react' && args.envName && args.envName.length > 0) {
+        await Promise.all(args.envName.map(async (envName: string) => {
+          const envPath = path.join(args.output, envName, item.outputPath.replace(args.output, ''));
+          if (!/(ts|tsx)/.test(item.ext) && args.copyFiles) {
+            await fs.copy(item.path, envPath);
+            return item;
+          }
+          process.env.BABEL_ENV = envName;
+          await transformFile(item, args, envPath);
+        }));
+      } else {
+        console.log('⛑', 'The `--target` and `--env-name` parameters do not exist!');
       }
     } catch (error) {
       console.log('⛑', error.message, error);

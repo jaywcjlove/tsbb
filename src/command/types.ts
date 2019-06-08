@@ -1,6 +1,6 @@
 import path from 'path';
 import { Argv } from 'yargs';
-import * as ts from 'typescript';
+// import * as ts from 'typescript';
 import { helpOption } from './options';
 import { IMyYargsArgs } from '../utils';
 import { executeCommand } from '../utils/executeCommand';

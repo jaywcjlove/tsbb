@@ -36,6 +36,9 @@ export default (filePath: string, options: ITransformOptions, targets: ITargets)
         presets: [
           "@babel/preset-env",
           "@babel/preset-react",
+        ],
+        plugins: [
+          "@babel/plugin-transform-runtime"
         ]
       }
     }
@@ -44,7 +47,6 @@ export default (filePath: string, options: ITransformOptions, targets: ITargets)
     transformFile(filePath, {
       presets: ['@babel/preset-env', '@babel/preset-typescript'],
       plugins: [
-        '@babel/plugin-transform-runtime',
         '@babel/plugin-proposal-class-properties',
         '@babel/plugin-proposal-object-rest-spread'
       ],

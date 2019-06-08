@@ -138,7 +138,10 @@ Options:
               [string] [choices: true, "inline", "both", "none"] [default: true]
   --output, -o       Output directory.                 [string] [default: "lib"]
   --target           Specify your target environment.
-                                             [string] [choices: "react", "node"]
+                           [string] [choices: "react", "node"] [default: "node"]
+  --env-name         The name of the 'env' to use when loading configs and
+                     plugins. Defaults to the value of 'cjs esm'..
+                                                [array] [default: ["cjs","esm"]]
   --comments         decide whether a given comment should be included in the
                      output code.                      [boolean] [default: true]
 
@@ -166,7 +169,10 @@ Options:
               [string] [choices: true, "inline", "both", "none"] [default: true]
   --output, -o       Output directory.                 [string] [default: "lib"]
   --target           Specify your target environment.
-                                             [string] [choices: "react", "node"]
+                           [string] [choices: "react", "node"] [default: "node"]
+  --env-name         The name of the 'env' to use when loading configs and
+                     plugins. Defaults to the value of 'cjs esm'..
+                                                [array] [default: ["cjs","esm"]]
   --comments         decide whether a given comment should be included in the
                      output code.                      [boolean] [default: true]
   --timer, -t        Compile interval.                   [number] [default: 300]
