@@ -1,6 +1,6 @@
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
-import Button from './';
+import Button from '../src';
 
 describe('<Button />', () => {
   it('Should output a Button', () => {
