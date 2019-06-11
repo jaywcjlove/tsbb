@@ -45,10 +45,8 @@ export default (filePath: string, options: ITransformOptions, targets: ITargets)
   }
   return new Promise<ITransformResult>((resolve: (value?: ITransformResult) => ITransformResult | any, reject) => {
     transformFile(filePath, {
-      presets: ['@babel/preset-env', '@babel/preset-typescript'],
-      plugins: [
-        '@babel/plugin-proposal-class-properties',
-        '@babel/plugin-proposal-object-rest-spread'
+      presets: [
+        '@tsbb/babel-preset-tsbb'
       ],
       env: {
         ...env

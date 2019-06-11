@@ -3,6 +3,7 @@
 
 lib
 doc
+package-lock.json
 __snapshots__
 
 ### Node ###
