@@ -2,6 +2,8 @@
 # Edit at https://www.gitignore.io/?templates=node
 
 lib
+package-lock.json
+__snapshots__
 
 ### Node ###
 # Logs
