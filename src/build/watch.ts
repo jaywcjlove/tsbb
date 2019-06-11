@@ -3,10 +3,10 @@ import { Argv } from 'yargs';
 import { IFileDirStat, getFileStat } from '../utils/getFileDirectory';
 import { clearScreenConsole } from '../utils/clearConsole';
 import { completePath } from '../utils';
-import { publicOptions, helpOption } from './options';
+import { publicOptions, helpOption } from '../command/options';
 import babel from '../babel';
-import * as build from './build';
-import { IBuildArgs } from './build';
+import * as build from './';
+import { IBuildArgs } from './';
 
 export const command = 'watch [options]';
 export const describe = 'Recompile files on changes.';

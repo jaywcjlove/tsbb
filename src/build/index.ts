@@ -2,7 +2,7 @@ import { Argv } from 'yargs';
 import babel from '../babel';
 import getFileDirectory, { IFileDirStat } from '../utils/getFileDirectory';
 import { IMyYargsArgs, completePath } from '../utils';
-import { publicOptions, helpOption } from './options';
+import { publicOptions, helpOption } from '../command/options';
 import { ITargets } from '../babel/transform';
 
 export const command = 'build [options]';

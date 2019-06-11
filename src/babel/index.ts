@@ -2,7 +2,7 @@ import fs from 'fs-extra';
 import path from 'path';
 import { IFileDirStat } from '../utils/getFileDirectory';
 import transform from './transform';
-import { IBuildArgs } from '../command/build';
+import { IBuildArgs } from '../build';
 
 async function transformFile(fileStat: IFileDirStat, args: IBuildArgs, cjsPath?: string) {
   const outputPath = cjsPath || fileStat.outputPath;
@@ -23,7 +23,7 @@ async function transformFile(fileStat: IFileDirStat, args: IBuildArgs, cjsPath?:
 export default async (files: IFileDirStat[], args: IBuildArgs) => {
   await Promise.all(files.map(async (item: IFileDirStat) => {
     // Exclude test files from the project directory.
-    if (/\.test\.(ts|tsx|js)$/.test(item.path)) {
+    if (/\.test\.(ts|tsx|js|jsx)$/.test(item.path)) {
       return item;
     }
     try {
