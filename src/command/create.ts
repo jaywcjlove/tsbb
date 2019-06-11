@@ -7,7 +7,6 @@ import { IMyYargsArgs, completePath, run } from '../utils';
 import { helpOption } from './options';
 import { moverDir } from '../utils/moverDir';
 import installDeps from '../utils/installDeps';
-import { ITargets } from '../babel/transform';
 
 export const command = 'create <project-name> [options]';
 export const describe = 'Create a new project with TSBB';
@@ -23,6 +22,7 @@ export function builder(yarg: Argv) {
       default: false,
     },
     'example': {
+      alias: 'e',
       describe: 'Example from https://github.com/jaywcjlove/tsbb/tree/master/example example-path.',
       type: 'string',
       default: 'basic',

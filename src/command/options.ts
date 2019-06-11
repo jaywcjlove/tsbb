@@ -43,6 +43,11 @@ export const publicOptions: IYargsOptions = {
     choices: ['react', 'node'],
     default: 'node'
   },
+  'env-name': {
+    describe: "The name of the 'env' to use when loading configs and plugins. Defaults to the value of 'cjs,esm'..",
+    type: 'array',
+    default: ['cjs', 'esm']
+  },
   'comments': {
     describe: 'decide whether a given comment should be included in the output code.',
     type: 'boolean',
