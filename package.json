@@ -46,7 +46,7 @@
     ]
   },
   "dependencies": {
-    "@tsbb/babel-preset-tsbb": "^1.0.1",
+    "@tsbb/babel-preset-tsbb": "^1.0.2",
     "@types/jest": "^24.0.13",
     "babel-jest": "^24.8.0",
     "chokidar": "^3.0.0",
