@@ -25,20 +25,20 @@ export default (filePath: string, options: ITransformOptions, targets: ITargets)
     env = {
       esm: {
         presets: [
-          ["@babel/preset-env", { "modules": false }],
-          "@babel/preset-react",
+          [require.resolve('@tsbb/babel-preset-tsbb'), { modules: false, }],
+          require.resolve('@babel/preset-react'),
         ],
         plugins: [
-          ["@babel/plugin-transform-runtime", { "useESModules": true }]
+          [require.resolve('@babel/plugin-transform-runtime'), { useESModules: true }]
         ]
       },
       cjs: {
         presets: [
-          "@babel/preset-env",
-          "@babel/preset-react",
+          require.resolve('@tsbb/babel-preset-tsbb'),
+          require.resolve('@babel/preset-react'),
         ],
         plugins: [
-          "@babel/plugin-transform-runtime"
+          require.resolve('@babel/plugin-transform-runtime')
         ]
       }
     }
@@ -46,7 +46,11 @@ export default (filePath: string, options: ITransformOptions, targets: ITargets)
   return new Promise<ITransformResult>((resolve: (value?: ITransformResult) => ITransformResult | any, reject) => {
     transformFile(filePath, {
       presets: [
-        '@tsbb/babel-preset-tsbb'
+        require.resolve('@tsbb/babel-preset-tsbb')
+      ],
+      plugins: [
+        [require.resolve('@babel/plugin-proposal-decorators'), { 'legacy': true }],
+        [require.resolve('@babel/plugin-proposal-class-properties'), { 'loose': true }],
       ],
       env: {
         ...env
