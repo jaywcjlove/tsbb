@@ -23,7 +23,7 @@ async function transformFile(fileStat: IFileDirStat, args: IBuildArgs, cjsPath?:
 export default async (files: IFileDirStat[], args: IBuildArgs) => {
   await Promise.all(files.map(async (item: IFileDirStat) => {
     // Exclude test files from the project directory.
-    if (/\.test\.(ts|tsx|js|jsx)$/.test(item.path)) {
+    if (/\.test\.(ts|tsx|js|jsx)$/.test(item.path) || /\.(snap)$/.test(item.path)) {
       return item;
     }
     try {
