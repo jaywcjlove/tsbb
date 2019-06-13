@@ -25,16 +25,18 @@ export default (filePath: string, options: ITransformOptions, targets: ITargets)
     env = {
       esm: {
         presets: [
-          [require.resolve('@tsbb/babel-preset-tsbb'), { modules: false, }],
+          [require.resolve('@tsbb/babel-preset-tsbb'), {
+            modules: false,
+            transformRuntime: { useESModules: true }
+          }],
           require.resolve('@babel/preset-react'),
-        ],
-        plugins: [
-          [require.resolve('@babel/plugin-transform-runtime'), { useESModules: true }]
         ]
       },
       cjs: {
         presets: [
-          require.resolve('@tsbb/babel-preset-tsbb'),
+          [require.resolve('@tsbb/babel-preset-tsbb'), {
+            transformRuntime: {},
+          }],
           require.resolve('@babel/preset-react'),
         ],
         plugins: [
