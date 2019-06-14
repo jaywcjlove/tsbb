@@ -7,6 +7,7 @@ import { IBuildArgs } from '../build';
 async function transformFile(fileStat: IFileDirStat, args: IBuildArgs, cjsPath?: string) {
   const outputPath = cjsPath || fileStat.outputPath;
   const source = await transform(fileStat.path, {
+    envName: args.currentEnvName,
     outputPath,
     sourceMaps: args.sourceMaps,
     comments: args.comments
@@ -28,7 +29,7 @@ export default async (files: IFileDirStat[], args: IBuildArgs) => {
     }
     try {
       if (args.target === 'node') {
-        if (!/(ts|tsx)/.test(item.ext) && args.copyFiles) {
+        if (!/\.(ts|tsx|js|jsx)$/.test(item.path) && args.copyFiles) {
           await fs.copy(item.path, item.outputPath);
           return item;
         }
@@ -36,11 +37,11 @@ export default async (files: IFileDirStat[], args: IBuildArgs) => {
       } else if (args.target === 'react' && args.envName && args.envName.length > 0) {
         await Promise.all(args.envName.map(async (envName: string) => {
           const envPath = path.join(args.output, envName, item.outputPath.replace(args.output, ''));
-          if (!/(ts|tsx)/.test(item.ext) && args.copyFiles) {
+          if (!/\.(ts|tsx|js|jsx)$/.test(item.path) && args.copyFiles) {
             await fs.copy(item.path, envPath);
             return item;
           }
-          process.env.BABEL_ENV = envName;
+          args.currentEnvName = envName;
           await transformFile(item, args, envPath);
         }));
       } else {
