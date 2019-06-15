@@ -43,10 +43,8 @@ export default (filePath: string, options: ITransformOptions, targets: ITargets)
     }
   }
   return new Promise<ITransformResult>((resolve: (value?: ITransformResult) => ITransformResult | any, reject) => {
-    if (options.envName) {
-      process.env.BABEL_ENV = options.envName;
-    }
     transformFile(filePath, {
+      envName: options.envName || process.env.BABEL_ENV,
       presets: [
         [require.resolve('@tsbb/babel-preset-tsbb'), {
           modules: 'cjs',
