@@ -2,11 +2,12 @@ import fs from 'fs-extra';
 import path from 'path';
 import { IFileDirStat } from '../utils/getFileDirectory';
 import transform from './transform';
-import { IBuildArgs } from '../command/build';
+import { IBuildArgs } from '../build';
 
 async function transformFile(fileStat: IFileDirStat, args: IBuildArgs, cjsPath?: string) {
   const outputPath = cjsPath || fileStat.outputPath;
   const source = await transform(fileStat.path, {
+    envName: args.currentEnvName,
     outputPath,
     sourceMaps: args.sourceMaps,
     comments: args.comments
@@ -23,12 +24,12 @@ async function transformFile(fileStat: IFileDirStat, args: IBuildArgs, cjsPath?:
 export default async (files: IFileDirStat[], args: IBuildArgs) => {
   await Promise.all(files.map(async (item: IFileDirStat) => {
     // Exclude test files from the project directory.
-    if (/\.test\.(ts|tsx|js)$/.test(item.path)) {
+    if (/\.test\.(ts|tsx|js|jsx)$/.test(item.path) || /\.(snap)$/.test(item.path)) {
       return item;
     }
     try {
       if (args.target === 'node') {
-        if (!/(ts|tsx)/.test(item.ext) && args.copyFiles) {
+        if (!/\.(ts|tsx|js|jsx)$/.test(item.path) && args.copyFiles) {
           await fs.copy(item.path, item.outputPath);
           return item;
         }
@@ -36,11 +37,11 @@ export default async (files: IFileDirStat[], args: IBuildArgs) => {
       } else if (args.target === 'react' && args.envName && args.envName.length > 0) {
         await Promise.all(args.envName.map(async (envName: string) => {
           const envPath = path.join(args.output, envName, item.outputPath.replace(args.output, ''));
-          if (!/(ts|tsx)/.test(item.ext) && args.copyFiles) {
+          if (!/\.(ts|tsx|js|jsx)$/.test(item.path) && args.copyFiles) {
             await fs.copy(item.path, envPath);
             return item;
           }
-          process.env.BABEL_ENV = envName;
+          args.currentEnvName = envName;
           await transformFile(item, args, envPath);
         }));
       } else {

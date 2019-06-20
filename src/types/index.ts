@@ -1,7 +1,7 @@
 import path from 'path';
 import { Argv } from 'yargs';
 // import * as ts from 'typescript';
-import { helpOption } from './options';
+import { helpOption } from '../command/options';
 import { IMyYargsArgs } from '../utils';
 import { executeCommand } from '../utils/executeCommand';
 
@@ -53,8 +53,8 @@ export function builder(yarg: Argv) {
       type: 'string',
     },
   })
-  .example('$ tsbb types ', 'Create types your project.')
-  .example('$ tsbb types --watch', 'Create type files for the project And to run in --watch mode.')
+    .example('$ tsbb types ', 'Create types your project.')
+    .example('$ tsbb types --watch', 'Create type files for the project And to run in --watch mode.')
 }
 
 export async function handler(args: ITypesArgs) {
@@ -64,7 +64,7 @@ export async function handler(args: ITypesArgs) {
     tscArgs.push('--target');
     tscArgs.push(args.target);
   }
-  
+
   tscArgs.push('--types');
 
   if (args.emitDeclarationOnly) {

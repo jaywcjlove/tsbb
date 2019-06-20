@@ -23,8 +23,8 @@
 
 <p align="center">
   <a href="#quick-start">Quick Start</a> · 
-  <a href="#command-help">Command Help</a> · 
   <a href="#example">Example</a> · 
+  <a href="#command-help">Command Help</a> · 
   <a href="https://www.npmjs.com/package/tsbb">npm</a> · 
   <a href="#license">License</a>
 </p>
@@ -64,6 +64,22 @@ $ npm install tsbb -g
 $ tsbb create my-project --example=Express
 # --- Example name ----------------┴ˇˇˇˇˇˇ
 ```
+
+## Example
+
+Initialize the project from one of the examples:
+
+```shell
+$ npx tsbb create my-app -e <Example Name>
+# --- E.g: ----------------┴ˇˇˇˇˇˇˇˇˇˇˇˇˇˇ
+# npx tsbb create my-app -e Basic
+```
+
+- [**`Basic`**](example/basic) - The [Node.js](https://nodejs.org/en/) base application example.
+- [**`Express`**](example/express) - The [Express](https://expressjs.com/) base application example.
+- [**`Koa`**](example/koa) - The [Koa](https://koajs.com/) base application example.
+- [**`Hapi`**](example/hapi) - The [Hapi](https://hapijs.com/) base application example.
+- [**`react-component`**](example/react-component) - The react component base application example.
 
 ## Command Help
 
@@ -234,22 +250,6 @@ Examples:
   $ tsbb types --watch  Create type files for the project And to run in --watch
                         mode.
 ```
-
-## Example
-
-Initialize the project from one of the examples:
-
-```shell
-$ npx tsbb create my-app -e <Example Name>
-# --- E.g: ----------------┴ˇˇˇˇˇˇˇˇˇˇˇˇˇˇ
-# npx tsbb create my-app -e Basic
-```
-
-- [**`Basic`**](example/basic) - The [Node.js](https://nodejs.org/en/) base application example.
-- [**`Express`**](example/express) - The [Express](https://expressjs.com/) base application example.
-- [**`Koa`**](example/koa) - The [Koa](https://koajs.com/) base application example.
-- [**`Hapi`**](example/hapi) - The [Hapi](https://hapijs.com/) base application example.
-- [**`react-component`**](example/react-component) - The react component base application example.
 
 ## License
 
