@@ -6,6 +6,7 @@ export interface ITransformResult extends BabelFileResult {
 }
 
 export interface ITransformOptions {
+  envName: string;
   outputPath: string;
   comments: boolean;
   sourceMaps: boolean | 'inline' | 'both' | 'none';
@@ -13,44 +14,44 @@ export interface ITransformOptions {
 
 export type ITargets = 'node' | 'react';
 
-export interface IEnv {
-  esm?: any;
-  cjs?: any;
-  [key: string]: any;
-}
-
 export default (filePath: string, options: ITransformOptions, targets: ITargets) => {
-  let env: IEnv = {}
+  let babelOptions: TransformOptions = {}
   if (targets === 'react') {
-    env = {
-      esm: {
+    if (options.envName === 'cjs') {
+      babelOptions = {
         presets: [
-          ["@babel/preset-env", { "modules": false }],
-          "@babel/preset-react",
+          [require.resolve('@tsbb/babel-preset-tsbb'), {
+            modules: 'cjs',
+            targets: { browsers: ['last 2 versions'] },
+            transformRuntime: {},
+          }],
+          require.resolve('@babel/preset-react'),
         ],
-        plugins: [
-          ["@babel/plugin-transform-runtime", { "useESModules": true }]
-        ]
-      },
-      cjs: {
+      }
+    }
+    if (options.envName === 'esm') {
+      babelOptions = {
         presets: [
-          "@babel/preset-env",
-          "@babel/preset-react",
-        ],
-        plugins: [
-          "@babel/plugin-transform-runtime"
+          [require.resolve('@tsbb/babel-preset-tsbb'), {
+            modules: false,
+            targets: { browsers: ['last 2 versions'] },
+            transformRuntime: { useESModules: true }
+          }],
+          require.resolve('@babel/preset-react'),
         ]
       }
     }
   }
   return new Promise<ITransformResult>((resolve: (value?: ITransformResult) => ITransformResult | any, reject) => {
     transformFile(filePath, {
+      envName: options.envName || process.env.BABEL_ENV,
       presets: [
-        '@tsbb/babel-preset-tsbb'
+        [require.resolve('@tsbb/babel-preset-tsbb'), {
+          modules: 'cjs',
+          transformRuntime: {}
+        }]
       ],
-      env: {
-        ...env
-      },
+      ...babelOptions,
       // comments: process.env.NODE_ENV === 'development' ? false : true,
       // comments: false,
       sourceMaps: options.sourceMaps === 'none' ? false : options.sourceMaps,

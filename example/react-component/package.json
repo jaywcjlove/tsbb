@@ -35,7 +35,7 @@
     "env": {
       "umd": {
         "presets": [
-          "@babel/preset-env",
+          "@tsbb/babel-preset-tsbb",
           "@babel/preset-react"
         ],
         "plugins": [
@@ -46,21 +46,8 @@
             }
           ],
           [
-            "@babel/plugin-transform-runtime",
-            {
-              "absoluteRuntime": false,
-              "corejs": false,
-              "helpers": false,
-              "regenerator": false,
-              "useESModules": false
-            }
-          ],
-          [
             "@babel/plugin-transform-modules-umd",
             {
-              "globals": {
-                "sum": "sum"
-              },
               "exactGlobals": true
             }
           ]
@@ -75,6 +62,7 @@
   "devDependencies": {
     "@babel/plugin-transform-modules-umd": "^7.2.0",
     "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/runtime-corejs3": "^7.4.5",
     "@types/classnames": "^2.2.7",
     "@types/react": "^16.8.17",
     "@types/react-dom": "^16.8.4",
