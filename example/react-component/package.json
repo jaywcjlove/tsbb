@@ -33,6 +33,22 @@
   "license": "MIT",
   "babel": {
     "env": {
+      "cjs": {
+        "plugins": [
+          ["babel-plugin-transform-remove-imports", { "test": "(less|css)$" }]
+        ]
+      },
+      "esm": {
+        "plugins": [
+          [
+            "babel-plugin-transform-rename-import",
+            {
+              "original": "^(.+?)\\.less$",
+              "replacement": "$1.css"
+            }
+          ]
+        ]
+      },
       "umd": {
         "presets": [
           "@tsbb/babel-preset-tsbb",
@@ -68,6 +84,7 @@
     "@types/react-dom": "^16.8.4",
     "@types/react-test-renderer": "^16.8.1",
     "babel-plugin-transform-remove-imports": "^1.0.8",
+    "babel-plugin-transform-rename-import": "^2.3.0",
     "less": "^3.9.0",
     "parcel-bundler": "^1.12.3",
     "react": "^16.8.6",
