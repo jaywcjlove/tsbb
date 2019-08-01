@@ -8,7 +8,7 @@
   "typings": "typings/index.d.ts",
   "scripts": {
     "prepare": "npm run build",
-    "watch": "npm run watch:types & npm run watch:ts -- --env-name esm:dev",
+    "watch": "npm run watch:types & npm run watch:ts -- --env-name esm:dev --env-name cjs",
     "build": "npm run build:ts & npm run build:types",
     "watch:types": "npm run build:types -- --watch",
     "build:types": "tsbb types --outDir typings --target ESNEXT",
