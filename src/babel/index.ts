@@ -36,6 +36,13 @@ export default async (files: IFileDirStat[], args: IBuildArgs) => {
         await transformFile(item, args);
       } else if (args.target === 'react' && args.envName && args.envName.length > 0) {
         await Promise.all(args.envName.map(async (envName: string) => {
+          /**
+           * If `target=react`, the babel environment variable supports development mode.
+           */
+          const env = envName.split(':');
+          if (env.length > 1 && env[1] === 'dev') {
+            envName = env[0];
+          }
           const envPath = path.join(args.output, envName, item.outputPath.replace(args.output, ''));
           if (!/\.(ts|tsx|js|jsx)$/.test(item.path) && args.copyFiles) {
             await fs.copy(item.path, envPath);
