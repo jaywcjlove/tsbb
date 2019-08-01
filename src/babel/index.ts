@@ -40,10 +40,11 @@ export default async (files: IFileDirStat[], args: IBuildArgs) => {
            * If `target=react`, the babel environment variable supports development mode.
            */
           const env = envName.split(':');
+          let envDirName = envName;
           if (env.length > 1 && env[1] === 'dev') {
-            envName = env[0];
+            envDirName = env[0];
           }
-          const envPath = path.join(args.output, envName, item.outputPath.replace(args.output, ''));
+          const envPath = path.join(args.output, envDirName, item.outputPath.replace(args.output, ''));
           if (!/\.(ts|tsx|js|jsx)$/.test(item.path) && args.copyFiles) {
             await fs.copy(item.path, envPath);
             return item;

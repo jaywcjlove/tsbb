@@ -1,5 +1,5 @@
 import path from 'path';
-import { transformFile, BabelFileResult, TransformOptions } from '@babel/core';
+import { transformFile, BabelFileResult, TransformOptions, loadPartialConfig, loadOptions } from '@babel/core';
 
 export interface ITransformResult extends BabelFileResult {
   options: TransformOptions;
@@ -43,6 +43,10 @@ export default (filePath: string, options: ITransformOptions, targets: ITargets)
     }
   }
   return new Promise<ITransformResult>((resolve: (value?: ITransformResult) => ITransformResult | any, reject) => {
+    if (!/^(cjs|esm)$/.test(options.envName)) {
+      loadOptions({ envName: options.envName || process.env.BABEL_ENV });
+      babelOptions.presets = [];
+    }
     transformFile(filePath, {
       envName: options.envName || process.env.BABEL_ENV,
       presets: [
