@@ -1,30 +1,3 @@
-React Component Example
----
-
-```bash
-npm run watch # Listen compile .ts files.
-npm run build # compile .ts files.
-
-npm run start
-```
-
-The components are placed in the `src` directory.
-
-## babel
-
-If `--target=react`, the babel environment(`--env-name=esm:dev`) variable supports development mode.
-
-```json
-{
-  "scripts": {
-    "watch": "tsbb watch --target react --env-name esm:dev"
-  }
-}
-```
-
-Babel configuration example:
-
-```json
 {
   "env": {
     "cjs": {
@@ -52,10 +25,32 @@ Babel configuration example:
             "targets": {
               "browsers": [ "last 2 versions" ]
             },
-            "transformRuntime": { "useESModules": true }
+            "transformRuntime": {
+              "useESModules": true
+            }
+          }
+        ]
+      ]
+    },
+    "umd": {
+      "presets": [
+        "@tsbb/babel-preset-tsbb",
+        "@babel/preset-react"
+      ],
+      "plugins": [
+        [
+          "babel-plugin-transform-remove-imports",
+          {
+            "test": "(less|css)$"
+          }
+        ],
+        [
+          "@babel/plugin-transform-modules-umd",
+          {
+            "exactGlobals": true
           }
         ]
       ]
     }
+  }
 }
-```

@@ -8,7 +8,7 @@
   "typings": "typings/index.d.ts",
   "scripts": {
     "prepare": "npm run build",
-    "watch": "npm run watch:types & npm run watch:ts",
+    "watch": "npm run watch:types & npm run watch:ts -- --env-name esm:dev",
     "build": "npm run build:ts & npm run build:types",
     "watch:types": "npm run build:types -- --watch",
     "build:types": "tsbb types --outDir typings --target ESNEXT",
@@ -31,46 +31,6 @@
   ],
   "keywords": [],
   "license": "MIT",
-  "babel": {
-    "env": {
-      "cjs": {
-        "plugins": [
-          ["babel-plugin-transform-remove-imports", { "test": "(less|css)$" }]
-        ]
-      },
-      "esm": {
-        "plugins": [
-          [
-            "babel-plugin-transform-rename-import",
-            {
-              "original": "^(.+?)\\.less$",
-              "replacement": "$1.css"
-            }
-          ]
-        ]
-      },
-      "umd": {
-        "presets": [
-          "@tsbb/babel-preset-tsbb",
-          "@babel/preset-react"
-        ],
-        "plugins": [
-          [
-            "babel-plugin-transform-remove-imports",
-            {
-              "test": "(less|css)$"
-            }
-          ],
-          [
-            "@babel/plugin-transform-modules-umd",
-            {
-              "exactGlobals": true
-            }
-          ]
-        ]
-      }
-    }
-  },
   "peerDependencies": {
     "react": ">=16.7.0",
     "react-dom": ">=16.7.0"
