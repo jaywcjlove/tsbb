@@ -77,8 +77,15 @@ export async function handler(args: ITypesArgs) {
   }
 
   if (args.outDir) {
-    tscArgs.push('--outDir');
-    tscArgs.push(args.outDir);
+    if (Array.isArray(args.outDir)) {
+      args.outDir.forEach(item => {
+        tscArgs.push('--outDir');
+        tscArgs.push(item);
+      });
+    } else {
+      tscArgs.push('--outDir');
+      tscArgs.push(args.outDir);
+    }
   }
   if (args.watch) {
     tscArgs.push('--watch');

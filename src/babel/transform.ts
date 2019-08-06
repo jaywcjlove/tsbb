@@ -1,5 +1,5 @@
 import path from 'path';
-import { transformFile, BabelFileResult, TransformOptions, loadPartialConfig, loadOptions } from '@babel/core';
+import { transformFile, BabelFileResult, TransformOptions, loadOptions } from '@babel/core';
 
 export interface ITransformResult extends BabelFileResult {
   options: TransformOptions;
