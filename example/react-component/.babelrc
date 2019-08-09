@@ -18,6 +18,7 @@
     },
     "esm:dev": {
       "presets": [
+        "@babel/preset-react",
         [
           "@tsbb/babel-preset-tsbb",
           {
