@@ -68,6 +68,6 @@
     "@types/fs-extra": "^5.1.0",
     "@types/request": "^2.48.1",
     "@types/yargs": "^13.0.0",
-    "typedoc": "^0.14.2"
+    "typedoc": "^0.15.0"
   }
 }
