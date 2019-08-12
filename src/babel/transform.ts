@@ -43,7 +43,7 @@ export default (filePath: string, options: ITransformOptions, targets: ITargets)
     }
   }
   return new Promise<ITransformResult>((resolve: (value?: ITransformResult) => ITransformResult | any, reject) => {
-    if (!/^(cjs|esm)$/.test(options.envName)) {
+    if (!/^(cjs|esm)$/.test(options.envName) && targets !== 'node') {
       loadOptions({ envName: options.envName || process.env.BABEL_ENV });
       babelOptions.presets = [];
     }
