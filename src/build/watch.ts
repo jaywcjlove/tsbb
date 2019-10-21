@@ -1,4 +1,5 @@
 import chokidar, { FSWatcher } from 'chokidar';
+import FS from 'fs-extra';
 import { Argv } from 'yargs';
 import { IFileDirStat, getFileStat } from '../utils/getFileDirectory';
 import { clearScreenConsole } from '../utils/clearConsole';
@@ -27,6 +28,9 @@ export function builder(yarg: Argv) {
 
 export async function handler(args: IBuildArgs) {
   args = completePath(args) as IBuildArgs;
+  if (args.emptyDir && args.output) {
+    await FS.emptyDir(args.output);
+  }
   await build.handler(args);
   // Initialize watcher.
   // Watch the target directory for changes and trigger reload

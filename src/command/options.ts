@@ -25,6 +25,11 @@ export const publicOptions: IYargsOptions = {
     type: 'boolean',
     default: true,
   },
+  'empty-dir': {
+    describe: 'Empty directory.',
+    type: 'boolean',
+    default: true,
+  },
   'source-maps': {
     describe: 'Source Map options.',
     type: 'string',

@@ -13,11 +13,6 @@ export function builder(yarg: Argv) {
   return yarg.option({
     ...helpOption,
     ...publicOptions,
-    'emptyDir': {
-      describe: 'Empty directory.',
-      type: 'boolean',
-      default: true,
-    },
   })
   .example('$ tsbb build ', 'Build your project.')
   .example('$ tsbb build --no-comments', 'Build your project and remove the comments.')
