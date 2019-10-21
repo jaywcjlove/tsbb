@@ -1,4 +1,5 @@
 import { Argv } from 'yargs';
+import FS from 'fs-extra';
 import babel from '../babel';
 import getFileDirectory, { IFileDirStat } from '../utils/getFileDirectory';
 import { IMyYargsArgs, completePath } from '../utils';
@@ -12,6 +13,11 @@ export function builder(yarg: Argv) {
   return yarg.option({
     ...helpOption,
     ...publicOptions,
+    'emptyDir': {
+      describe: 'Empty directory.',
+      type: 'boolean',
+      default: true,
+    },
   })
   .example('$ tsbb build ', 'Build your project.')
   .example('$ tsbb build --no-comments', 'Build your project and remove the comments.')
@@ -23,6 +29,9 @@ export interface IBuildArgs extends IMyYargsArgs {
 
 export async function handler(args: IBuildArgs) {
   args = completePath(args) as IBuildArgs;
+  if (args.emptyDir && args.output) {
+    await FS.emptyDir(args.output);
+  }
   try {
     const files = (await getFileDirectory(args.sourceRoot, args.output)) as [] as IFileDirStat[];
     await babel(files, args);
