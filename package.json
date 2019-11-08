@@ -50,7 +50,7 @@
     "@types/node": "^12.12.6",
     "babel-jest": "^24.8.0",
     "chokidar": "^3.0.0",
-    "colors-cli": "^1.0.26",
+    "colors-cli": "^1.0.23",
     "core-js": "^3.0.1",
     "execa": "^1.0.0",
     "fs-extra": "^7.0.1",
@@ -59,7 +59,7 @@
     "ora": "^3.4.0",
     "request": "^2.88.0",
     "typescript": "^3.7.2",
-    "yargs": "^13.2.2"
+    "yargs": "^14.2.0"
   },
   "devDependencies": {
     "@types/babel__core": "^7.1.1",

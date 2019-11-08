@@ -65,7 +65,7 @@ export async function handler(args: ITypesArgs) {
     tscArgs.push(args.target);
   }
 
-  tscArgs.push('--types');
+  // tscArgs.push('--types');
 
   if (args.emitDeclarationOnly) {
     tscArgs.push('--emitDeclarationOnly');
