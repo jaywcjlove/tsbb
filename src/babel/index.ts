@@ -46,7 +46,7 @@ export default async (files: IFileDirStat[], args: IBuildArgs) => {
           }
           const envPath = path.join(args.output, envDirName, item.outputPath.replace(args.output, ''));
           // TypeScript `配置文件` 和 `类型文件`不复制
-          if (!/\.(ts|tsx|js|jsx)$/.test(item.path) && !/(\.d\.ts|tsconfig.json)/.test(item.path) && args.copyFiles) {
+          if (!/\.(ts|tsx|js|jsx)$/.test(item.path) && !/(\.d\.ts|tsconfig\.json)$/.test(item.path) && args.copyFiles) {
             return item;
           }
           args.currentEnvName = envName;
