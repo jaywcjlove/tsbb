@@ -24,7 +24,12 @@ async function transformFile(fileStat: IFileDirStat, args: IBuildArgs, cjsPath?:
 export default async (files: IFileDirStat[], args: IBuildArgs) => {
   await Promise.all(files.map(async (item: IFileDirStat) => {
     // Exclude test files from the project directory.
-    if (/\.test\.(ts|tsx|js|jsx)$/.test(item.path) || /\.(snap)$/.test(item.path)) {
+    // TypeScript `配置文件` 和 `类型文件`
+    if (
+      /\.test\.(ts|tsx|js|jsx)$/.test(item.path)
+      || /\.(snap)$/.test(item.path)
+      || /(\.d\.ts|tsconfig\.json)$/.test(item.path)
+    ) {
       return item;
     }
     try {
@@ -45,8 +50,7 @@ export default async (files: IFileDirStat[], args: IBuildArgs) => {
             envDirName = env[0];
           }
           const envPath = path.join(args.output, envDirName, item.outputPath.replace(args.output, ''));
-          // TypeScript `配置文件` 和 `类型文件`不复制
-          if (!/\.(ts|tsx|js|jsx)$/.test(item.path) && !/(\.d\.ts|tsconfig\.json)$/.test(item.path) && args.copyFiles) {
+          if ((!/\.(ts|tsx|js|jsx)$/.test(item.path)) && args.copyFiles) {
             return item;
           }
           args.currentEnvName = envName;
