@@ -1,0 +1,20 @@
+
+.w-btn {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 5px 7px;
+  position: relative;
+  vertical-align: middle;
+  text-align: left;
+  line-height: 14px;
+  font-size: 14px;
+  min-width: 30px;
+  min-height: 30px;
+  color: #fff;
+}

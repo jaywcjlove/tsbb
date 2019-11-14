@@ -80,6 +80,7 @@ $ npx tsbb create my-app -e <Example Name>
 - [**`Koa`**](example/koa) - The [Koa](https://koajs.com/) base application example.
 - [**`Hapi`**](example/hapi) - The [Hapi](https://hapijs.com/) base application example.
 - [**`react-component`**](example/react-component) - The react component base application example.
+- [**`react-component-tsx`**](example/react-component-tsx) - The react component and website base application example.
 
 ## Command Help
 
