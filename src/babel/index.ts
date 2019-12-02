@@ -28,7 +28,7 @@ export default async (files: IFileDirStat[], args: IBuildArgs) => {
     if (
       /\.test\.(ts|tsx|js|jsx)$/.test(item.path)
       || /\.(snap)$/.test(item.path)
-      || /(\.d\.ts|tsconfig\.json)$/.test(item.path)
+      || /(tsconfig\.json)$/.test(item.path)
     ) {
       return item;
     }
