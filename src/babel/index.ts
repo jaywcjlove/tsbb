@@ -50,7 +50,7 @@ export default async (files: IFileDirStat[], args: IBuildArgs) => {
             envDirName = env[0];
           }
           const envPath = path.join(args.output, envDirName, item.outputPath.replace(args.output, ''));
-          if ((!/\.(ts|tsx|js|jsx)$/.test(item.path)) && args.copyFiles) {
+          if ((!/\.(tsx|ts|js|jsx)$/.test(item.path) || /\.(d.ts)$/.test(item.path)) && args.copyFiles) {
             await fs.copy(item.path, envPath);
             return item;
           }
