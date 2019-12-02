@@ -10,6 +10,7 @@
     "doc": "ENTRYDIR=website kkt build",
     "doc:dev": "ENTRYDIR=website kkt start",
     "build": "npm run ts:build && npm run types:esm && npm run types:cjs && npm run css:build",
+    "watch": "npm run types:watch & npm run ts:watch",
     "types:build": "tsbb types --sourceRoot src --target ESNEXT",
     "types:watch": "npm run types:esm -- --watch & npm run types:cjs -- --watch",
     "types:esm": "npm run types:build -- --outDir ../lib/esm",
