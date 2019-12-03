@@ -51,7 +51,7 @@ async function getFiles(rootPath: string, outpuPath: string, files: IFileDirStat
       item.isFile = true;
       item.outputPath = item.path.replace(root, outpuPath);
       files.push(item);
-      if (/(ts|tsx)$/.test(item.ext)) {
+      if (/(ts|tsx)$/.test(item.ext) && !/\.d\.ts$/.test(item.path)) {
         item.outputPath = item.outputPath.replace(new RegExp(`.${item.ext}$`), '.js');
       }
     }
