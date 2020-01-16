@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prepare": "npm run build",
-    "start": "node lib/index.js",
+    "start": "node lib/app.js",
     "types": "tsbb types",
     "types:watch": "tsbb types --watch",
     "dev": "nodemon --inspect lib/app.js",
@@ -30,11 +30,12 @@
     "delay": "2500"
   },
   "devDependencies": {
-    "@types/hapi__hapi": "^18.2.1",
-    "nodemon": "^1.19.0",
+    "@types/hapi__hapi": "^19.0.0",
+    "nodemon": "^1.19.4",
     "tsbb": "file:../../"
   },
   "dependencies": {
-    "@hapi/hapi": "^18.3.1"
+    "@babel/runtime": "^7.8.3",
+    "@hapi/hapi": "^19.0.4"
   }
 }
