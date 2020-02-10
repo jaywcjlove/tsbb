@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import yargs from 'yargs';
-import color from 'colors-cli';
+import color from 'chalk';
 
 const command = yargs
   .usage('Usage: $0 [options]')

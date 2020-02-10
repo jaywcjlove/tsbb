@@ -1,5 +1,5 @@
 import path from 'path';
-import color from 'colors-cli';
+import color from 'chalk';
 import Jest from '@jest/types';
 
 interface IJestConfig extends Jest.Config.InitialOptions {

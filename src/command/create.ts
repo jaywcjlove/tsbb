@@ -1,5 +1,5 @@
 import path from 'path';
-import color from 'colors-cli';
+import color from 'chalk';
 import fs from 'fs-extra';
 import ora from 'ora';
 import { Argv } from 'yargs';
@@ -87,9 +87,9 @@ export async function handler(args: ICreateArgs) {
     });
     console.log(
       '\n Inside that directory, you can run several commands:\n\n',
-      `  ${color.x243('$')} ${color.green('npm watch')}\n`,
+      `  \x1b[33;1m$\x1b[0m ${color.green('npm watch')}\n`,
       `     Starts the development\n\n`,
-      `  ${color.x243('$')} ${color.green('npm build')}\n`,
+      `  \x1b[33;1m$\x1b[0m ${color.green('npm build')}\n`,
       `     Bundles the app files for production.\n\n`,
       ` We suggest that you begin by typing:\n\n`,
       `   ${color.green('cd')} ${args.projectName}\n`,

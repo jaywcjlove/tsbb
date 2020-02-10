@@ -1,6 +1,6 @@
 import { Argv } from 'yargs';
 import path from 'path';
-import color from 'colors-cli';
+import color from 'chalk';
 import fs from 'fs-extra';
 import jest from 'jest';
 import { IMyYargsArgs, completePath } from '../utils';
