@@ -2,7 +2,7 @@ import { Argv } from 'yargs';
 import path from 'path';
 import color from 'chalk';
 import fs from 'fs-extra';
-import jest from 'jest';
+import * as jest from 'jest';
 import { IMyYargsArgs, completePath } from '../utils';
 import { helpOption } from './options';
 import createJestConfig from '../jest/jest.config';
