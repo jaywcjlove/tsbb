@@ -46,7 +46,6 @@
   },
   "dependencies": {
     "@tsbb/babel-preset-tsbb": "^1.9.1",
-    "@types/jest": "^25.1.2",
     "@types/node": "^13.7.0",
     "babel-jest": "^25.1.0",
     "camelcase": "^5.3.1",
