@@ -45,7 +45,7 @@
     ]
   },
   "dependencies": {
-    "@tsbb/babel-preset-tsbb": "^1.9.1",
+    "@tsbb/babel-preset-tsbb": "^1.10.0",
     "@types/node": "^13.9.1",
     "babel-jest": "^25.1.0",
     "camelcase": "^5.3.1",
@@ -66,6 +66,6 @@
     "@types/fs-extra": "^5.1.0",
     "@types/request": "^2.48.4",
     "@types/yargs": "^15.0.4",
-    "typedoc": "^0.15.8"
+    "typedoc": "^0.17.3"
   }
 }
