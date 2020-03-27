@@ -1,9 +1,8 @@
 name: Build and Test tsbb.
 on:
   push:
-    push:
-      branches:
-        - master
+    branches:
+      - master
     tags:
       - v*
 jobs:
