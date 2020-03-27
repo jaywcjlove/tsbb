@@ -63,7 +63,7 @@
   "devDependencies": {
     "@types/babel__core": "7.1.6",
     "@types/execa": "0.9.0",
-    "@types/fs-extra": "5.1.0",
+    "@types/fs-extra": "8.1.0",
     "@types/request": "2.48.4",
     "@types/yargs": "15.0.4",
     "typedoc": "0.17.3"
