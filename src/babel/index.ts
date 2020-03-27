@@ -35,7 +35,11 @@ export default async (files: IFileDirStat[], args: IBuildArgs) => {
     try {
       if (args.target === 'node') {
         if ((!/\.(tsx|ts|js|jsx)$/.test(item.path) || /\.(d.ts)$/.test(item.path)) && args.copyFiles) {
-          await fs.copy(item.path, item.outputPath);
+          let outputPath = item.outputPath;
+          if (/\.(d.ts)$/.test(item.path)) {
+            outputPath = outputPath.replace(/\.d\.js$/, '.d.ts');
+          }
+          await fs.copy(item.path, outputPath);
           return item;
         }
         await transformFile(item, args);
@@ -49,8 +53,11 @@ export default async (files: IFileDirStat[], args: IBuildArgs) => {
           if (env.length > 1 && env[1] === 'dev') {
             envDirName = env[0];
           }
-          const envPath = path.join(args.output, envDirName, item.outputPath.replace(args.output, ''));
+          let envPath = path.join(args.output, envDirName, item.outputPath.replace(args.output, ''));
           if ((!/\.(tsx|ts|js|jsx)$/.test(item.path) || /\.(d.ts)$/.test(item.path)) && args.copyFiles) {
+            if (/\.(d.ts)$/.test(item.path)) {
+              envPath = envPath.replace(/\.d\.js$/, '.d.ts');
+            }
             await fs.copy(item.path, envPath);
             return item;
           }
