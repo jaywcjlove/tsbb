@@ -45,27 +45,27 @@
     ]
   },
   "dependencies": {
-    "@tsbb/babel-preset-tsbb": "^1.10.0",
-    "@types/node": "^13.9.1",
-    "babel-jest": "^25.1.0",
-    "camelcase": "^5.3.1",
-    "chalk": "^3.0.0",
-    "chokidar": "^3.3.1",
-    "execa": "^1.0.0",
-    "fs-extra": "^9.0.0",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "^25.1.0",
-    "ora": "^3.4.0",
-    "request": "^2.88.2",
-    "typescript": "^3.8.3",
-    "yargs": "^15.3.1"
+    "@tsbb/babel-preset-tsbb": "1.10.0",
+    "@types/node": "13.9.4",
+    "babel-jest": "25.2.3",
+    "camelcase": "5.3.1",
+    "chalk": "3.0.0",
+    "chokidar": "3.3.1",
+    "execa": "1.0.0",
+    "fs-extra": "9.0.0",
+    "identity-obj-proxy": "3.0.0",
+    "jest": "25.2.3",
+    "ora": "3.4.0",
+    "request": "2.88.2",
+    "typescript": "3.8.3",
+    "yargs": "15.3.1"
   },
   "devDependencies": {
-    "@types/babel__core": "^7.1.6",
-    "@types/execa": "^0.9.0",
-    "@types/fs-extra": "^5.1.0",
-    "@types/request": "^2.48.4",
-    "@types/yargs": "^15.0.4",
-    "typedoc": "^0.17.3"
+    "@types/babel__core": "7.1.6",
+    "@types/execa": "0.9.0",
+    "@types/fs-extra": "5.1.0",
+    "@types/request": "2.48.4",
+    "@types/yargs": "15.0.4",
+    "typedoc": "0.17.3"
   }
 }

@@ -28,12 +28,12 @@
     "delay": "2500"
   },
   "devDependencies": {
-    "@types/koa": "^2.11.0",
-    "nodemon": "^1.19.4",
+    "@types/koa": "2.11.2",
+    "nodemon": "1.19.4",
     "tsbb": "file:../../"
   },
   "dependencies": {
-    "@babel/runtime": "^7.8.3",
-    "koa": "^2.11.0"
+    "@babel/runtime": "7.9.2",
+    "koa": "2.11.0"
   }
 }
