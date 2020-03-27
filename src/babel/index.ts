@@ -34,7 +34,7 @@ export default async (files: IFileDirStat[], args: IBuildArgs) => {
     }
     try {
       if (args.target === 'node') {
-        if (!/\.(ts|tsx|js|jsx)$/.test(item.path) && args.copyFiles) {
+        if ((!/\.(tsx|ts|js|jsx)$/.test(item.path) || /\.(d.ts)$/.test(item.path)) && args.copyFiles) {
           await fs.copy(item.path, item.outputPath);
           return item;
         }
