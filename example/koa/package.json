@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@types/koa": "2.11.2",
-    "nodemon": "2.0.2",
+    "nodemon": "2.0.3",
     "tsbb": "file:../../"
   },
   "dependencies": {
