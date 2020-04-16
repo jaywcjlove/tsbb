@@ -5,7 +5,7 @@ import transform from './transform';
 import { IBuildArgs } from '../build';
 
 async function transformFile(fileStat: IFileDirStat, args: IBuildArgs, cjsPath?: string) {
-  const outputPath = cjsPath || fileStat.outputPath;
+  let outputPath = cjsPath || fileStat.outputPath;
   const source = await transform(fileStat.path, {
     envName: args.currentEnvName,
     outputPath,
@@ -15,6 +15,9 @@ async function transformFile(fileStat: IFileDirStat, args: IBuildArgs, cjsPath?:
   if (args.sourceMaps === true && source.map) {
     source.code = `${source.code} \n//# sourceMappingURL=${fileStat.name.replace(new RegExp(`.${fileStat.ext}$`, 'g'), '.js.map')}`;
     await fs.outputFile(outputPath.replace(/.js$/, '.js.map'), JSON.stringify(source.map));
+  }
+  if (/.jsx$/.test(outputPath)) {
+    outputPath = outputPath.replace(/.jsx$/g, '.js');
   }
   await fs.outputFile(outputPath, source.code);
   console.log(`♻️  ${path.relative(source.options.root, fileStat.path)} -> \x1b[32;1m${path.relative(source.options.root, outputPath)}\x1b[0m`);
