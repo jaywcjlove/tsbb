@@ -1,27 +1,16 @@
 import React from 'react';
 import classnames from 'classnames';
-import { IProps } from './common/props';
 import { sum } from './sum';
 import './index.less';
 
-export type TSize = 'large' | 'default' | 'small';
-export interface IButton extends IProps {
-  style?: React.CSSProperties;
-  className?: string;
-  prefixCls?: string;
-  type: 'primary' | 'success' | 'warning' | 'danger' | 'light' | 'dark' | 'link';
-  size: TSize;
-  htmlType?: 'button' | 'submit' | 'reset';
-}
-
-export default class Button extends React.PureComponent<IButton, {}> {
-  public static defaultProps: IButton = {
+export default class Button extends React.PureComponent {
+  static defaultProps = {
     type: 'light',
     prefixCls: 'w-btn',
     size: 'default',
     htmlType: 'button',
   }
-  public render() {
+  render() {
     const { prefixCls, className, children, type, htmlType, size } = this.props;
     const cls = classnames(className, prefixCls, {
       [`${prefixCls}-size-${size}`]: size,

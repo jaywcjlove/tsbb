@@ -8,10 +8,8 @@
   "typings": "lib/cjs/index.d.ts",
   "scripts": {
     "prepare": "npm run build",
-    "watch": "npm run watch:types & npm run watch:ts -- --env-name esm:dev --env-name cjs",
-    "build": "npm run build:ts & npm run build:types & npm run build:css & npm run build:types -- --outDir lib/cjs",
-    "watch:types": "npm run build:types -- --watch",
-    "build:types": "tsbb types --outDir lib/esm --target ESNEXT",
+    "watch": "npm run watch:ts -- --env-name esm:dev --env-name cjs",
+    "build": "npm run build:ts & npm run build:css",
     "watch:ts": "tsbb watch --target react",
     "build:ts": "tsbb build --target react",
     "build:umd": "tsbb build --target react --env-name umd",

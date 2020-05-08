@@ -15,7 +15,7 @@ describe('<Button />', () => {
       expect(tree.children).toHaveLength(1);
       if (tree.children) {
         expect(tree.children[0].type).toBe('span');
-        expect(tree.children[0].children).toEqual(['BUTTON']);
+        expect(tree.children[0].children[0]).toEqual('BUTTON');
       }
     }
   });
