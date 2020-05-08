@@ -14,7 +14,7 @@ async function transformFile(fileStat: IFileDirStat, args: IBuildArgs, cjsPath?:
   }, args.target);
   if (args.sourceMaps === true && source.map) {
     source.code = `${source.code} \n//# sourceMappingURL=${fileStat.name.replace(new RegExp(`.${fileStat.ext}$`, 'g'), '.js.map')}`;
-    await fs.outputFile(outputPath.replace(/.js$/, '.js.map'), JSON.stringify(source.map));
+    await fs.outputFile(outputPath.replace(/.(js|jsx)$/, '.js.map'), JSON.stringify(source.map));
   }
   if (/.jsx$/.test(outputPath)) {
     outputPath = outputPath.replace(/.jsx$/g, '.js');

@@ -22,8 +22,8 @@ export default (resolve: Function, rootDir: string) => {
       '!src/**/*.d.ts',
     ],
     testMatch: [
-      '<rootDir>/**/__tests__/**/*.{ts,tsx}',
-      '<rootDir>/**/?(*.)(spec|test).{ts,tsx}',
+      '<rootDir>/**/__tests__/**/*.{js,jsx,ts,tsx}',
+      '<rootDir>/**/?(*.)(spec|test).{js,jsx,ts,tsx}',
     ],
     testURL: 'http://localhost',
     transform: {
