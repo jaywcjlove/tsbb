@@ -55,7 +55,7 @@
     "execa": "1.0.0",
     "fs-extra": "9.0.0",
     "identity-obj-proxy": "3.0.0",
-    "jest": "25.5.4",
+    "jest": "26.0.1",
     "ora": "4.0.4",
     "request": "2.88.2",
     "typescript": "3.8.3",
