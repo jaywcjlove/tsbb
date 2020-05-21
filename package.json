@@ -47,7 +47,7 @@
   "dependencies": {
     "@tsbb/babel-preset-tsbb": "1.12.0",
     "@types/graceful-fs": "4.1.3",
-    "@types/node": "13.13.5",
+    "@types/node": "13.13.9",
     "babel-jest": "26.0.1",
     "camelcase": "6.0.0",
     "chalk": "4.0.0",
