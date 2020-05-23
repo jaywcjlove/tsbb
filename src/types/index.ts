@@ -1,5 +1,6 @@
 import path from 'path';
 import { Argv } from 'yargs';
+import color from 'chalk';
 // import * as ts from 'typescript';
 import { helpOption } from '../command/options';
 import { IMyYargsArgs } from '../utils';
@@ -97,7 +98,7 @@ export async function handler(args: ITypesArgs) {
   try {
     await executeCommand('tsc', tscArgs, projectPath);
     if (!args.watch) {
-      console.log('🎉', 'Successfully created a project type files!');
+      console.log('🎉', `Successfully created the ${color.green(path.basename(projectPath))} project type files!`);
     }
   } catch (error) {
     console.log(error);

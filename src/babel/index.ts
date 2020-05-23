@@ -20,7 +20,7 @@ async function transformFile(fileStat: IFileDirStat, args: IBuildArgs, cjsPath?:
     outputPath = outputPath.replace(/.jsx$/g, '.js');
   }
   await fs.outputFile(outputPath, source.code);
-  console.log(`♻️  ${path.relative(source.options.root, fileStat.path)} -> \x1b[32;1m${path.relative(source.options.root, outputPath)}\x1b[0m`);
+  console.log(`♻️  \x1b[32;1m${path.basename(source.options.root)}\x1b[0m -> ${path.relative(source.options.root, fileStat.path)} -> \x1b[32;1m${path.relative(source.options.root, outputPath)}\x1b[0m`);
   return source;
 }
 
