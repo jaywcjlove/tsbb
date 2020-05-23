@@ -29,11 +29,11 @@
   },
   "devDependencies": {
     "@types/koa": "2.11.3",
-    "nodemon": "2.0.3",
+    "nodemon": "2.0.4",
     "tsbb": "file:../../"
   },
   "dependencies": {
     "@babel/runtime": "7.9.6",
-    "koa": "2.11.0"
+    "koa": "2.12.0"
   }
 }
