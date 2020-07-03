@@ -23,7 +23,10 @@ export default (filePath: string, options: ITransformOptions, targets: ITargets)
           [require.resolve('@tsbb/babel-preset-tsbb'), {
             modules: 'cjs',
             targets: { browsers: ['last 2 versions'] },
-            transformRuntime: {},
+            transformRuntime: {
+              // https://github.com/babel/babel/issues/10261#issuecomment-549940457
+              version: require('@babel/helpers/package.json').version
+            },
           }],
           require.resolve('@babel/preset-react'),
         ],
@@ -34,8 +37,13 @@ export default (filePath: string, options: ITransformOptions, targets: ITargets)
         presets: [
           [require.resolve('@tsbb/babel-preset-tsbb'), {
             modules: false,
-            targets: { browsers: ['last 2 versions'] },
-            transformRuntime: { useESModules: true }
+            targets: {
+              browsers: ['last 2 versions']
+            },
+            transformRuntime: {
+              useESModules: true,
+              version: require('@babel/helpers/package.json').version
+            }
           }],
           require.resolve('@babel/preset-react'),
         ]
