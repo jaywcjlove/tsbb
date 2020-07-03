@@ -60,7 +60,9 @@ export default (filePath: string, options: ITransformOptions, targets: ITargets)
       presets: [
         [require.resolve('@tsbb/babel-preset-tsbb'), {
           modules: 'cjs',
-          transformRuntime: {}
+          transformRuntime: {
+            version: require('@babel/helpers/package.json').version
+          }
         }]
       ],
       ...babelOptions,
