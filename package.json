@@ -58,7 +58,7 @@
     "jest": "26.4.0",
     "ora": "4.0.4",
     "request": "2.88.2",
-    "typescript": "3.9.3",
+    "typescript": "3.9.7",
     "yargs": "15.4.1"
   },
   "devDependencies": {
