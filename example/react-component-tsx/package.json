@@ -37,7 +37,7 @@
     "@types/react": "16.9.35",
     "@types/react-dom": "16.9.8",
     "compile-less-cli": "1.4.0",
-    "kkt": "5.9.0",
+    "kkt": "5.10.3",
     "tsbb": "file:../../"
   },
   "browserslist": {
