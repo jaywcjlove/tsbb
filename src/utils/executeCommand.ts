@@ -14,5 +14,8 @@ export function executeCommand(command: string, args: string[], targetDir: strin
       }
       resolve();
     });
+    child.on('error', (err) => {
+      reject(new Error(`command failed: ${err.message || ''}`));
+    })
   });
 }
