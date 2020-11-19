@@ -1,21 +1,13 @@
 import execa from 'execa';
 
-export function executeCommand(command: string, args: string[], targetDir: string) {
-  return new Promise((resolve, reject) => {
-    const child = execa(command, args, {
+export async function executeCommand(command: string, args: string[], targetDir: string) {
+  try {
+    const results = await execa(command, [...args],{
       cwd: targetDir,
       stdio: ['inherit', 'inherit', command === 'yarn' ? 'pipe' : 'inherit'],
     });
-
-    child.on('close', (code) => {
-      if (code !== 0) {
-        reject(new Error(`command failed: ${command} ${args.join(' ')}`));
-        return;
-      }
-      resolve();
-    });
-    child.on('error', (err) => {
-      reject(new Error(`command failed: ${err.message || ''}`));
-    })
-  });
+    return results;
+  } catch (error) {
+    new Error(`command failed: ${error.message || ''}`);
+  }
 }
