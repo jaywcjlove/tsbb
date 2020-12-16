@@ -43,7 +43,7 @@
     "@types/react-test-renderer": "16.9.2",
     "babel-plugin-transform-remove-imports": "1.4.1",
     "babel-plugin-transform-rename-import": "2.3.0",
-    "compile-less-cli": "1.5.1",
+    "compile-less-cli": "1.6.0",
     "less": "3.11.1",
     "parcel-bundler": "1.12.4",
     "react": "16.13.1",
