@@ -1,7 +1,7 @@
 import { Argv } from 'yargs';
 import FS from 'fs-extra';
 import babel from '../babel';
-import getFileDirectory, { IFileDirStat } from '../utils/getFileDirectory';
+import { getFileDirectory, IFileDirStat } from '../utils/getFileDirectory';
 import { IMyYargsArgs, completePath } from '../utils';
 import { publicOptions, helpOption } from '../command/options';
 import { ITargets } from '../babel/transform';
