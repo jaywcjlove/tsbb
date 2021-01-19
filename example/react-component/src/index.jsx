@@ -9,7 +9,7 @@ export default class Button extends React.PureComponent {
     prefixCls: 'w-btn',
     size: 'default',
     htmlType: 'button',
-  }
+  };
   render() {
     const { prefixCls, className, children, type, htmlType, size } = this.props;
     const cls = classnames(className, prefixCls, {
@@ -18,12 +18,18 @@ export default class Button extends React.PureComponent {
     });
     return (
       <button type={htmlType} className={cls}>
-        {children && React.Children.map(children, (child) => {
-          if (!child) return child;
-          if(React.isValidElement(child)) return child;
-          return <span>{child}<span>{sum(1, 3)}</span></span>;
-        })}
+        {children &&
+          React.Children.map(children, (child) => {
+            if (!child) return child;
+            if (React.isValidElement(child)) return child;
+            return (
+              <span>
+                {child}
+                <span>{sum(1, 3)}</span>
+              </span>
+            );
+          })}
       </button>
-    )
+    );
   }
 }

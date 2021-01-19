@@ -3,7 +3,7 @@ import Hapi from '@hapi/hapi';
 const init = async () => {
   const server = new Hapi.Server({
     port: 3000,
-    host: 'localhost'
+    host: 'localhost',
   });
 
   server.route({
@@ -11,7 +11,7 @@ const init = async () => {
     path: '/',
     handler: (request, h) => {
       return 'Hello World!';
-    }
+    },
   });
 
   await server.start();
