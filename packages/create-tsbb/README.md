@@ -1,5 +1,3 @@
-## create-tsbb
-
 [![tsbb](https://user-images.githubusercontent.com/1680273/57547188-94c60100-7390-11e9-93b2-5ebf085bb925.png)](https://github.com/jaywcjlove/tsbb)
 
 <p align="center">
@@ -14,9 +12,6 @@
   </a>
   <a href="https://github.com/jaywcjlove/tsbb/stargazers">
     <img src="https://img.shields.io/github/stars/jaywcjlove/tsbb.svg">
-  </a>
-  <a href="https://github.com/jaywcjlove/tsbb/releases">
-    <img src="https://img.shields.io/github/release/jaywcjlove/tsbb.svg">
   </a>
   <a href="https://www.npmjs.com/package/create-tsbb">
     <img src="https://img.shields.io/npm/v/create-tsbb.svg">
