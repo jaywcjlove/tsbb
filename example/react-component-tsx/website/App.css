@@ -30,3 +30,13 @@ body {
 .App-link {
   color: #09d3ac;
 }
+
+.info {
+  text-align: left;
+  font-size: calc(10px + 2vmin);
+  width: 820px;;
+  padding-top: 10px;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}

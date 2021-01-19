@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import styles from './style/index.module.less';
 import './style/index.less';
 
@@ -32,16 +31,21 @@ export default function Button(props: ButtonProps = {}) {
     htmlType,
     ...others
   } = props;
-  const cls = classnames(className, prefixCls, styles.test, {
-    [`${prefixCls}-${size}`]: size,
-    [`${prefixCls}-${type}`]: type,
-    [`${prefixCls}-basic`]: basic,
-    [`${prefixCls}-loading`]: loading, // 加载
-    disabled: disabled || loading, // 禁用状态
-    active, // 激活状态
-    block, // 块级元素Block level
-  });
-  /* eslint-disable */
+
+  const cls = [
+    className,
+    prefixCls,
+    styles.test,
+    size ? `${prefixCls}-${size}` : false,
+    type ? `${prefixCls}-${type}` : false,
+    basic ? `${prefixCls}-basic` : false,
+    loading ? `${prefixCls}-loading` : false,
+    disabled || loading ? 'disabled' : false,
+    active ? 'active' : false,
+    block ? 'block' : false,
+  ]
+    .filter(Boolean)
+    .join(' ');
   return (
     <button {...others} disabled={disabled || loading} type={htmlType} className={cls}>
       {children &&
