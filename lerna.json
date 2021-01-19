@@ -1,0 +1,21 @@
+{
+  "version": "2.0.0",
+  "packages": ["example/*", "packages/*"],
+  "command": {
+    "version": {
+      "allowBranch": "master",
+      "conventionalCommits": true,
+      "exact": true,
+      "forcePublish": true,
+      "message": "chore(release): %s"
+    },
+    "bootstrap": {
+      "npmClientArgs": ["--no-package-lock"],
+      "yarnClientArgs": ["--no-yarn-lock"],
+      "forceLocal": true
+    },
+    "publish": {
+      "ignorePrepublish": true
+    }
+  }
+}

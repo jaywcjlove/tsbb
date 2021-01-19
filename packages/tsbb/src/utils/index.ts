@@ -32,6 +32,8 @@ export function completePath(args: IMyYargsArgs): IMyYargsArgs {
 }
 
 export function run(command: string, args: string[]) {
-  if (!args) { [command, ...args] = command.split(/\s+/) }
-  return execa(command, args, { cwd: this.context })
+  if (!args) {
+    [command, ...args] = command.split(/\s+/);
+  }
+  return execa(command, args, { cwd: this.context });
 }

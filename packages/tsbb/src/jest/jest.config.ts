@@ -1,5 +1,4 @@
 import path from 'path';
-import color from 'chalk';
 import Jest from '@jest/types';
 
 interface IJestConfig extends Jest.Config.InitialOptions {
@@ -17,27 +16,19 @@ export default (resolve: Function, rootDir: string) => {
      * For environments with variable CPUs available, you can use percentage based configuration: --maxWorkers=50%
      */
     maxWorkers: '50%',
-    collectCoverageFrom: [
-      'src/**/*.{ts,tsx}',
-      '!src/**/*.d.ts',
-    ],
-    testMatch: [
-      '<rootDir>/**/__tests__/**/*.{js,jsx,ts,tsx}',
-      '<rootDir>/**/?(*.)(spec|test).{js,jsx,ts,tsx}',
-    ],
+    collectCoverageFrom: ['src/**/*.{ts,tsx}', '!src/**/*.d.ts'],
+    testMatch: ['<rootDir>/**/__tests__/**/*.{js,jsx,ts,tsx}', '<rootDir>/**/?(*.)(spec|test).{js,jsx,ts,tsx}'],
     testURL: 'http://localhost',
     transform: {
       '^.+\\.(js|jsx|ts|tsx)$': resolve('lib/jest/babelTransform.js'),
       '^.+\\.(css|less|sass|scss)$': resolve('lib/jest/cssTransform.js'),
       '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': resolve('lib/jest/fileTransform.js'),
     },
-    transformIgnorePatterns: [
-      '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$',
-    ],
+    transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$'],
     moduleNameMapper: {
       '^.+\\.module\\.(css|less|sass|scss)$': 'identity-obj-proxy',
-    }
-  }
+    },
+  };
 
   const overrides: IJestConfig = Object.assign({}, require(path.join(rootDir, 'package.json')).jest);
 
@@ -70,18 +61,16 @@ export default (resolve: Function, rootDir: string) => {
     const unsupportedKeys = Object.keys(overrides);
     if (unsupportedKeys.length) {
       console.error(
-        color.red(
-          'Out of the box, kkt only supports overriding ' +
-          'these Jest options:\n\n' +
-          supportedKeys.map(key => color.bold('  \u2022 ' + key)).join('\n') +
+        '\x1b[1;31mOut of the box, kkt only supports overriding \x1b[0m' +
+          '\x1b[1;31mthese Jest options:\x1b[0m\n\n' +
+          supportedKeys.map((key) => '  \u2022 ' + key).join('\n') +
           '.\n\n' +
-          'These options in your package.json Jest configuration ' +
-          'are not currently supported by kkt:\n\n' +
-          unsupportedKeys.map(key => color.bold('  \u2022 ' + key)).join('\n')
-        )
+          '\x1b[1;31mThese options in your package.json Jest configuration \x1b[0m' +
+          '\x1b[1;31mare not currently supported by kkt:\x1b[0m\n\n' +
+          unsupportedKeys.map((key) => '  \u2022 ' + key).join('\n'),
       );
       process.exit(1);
     }
   }
   return conf;
-}
+};

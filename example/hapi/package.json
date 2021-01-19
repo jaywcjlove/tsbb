@@ -1,10 +1,10 @@
 {
-  "name": "basic",
-  "version": "1.0.0",
-  "description": "Basic Example.",
+  "name": "@template/hapi",
+  "version": "2.0.0",
+  "private": true,
+  "description": "hapi Example.",
   "main": "index.js",
   "scripts": {
-    "prepare": "npm run build",
     "start": "node lib/app.js",
     "types": "tsbb types",
     "types:watch": "tsbb types --watch",
@@ -32,7 +32,7 @@
   "devDependencies": {
     "@types/hapi__hapi": "19.0.3",
     "nodemon": "2.0.6",
-    "tsbb": "file:../../"
+    "tsbb": "2.0.0"
   },
   "dependencies": {
     "@babel/runtime": "^7.8.3",

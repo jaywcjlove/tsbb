@@ -1,13 +1,13 @@
 {
-  "name": "react-component",
-  "version": "1.0.0",
+  "name": "@template/react-component",
+  "version": "2.0.0",
+  "private": true,
   "description": "React Component Example.",
   "author": "",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
   "typings": "lib/cjs/index.d.ts",
   "scripts": {
-    "prepare": "npm run build",
     "watch": "npm run watch:ts -- --env-name esm:dev --env-name cjs",
     "build": "npm run build:ts & npm run build:css",
     "watch:ts": "tsbb watch --target react",
@@ -49,7 +49,7 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-test-renderer": "16.13.1",
-    "tsbb": "file:../../"
+    "tsbb": "2.0.0"
   },
   "dependencies": {
     "classnames": "^2.2.6"

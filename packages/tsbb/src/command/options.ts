@@ -1,4 +1,3 @@
-
 import { Options } from 'yargs';
 
 export interface IYargsOptions {
@@ -6,12 +5,12 @@ export interface IYargsOptions {
 }
 
 export const helpOption: IYargsOptions = {
-  'help': {
+  help: {
     alias: 'h',
     describe: 'Show help.',
     type: 'boolean',
   },
-}
+};
 
 export const publicOptions: IYargsOptions = {
   'source-root': {
@@ -36,26 +35,26 @@ export const publicOptions: IYargsOptions = {
     default: true,
     choices: [true, 'inline', 'both', 'none'],
   },
-  'output': {
+  output: {
     alias: 'o',
     describe: 'Output directory.',
     type: 'string',
     default: 'lib',
   },
-  'target': {
+  target: {
     describe: 'Specify your target environment.',
     type: 'string',
     choices: ['react', 'node'],
-    default: 'node'
+    default: 'node',
   },
   'env-name': {
     describe: "The name of the 'env' to use when loading configs and plugins. Defaults to the value of 'cjs,esm'..",
     type: 'array',
-    default: ['cjs', 'esm']
+    default: ['cjs', 'esm'],
   },
-  'comments': {
+  comments: {
     describe: 'decide whether a given comment should be included in the output code.',
     type: 'boolean',
     default: true,
-  }
-}
+  },
+};

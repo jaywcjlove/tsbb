@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - v2
     tags:
       - v*
 jobs:
@@ -24,14 +25,23 @@ jobs:
     #     restore-keys: |
     #       ${{ runner.os }}-node-
 
-    - run: npm install
-    - run: npm run build
-    - run: npm run coverage
-    - run: npm run doc
+    - name: Look Changelog
+      uses: jaywcjlove/changelog-generator@v1.3.9
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        filter-author: (jaywcjlove|小弟调调™|dependabot\[bot\]|Renovate Bot)
+        filter: '[R|r]elease[d]\s+[v|V]\d(\.\d+){0,2}'
 
-    - name: Build and Deploy
-      uses: peaceiris/actions-gh-pages@v2.5.0
-      env:
-        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: ./doc
+    - run: npm install
+    - run: npm run hoist
+    - run: npm run build
+    - run: npm run build:basic
+    - run: npm run build:express
+    - run: npm run build:hapi
+
+    # - name: Build and Deploy
+    #   uses: peaceiris/actions-gh-pages@v2.5.0
+    #   env:
+    #     ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+    #     PUBLISH_BRANCH: gh-pages
+    #     PUBLISH_DIR: ./doc

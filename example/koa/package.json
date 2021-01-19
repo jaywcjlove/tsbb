@@ -1,9 +1,9 @@
 {
-  "name": "koa-example",
-  "version": "1.0.0",
+  "name": "@template/koa",
+  "version": "2.0.0",
+  "private": true,
   "description": "Koa Example",
   "scripts": {
-    "prepare": "npm run build",
     "start": "node lib/app.js",
     "dev": "nodemon --inspect lib/app.js",
     "types": "tsbb types",
@@ -30,7 +30,7 @@
   "devDependencies": {
     "@types/koa": "2.11.4",
     "nodemon": "2.0.6",
-    "tsbb": "file:../../"
+    "tsbb": "2.0.0"
   },
   "dependencies": {
     "@babel/runtime": "7.12.5",
