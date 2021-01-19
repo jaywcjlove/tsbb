@@ -38,6 +38,8 @@ jobs:
     - run: npm run build:basic
     - run: npm run build:express
     - run: npm run build:hapi
+    - run: npm run build:react-component
+    - run: npm run build:react-component:doc
 
     # - name: Build and Deploy
     #   uses: peaceiris/actions-gh-pages@v2.5.0

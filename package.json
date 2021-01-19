@@ -6,6 +6,8 @@
     "build:basic": "lerna exec \"npm run build\" --scope @template/basic --stream",
     "build:express": "lerna exec \"npm run build\" --scope @template/express --stream",
     "build:hapi": "lerna exec \"npm run build\" --scope @template/hapi --stream",
+    "build:react-component": "lerna exec \"npm run build\" --scope @template/react-component --stream",
+    "build:react-component:doc": "lerna exec \"npm run doc\" --scope @template/react-component --stream",
     "watch": "lerna exec \"tsc -p ./ --types --outDir lib --watch\" --scope tsbb --scope @tsbb/* --stream",
     "build": "lerna exec \"tsc -p ./ --types --outDir lib\" --scope tsbb --scope @tsbb/* --stream",
     "type-check": "lerna exec \"tsc --noEmit\" --scope tsbb --scope @tsbb/* --stream",
