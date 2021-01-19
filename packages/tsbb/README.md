@@ -80,6 +80,8 @@ $ npx create-tsbb my-app -e <Example Name>
 # npx create-tsbb my-app -e Basic
 ```
 
+You can download the following examples directly. [Download page](https://jaywcjlove.github.io/tsbb).
+
 - [**`Basic`**](example/basic) - The [Node.js](https://nodejs.org/en/) base application example.
 - [**`Express`**](example/express) - The [Express](https://expressjs.com/) base application example.
 - [**`Koa`**](example/koa) - The [Koa](https://koajs.com/) base application example.
