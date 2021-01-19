@@ -4,8 +4,8 @@
   "private": true,
   "description": "Express Example.",
   "scripts": {
-    "start": "node lib/app.js",
-    "dev": "nodemon --inspect lib/app.js",
+    "start": "npm run build && node lib/app.js",
+    "dev": "npm run build && nodemon --inspect lib/app.js",
     "types": "tsbb types",
     "types:watch": "tsbb types --watch",
     "watch": "tsbb watch --timer 200",

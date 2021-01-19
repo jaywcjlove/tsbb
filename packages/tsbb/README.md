@@ -113,7 +113,7 @@ Examples:
 Copyright 2019
 ```
 
-### `tsbb create`
+### ~~`tsbb create`~~
 
 Please use [create-tsbb](https://github.com/jaywcjlove/tsbb/tree/master/packages/create-tsbb) to create an example.
 
