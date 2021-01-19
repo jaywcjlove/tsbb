@@ -1,5 +1,13 @@
 import { sum } from './utils/sum';
 
+class Test {
+  constructor() { }
+  count() {
+    return 10
+  }
+}
+
 export default () => {
-  return sum(1, 2);
+  const test = new Test()
+  return sum(1, test.count());
 };
