@@ -1,12 +1,11 @@
 {
-  "name": "default",
-  "version": "1.0.0",
+  "name": "@template/react-component-tsx",
+  "version": "2.0.0",
+  "private": true,
   "description": "",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
   "scripts": {
-    "prepare": "npm run build",
-    "released": "npm run build && npm run doc",
     "doc": "ENTRYDIR=website kkt build",
     "doc:dev": "ENTRYDIR=website kkt start",
     "build": "npm run ts:build && npm run types:esm && npm run types:cjs && npm run css:build",
@@ -38,7 +37,7 @@
     "@types/react-dom": "16.9.8",
     "compile-less-cli": "1.5.1",
     "kkt": "5.10.3",
-    "tsbb": "file:../../"
+    "tsbb": "2.0.0"
   },
   "browserslist": {
     "production": [

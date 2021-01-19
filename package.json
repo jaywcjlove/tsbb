@@ -1,73 +1,38 @@
 {
   "name": "tsbb",
-  "version": "1.7.9",
-  "description": "TSBB is a zero-config CLI that helps you develop, test, and publish modern TypeScript project.",
-  "bin": {
-    "tsbb": "./lib/command/tsbb.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jaywcjlove/tsbb.git"
-  },
-  "bugs": {
-    "url": "https://github.com/jaywcjlove/tsbb/issues"
-  },
-  "homepage": "https://github.com/jaywcjlove/tsbb",
-  "scripts": {
-    "prepare": "npm run build",
-    "doc": "typedoc --out doc/",
-    "type-check": "tsc --noEmit",
-    "build": "npm run tsc",
-    "start": "npm run tsc -- --watch",
-    "tsc": "tsc -p ./ --types --outDir lib",
-    "test": "node lib/command/tsbb.js test",
-    "coverage": "node lib/command/tsbb.js test --coverage"
-  },
-  "files": [
-    "lib",
-    "bin",
-    "src"
-  ],
-  "keywords": [
-    "typescript",
-    "babel",
-    "node.js"
-  ],
-  "author": "kenny wang <wowohoo@qq.com>",
+  "private": true,
   "license": "MIT",
-  "jest": {
-    "testMatch": [
-      "<rootDir>/**/__tests__/**/*.{ts,tsx}",
-      "<rootDir>/**/(*.)(spec|test).{ts,tsx}"
-    ],
-    "modulePathIgnorePatterns": [
-      "[/\\\\](node_modules|example)[/\\\\].+\\.(js|jsx|ts|tsx)$"
+  "scripts": {
+    "build:basic": "lerna exec \"npm run build\" --scope @template/basic --stream",
+    "build:express": "lerna exec \"npm run build\" --scope @template/express --stream",
+    "build:hapi": "lerna exec \"npm run build\" --scope @template/hapi --stream",
+    "watch": "lerna exec \"tsc -p ./ --types --outDir lib --watch\" --scope tsbb --scope @tsbb/* --stream",
+    "build": "lerna exec \"tsc -p ./ --types --outDir lib\" --scope tsbb --scope @tsbb/* --stream",
+    "type-check": "lerna exec \"tsc --noEmit\" --scope tsbb --scope @tsbb/* --stream",
+    "hoist": "lerna bootstrap --hoist",
+    "clean": "lerna clean --yes",
+    "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
+    "version": "lerna version --no-changelog --no-git-tag-version --no-push --yes",
+    "publish": "lerna publish from-package"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,less,md,json}": [
+      "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\""
     ]
   },
   "dependencies": {
-    "@tsbb/babel-preset-tsbb": "1.12.1",
-    "@types/graceful-fs": "4.1.3",
-    "@types/node": "13.13.9",
-    "@types/jest": "26.0.14",
-    "babel-jest": "26.6.3",
-    "camelcase": "6.0.0",
-    "chalk": "4.0.0",
-    "chokidar": "3.4.3",
-    "execa": "4.1.0",
-    "fs-extra": "9.0.0",
-    "identity-obj-proxy": "3.0.0",
-    "jest": "26.6.3",
-    "ora": "5.1.0",
-    "request": "2.88.2",
-    "typescript": "4.0.5",
-    "yargs": "16.1.1"
+    "husky": "4.3.8",
+    "lerna": "3.22.1",
+    "lint-staged": "10.5.3",
+    "prettier": "2.2.1",
+    "typescript": "4.1.3"
   },
-  "devDependencies": {
-    "@types/babel__core": "7.1.7",
-    "@types/execa": "0.9.0",
-    "@types/fs-extra": "9.0.1",
-    "@types/request": "2.48.5",
-    "@types/yargs": "15.0.5",
-    "typedoc": "0.19.2"
-  }
+  "workspaces": [
+    "packages/tsbb"
+  ]
 }

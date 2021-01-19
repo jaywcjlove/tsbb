@@ -1,7 +1,5 @@
 import path from 'path';
 import { Argv } from 'yargs';
-import color from 'chalk';
-// import * as ts from 'typescript';
 import { helpOption } from '../command/options';
 import { IMyYargsArgs } from '../utils';
 import { executeCommand } from '../utils/executeCommand';
@@ -21,41 +19,43 @@ export interface ITypesArgs extends IMyYargsArgs {
 }
 
 export function builder(yarg: Argv) {
-  return yarg.option({
-    ...helpOption,
-    'project': {
-      describe: "Compile the project given the path to its configuration file, or to a folder with a 'tsconfig.json'.",
-      type: 'string',
-      default: './',
-    },
-    'out-dir': {
-      describe: 'Redirect output structure to the directory.',
-      type: 'string',
-      default: 'lib',
-    },
-    'target': {
-      describe: 'Specify ECMAScript target version.',
-      type: 'string',
-      default: 'ES2015',
-      choices: ['ES3', 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ESNEXT'],
-    },
-    'watch': {
-      describe: 'Watch input files.',
-      type: 'boolean',
-      default: false,
-    },
-    'emit-declaration-only': {
-      describe: 'to enable declarations only output',
-      type: 'boolean',
-      default: true,
-    },
-    'tsconf': {
-      describe: 'TypeScript other options.',
-      type: 'string',
-    },
-  })
+  return yarg
+    .option({
+      ...helpOption,
+      project: {
+        describe:
+          "Compile the project given the path to its configuration file, or to a folder with a 'tsconfig.json'.",
+        type: 'string',
+        default: './',
+      },
+      'out-dir': {
+        describe: 'Redirect output structure to the directory.',
+        type: 'string',
+        default: 'lib',
+      },
+      target: {
+        describe: 'Specify ECMAScript target version.',
+        type: 'string',
+        default: 'ES2015',
+        choices: ['ES3', 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ESNEXT'],
+      },
+      watch: {
+        describe: 'Watch input files.',
+        type: 'boolean',
+        default: false,
+      },
+      'emit-declaration-only': {
+        describe: 'to enable declarations only output',
+        type: 'boolean',
+        default: true,
+      },
+      tsconf: {
+        describe: 'TypeScript other options.',
+        type: 'string',
+      },
+    })
     .example('$ tsbb types ', 'Create types your project.')
-    .example('$ tsbb types --watch', 'Create type files for the project And to run in --watch mode.')
+    .example('$ tsbb types --watch', 'Create type files for the project And to run in --watch mode.');
 }
 
 export async function handler(args: ITypesArgs) {
@@ -79,7 +79,7 @@ export async function handler(args: ITypesArgs) {
 
   if (args.outDir) {
     if (Array.isArray(args.outDir)) {
-      args.outDir.forEach(item => {
+      args.outDir.forEach((item) => {
         tscArgs.push('--outDir');
         tscArgs.push(item);
       });
@@ -92,13 +92,13 @@ export async function handler(args: ITypesArgs) {
     tscArgs.push('--watch');
   }
   if (args.tsconf) {
-    tscArgs = tscArgs.concat(args.tsconf.split(' '))
+    tscArgs = tscArgs.concat(args.tsconf.split(' '));
   }
   const projectPath = path.resolve(process.cwd(), args.sourceRoot || '');
   try {
     await executeCommand('tsc', tscArgs, projectPath);
     if (!args.watch) {
-      console.log('🎉', `Successfully created the ${color.green(path.basename(projectPath))} project type files!`);
+      console.log('🎉', `Successfully created the \x1b[1;32m${path.basename(projectPath)}\x1b[0m project type files!`);
     }
   } catch (error) {
     console.log(error);

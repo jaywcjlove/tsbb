@@ -1,9 +1,9 @@
 {
-  "name": "basic",
-  "version": "1.0.0",
+  "name": "@template/basic",
+  "private": true,
+  "version": "2.0.0",
   "description": "Basic Example.",
   "scripts": {
-    "prepare": "npm run build",
     "start": "node lib/index.js",
     "watch": "npm run watch:ts",
     "watch:ts": "tsbb watch & npm run build:types -- --watch",
@@ -21,7 +21,7 @@
   "keywords": [],
   "license": "MIT",
   "devDependencies": {
-    "tsbb": "file:../../"
+    "tsbb": "2.0.0"
   },
   "author": ""
 }
