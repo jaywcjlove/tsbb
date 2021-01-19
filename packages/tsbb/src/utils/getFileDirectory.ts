@@ -63,4 +63,4 @@ async function getFiles(rootPath: string, outpuPath: string, files: IFileDirStat
 
 export async function getFileDirectory(rootPath: string, outpuPath?: string) {
   return await getFiles(rootPath, outpuPath, [], rootPath);
-};
+}
