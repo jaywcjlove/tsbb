@@ -5,7 +5,7 @@ import { Argv } from 'yargs';
 import { IMyYargsArgs, completePath, run } from '../utils';
 import { helpOption } from './options';
 import { moverDir } from '../utils/moverDir';
-import installDeps from '../utils/installDeps';
+import { installDeps } from '../utils/installDeps';
 
 export const command = 'create <project-name> [options]';
 export const describe = 'Create a new project with TSBB';

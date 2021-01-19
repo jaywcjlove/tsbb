@@ -46,13 +46,14 @@
     "prop-types": "15.7.2"
   },
   "devDependencies": {
+    "@babel/runtime": "7.12.5",
     "@kkt/less-modules": "6.2.0",
     "@kkt/raw-modules": "6.2.0",
     "@kkt/scope-plugin-options": "6.2.0",
     "@types/react": "17.0.0",
     "@types/react-dom": "17.0.0",
     "compile-less-cli": "1.6.0",
-    "husky": "4.3.7",
+    "husky": "4.3.8",
     "kkt": "6.2.0",
     "lint-staged": "10.5.3",
     "prettier": "2.2.1",
