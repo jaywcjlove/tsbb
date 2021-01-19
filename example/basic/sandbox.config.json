@@ -1,7 +1,0 @@
-{
-  "template": "node",
-  "container": {
-    "node": "12",
-    "startScript": "npm run build && npm run start"
-  }
-}
