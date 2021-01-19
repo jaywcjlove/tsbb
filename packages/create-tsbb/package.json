@@ -40,7 +40,7 @@
     "frontend"
   ],
   "devDependencies": {
-    "tsbb": "2.0.0"
+    "tsbb": "1.7.9"
   },
   "dependencies": {
     "create-kkt": "2.1.3"

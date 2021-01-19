@@ -21,7 +21,7 @@
   "keywords": [],
   "license": "MIT",
   "devDependencies": {
-    "tsbb": "2.0.0"
+    "tsbb": "1.7.9"
   },
   "author": ""
 }

@@ -32,7 +32,7 @@
   "devDependencies": {
     "@types/hapi__hapi": "19.0.3",
     "nodemon": "2.0.6",
-    "tsbb": "2.0.0"
+    "tsbb": "1.7.9"
   },
   "dependencies": {
     "@babel/runtime": "7.12.5",
