@@ -2,6 +2,7 @@
   "template": "node",
   "container": {
     "node": "12",
-    "startScript": "tsnd"
+    "startScript": "tsnd",
+    "port": 3000
   }
 }
