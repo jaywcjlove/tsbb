@@ -47,8 +47,13 @@ TSBB is a zero-config CLI that helps you develop, test, and publish modern TypeS
 
 You will need `Node.js` installed on your system.
 
-```bash
-$ npx tsbb create my-project
+```shell
+$ yarn create tsbb [appName]
+# or npm
+$ npm create tsbb my-app
+# or npx
+$ npx create-tsbb my-app
+
 $ cd my-project
 
 $ npm run watch # Listen compile .ts files.
@@ -61,7 +66,7 @@ or
 ```bash
 $ npm install tsbb -g
 # Create project
-$ tsbb create my-project --example=Express
+$ create-tsbb my-project --example=express
 # --- Example name ----------------┴ˇˇˇˇˇˇ
 ```
 
@@ -70,9 +75,9 @@ $ tsbb create my-project --example=Express
 Initialize the project from one of the examples:
 
 ```shell
-$ npx tsbb create my-app -e <Example Name>
+$ npx create-tsbb my-app -e <Example Name>
 # --- E.g: ----------------┴ˇˇˇˇˇˇˇˇˇˇˇˇˇˇ
-# npx tsbb create my-app -e Basic
+# npx create-tsbb my-app -e Basic
 ```
 
 - [**`Basic`**](example/basic) - The [Node.js](https://nodejs.org/en/) base application example.
