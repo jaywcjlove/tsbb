@@ -1,4 +1,4 @@
-name: Build and Test tsbb.
+name: Build & Deploy
 on:
   push:
     branches:
