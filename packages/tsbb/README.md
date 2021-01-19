@@ -50,24 +50,16 @@ You will need `Node.js` installed on your system.
 ```shell
 $ yarn create tsbb [appName]
 # or npm
-$ npm create tsbb my-app
+$ npm create tsbb my-app -e express
+# --- Example name ---------┴ˇˇˇˇˇˇ
 # or npx
-$ npx create-tsbb my-app
+$ npx create-tsbb my-app -e koa
 
 $ cd my-project
 
 $ npm run watch # Listen compile .ts files.
 $ npm run build # compile .ts files.
 $ npm start
-```
-
-or
-
-```bash
-$ npm install tsbb -g
-# Create project
-$ create-tsbb my-project --example=express
-# --- Example name ----------------┴ˇˇˇˇˇˇ
 ```
 
 ## Example
@@ -102,7 +94,6 @@ Below is a help of commands you might find useful.
 Usage: tsbb [options]
 
 Commands:
-  tsbb create <project-name> [options]  Create a new project with TSBB
   tsbb build [options]                  Build your project once and exit.
   tsbb watch [options]                  Recompile files on changes.
   tsbb types [options]                  Create type files for the project.
@@ -124,23 +115,14 @@ Copyright 2019
 
 ### `tsbb create`
 
+Please use [create-tsbb](https://github.com/jaywcjlove/tsbb/tree/master/packages/create-tsbb) to create an example.
+
 ```shell
-▶ tsbb create --help
-tsbb create <project-name> [options]
-
-Create a new project with TSBB
-
-Options:
-  --version    Show version number                                     [boolean]
-  --help, -h   Show help.                                              [boolean]
-  --force, -f  force create.                          [boolean] [default: false]
-  --example    Example from
-               https://github.com/jaywcjlove/tsbb/tree/master/example
-               example-path.                         [string] [default: "basic"]
-
-Examples:
-  $ tsbb create my-app                    Create my project.
-  $ tsbb create my-app --example express  Create an Express example project.
+$ yarn create tsbb [appName]
+# or npm
+$ npm create tsbb my-app
+# or npx
+$ npx create-tsbb my-app
 ```
 
 ### `tsbb build`
