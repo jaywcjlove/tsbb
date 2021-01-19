@@ -72,7 +72,7 @@ $ create-tsbb my-project --example=express
 
 ## Example
 
-Initialize the project from one of the examples:
+[create-tsbb](https://github.com/jaywcjlove/tsbb/tree/master/packages/create-tsbb) initialize the project from one of the examples:
 
 ```shell
 $ npx create-tsbb my-app -e <Example Name>
