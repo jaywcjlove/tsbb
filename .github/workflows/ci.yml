@@ -146,13 +146,6 @@ jobs:
           echo "<tr>"
           echo "<td>${ICON}</td>"
           echo "<td><a href=\"${file}\">$file</a></td>"
-          echo "<td>"
-          if [[ "$file" != "electron.zip" && "$file" != "chrome-plugin.zip" ]]; then
-            echo "<a target=\"__blank\" href=\"$CodeSandbox${file//.zip/}\">Open in CodeSandbox</a>"
-          else
-            echo ' -'
-          fi;
-          echo "</td>"
           echo "<td><a target=\"__blank\" href=\"$GITHUBREADME${file//.zip/}\">Document</a></td>"
           echo "</tr>"
         done)
