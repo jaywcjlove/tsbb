@@ -1,19 +1,25 @@
 import path from 'path';
-import { OptionConf } from 'kkt';
-import webpack from 'webpack';
+import webpack, { Configuration } from 'webpack';
+import { DevServerConfigFunction, LoaderConfOptions } from 'kkt';
+import WebpackDevServer from 'webpack-dev-server';
+import lessModules from '@kkt/less-modules';
+import rawModules from '@kkt/raw-modules';
+import scopePluginOptions from '@kkt/scope-plugin-options';
+import pkg from './package.json';
 
-type Webpack = typeof webpack;
-
-export const loaderOneOf = [require.resolve('@kkt/loader-less')];
-
-export default (conf: webpack.Configuration, opts: OptionConf, webpack: Webpack) => {
-  const pkg = require(path.resolve(process.cwd(), 'package.json'));
-  // 获取版本
+export default (conf: Configuration, env: string, options: LoaderConfOptions) => {
+  conf = rawModules(conf, env, { ...options });
+  conf = scopePluginOptions(conf, env, {
+    ...options,
+    allowedFiles: [path.resolve(process.cwd(), 'README.md')],
+  });
+  conf = lessModules(conf, env, options);
+  // Get the project version.
   conf.plugins!.push(
     new webpack.DefinePlugin({
       VERSION: JSON.stringify(pkg.version),
     }),
   );
-
+  conf.output = { ...conf.output, publicPath: './' };
   return conf;
 };

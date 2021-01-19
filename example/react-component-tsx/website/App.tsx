@@ -2,9 +2,9 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Button from '../';
+import MDStr from '../README.md';
 
 const App: React.FC = () => {
-  // console.log('Button:', Button);
   return (
     <div className="App">
       <header className="App-header">
@@ -23,6 +23,7 @@ const App: React.FC = () => {
           <Button type="light">Light</Button>
           <Button type="dark">Dark</Button>
         </div>
+        <pre className="info">{MDStr}</pre>
       </header>
     </div>
   );
