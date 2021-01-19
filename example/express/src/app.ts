@@ -1,5 +1,5 @@
 import path from 'path';
-import compression from 'compression';  // compresses requests
+import compression from 'compression'; // compresses requests
 import createError from 'http-errors';
 import cookieParser from 'cookie-parser';
 import express, { Express, Response, Request, NextFunction } from 'express';
@@ -38,11 +38,7 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
 });
 
 app.listen(app.get('port'), () => {
-  console.log(
-    '\n  App is running at\x1b[32;1m http://localhost:%d\x1b[0m in %s mode',
-    app.get('port'),
-    app.get('env')
-  );
+  console.log('\n  App is running at\x1b[32;1m http://localhost:%d\x1b[0m in %s mode', app.get('port'), app.get('env'));
   console.log('  Press\x1b[33;1m CTRL-C\x1b[0m to stop\n');
 });
 

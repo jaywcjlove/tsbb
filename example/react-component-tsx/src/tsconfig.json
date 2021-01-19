@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -19,9 +15,7 @@
     "declaration": true,
     "baseUrl": ".",
     "jsx": "react",
-    "typeRoots": [
-      "../node_modules/@types"
-    ]
+    "typeRoots": ["../node_modules/@types"]
   },
   "include": ["../src"]
 }

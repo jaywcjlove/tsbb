@@ -3,7 +3,7 @@ import Koa from 'koa';
 const PORT = 3000;
 const App = new Koa();
 
-App.use(ctx => {
+App.use((ctx) => {
   ctx.body = 'Hello Koa!';
 });
 

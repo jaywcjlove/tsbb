@@ -1,4 +1,3 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -19,8 +18,20 @@ export interface ButtonProps {
   htmlType?: React.ButtonHTMLAttributes<HTMLButtonElement>['type'];
 }
 export default function Button(props: ButtonProps = {}) {
-
-  const { prefixCls, type, size, active, disabled, block, basic, className, loading, children, htmlType, ...others } = props;
+  const {
+    prefixCls,
+    type,
+    size,
+    active,
+    disabled,
+    block,
+    basic,
+    className,
+    loading,
+    children,
+    htmlType,
+    ...others
+  } = props;
   const cls = classnames(className, prefixCls, styles.test, {
     [`${prefixCls}-${size}`]: size,
     [`${prefixCls}-${type}`]: type,
@@ -32,20 +43,15 @@ export default function Button(props: ButtonProps = {}) {
   });
   /* eslint-disable */
   return (
-    <button
-      {...others}
-      disabled={disabled || loading}
-      type={htmlType}
-      className={cls}
-    >
-      {children && React.Children.map(children, (child) => {
-        if (React.isValidElement(child)) return child;
-        return <span> {child} </span>;
-      })}
+    <button {...others} disabled={disabled || loading} type={htmlType} className={cls}>
+      {children &&
+        React.Children.map(children, (child) => {
+          if (React.isValidElement(child)) return child;
+          return <span> {child} </span>;
+        })}
     </button>
   );
 }
-
 
 Button.defaultProps = {
   prefixCls: 'w-btn',
