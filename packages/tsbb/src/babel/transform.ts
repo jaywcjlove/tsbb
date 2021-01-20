@@ -45,7 +45,8 @@ export default (filePath: string, options: ITransformOptions, targets: ITargets)
     babelOptions = {
       presets: [
         [require.resolve('@babel/preset-env'), {
-          targets: { node: '10' },
+          loose:  false,
+          targets: { node: '8' },
         }],
         require.resolve('@babel/preset-typescript'),
       ],
