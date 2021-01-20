@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "build:basic": "lerna exec \"npm run build\" --scope @template/basic --stream",
+    "test:basic": "lerna exec \"npm run coverage\" --scope @template/basic --stream",
     "build:express": "lerna exec \"npm run build\" --scope @template/express --stream",
     "build:hapi": "lerna exec \"npm run build\" --scope @template/hapi --stream",
     "build:react-component": "lerna exec \"npm run build && npm run doc\" --scope @template/react-component --stream",
