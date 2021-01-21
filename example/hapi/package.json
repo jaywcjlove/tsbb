@@ -30,12 +30,12 @@
     "delay": "2500"
   },
   "devDependencies": {
-    "@types/hapi__hapi": "19.0.4",
+    "@types/hapi__hapi": "20.0.4",
     "nodemon": "2.0.7",
     "tsbb": "2.0.2"
   },
   "dependencies": {
     "@babel/runtime": "7.12.5",
-    "@hapi/hapi": "19.2.0"
+    "@hapi/hapi": "20.0.3"
   }
 }
