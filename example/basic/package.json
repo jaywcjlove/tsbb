@@ -1,7 +1,7 @@
 {
   "name": "@template/basic",
   "private": true,
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Basic Example.",
   "scripts": {
     "start": "node lib/index.js",
@@ -21,7 +21,7 @@
   "keywords": [],
   "license": "MIT",
   "devDependencies": {
-    "tsbb": "2.0.4"
+    "tsbb": "2.0.5"
   },
   "author": ""
 }
