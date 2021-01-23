@@ -1,6 +1,6 @@
 import path from 'path';
 import { transformFile, BabelFileResult, TransformOptions, loadOptions } from '@babel/core';
-import { IOptions } from '@tsbb/babel-preset-tsbb'
+import { IOptions } from '@tsbb/babel-preset-tsbb';
 
 export interface ITransformResult extends BabelFileResult {
   options: TransformOptions;
@@ -20,38 +20,41 @@ export default (filePath: string, options: ITransformOptions, targets: ITargets)
   if (targets === 'react') {
     let presetOptions: IOptions = {
       targets: { browsers: ['last 2 versions'] },
-    }
+    };
     if (options.envName === 'cjs') {
       presetOptions.modules = 'cjs';
       presetOptions.transformRuntime = {
         // https://github.com/babel/babel/issues/10261#issuecomment-549940457
         version: require('@babel/helpers/package.json').version,
-      } as any
+      } as any;
     }
     if (options.envName === 'esm') {
       presetOptions.modules = false;
       presetOptions.transformRuntime = {
         useESModules: true,
         version: require('@babel/helpers/package.json').version,
-      } as any
+      } as any;
     }
     babelOptions = {
       presets: [
-        [ require.resolve('@tsbb/babel-preset-tsbb'), { ...presetOptions } ],
+        [require.resolve('@tsbb/babel-preset-tsbb'), { ...presetOptions }],
         require.resolve('@babel/preset-react'),
       ],
-    }
+    };
   } else if (targets === 'node') {
     babelOptions = {
       presets: [
-        [require.resolve('@babel/preset-env'), {
-          loose:  false,
-          targets: { node: '8' },
-        }],
+        [
+          require.resolve('@babel/preset-env'),
+          {
+            loose: false,
+            targets: { node: true },
+          },
+        ],
         require.resolve('@babel/preset-typescript'),
       ],
-      plugins: []
-    }
+      plugins: [],
+    };
   }
   return new Promise<ITransformResult>((resolve: (value?: ITransformResult) => ITransformResult | any, reject) => {
     if (!/^(cjs|esm)$/.test(options.envName) && targets !== 'node') {

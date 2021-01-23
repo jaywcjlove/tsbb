@@ -3,7 +3,7 @@
     "module": "commonjs",
     "esModuleInterop": true,
     "declaration": true,
-    "target": "es2017",
+    "target": "ES2017",
     "noImplicitAny": true,
     "resolveJsonModule": true,
     "moduleResolution": "node",

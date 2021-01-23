@@ -13,6 +13,7 @@ export interface ITypesArgs extends IMyYargsArgs {
   project?: string;
   'out-dir'?: string;
   outDir?: string;
+  emitDeclarationOnly?: boolean;
   target?: string;
   tsconf?: string;
 }
@@ -31,6 +32,11 @@ export function builder(yarg: Argv) {
         describe: 'Redirect output structure to the directory.',
         type: 'string',
         default: 'lib',
+      },
+      emitDeclarationOnly: {
+        describe: 'Only emit .d.ts declaration files.',
+        type: 'boolean',
+        default: true,
       },
       target: {
         describe: 'Specify ECMAScript target version.',
@@ -65,10 +71,9 @@ export async function handler(args: ITypesArgs) {
     tscArgs.push(args.target);
   }
 
-  // tscArgs.push('--types');
-  // if (args.emitDeclarationOnly) {
-  //   tscArgs.push('--emitDeclarationOnly');
-  // }
+  if (args.emitDeclarationOnly) {
+    tscArgs.push('--emitDeclarationOnly');
+  }
 
   if (args.project) {
     tscArgs.push('--project');
@@ -93,6 +98,7 @@ export async function handler(args: ITypesArgs) {
     tscArgs = tscArgs.concat(args.tsconf.split(' '));
   }
   const projectPath = path.resolve(process.cwd(), args.sourceRoot || '');
+
   try {
     await executeCommand('tsc', tscArgs, projectPath);
     if (!args.watch) {

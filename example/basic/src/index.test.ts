@@ -1,3 +1,5 @@
+/// <reference types="jest" />
+
 import index from './';
 
 describe('sum', () => {
