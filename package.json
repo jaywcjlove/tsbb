@@ -8,7 +8,7 @@
     "build:express": "lerna exec \"npm run build\" --scope @template/express --stream",
     "build:hapi": "lerna exec \"npm run build\" --scope @template/hapi --stream",
     "build:react-component": "lerna exec \"npm run build && npm run doc\" --scope @template/react-component --stream",
-    "build:react-component-tsx": "lerna exec \"npm run build\" --scope @template/react-component --stream",
+    "build:react-component-tsx": "lerna exec \"npm run build\" --scope @template/react-component-tsx",
     "watch": "lerna exec \"tsc -p ./ --types --outDir lib --watch\" --scope create-tsbb --scope tsbb --stream",
     "build": "lerna exec \"tsc -p ./ --types --outDir lib\" --scope create-tsbb --scope tsbb --stream",
     "type-check": "lerna exec \"tsc --noEmit\" --scope create-tsbb --scope tsbb --stream",
