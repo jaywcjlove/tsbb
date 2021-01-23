@@ -3,7 +3,8 @@
 import index from './';
 
 describe('sum', () => {
-  it('works', () => {
-    expect(index()).toBe(11);
+  it('works', async () => {
+    const num = await index();
+    expect(num).toBe(11);
   });
 });
