@@ -47,13 +47,12 @@ export default (filePath: string, options: ITransformOptions, targets: ITargets)
         [
           require.resolve('@babel/preset-env'),
           {
-            loose: false,
             targets: { node: true },
           },
         ],
         require.resolve('@babel/preset-typescript'),
       ],
-      plugins: [],
+      plugins: [require.resolve('babel-plugin-add-module-exports')],
     };
   }
   return new Promise<ITransformResult>((resolve: (value?: ITransformResult) => ITransformResult | any, reject) => {
