@@ -9,7 +9,8 @@
     "moduleResolution": "node",
     "sourceMap": true,
     "outDir": "lib",
-    "baseUrl": "."
+    "baseUrl": ".",
+    "noEmit": true
   },
   "include": ["src/**/*"]
 }

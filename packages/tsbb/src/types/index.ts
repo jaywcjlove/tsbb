@@ -13,7 +13,6 @@ export interface ITypesArgs extends IMyYargsArgs {
   project?: string;
   'out-dir'?: string;
   outDir?: string;
-  emitDeclarationOnly?: boolean;
   target?: string;
   tsconf?: string;
 }
@@ -67,10 +66,9 @@ export async function handler(args: ITypesArgs) {
   }
 
   // tscArgs.push('--types');
-
-  if (args.emitDeclarationOnly) {
-    tscArgs.push('--emitDeclarationOnly');
-  }
+  // if (args.emitDeclarationOnly) {
+  //   tscArgs.push('--emitDeclarationOnly');
+  // }
 
   if (args.project) {
     tscArgs.push('--project');
