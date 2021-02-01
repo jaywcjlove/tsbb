@@ -52,7 +52,10 @@ export default (filePath: string, options: ITransformOptions, targets: ITargets)
         ],
         require.resolve('@babel/preset-typescript'),
       ],
-      plugins: [require.resolve('babel-plugin-add-module-exports')],
+      plugins: [
+        require.resolve('babel-plugin-add-module-exports'),
+        [require.resolve('@babel/plugin-proposal-decorators'), { legacy: true }],
+      ],
     };
   }
   return new Promise<ITransformResult>((resolve: (value?: ITransformResult) => ITransformResult | any, reject) => {
