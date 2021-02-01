@@ -54,7 +54,9 @@ export default (filePath: string, options: ITransformOptions, targets: ITargets)
       ],
       plugins: [
         require.resolve('babel-plugin-add-module-exports'),
+        require.resolve('babel-plugin-transform-typescript-metadata'),
         [require.resolve('@babel/plugin-proposal-decorators'), { legacy: true }],
+        [require.resolve('@babel/plugin-proposal-class-properties'), { loose: true }],
       ],
     };
   }

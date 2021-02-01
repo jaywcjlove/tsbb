@@ -32,7 +32,7 @@ export const publicOptions: IYargsOptions = {
   'source-maps': {
     describe: 'Source Map options.',
     type: 'string',
-    default: true,
+    default: 'inline',
     choices: [true, 'inline', 'both', 'none'],
   },
   output: {
