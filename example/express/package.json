@@ -1,6 +1,6 @@
 {
   "name": "@template/express",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "private": true,
   "description": "Express Example.",
   "scripts": {
@@ -35,7 +35,7 @@
     "@types/http-errors": "1.8.0",
     "nodemon": "2.0.7",
     "ts-node-dev": "1.1.1",
-    "tsbb": "2.0.6"
+    "tsbb": "2.0.7"
   },
   "dependencies": {
     "@babel/runtime": "7.12.5",
