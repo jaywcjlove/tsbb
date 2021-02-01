@@ -1,6 +1,6 @@
 {
   "name": "@template/koa",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "private": true,
   "description": "Koa Example",
   "scripts": {
@@ -30,7 +30,7 @@
   "devDependencies": {
     "@types/koa": "2.11.4",
     "nodemon": "2.0.7",
-    "tsbb": "2.0.5"
+    "tsbb": "2.0.6"
   },
   "dependencies": {
     "@babel/runtime": "7.12.5",
