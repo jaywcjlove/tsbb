@@ -1,0 +1,21 @@
+
+
+@baseUrl = http://localhost:3009/api
+@contentType = application/json
+
+
+### 用户登录
+
+# @name login
+POST {{baseUrl}}/login
+Content-Type: {{contentType}}
+
+{
+  "username": "admin",
+  "password": "123456"
+}
+
+### User Verify
+
+GET {{baseUrl}}/verify
+Content-Type: application/json
