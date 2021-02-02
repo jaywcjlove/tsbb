@@ -74,12 +74,13 @@ $ npx create-tsbb my-app -e <Example Name>
 
 You can download the following examples directly. [Download page](https://jaywcjlove.github.io/tsbb).
 
-- [**`Basic`**](example/basic) - The [Node.js](https://nodejs.org/en/) base application example.
-- [**`Express`**](example/express) - The [Express](https://expressjs.com/) base application example.
-- [**`Koa`**](example/koa) - The [Koa](https://koajs.com/) base application example.
-- [**`Hapi`**](example/hapi) - The [Hapi](https://hapijs.com/) base application example.
-- [**`react-component`**](example/react-component) - The react component base application example.
-- [**`react-component-tsx`**](example/react-component-tsx) - The react component and website base application example.
+- [**`Basic`**](https://github.com/jaywcjlove/tsbb/tree/master/example/basic) - The [Node.js](https://nodejs.org/en/) base application example.
+- [**`Express`**](https://github.com/jaywcjlove/tsbb/tree/master/example/express) - The [Express](https://expressjs.com/) base application example.
+- [**`express-typeorm`**](https://github.com/jaywcjlove/tsbb/tree/master/example/express-typeorm) - The [Express](https://expressjs.com/) & [TypeORM](https://github.com/typeorm/typeorm) base application example.
+- [**`Koa`**](https://github.com/jaywcjlove/tsbb/tree/master/example/koa) - The [Koa](https://koajs.com/) base application example.
+- [**`Hapi`**](https://github.com/jaywcjlove/tsbb/tree/master/example/hapi) - The [Hapi](https://hapijs.com/) base application example.
+- [**`react-component`**](https://github.com/jaywcjlove/tsbb/tree/master/example/react-component) - The react component base application example.
+- [**`react-component-tsx`**](https://github.com/jaywcjlove/tsbb/tree/master/example/react-component-tsx) - The react component and website base application example.
 
 ## Command Help
 
