@@ -13,7 +13,7 @@ export async function expressApp(): Promise<Express> {
   const app: Express = express();
   app.use(createSession());
   app.disable('x-powered-by');
-  app.set('port', process.env.PORT || 3009);
+  app.set('port', process.env.PORT || 3000);
   app.set('views', path.join(__dirname, 'views'));
   app.set('view engine', 'ejs');
   app.use(compression());
