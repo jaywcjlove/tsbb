@@ -110,6 +110,10 @@ jobs:
       working-directory: example/react-component-tsx
     - run: cp -rp example/react-component-tsx/react-component-tsx.zip ./zip
 
+    - name: Compress express-typeorm Example.
+      run: zip -r -y express-typeorm.zip . -x "node_modules/*" -x "build/*.sqlite" -x "build/*" -x "coverage/*" -x ".eslintcache" -x "sandbox.config.json"
+      working-directory: example/express-typeorm
+    - run: cp -rp example/express-typeorm/express-typeorm.zip ./zip
 
     - name: Compress TSBB Example Download webpage.
       working-directory: zip
