@@ -40,7 +40,7 @@
     "tsbb": "2.0.7"
   },
   "dependencies": {
-    "@babel/runtime": "7.12.5",
+    "@babel/runtime": "7.13.7",
     "compression": "1.7.4",
     "cookie-parser": "1.4.5",
     "ejs": "3.1.5",
