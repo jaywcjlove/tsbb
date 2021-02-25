@@ -49,7 +49,7 @@
     "http-errors": "1.8.0",
     "reflect-metadata": "0.1.13",
     "sqlite3": "5.0.2",
-    "typeorm": "0.2.30",
+    "typeorm": "0.2.31",
     "typeorm-store": "1.2.0"
   }
 }
