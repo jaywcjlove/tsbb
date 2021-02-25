@@ -31,6 +31,9 @@ export default (filePath: string, options: ITransformOptions, targets: ITargets)
     if (options.envName === 'esm') {
       presetOptions.modules = false;
       presetOptions.transformRuntime = {
+        // [@babel/plugin-transform-runtime] The 'useESModules' option is not necessary when using
+        // a @babel/runtime version >= 7.13.0 and not using the 'absoluteRuntime' option,
+        // because it automatically detects the necessary module format.
         useESModules: true,
         version: require('@babel/helpers/package.json').version,
       } as any;

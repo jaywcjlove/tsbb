@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@jest/types": "26.6.2",
-    "@tsbb/babel-preset-tsbb": "1.13.0",
+    "@tsbb/babel-preset-tsbb": "1.14.1",
     "@types/graceful-fs": "4.1.4",
     "@types/node": "13.13.9",
     "babel-jest": "26.6.3",
