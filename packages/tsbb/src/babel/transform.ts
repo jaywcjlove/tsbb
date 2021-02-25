@@ -1,4 +1,5 @@
 import path from 'path';
+import semver from 'semver';
 import { transformFile, BabelFileResult, TransformOptions, loadOptions } from '@babel/core';
 import { IOptions } from '@tsbb/babel-preset-tsbb';
 
@@ -29,12 +30,13 @@ export default (filePath: string, options: ITransformOptions, targets: ITargets)
       } as any;
     }
     if (options.envName === 'esm') {
+      const runtimeVersion = semver.clean(require('@babel/runtime/package.json').version);
       presetOptions.modules = false;
       presetOptions.transformRuntime = {
         // [@babel/plugin-transform-runtime] The 'useESModules' option is not necessary when using
         // a @babel/runtime version >= 7.13.0 and not using the 'absoluteRuntime' option,
         // because it automatically detects the necessary module format.
-        useESModules: true,
+        useESModules: !semver.gte(runtimeVersion, '7.13.0'),
         version: require('@babel/helpers/package.json').version,
       } as any;
     }
