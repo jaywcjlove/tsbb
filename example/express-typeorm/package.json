@@ -48,7 +48,7 @@
     "express-session": "1.17.1",
     "http-errors": "1.8.0",
     "reflect-metadata": "0.1.13",
-    "sqlite3": "5.0.1",
+    "sqlite3": "5.0.2",
     "typeorm": "0.2.30",
     "typeorm-store": "1.2.0"
   }
