@@ -55,6 +55,11 @@ $ npm create tsbb my-app -e express
 # or npx
 $ npx create-tsbb my-app -e koa
 
+# npm 6.x
+$ npm init tsbb my-app --example express-typeorm
+# npm 7+, extra double-dash is needed:
+$ npm init tsbb my-app -- --example express-typeorm
+
 $ cd my-project
 
 $ npm run watch # Listen compile .ts files.
