@@ -33,7 +33,7 @@
     "tsbb": "2.0.11"
   },
   "dependencies": {
-    "@babel/runtime": "7.13.7",
+    "@babel/runtime": "7.13.10",
     "koa": "2.13.1"
   }
 }
