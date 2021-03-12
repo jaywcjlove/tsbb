@@ -43,6 +43,6 @@
     "tsbb": "2.1.0"
   },
   "dependencies": {
-    "create-kkt": "2.1.3"
+    "create-kkt": "2.1.5"
   }
 }

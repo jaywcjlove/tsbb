@@ -23,6 +23,11 @@ Creates a [`tsbb`](https://www.travis-ci.org/jaywcjlove/tsbb) application using 
 ### Usage
 
 ```shell
+# npm 6.x
+$ npm init tsbb my-app --example express-typeorm
+# npm 7+, extra double-dash is needed:
+$ npm init tsbb my-app -- --example express-typeorm
+
 $ yarn create tsbb [appName]
 # or npm
 $ npm create tsbb my-app
