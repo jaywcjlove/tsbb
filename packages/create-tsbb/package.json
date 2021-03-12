@@ -9,7 +9,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jaywcjlove/tree/master/create-tsbb"
+    "url": "https://github.com/jaywcjlove/tsbb/tree/master/packages/create-tsbb"
   },
   "bin": {
     "create-tsbb": "lib/cli.js"
