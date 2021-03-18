@@ -30,7 +30,7 @@
   "devDependencies": {
     "@types/koa": "2.13.1",
     "nodemon": "2.0.7",
-    "tsbb": "2.1.2"
+    "tsbb": "2.1.1"
   },
   "dependencies": {
     "@babel/runtime": "7.13.10",
