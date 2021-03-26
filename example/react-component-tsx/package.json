@@ -49,7 +49,7 @@
     "@babel/runtime": "7.13.10",
     "@kkt/less-modules": "6.8.0",
     "@kkt/raw-modules": "6.8.0",
-    "@kkt/scope-plugin-options": "6.8.0",
+    "@kkt/scope-plugin-options": "6.8.2",
     "@types/react": "17.0.3",
     "@types/react-dom": "17.0.2",
     "compile-less-cli": "1.7.0",
