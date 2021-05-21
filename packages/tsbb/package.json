@@ -64,6 +64,6 @@
     "@types/babel__core": "7.1.13",
     "@types/execa": "0.9.0",
     "@types/fs-extra": "9.0.8",
-    "@types/yargs": "16.0.0"
+    "@types/yargs": "16.0.3"
   }
 }
