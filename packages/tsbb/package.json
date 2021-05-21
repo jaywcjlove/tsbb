@@ -58,12 +58,12 @@
     "ora": "5.4.0",
     "semver": "7.3.5",
     "typescript": "4.2.3",
-    "yargs": "16.2.0"
+    "yargs": "17.0.1"
   },
   "devDependencies": {
     "@types/babel__core": "7.1.13",
     "@types/execa": "0.9.0",
     "@types/fs-extra": "9.0.8",
-    "@types/yargs": "16.0.0"
+    "@types/yargs": "17.0.0"
   }
 }
