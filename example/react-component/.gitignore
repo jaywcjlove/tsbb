@@ -3,6 +3,7 @@
 
 lib
 doc
+dist
 package-lock.json
 __snapshots__
 

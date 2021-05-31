@@ -9,16 +9,17 @@
   "typings": "lib/cjs/index.d.ts",
   "scripts": {
     "watch": "npm run watch:ts -- --env-name esm:dev --env-name cjs",
-    "build": "npm run build:ts & npm run build:css",
+    "build": "npm run build:ts & npm run css:build & npm run css:build:dist",
     "watch:ts": "tsbb watch --target react",
     "build:ts": "tsbb build --target react",
     "build:umd": "tsbb build --target react --env-name umd",
-    "build:css": "compile-less -d src -o lib/esm",
+    "css:build": "compile-less -d src -o lib/esm",
+    "css:watch": "compile-less -d src -o lib/esm --watch",
+    "css:build:dist": "compile-less -d src --combine dist/markdown-editor.css --rm-global",
     "test": "tsbb test --env=jsdom",
     "coverage": "tsbb test --env=jsdom --coverage",
-    "doc": "npm run doc:build",
     "doc:dev": "NODE_ENV=development parcel website/index.html --out-dir doc --no-cache",
-    "doc:build": "NODE_ENV=production parcel build website/index.html --out-dir doc --public-url ./ --no-cache --no-source-maps"
+    "doc": "NODE_ENV=production parcel build website/index.html --out-dir doc --public-url ./ --no-cache --no-source-maps"
   },
   "repository": {
     "type": "git",
@@ -35,19 +36,20 @@
     "react-dom": ">=16.7.0"
   },
   "devDependencies": {
-    "@babel/plugin-transform-modules-umd": "7.13.0",
-    "@babel/plugin-transform-runtime": "7.13.10",
-    "babel-plugin-transform-remove-imports": "1.5.2",
+    "@babel/plugin-transform-modules-umd": "7.14.0",
+    "@babel/plugin-transform-runtime": "7.14.3",
+    "@babel/runtime": "7.14.0",
+    "babel-plugin-transform-remove-imports": "1.5.4",
     "babel-plugin-transform-rename-import": "2.3.0",
-    "compile-less-cli": "1.7.0",
+    "compile-less-cli": "1.8.0",
     "less": "4.1.1",
     "parcel-bundler": "1.12.5",
-    "react-test-renderer": "17.0.1",
+    "react-test-renderer": "17.0.2",
     "tsbb": "2.1.2"
   },
   "dependencies": {
-    "classnames": "2.2.6",
-    "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "classnames": "2.3.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
   }
 }
