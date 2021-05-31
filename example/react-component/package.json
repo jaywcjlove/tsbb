@@ -45,7 +45,7 @@
     "less": "4.1.1",
     "parcel-bundler": "1.12.5",
     "react-test-renderer": "17.0.2",
-    "tsbb": "2.2.0"
+    "tsbb": "2.1.2"
   },
   "dependencies": {
     "classnames": "2.3.1",
