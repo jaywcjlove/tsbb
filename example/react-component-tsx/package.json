@@ -47,7 +47,7 @@
     "prop-types": "15.7.2"
   },
   "devDependencies": {
-    "@babel/runtime": "7.14.0",
+    "@babel/runtime": "7.14.6",
     "@kkt/less-modules": "6.9.0",
     "@kkt/raw-modules": "6.9.0",
     "@kkt/scope-plugin-options": "6.9.0",
