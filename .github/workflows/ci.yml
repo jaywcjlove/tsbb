@@ -17,14 +17,6 @@ jobs:
       with:
         node-version: 14
 
-    # - name: Cache dependencies
-    #   uses: actions/cache@v1
-    #   with:
-    #     path: ~/.npm
-    #     key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-    #     restore-keys: |
-    #       ${{ runner.os }}-node-
-
     - name: Look Changelog
       uses: jaywcjlove/changelog-generator@v1.4.2
       with:
@@ -35,6 +27,9 @@ jobs:
     - run: npm install
     - run: npm run hoist
     - run: npm run build
+
+    - run: npm install @jsdevtools/npm-publish
+    - run: ./node_modules/.bin/npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/tsbb/package.json
 
     - name: example @example/basic
       working-directory: example/basic
