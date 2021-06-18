@@ -1,6 +1,6 @@
 {
   "name": "@template/react-component",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "private": true,
   "description": "React Component Example.",
   "author": "",
@@ -45,7 +45,7 @@
     "less": "4.1.1",
     "parcel-bundler": "1.12.5",
     "react-test-renderer": "17.0.2",
-    "tsbb": "2.2.0"
+    "tsbb": "2.2.1"
   },
   "dependencies": {
     "classnames": "2.3.1",
