@@ -35,13 +35,34 @@ jobs:
     - run: npm install
     - run: npm run hoist
     - run: npm run build
-    - run: npm run build:basic
-    - run: npm run test:basic
-    - run: npm run build:express
-    - run: npm run build:hapi
-    - run: npm run build:react-component
-    - run: npm run build:react-component-tsx
-    - run: npm run build:express-typeorm
+
+    - name: example @example/basic
+      working-directory: example/basic
+      run: npm run build && npm run coverage
+
+    - name: example @example/express
+      working-directory: example/express
+      run: npm run build
+
+    - name: example @example/hapi
+      working-directory: example/hapi
+      run: npm run build
+
+    - name: example @example/express-typeorm
+      working-directory: example/express-typeorm
+      run: npm run build
+
+    - name: example @example/koa
+      working-directory: example/koa
+      run: npm run build
+
+    - name: example @example/react-component
+      working-directory: example/react-component
+      run: npm run build && npm run doc
+
+    - name: example @example/react-component-tsx
+      working-directory: example/react-component-tsx
+      run: npm run build:lib && npm run doc
 
     - name: Is a tag created auto?
       id: create_tag
