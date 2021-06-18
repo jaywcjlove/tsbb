@@ -57,11 +57,11 @@ jobs:
 
     - name: example @example/react-component-tsx
       working-directory: example/react-component-tsx
-      run: npm run build:lib && npm run doc
-
-    - name: ls -al
-      working-directory: example/react-component-tsx/lib/cjs
-      run: ls -al 
+      run: |
+        npm run build:lib
+        npm run doc
+        cd lib/cjs
+        ls -al
 
     - name: Is a tag created auto?
       id: create_tag
