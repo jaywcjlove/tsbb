@@ -200,3 +200,4 @@ jobs:
 
     - run: npm install @jsdevtools/npm-publish
     - run: ./node_modules/.bin/npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/tsbb/package.json
+    - run: ./node_modules/.bin/npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/create-tsbb/package.json
