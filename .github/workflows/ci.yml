@@ -64,6 +64,10 @@ jobs:
       working-directory: example/react-component-tsx
       run: npm run build:lib && npm run doc
 
+    - name: ls -al
+      working-directory: example/react-component-tsx
+      run: ls -al lib/cjs
+
     - name: Is a tag created auto?
       id: create_tag
       uses: jaywcjlove/create-tag-action@v1.2.0
