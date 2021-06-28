@@ -36,6 +36,6 @@
   },
   "dependencies": {
     "@babel/runtime": "7.14.6",
-    "@hapi/hapi": "20.1.4"
+    "@hapi/hapi": "20.1.5"
   }
 }
