@@ -36,7 +36,7 @@
     "@types/node": "15.6.1",
     "nodemon": "2.0.7",
     "ts-node": "10.0.0",
-    "ts-node-dev": "1.1.6",
+    "ts-node-dev": "1.1.8",
     "tsbb": "2.2.1"
   },
   "dependencies": {
