@@ -61,7 +61,7 @@
     "yargs": "17.0.1"
   },
   "devDependencies": {
-    "@types/babel__core": "7.1.14",
+    "@types/babel__core": "7.1.15",
     "@types/fs-extra": "9.0.12",
     "@types/yargs": "17.0.0"
   }
