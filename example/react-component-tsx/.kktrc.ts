@@ -1,6 +1,6 @@
 import path from 'path';
 import webpack, { Configuration } from 'webpack';
-import { DevServerConfigFunction, LoaderConfOptions } from 'kkt';
+import { LoaderConfOptions } from 'kkt';
 import WebpackDevServer from 'webpack-dev-server';
 import lessModules from '@kkt/less-modules';
 import rawModules from '@kkt/raw-modules';
@@ -22,4 +22,12 @@ export default (conf: Configuration, env: string, options: LoaderConfOptions) =>
   );
   conf.output = { ...conf.output, publicPath: './' };
   return conf;
+};
+
+/**
+ * Modify WebpackDevServer Configuration Example
+ */
+export const devServer = (config: WebpackDevServer.Configuration) => {
+  // Return your customised Webpack Development Server config.
+  return config;
 };
