@@ -28,26 +28,28 @@
     "delay": "2500"
   },
   "devDependencies": {
-    "@types/compression": "1.7.0",
+    "@types/compression": "1.7.1",
     "@types/cookie-parser": "1.4.2",
-    "@types/express": "4.17.12",
-    "@types/express-session": "1.17.3",
-    "@types/http-errors": "1.8.0",
-    "@types/node": "15.6.1",
+    "@types/express": "4.17.13",
+    "@types/express-session": "1.17.4",
+    "@types/http-errors": "1.8.1",
+    "@types/node": "16.4.2",
     "nodemon": "2.0.12",
-    "ts-node": "10.0.0",
+    "ts-node": "10.1.0",
     "ts-node-dev": "1.1.8",
     "tsbb": "2.2.1"
   },
   "dependencies": {
     "compression": "1.7.4",
     "cookie-parser": "1.4.5",
+    "dotenv": "10.0.0",
     "ejs": "3.1.6",
     "express": "4.17.1",
     "express-session": "1.17.2",
     "http-errors": "1.8.0",
+    "pg": "8.6.0",
     "reflect-metadata": "0.1.13",
-    "sqlite3": "5.0.2",
+    "typeorm-extension": "0.2.7",
     "typeorm": "0.2.34",
     "typeorm-store": "2.0.0"
   }

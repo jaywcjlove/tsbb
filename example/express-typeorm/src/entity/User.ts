@@ -1,13 +1,16 @@
-import { Entity, PrimaryGeneratedColumn, Column, Exclusion } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, DeleteDateColumn } from 'typeorm';
 
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ unique: true })
   username: string;
 
   @Column({ select: false })
   password: string;
+
+  @DeleteDateColumn()
+  deleteAt: string;
 }

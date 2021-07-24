@@ -1,15 +1,7 @@
-import { Express } from 'express';
-import { UserController } from './controller/UserController';
+import { RoutesData } from './';
+import { UserController } from '../controller/UserController';
 
-export type RoutesData = {
-  method: Extract<keyof Express, 'get' | 'post' | 'delete' | 'put' | 'patch'>;
-  route: string;
-} & {
-  controller: typeof UserController;
-  action: keyof UserController;
-};
-
-export const Routes: RoutesData[] = [
+export const user: RoutesData<UserController, typeof UserController>[] = [
   {
     method: 'post',
     route: '/api/login',
@@ -25,24 +17,35 @@ export const Routes: RoutesData[] = [
   {
     method: 'get',
     route: '/api/user',
+    auth: true,
     controller: UserController,
     action: 'all',
   },
   {
     method: 'get',
     route: '/api/user/:id',
+    auth: true,
     controller: UserController,
     action: 'one',
   },
   {
     method: 'post',
     route: '/api/user',
+    auth: true,
     controller: UserController,
-    action: 'save',
+    action: 'create',
+  },
+  {
+    method: 'put',
+    route: '/api/user',
+    auth: true,
+    controller: UserController,
+    action: 'update',
   },
   {
     method: 'delete',
     route: '/api/user/:id',
+    auth: true,
     controller: UserController,
     action: 'remove',
   },

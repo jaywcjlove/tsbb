@@ -1,8 +1,7 @@
-
-
-@baseUrl = http://localhost:3009/api
+@baseUrl = http://localhost:3000/api
 @contentType = application/json
 
+@auth = {{login.response.body.$.token}}
 
 ### 用户登录
 
@@ -11,11 +10,60 @@ POST {{baseUrl}}/login
 Content-Type: {{contentType}}
 
 {
-  "username": "admin",
+  "username": "wcj",
   "password": "123456"
 }
 
 ### User Verify
 
 GET {{baseUrl}}/verify
+Content-Type: application/json
+
+### Logout
+
+POST {{baseUrl}}/logout
+Content-Type: application/json
+
+### Get User List
+
+@userid = {{list.response.body.$[1].id}}
+# @name list
+GET {{baseUrl}}/user?token={{auth}}
+Content-Type: application/json
+
+### Get User Info
+
+GET {{baseUrl}}/user/{{userid}}?token={{auth}}
+Content-Type: application/json
+
+### Get User Info
+
+GET {{baseUrl}}/user/{{userid}}
+Content-Type: application/json
+Authorization: token {{auth}}
+
+### Create User
+
+POST {{baseUrl}}/user?token={{auth}}
+Content-Type: application/json
+
+{
+  "username": "wcj{{$randomInt 1 200}}",
+  "password": "wcc{{$randomInt 1 200}}"
+}
+
+### Update User
+
+PUT {{baseUrl}}/user?token={{auth}}
+Content-Type: application/json
+
+{
+  "id": {{userid}},
+  "username": "wcj{{$randomInt 1 200}}",
+  "password": "wcc{{$randomInt 1 200}}"
+}
+
+### Delete User
+
+DELETE {{baseUrl}}/user/{{userid}}?token={{auth}}
 Content-Type: application/json

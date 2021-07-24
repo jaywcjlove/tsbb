@@ -19,6 +19,7 @@
         <input type="password" name="password" value="" placeholder="example: 123456">
         <div>
           <button type="submit">Login</button>
+          <div id="info"></div>
         </div>
       </form>
     </div>
@@ -48,6 +49,11 @@
         .then(data => {
           if (data.token) {
             location.reload();
+          } else {
+            document.getElementById('info').innerHTML = data.message;
+            setTimeout(function() {
+              document.getElementById('info').innerHTML = '';
+            }, 2000);
           }
         })
         return false;
