@@ -73,15 +73,18 @@ export default (filePath: string, options: ITransformOptions, targets: ITargets)
       loadOptions({ envName: options.envName || process.env.BABEL_ENV });
       babelOptions.presets = [];
     }
-    const transformOptions = options.babelOption === 'defalut' ? {
-      envName: options.envName || process.env.BABEL_ENV,
-      presets: [],
-      ...babelOptions,
-      // comments: process.env.NODE_ENV === 'development' ? false : true,
-      // comments: false,
-      sourceMaps: options.sourceMaps === 'none' ? false : options.sourceMaps,
-      sourceFileName: path.relative(path.dirname(options.outputPath), filePath),
-    } : {}
+    const transformOptions =
+      options.babelOption === 'defalut'
+        ? {
+            envName: options.envName || process.env.BABEL_ENV,
+            presets: [],
+            ...babelOptions,
+            // comments: process.env.NODE_ENV === 'development' ? false : true,
+            // comments: false,
+            sourceMaps: options.sourceMaps === 'none' ? false : options.sourceMaps,
+            sourceFileName: path.relative(path.dirname(options.outputPath), filePath),
+          }
+        : {};
     transformFile(
       filePath,
       {

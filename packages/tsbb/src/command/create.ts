@@ -26,7 +26,7 @@ export function builder(yarg: Argv) {
         default: 'basic',
       },
     })
-    .example('$ npm create tsbb my-app -e express ', 'Please use create-tsbb to create an example.')
+    .example('$ npm create tsbb my-app -e express ', 'Please use create-tsbb to create an example.');
 }
 
 export interface ICreateArgs extends IMyYargsArgs {

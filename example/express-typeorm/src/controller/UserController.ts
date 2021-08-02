@@ -7,7 +7,7 @@ import pagination from '../middleware/pagination';
 export class UserController {
   private userRepository = getRepository(User);
   constructor(private manager: EntityManager) {
-    this.manager = manager
+    this.manager = manager;
   }
 
   async all(request: Request, response: Response) {
@@ -19,32 +19,37 @@ export class UserController {
     return this.userRepository.findOne(params.id).then((user) => {
       if (!user) {
         response.status(401);
-        return { message: 'Not found user data' }
+        return { message: 'Not found user data' };
       }
-      return user
+      return user;
     });
   }
 
   async create(request: Request, response: Response, next: NextFunction) {
-    return this.userRepository.save(request.body).then((user) => {
-      delete user.password;
-      return user;
-    }).catch((err) => {
-      response.status(409);
-      return Promise.resolve({ message: '用户已存在，无法创建。' });
-    });
+    return this.userRepository
+      .save(request.body)
+      .then((user) => {
+        delete user.password;
+        return user;
+      })
+      .catch((err) => {
+        response.status(409);
+        return Promise.resolve({ message: '用户已存在，无法创建。' });
+      });
   }
 
   async update(request: Request, response: Response, next: NextFunction) {
     const { id } = request.body;
-    return this.manager.update(User, id, {...request.body })
+    return this.manager
+      .update(User, id, { ...request.body })
       .then(({ affected }) => {
         if (affected === 0) {
           response.status(422);
           return Promise.resolve({ message: '修改失败！' });
         }
         return Promise.resolve({ message: '修改用户信息成功！' });
-      }).catch((err) => {
+      })
+      .catch((err) => {
         response.status(400);
         return Promise.resolve({ message: '修改失败！' });
       });

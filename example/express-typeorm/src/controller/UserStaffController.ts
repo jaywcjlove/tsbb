@@ -11,7 +11,7 @@ export class UserStaffController {
 
   async create(request: Request, response: Response, next: NextFunction) {
     const { body } = request;
-    const user =  this.manager.create(UserStaff, { ...body });
+    const user = this.manager.create(UserStaff, { ...body });
     return this.manager.save(user);
   }
 
@@ -24,9 +24,9 @@ export class UserStaffController {
     return this.repository.findOne(params.id).then((user) => {
       if (!user) {
         response.status(404);
-        return { message: 'Not found user data' }
+        return { message: 'Not found user data' };
       }
-      return user
+      return user;
     });
   }
 
@@ -38,16 +38,18 @@ export class UserStaffController {
 
   async update(request: Request, response: Response, next: NextFunction) {
     const { id } = request.params;
-    return this.manager.update(UserStaff, id || request.body.id, { ...request.body })
+    return this.manager
+      .update(UserStaff, id || request.body.id, { ...request.body })
       .then(({ affected }) => {
         if (affected === 0) {
           response.status(422);
           return Promise.resolve({ message: '修改失败！' });
         }
         return Promise.resolve({ message: '修改员工信息成功！' });
-      }).catch((err) => {
+      })
+      .catch((err) => {
         response.status(400);
         return Promise.resolve({ message: '修改失败！' });
-      });;
+      });
   }
 }

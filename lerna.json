@@ -1,9 +1,6 @@
 {
   "version": "2.3.0",
-  "packages": [
-    "example/*",
-    "packages/*"
-  ],
+  "packages": ["example/*", "packages/*"],
   "command": {
     "version": {
       "allowBranch": "master",
@@ -13,12 +10,8 @@
       "message": "chore(release): %s"
     },
     "bootstrap": {
-      "npmClientArgs": [
-        "--no-package-lock"
-      ],
-      "yarnClientArgs": [
-        "--no-yarn-lock"
-      ],
+      "npmClientArgs": ["--no-package-lock"],
+      "yarnClientArgs": ["--no-yarn-lock"],
       "forceLocal": true
     },
     "publish": {

@@ -10,7 +10,4 @@ export interface RoutesData<T, E, K = keyof T> {
   action: K;
 }
 
-export const Routes = [
-  ...userStaff,
-  ...user,
-];
+export const Routes = [...userStaff, ...user];

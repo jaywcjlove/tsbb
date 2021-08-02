@@ -7,7 +7,7 @@ export enum UserSexType {
   male = 1,
   /** 女 */
   female = 2,
-};
+}
 
 export enum UserMaritalStatus {
   /** 未知 */
@@ -20,7 +20,7 @@ export enum UserMaritalStatus {
   Divorced = 3,
   /** 已婚生子 */
   MarriedAndHaveChildren = 4,
-};
+}
 
 /** 员工工程师类别 */
 export enum UserEngineerType {
@@ -36,7 +36,7 @@ export enum UserEngineerType {
   UserInterface = 4,
   /** Product Manager 产品经理 */
   ProductManager = 5,
-};
+}
 
 export enum UserEducationType {
   /** 未知 */
@@ -82,10 +82,10 @@ export class UserStaff {
 
   @Column({ type: 'enum', enum: [0, 1, 2], default: 0 })
   sex: UserSexType;
-  
+
   @Column({ nullable: true })
   email: string;
-  
+
   @Column({ nullable: true })
   mobile: string;
 
@@ -109,25 +109,25 @@ export class UserStaff {
 
   @Column({ nullable: true, comment: '地区' })
   area: string;
-  
+
   @Column({ nullable: true, comment: '备注' })
   remarks: string;
-  
+
   @UpdateDateColumn()
   updateAt: Date;
-  
+
   @CreateDateColumn()
   createAt: Date;
 
   @DeleteDateColumn({ nullable: true })
   deleteAt: Date;
 
-  @Column({ type: 'timestamp',  nullable: true, comment: '入场时间'})
+  @Column({ type: 'timestamp', nullable: true, comment: '入场时间' })
   admissionAt: Date;
-  @Column({ type: 'timestamp',  nullable: true, comment: '离场时间'})
+  @Column({ type: 'timestamp', nullable: true, comment: '离场时间' })
   departureAt: Date;
-  @Column({ type: 'timestamp',  nullable: true, comment: '入职时间'})
+  @Column({ type: 'timestamp', nullable: true, comment: '入职时间' })
   entryAt: Date;
-  @Column({ type: 'timestamp',  nullable: true, comment: '离职时间'})
+  @Column({ type: 'timestamp', nullable: true, comment: '离职时间' })
   resignationAt: Date;
 }

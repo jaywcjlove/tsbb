@@ -7,7 +7,7 @@ import { expressApp } from './app';
 import { User } from './entity/User';
 import { getEntity } from './utils/entity';
 
-const env = dotenv.config()
+const env = dotenv.config();
 
 async function run() {
   try {
@@ -41,7 +41,6 @@ async function run() {
       );
     }
     await expressApp(connection.manager);
-
   } catch (error) {
     console.log('\x1b[31m ERR:MAIN: \x1b[0m');
     console.log(error);
