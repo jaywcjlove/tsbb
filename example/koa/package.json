@@ -1,6 +1,6 @@
 {
   "name": "@template/koa",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "private": true,
   "description": "Koa Example",
   "scripts": {
@@ -30,7 +30,7 @@
   "devDependencies": {
     "@types/koa": "2.13.4",
     "nodemon": "2.0.12",
-    "tsbb": "2.2.1"
+    "tsbb": "2.3.0"
   },
   "dependencies": {
     "koa": "2.13.1"
