@@ -57,4 +57,10 @@ export const publicOptions: IYargsOptions = {
     type: 'boolean',
     default: true,
   },
+  'babel-option': {
+    describe: 'Whether to prohibit the default babel option.',
+    type: 'string',
+    choices: ['defalut', 'none'],
+    default: 'defalut',
+  },
 };

@@ -11,6 +11,7 @@ async function transformFile(fileStat: IFileDirStat, args: IBuildArgs, cjsPath?:
     {
       envName: args.currentEnvName,
       outputPath,
+      babelOption: args.babelOption,
       sourceMaps: args.sourceMaps,
       comments: args.comments,
     },

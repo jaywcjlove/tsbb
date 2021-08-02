@@ -17,6 +17,8 @@ export interface IMyYargsArgs extends Arguments {
   copyFiles?: boolean;
   'source-maps'?: boolean | 'inline' | 'both' | 'none';
   sourceMaps?: boolean | 'inline' | 'both' | 'none';
+  'babel-option'?: 'defalut' | 'none';
+  babelOption?: 'defalut' | 'none';
   output?: string;
   o?: string;
   timer?: number;
