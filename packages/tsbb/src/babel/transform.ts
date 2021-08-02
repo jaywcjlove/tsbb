@@ -82,7 +82,6 @@ export default (filePath: string, options: ITransformOptions, targets: ITargets)
       sourceMaps: options.sourceMaps === 'none' ? false : options.sourceMaps,
       sourceFileName: path.relative(path.dirname(options.outputPath), filePath),
     } : {}
-    console.log(transformOptions)
     transformFile(
       filePath,
       {
