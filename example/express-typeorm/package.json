@@ -37,7 +37,7 @@
     "nodemon": "2.0.12",
     "ts-node": "10.1.0",
     "ts-node-dev": "1.1.8",
-    "tsbb": "2.3.1"
+    "tsbb": "2.3.0"
   },
   "dependencies": {
     "compression": "1.7.4",
