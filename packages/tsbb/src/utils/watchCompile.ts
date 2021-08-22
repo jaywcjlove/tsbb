@@ -12,7 +12,7 @@ export async function watchCompile(
   tsOptions: ts.CompilerOptions,
   options: WatchCompileOptions,
 ) {
-  const { useBabel = true, entry, cjs = 'lib', esm = 'esm', ...other } = options || {};
+  const { entry, cjs = 'lib', esm = 'esm', ...other } = options || {};
   const entryDir = path.dirname(entry);
   const compilerOptions: ts.CompilerOptions = {
     ...tsOptions,
@@ -36,21 +36,15 @@ export async function watchCompile(
         const output = filepath.replace(entryDir, esm);
         const result = ts.sys.readFile(filepath);
         outputFiles(output, result);
+        transform(filepath, { entryDir, esm, ...other });
       }
       if (cjs) {
         const output = filepath.replace(entryDir, cjs);
         const result = ts.sys.readFile(filepath);
         outputFiles(output, result);
-      }
-      return;
-    }
-    if (useBabel) {
-      if (esm) {
-        transform(filepath, { entryDir, esm, ...other });
-      }
-      if (cjs) {
         transform(filepath, { entryDir, cjs, ...other });
       }
+      return;
     }
   });
 
