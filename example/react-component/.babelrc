@@ -1,22 +1,6 @@
 {
   "env": {
     "cjs": {
-      "plugins": [
-        [
-          "babel-plugin-transform-remove-imports",
-          { "test": "(less|css)$" }
-        ]
-      ]
-    },
-    "esm": {
-      "plugins": [
-        [
-          "babel-plugin-transform-rename-import",
-          { "original": "^(.+?)\\.less$", "replacement": "$1.css" }
-        ]
-      ]
-    },
-    "esm:dev": {
       "presets": [
         "@babel/preset-react",
         [
@@ -24,34 +8,33 @@
           {
             "modules": false,
             "targets": {
-              "browsers": [ "last 2 versions" ]
+              "browsers": ["last 2 versions"]
             },
             "transformRuntime": {
               "useESModules": true
             }
           }
         ]
-      ]
-    },
-    "umd": {
-      "presets": [
-        "@tsbb/babel-preset-tsbb",
-        "@babel/preset-react"
       ],
-      "plugins": [
+      "plugins": [["babel-plugin-transform-remove-imports", { "test": "(less|css)$" }]]
+    },
+    "esm": {
+      "presets": [
+        "@babel/preset-react",
         [
-          "babel-plugin-transform-remove-imports",
+          "@tsbb/babel-preset-tsbb",
           {
-            "test": "(less|css)$"
-          }
-        ],
-        [
-          "@babel/plugin-transform-modules-umd",
-          {
-            "exactGlobals": true
+            "modules": false,
+            "targets": {
+              "browsers": ["last 2 versions"]
+            },
+            "transformRuntime": {
+              "useESModules": true
+            }
           }
         ]
-      ]
+      ],
+      "plugins": [["babel-plugin-transform-rename-import", { "original": "^(.+?)\\.less$", "replacement": "$1.css" }]]
     }
   }
 }

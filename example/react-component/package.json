@@ -3,27 +3,22 @@
   "version": "2.3.1",
   "private": true,
   "description": "React Component Example.",
-  "author": "",
-  "main": "lib/cjs/index.js",
-  "module": "lib/esm/index.js",
-  "typings": "lib/cjs/index.d.ts",
   "scripts": {
-    "watch": "npm run watch:ts -- --env-name esm:dev --env-name cjs",
-    "build": "npm run build:ts & npm run css:build & npm run css:build:dist",
-    "watch:ts": "tsbb watch --target react",
-    "build:ts": "tsbb build --target react",
-    "build:umd": "tsbb build --target react --env-name umd",
-    "css:build": "compile-less -d src -o lib/esm",
-    "css:watch": "compile-less -d src -o lib/esm --watch",
+    "watch": "npm run watch:ts",
+    "build": "npm run build:ts",
+    "watch:ts": "tsbb watch",
+    "build:ts": "tsbb build",
+    "css:build": "compile-less -d src -o esm",
+    "css:watch": "compile-less -d src -o esm --watch",
     "css:build:dist": "compile-less -d src --combine dist/markdown-editor.css --rm-global",
     "test": "tsbb test --env=jsdom",
     "coverage": "tsbb test --env=jsdom --coverage",
-    "doc:dev": "NODE_ENV=development parcel website/index.html --out-dir doc --no-cache",
+    "doc:dev": "NODE_ENV=development parcel watch website/index.html --dist-dir doc --no-cache",
     "doc": "NODE_ENV=production parcel build website/index.html --out-dir doc --public-url ./ --no-cache --no-source-maps"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jaywcjlove/tsbb/tree/master/example/basic"
+    "url": "https://github.com/jaywcjlove/tsbb/tree/master/example/react-component"
   },
   "files": [
     "typings",
@@ -31,6 +26,7 @@
   ],
   "keywords": [],
   "license": "MIT",
+  "source": "src/index.js",
   "peerDependencies": {
     "react": ">=16.7.0",
     "react-dom": ">=16.7.0"
@@ -39,15 +35,17 @@
     "@babel/plugin-transform-modules-umd": "7.14.5",
     "@babel/plugin-transform-runtime": "7.14.5",
     "@babel/runtime": "7.14.6",
+    "@parcel/transformer-less": "2.0.0-rc.0",
     "babel-plugin-transform-remove-imports": "1.5.5",
     "babel-plugin-transform-rename-import": "2.3.0",
-    "compile-less-cli": "1.8.0",
+    "compile-less-cli": "1.8.1",
     "less": "4.1.1",
-    "parcel-bundler": "1.12.5",
+    "parcel": "2.0.0-rc.0",
     "react-test-renderer": "17.0.2",
     "tsbb": "2.3.1"
   },
   "dependencies": {
+    "@parcel/transformer-react-refresh-wrap": "2.0.0-alpha.3",
     "classnames": "2.3.1",
     "react": "17.0.2",
     "react-dom": "17.0.2"

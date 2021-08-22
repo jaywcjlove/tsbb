@@ -4,37 +4,73 @@
   "license": "MIT",
   "scripts": {
     "build:basic": "lerna exec \"npm run build\" --scope @template/basic",
+    "watch:basic": "lerna exec \"npm run watch\" --scope @template/basic",
     "test:basic": "lerna exec \"npm run coverage\" --scope @template/basic",
     "build:express": "lerna exec \"npm run build\" --scope @template/express",
-    "build:hapi": "lerna exec \"npm run build\" --scope @template/hapi",
-    "build:react-component": "lerna exec \"npm run build && npm run doc\" --scope @template/react-component --stream",
-    "build:react-component-tsx": "lerna exec \"npm run build\" --scope @template/react-component-tsx",
+    "watch:express": "lerna exec \"npm run watch\" --scope @template/express",
     "build:express-typeorm": "lerna exec \"npm run build\" --scope @template/express-typeorm",
+    "watch:express-typeorm": "lerna exec \"npm run watch\" --scope @template/express-typeorm",
+    "build:hapi": "lerna exec \"npm run build\" --scope @template/hapi",
+    "watch:hapi": "lerna exec \"npm run watch\" --scope @template/hapi",
+    "build:koa": "lerna exec \"npm run build\" --scope @template/koa",
+    "watch:koa": "lerna exec \"npm run watch\" --scope @template/koa",
+    "build:transform-typescript": "lerna exec \"npm run build\" --scope @template/transform-typescript",
+    "watch:transform-typescript": "lerna exec \"npm run watch\" --scope @template/transform-typescript",
+    "build:react-component": "lerna exec \"npm run build\" --scope @template/react-component",
+    "watch:react-component": "lerna exec \"npm run watch\" --scope @template/react-component",
+    "start:react-component": "lerna exec \"npm run doc:dev\" --scope @template/react-component",
+    "build:react-component-tsx": "lerna exec \"npm run build\" --scope @template/react-component-tsx",
     "watch": "lerna exec \"tsc -p ./ --types --outDir lib --watch\" --scope tsbb",
     "build": "lerna exec \"tsc -p ./ --types --outDir lib\" --scope create-tsbb --scope tsbb --stream",
     "type-check": "lerna exec \"tsc --noEmit\" --scope create-tsbb --scope tsbb --stream",
-    "hoist": "lerna bootstrap --hoist",
-    "bootstrap": "lerna bootstrap",
     "clean": "lerna clean --yes",
     "pretty-quick": "pretty-quick",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
     "version": "lerna version --no-changelog --no-git-tag-version --no-push --yes",
     "publish": "lerna publish from-package"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
-  },
   "dependencies": {
-    "husky": "4.3.8",
+    "husky": "7.0.1",
     "lerna": "4.0.0",
     "prettier": "2.3.2",
     "pretty-quick": "3.1.1",
     "typescript": "4.3.5"
   },
-  "workspaces": [
-    "packages/tsbb",
-    "packages/create-tsbb"
-  ]
+  "workspaces": {
+    "packages": [
+      "example/*",
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/@babel/preset-env",
+      "**/tsbb",
+      "**/tsbb/**",
+      "**/parcel",
+      "**/parcel/**",
+      "**/@parcel",
+      "**/@parcel/**",
+      "**/@types",
+      "**/@types/**",
+      "**/create-kkt",
+      "**/create-kkt/**",
+      "**/react",
+      "**/react/**",
+      "**/react*",
+      "**/react*/**",
+      "**/react-dom",
+      "**/react-dom/**",
+      "**/recursive-readdir-files",
+      "**/jest",
+      "**/jest/**",
+      "babel-plugin-add-module-exports",
+      "**/babel-*",
+      "**/babel-*/**",
+      "**/@babel*",
+      "**/@babel*/**",
+      "**/@babel/*",
+      "**/@@babel/preset-*",
+      "**/@babel",
+      "**/@babel/**"
+    ]
+  }
 }

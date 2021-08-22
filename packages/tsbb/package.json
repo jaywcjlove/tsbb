@@ -2,23 +2,16 @@
   "name": "tsbb",
   "version": "2.3.1",
   "description": "TSBB is a zero-config CLI that helps you develop, test, and publish modern TypeScript project.",
-  "typings": "lib/index.d.ts",
+  "author": "kenny wang <wowohoo@qq.com>",
+  "license": "MIT",
   "bin": {
-    "tsbb": "./lib/command/tsbb.js"
+    "tsbb": ".bin/tsbb"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/jaywcjlove/tsbb.git"
   },
   "homepage": "https://github.com/jaywcjlove/tsbb",
-  "scripts": {
-    "type-check": "tsc --noEmit",
-    "build": "npm run tsc",
-    "start": "npm run tsc -- --watch",
-    "tsc": "tsc -p ./ --types --outDir lib",
-    "test": "node lib/command/tsbb.js test",
-    "coverage": "node lib/command/tsbb.js test --coverage"
-  },
   "files": [
     "lib",
     "src"
@@ -29,40 +22,34 @@
     "react",
     "node.js"
   ],
-  "author": "kenny wang <wowohoo@qq.com>",
-  "license": "MIT",
-  "jest": {
-    "testMatch": [
-      "<rootDir>/**/__tests__/**/*.{ts,tsx}",
-      "<rootDir>/**/(*.)(spec|test).{ts,tsx}"
-    ],
-    "modulePathIgnorePatterns": [
-      "[/\\\\](node_modules|example)[/\\\\].+\\.(js|jsx|ts|tsx)$"
-    ]
-  },
   "dependencies": {
-    "@babel/core": "7.14.6",
-    "@jest/types": "27.0.2",
-    "@tsbb/babel-preset-tsbb": "1.14.2",
-    "@types/graceful-fs": "4.1.5",
-    "@types/node": "15.6.1",
-    "babel-jest": "27.0.2",
+    "@babel/plugin-proposal-export-default-from": "7.14.5",
+    "@babel/plugin-proposal-class-properties": "7.14.5",
+    "@babel/plugin-proposal-decorators": "7.14.5",
+    "@babel/plugin-transform-runtime": "7.15.0",
+    "@babel/preset-env": "7.15.0",
+    "@babel/preset-typescript": "7.15.0",
+    "@babel/preset-react": "7.14.5",
+    "@babel/core": "7.15.0",
+    "@types/babel__core": "7.1.15",
+    "@types/fs-extra": "9.0.12",
+    "@types/yargs-parser": "20.2.1",
+    "@types/semver": "7.3.8",
+    "@types/node": "16.6.1",
+    "@types/jest": "27.0.1",
     "babel-plugin-transform-typescript-metadata": "0.3.2",
+    "babel-plugin-add-module-exports": "1.0.4",
     "camelcase": "6.2.0",
     "chalk": "4.1.1",
     "chokidar": "3.5.2",
     "execa": "5.1.1",
     "fs-extra": "10.0.0",
     "identity-obj-proxy": "3.0.0",
-    "jest": "27.0.4",
+    "jest": "27.0.6",
+    "recursive-readdir-files": "1.0.3",
     "ora": "5.4.1",
     "semver": "7.3.5",
     "typescript": "4.3.5",
-    "yargs": "17.0.1"
-  },
-  "devDependencies": {
-    "@types/babel__core": "7.1.14",
-    "@types/fs-extra": "9.0.12",
-    "@types/yargs": "17.0.2"
+    "yargs-parser": "20.2.9"
   }
 }

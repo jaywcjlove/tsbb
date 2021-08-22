@@ -7,10 +7,8 @@
     "start": "npm run build && node lib/app.js",
     "tsnd": "ts-node-dev --inspect -- src/app.ts",
     "dev": "npm run build && nodemon --inspect lib/app.js",
-    "types": "tsbb types",
-    "types:watch": "tsbb types --watch",
-    "watch": "tsbb watch --timer 200",
-    "build": "tsbb build",
+    "watch": "tsbb watch --entry ./src/app.ts --no-esm",
+    "build": "tsbb build --entry ./src/app.ts --no-esm",
     "test": "tsbb test",
     "coverage": "tsbb test --coverage"
   },

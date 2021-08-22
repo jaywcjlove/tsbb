@@ -4,8 +4,6 @@ on:
     branches:
       - master
       - v2
-    tags:
-      - v*
 env:
   SKIP_PREFLIGHT_CHECK: true
 jobs:
@@ -18,7 +16,7 @@ jobs:
         node-version: 14
 
     - name: Look Changelog
-      uses: jaywcjlove/changelog-generator@v1.4.2
+      uses: jaywcjlove/changelog-generator@v1.4.3
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         filter-author: (jaywcjlove|小弟调调™|dependabot\[bot\]|Renovate Bot|renovate\-bot)
@@ -73,7 +71,7 @@ jobs:
 
     - name: Generate Changelog
       id: changelog
-      uses: jaywcjlove/changelog-generator@v1.4.2
+      uses: jaywcjlove/changelog-generator@v1.4.3
       if: steps.create_tag.outputs.successful
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
@@ -202,6 +200,6 @@ jobs:
         publish_branch: gh-pages
         publish_dir: ./zip
 
-    - run: npm install @jsdevtools/npm-publish
-    - run: ./node_modules/.bin/npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/tsbb/package.json
-    - run: ./node_modules/.bin/npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/create-tsbb/package.json
+    - run: npm install @jsdevtools/npm-publish -g
+    - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/tsbb/package.json
+    - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/create-tsbb/package.json
