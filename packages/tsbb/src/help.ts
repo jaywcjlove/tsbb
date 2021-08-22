@@ -26,4 +26,6 @@ export function help() {
   console.log('   --version, -v                      Show version number');
   console.log('   --help, -h                         Show help');
   console.log();
+  console.log(' Copyright 2021');
+  console.log();
 }

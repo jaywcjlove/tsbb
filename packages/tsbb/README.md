@@ -91,160 +91,141 @@ You can download the following examples directly. [Download page](https://jaywcj
 
 Below is a help of commands you might find useful.
 
-[create](#tsbb-create) · [watch](#tsbb-watch) · [build](#tsbb-build) · [types](#tsbb-types) · [test](#tsbb-test)
-
 ### `tsbb`
 
 ```shell
 ▶ tsbb --help
-Usage: tsbb [options]
+
+Usage: tsbb <command>
+Version 2.3.1
 
 Commands:
-  tsbb build [options]                  Build your project once and exit.
-  tsbb watch [options]                  Recompile files on changes.
-  tsbb types [options]                  Create type files for the project.
-  tsbb test [options]                   Run jest test runner in watch mode.
 
-Options:
-  --version  Show version number                                       [boolean]
-  --help     Show help                                                 [boolean]
+  tsbb build [options]                Build your project once and exit.
+  tsbb watch [options]                Recompile files on changes.
+  tsbb test [options]                 Run jest test runner in watch mode.
 
 Examples:
 
-  $ tsbb build            Build your project once and exit.
-  $ tsbb watch            Rebuilds on any change.
-  $ tsbb test             Run test suites related.
-  $ tsbb test --coverage  Test coverage information should be collected
+  $ tsbb build                         Build your project.
+  $ tsbb build --entry src/index.ts    Specify the entry directory.
+  $ tsbb build --esm ./es              Output directory.
+  $ tsbb watch --disableBabelOption    Disable Babel Option.
+  $ tsbb watch --cjs ./cjs             Watch Output directory.
+  $ tsbb test                          Run test suites related
+  $ tsbb test --coverage               Test coverage information should be collected
 
-Copyright 2019
+Options:
+
+  --version, -v                      Show version number
+  --help, -h                         Show help
+
+Copyright 2021
 ```
 
 ### ~~`tsbb create`~~
 
 Please use [create-tsbb](https://github.com/jaywcjlove/tsbb/tree/master/packages/create-tsbb) to create an example.
 
-```shell
-$ yarn create tsbb [appName]
-# or npm
-$ npm create tsbb my-app
-# or npx
-$ npx create-tsbb my-app
-```
-
-### `tsbb build`
-
-```shell
-▶ tsbb build --help
-tsbb build [options]
-
-Build your project once and exit.
-
-Options:
-  --version          Show version number                               [boolean]
-  --help, -h         Show help.                                        [boolean]
-  --source-root, -s  The root from which all sources are relative.
-                                                       [string] [default: "src"]
-  --copy-files       When compiling a directory copy over non-compilable files.
-                                                       [boolean] [default: true]
-  --source-maps      Source Map options.
-              [string] [choices: true, "inline", "both", "none"] [default: true]
-  --output, -o       Output directory.                 [string] [default: "lib"]
-  --target           Specify your target environment.
-                           [string] [choices: "react", "node"] [default: "node"]
-  --env-name         The name of the 'env' to use when loading configs and
-                     plugins. Defaults to the value of 'cjs esm'..
-                                                [array] [default: ["cjs","esm"]]
-  --comments         decide whether a given comment should be included in the
-                     output code.                      [boolean] [default: true]
-
-Examples:
-  $ tsbb build                Build your project.
-  $ tsbb build --no-comments  Build your project and remove the comments.
-```
-
-### `tsbb watch`
-
-```shell
-▶ tsbb watch --help
-tsbb watch [options]
-
-Recompile files on changes.
-
-Options:
-  --version          Show version number                               [boolean]
-  --help, -h         Show help.                                        [boolean]
-  --source-root, -s  The root from which all sources are relative.
-                                                       [string] [default: "src"]
-  --copy-files       When compiling a directory copy over non-compilable files.
-                                                       [boolean] [default: true]
-  --source-maps      Source Map options.
-              [string] [choices: true, "inline", "both", "none"] [default: true]
-  --output, -o       Output directory.                 [string] [default: "lib"]
-  --target           Specify your target environment.
-                           [string] [choices: "react", "node"] [default: "node"]
-  --env-name         The name of the 'env' to use when loading configs and
-                     plugins. Defaults to the value of 'cjs esm'..
-                                                [array] [default: ["cjs","esm"]]
-  --comments         decide whether a given comment should be included in the
-                     output code.                      [boolean] [default: true]
-  --timer, -t        Compile interval.                   [number] [default: 300]
-
-Examples:
-  $ tsbb watch   Rebuilds on any change.
-```
-
 ### `tsbb test`
 
-Runs the test watcher (Jest) in an interactive mode.
+Runs the test watcher ([Jest](https://jestjs.io/docs/cli)) in an interactive mode.
 
 ```shell
-▶ tsbb test --help
-tsbb test [options]
-
-Run jest test runner in watch mode.
-
-Options:
-  --version   Show version number                                      [boolean]
-  --help, -h  Show help.                                               [boolean]
-  --coverage  Indicates that test coverage information should be collected and
-              reported in the output.                 [boolean] [default: false]
-  --env       The test environment used for all tests.[string] [default: "node"]
-  --config    The path to a Jest config file specifying how to find and execute
-              tests.                                                    [string]
-
-Examples:
-  $ tsbb test             Run test suites related
-  $ tsbb test --coverage  Test coverage information should be collected
+$ tsbb test                          Run test suites related
+$ tsbb test --coverage --no-color    Test coverage information should be collected
 ```
 
-### `tsbb types`
-
-```shell
-▶ tsbb types --help
-tsbb types [options]
-
-Create type files for the project.
-
-Options:
-  --version                Show version number                         [boolean]
-  --help, -h               Show help.                                  [boolean]
-  --project                Compile the project given the path to its
-                           configuration file, or to a folder with a
-                           'tsconfig.json'.             [string] [default: "./"]
-  --out-dir                Redirect output structure to the directory.
-                                                       [string] [default: "lib"]
-  --target                 Specify ECMAScript target version.
-        [string] [choices: "ES3", "ES5", "ES2015", "ES2016", "ES2017", "ES2018",
-                                         "ES2019", "ESNEXT"] [default: "ES2015"]
-  --watch                  Watch input files.         [boolean] [default: false]
-  --emit-declaration-only  to enable declarations only output
-                                                       [boolean] [default: true]
-  --tsconf                 TypeScript other options.                    [string]
-
-Examples:
-  $ tsbb types          Create types your project.
-  $ tsbb types --watch  Create type files for the project And to run in --watch
-                        mode.
+```ts
+export declare type Argv = Arguments<Partial<{
+  all: boolean;
+  automock: boolean;
+  bail: boolean | number;
+  cache: boolean;
+  cacheDirectory: string;
+  changedFilesWithAncestor: boolean;
+  changedSince: string;
+  ci: boolean;
+  clearCache: boolean;
+  clearMocks: boolean;
+  collectCoverage: boolean;
+  collectCoverageFrom: string;
+  collectCoverageOnlyFrom: Array<string>;
+  color: boolean;
+  colors: boolean;
+  config: string;
+  coverage: boolean;
+  coverageDirectory: string;
+  coveragePathIgnorePatterns: Array<string>;
+  coverageReporters: Array<string>;
+  coverageThreshold: string;
+  debug: boolean;
+  env: string;
+  expand: boolean;
+  findRelatedTests: boolean;
+  forceExit: boolean;
+  globals: string;
+  globalSetup: string | null | undefined;
+  globalTeardown: string | null | undefined;
+  haste: string;
+  init: boolean;
+  injectGlobals: boolean;
+  json: boolean;
+  lastCommit: boolean;
+  logHeapUsage: boolean;
+  maxWorkers: number | string;
+  moduleDirectories: Array<string>;
+  moduleFileExtensions: Array<string>;
+  moduleNameMapper: string;
+  modulePathIgnorePatterns: Array<string>;
+  modulePaths: Array<string>;
+  noStackTrace: boolean;
+  notify: boolean;
+  notifyMode: string;
+  onlyChanged: boolean;
+  onlyFailures: boolean;
+  outputFile: string;
+  preset: string | null | undefined;
+  projects: Array<string>;
+  prettierPath: string | null | undefined;
+  resetMocks: boolean;
+  resetModules: boolean;
+  resolver: string | null | undefined;
+  restoreMocks: boolean;
+  rootDir: string;
+  roots: Array<string>;
+  runInBand: boolean;
+  selectProjects: Array<string>;
+  setupFiles: Array<string>;
+  setupFilesAfterEnv: Array<string>;
+  showConfig: boolean;
+  silent: boolean;
+  snapshotSerializers: Array<string>;
+  testEnvironment: string;
+  testFailureExitCode: string | null | undefined;
+  testMatch: Array<string>;
+  testNamePattern: string;
+  testPathIgnorePatterns: Array<string>;
+  testPathPattern: Array<string>;
+  testRegex: string | Array<string>;
+  testResultsProcessor: string;
+  testRunner: string;
+  testSequencer: string;
+  testURL: string;
+  testTimeout: number | null | undefined;
+  timers: string;
+  transform: string;
+  transformIgnorePatterns: Array<string>;
+  unmockedModulePathPatterns: Array<string> | null | undefined;
+  updateSnapshot: boolean;
+  useStderr: boolean;
+  verbose: boolean;
+  version: boolean;
+  watch: boolean;
+  watchAll: boolean;
+  watchman: boolean;
+  watchPathIgnorePatterns: Array<string>;
+}>>;
 ```
 
 ## License
