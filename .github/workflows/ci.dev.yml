@@ -21,8 +21,7 @@ jobs:
         filter-author: (jaywcjlove|小弟调调™|dependabot\[bot\]|Renovate Bot|renovate\-bot)
         filter: '[R|r]elease[d]\s+[v|V]\d(\.\d+){0,2}'
 
-    - run: npm install
-    - run: npm run hoist
+    - run: yarn install
     - run: npm run build
 
     - name: example @example/basic
