@@ -12,7 +12,7 @@ export async function compile(
   tsOptions: ts.CompilerOptions = {},
   options: CompileOptions,
 ): Promise<void> {
-  const { useBabel = true, entry, cjs = 'lib', esm = 'esm', ...other } = options || {};
+  const { entry, cjs = 'lib', esm = 'esm', ...other } = options || {};
   const outDir = path.resolve(process.cwd(), tsOptions.outDir || 'lib');
   const entryDir = path.dirname(entry);
   return new Promise(async (resolve, reject) => {

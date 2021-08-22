@@ -8,8 +8,6 @@ export interface BuildOptions extends Arguments {
    * @default `src/index.ts`
    */
   entry?: string;
-  /** Use Bebel to convert JS/TS */
-  useBabel?: boolean;
   /** Disable Babel Option */
   disableBabelOption?: boolean;
   /**
