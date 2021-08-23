@@ -38,6 +38,7 @@
     "@parcel/transformer-less": "2.0.0-rc.0",
     "babel-plugin-transform-remove-imports": "1.5.5",
     "babel-plugin-transform-rename-import": "2.3.0",
+    "@tsbb/babel-preset-tsbb": "1.14.2",
     "compile-less-cli": "1.8.1",
     "less": "4.1.1",
     "parcel": "2.0.0-rc.0",
