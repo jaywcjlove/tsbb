@@ -13,8 +13,8 @@
     "css:build:dist": "compile-less -d src --combine dist/markdown-editor.css --rm-global",
     "test": "tsbb test --env=jsdom",
     "coverage": "tsbb test --env=jsdom --coverage",
-    "doc:dev": "NODE_ENV=development parcel watch website/index.html --dist-dir doc --no-cache",
-    "doc": "NODE_ENV=production parcel build website/index.html --out-dir doc --public-url ./ --no-cache --no-source-maps"
+    "doc:dev": "parcel watch website/index.html --dist-dir doc --no-cache",
+    "doc": "parcel build website/index.html --dist-dir doc --public-url ./ --no-cache"
   },
   "repository": {
     "type": "git",

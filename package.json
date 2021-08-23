@@ -72,5 +72,8 @@
       "**/@babel",
       "**/@babel/**"
     ]
+  },
+  "devDependencies": {
+    "@parcel/transformer-less": "2.0.0-rc.0"
   }
 }
