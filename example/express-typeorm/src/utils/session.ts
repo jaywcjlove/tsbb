@@ -6,11 +6,12 @@ import { Session } from '../entity/Session';
 export function createSession() {
   // Create Session
   const repository = getConnection().getRepository(Session);
+  const store = new TypeormStore({ repository });
   return session({
     secret: 'secret',
     resave: false,
     saveUninitialized: false,
-    store: new TypeormStore({ repository }),
+    store: store as any,
     cookie: {
       httpOnly: false, // key
       // maxAge: null,

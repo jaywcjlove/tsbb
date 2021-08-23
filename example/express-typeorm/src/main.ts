@@ -1,3 +1,4 @@
+/// <reference path="./types/global.d.ts" />
 import 'reflect-metadata';
 import dotenv from 'dotenv';
 import crypto from 'crypto';
