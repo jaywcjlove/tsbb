@@ -12,14 +12,15 @@ export async function compile(
   tsOptions: ts.CompilerOptions = {},
   options: CompileOptions,
 ): Promise<void> {
-  const { entry, cjs = 'lib', esm = 'esm', ...other } = options || {};
-  const outDir = path.resolve(process.cwd(), tsOptions.outDir || 'lib');
+  let { entry, cjs = tsOptions.outDir || 'lib', esm = 'esm', ...other } = options || {};
+  const outDir = path.resolve(process.cwd(), tsOptions.outDir || cjs);
   const entryDir = path.dirname(entry);
+  cjs = path.relative(ts.sys.getCurrentDirectory(), cjs);
   return new Promise(async (resolve, reject) => {
     try {
       await FS.remove(outDir);
       const dirToFiles = await recursiveReaddirFiles(path.dirname(entry), {
-        exclude: /\.(d\.ts)$/,
+        exclude: /(tsconfig.json)$/,
       });
       await Promise.all(
         dirToFiles.map(async (item) => {

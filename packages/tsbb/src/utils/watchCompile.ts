@@ -12,8 +12,9 @@ export async function watchCompile(
   tsOptions: ts.CompilerOptions,
   options: WatchCompileOptions,
 ) {
-  const { entry, cjs = 'lib', esm = 'esm', ...other } = options || {};
+  let { entry, cjs = tsOptions.outDir || 'lib', esm = 'esm', ...other } = options || {};
   const entryDir = path.dirname(entry);
+  cjs = path.relative(ts.sys.getCurrentDirectory(), cjs);
   const compilerOptions: ts.CompilerOptions = {
     ...tsOptions,
     outDir: cjs || esm,

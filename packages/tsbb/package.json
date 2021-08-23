@@ -1,6 +1,6 @@
 {
   "name": "tsbb",
-  "version": "2.3.1",
+  "version": "3.0.0-rc.3",
   "description": "TSBB is a zero-config CLI that helps you develop, test, and publish modern TypeScript project.",
   "author": "kenny wang <wowohoo@qq.com>",
   "license": "MIT",
