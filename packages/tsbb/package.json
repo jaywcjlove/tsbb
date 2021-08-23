@@ -13,6 +13,7 @@
   },
   "homepage": "https://github.com/jaywcjlove/tsbb",
   "files": [
+    ".bin",
     "lib",
     "src"
   ],
