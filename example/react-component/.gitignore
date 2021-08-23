@@ -2,10 +2,12 @@
 # Edit at https://www.gitignore.io/?templates=node
 
 lib
+esm
 doc
 dist
 package-lock.json
 __snapshots__
+.parcel-cache
 
 ### Node ###
 # Logs

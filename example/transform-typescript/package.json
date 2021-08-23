@@ -5,11 +5,8 @@
   "description": "Transform Typescript Example.",
   "scripts": {
     "start": "node lib/index.js",
-    "watch": "npm run watch:ts",
-    "watch:ts": "tsbb watch --babel-option=none & npm run build:types -- --watch",
-    "build": "npm run build:ts && npm run build:types",
-    "build:ts": "tsbb build --babel-option=none",
-    "build:types": "tsbb types",
+    "watch": "tsbb watch --disable-babel-option --no-esm",
+    "build": "tsbb build --disable-babel-option --no-esm",
     "test": "tsbb test",
     "coverage": "tsbb test --coverage"
   },
@@ -22,6 +19,5 @@
   "license": "MIT",
   "devDependencies": {
     "tsbb": "2.3.1"
-  },
-  "author": ""
+  }
 }

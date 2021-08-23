@@ -1,94 +1,109 @@
-import fs from 'fs-extra';
 import path from 'path';
-import { IFileDirStat } from '../utils/getFileDirectory';
-import transform from './transform';
-import { IBuildArgs } from '../build';
+import semver from 'semver';
+import { transformFile, BabelFileResult, TransformOptions, loadOptions } from '@babel/core';
+import { outputFiles } from '../utils/output';
+import { BuildOptions } from '../build';
 
-async function transformFile(fileStat: IFileDirStat, args: IBuildArgs, cjsPath?: string) {
-  let outputPath = cjsPath || fileStat.outputPath;
-  const source = await transform(
-    fileStat.path,
-    {
-      envName: args.currentEnvName,
-      outputPath,
-      babelOption: args.babelOption,
-      sourceMaps: args.sourceMaps,
-      comments: args.comments,
-    },
-    args.target,
-  );
-  if (args.sourceMaps === true && source.map) {
-    source.code = `${source.code} \n//# sourceMappingURL=${fileStat.name.replace(
-      new RegExp(`.${fileStat.ext}$`, 'g'),
-      '.js.map',
-    )}`;
-    await fs.outputFile(outputPath.replace(/.(js|jsx)$/, '.js.map'), JSON.stringify(source.map));
-  }
-  if (/.jsx$/.test(outputPath)) {
-    outputPath = outputPath.replace(/.jsx$/g, '.js');
-  }
-  await fs.outputFile(outputPath, source.code);
-  console.log(
-    `♻️  \x1b[32;1m${path.basename(source.options.root)}\x1b[0m -> ${path.relative(
-      source.options.root,
-      fileStat.path,
-    )} -> \x1b[32;1m${path.relative(source.options.root, outputPath)}\x1b[0m`,
-  );
-  return source;
+interface TransformHandleOptions extends Omit<BuildOptions, '_'>, BabelFileResult {}
+interface TransformBabelFileResult extends BabelFileResult {
+  options: TransformOptions;
 }
 
-export default async (files: IFileDirStat[], args: IBuildArgs) => {
-  await Promise.all(
-    files.map(async (item: IFileDirStat) => {
-      // Exclude test files from the project directory.
-      // TypeScript `配置文件` 和 `类型文件`
-      if (
-        /\.test\.(ts|tsx|js|jsx)$/.test(item.path) ||
-        /\.(snap)$/.test(item.path) ||
-        /(tsconfig\.json)$/.test(item.path)
-      ) {
-        return item;
+/**
+ * @param filename `/basic/src/utils/a/a.ts`
+ */
+export function transform(filename: string, options?: TransformHandleOptions): Promise<TransformBabelFileResult> {
+  const { cjs, esm, entryDir, disableBabelOption, envName } = options;
+  const outputDir = filename.replace(entryDir, cjs || esm);
+  const sourceFileName = path.join(
+    path.relative(path.dirname(outputDir), path.dirname(filename)),
+    path.basename(filename),
+  );
+  let babelOptions: TransformOptions = {
+    presets: [require.resolve('@babel/preset-react'), require.resolve('@babel/preset-typescript')],
+    sourceMaps: true,
+    sourceFileName,
+    plugins: [
+      require.resolve('@babel/plugin-syntax-dynamic-import'),
+      require.resolve('babel-plugin-add-module-exports'),
+      require.resolve('babel-plugin-transform-typescript-metadata'),
+      [require.resolve('@babel/plugin-proposal-decorators'), { legacy: true }],
+      [require.resolve('@babel/plugin-proposal-class-properties'), { loose: true }],
+    ],
+  };
+
+  if (!babelOptions.envName) {
+    babelOptions.envName = process.env.BABEL_ENV;
+  }
+
+  if (cjs) {
+    babelOptions.presets.push([
+      require.resolve('@babel/preset-env'),
+      {
+        loose: true,
+      },
+    ]);
+    babelOptions.envName = 'cjs';
+    babelOptions.plugins.push([
+      require.resolve('@babel/plugin-transform-runtime'),
+      {
+        useESModules: false,
+        loose: false,
+        modules: 'cjs',
+        // https://github.com/babel/babel/issues/10261#issuecomment-549940457
+        version: require('@babel/helpers/package.json').version,
+      },
+    ]);
+  }
+
+  if (esm) {
+    const runtimeVersion = semver.clean(require('@babel/runtime/package.json').version);
+    babelOptions.presets.push([
+      require.resolve('@babel/preset-env'),
+      {
+        modules: false,
+        loose: true,
+      },
+    ]);
+    babelOptions.envName = 'esm';
+    const transformRuntime = {
+      useESModules: true,
+      loose: false,
+      modules: 'auto',
+      // https://github.com/babel/babel/issues/10261#issuecomment-549940457
+      version: require('@babel/helpers/package.json').version,
+    };
+    if (!semver.gte(runtimeVersion, '7.13.0')) {
+      transformRuntime.useESModules = !semver.gte(runtimeVersion, '7.13.0');
+    }
+    babelOptions.plugins.push([require.resolve('@babel/plugin-transform-runtime'), transformRuntime]);
+  }
+  if (envName) {
+    babelOptions = {};
+    loadOptions({ envName: envName });
+  }
+  if (disableBabelOption) {
+    babelOptions = {};
+  }
+  return new Promise((resolve, reject) => {
+    transformFile(filename, babelOptions, (err: Error, result: TransformBabelFileResult) => {
+      if (err) {
+        return reject(err);
       }
       try {
-        if (args.target === 'node') {
-          if ((!/\.(tsx|ts|js|jsx)$/.test(item.path) || /\.(d.ts)$/.test(item.path)) && args.copyFiles) {
-            let outputPath = item.outputPath;
-            if (/\.(d.ts)$/.test(item.path)) {
-              outputPath = outputPath.replace(/\.d\.js$/, '.d.ts');
-            }
-            await fs.copy(item.path, outputPath);
-            return item;
-          }
-          await transformFile(item, args);
-        } else if (args.target === 'react' && args.envName && args.envName.length > 0) {
-          await Promise.all(
-            args.envName.map(async (envName: string) => {
-              /**
-               * If `target=react`, the babel environment variable supports development mode.
-               */
-              const env = envName.split(':');
-              let envDirName = envName;
-              if (env.length > 1 && env[1] === 'dev') {
-                envDirName = env[0];
-              }
-              let envPath = path.join(args.output, envDirName, item.outputPath.replace(args.output, ''));
-              if ((!/\.(tsx|ts|js|jsx)$/.test(item.path) || /\.(d.ts)$/.test(item.path)) && args.copyFiles) {
-                if (/\.(d.ts)$/.test(item.path)) {
-                  envPath = envPath.replace(/\.d\.js$/, '.d.ts');
-                }
-                await fs.copy(item.path, envPath);
-                return item;
-              }
-              args.currentEnvName = envName;
-              await transformFile(item, args, envPath);
-            }),
-          );
+        const output = result.options.filename
+          .replace(entryDir, cjs || esm)
+          .replace(/\.(ts|tsx)$/, '.js')
+          .replace(/\.jsx$/, '.js');
+        if (!babelOptions.sourceMaps) {
+          outputFiles(output, result.code, result.map);
         } else {
-          console.log('⛑', 'The `--target` and `--env-name` parameters do not exist!');
+          outputFiles(output, `${result.code}\n//# sourceMappingURL=${path.parse(output).base}.map`, result.map);
         }
       } catch (error) {
-        console.log('⛑', error.message, error);
+        return reject(error);
       }
-    }),
-  );
-};
+      resolve(result);
+    });
+  });
+}

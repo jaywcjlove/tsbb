@@ -2,7 +2,8 @@ import 'reflect-metadata';
 import dotenv from 'dotenv';
 import crypto from 'crypto';
 import { createDatabase } from 'typeorm-extension';
-import { createConnection, ConnectionOptions, getRepository } from 'typeorm';
+import { createConnection, getRepository } from 'typeorm';
+import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
 import { expressApp } from './app';
 import { User } from './entity/User';
 import { getEntity } from './utils/entity';
@@ -12,7 +13,8 @@ const env = dotenv.config();
 async function run() {
   try {
     const entities = await getEntity();
-    const options: ConnectionOptions = {
+    if (!env.parsed) env.parsed = {};
+    const options: PostgresConnectionOptions = {
       type: 'postgres',
       host: env.parsed.DB_HOST || 'localhost',
       port: env.parsed.DB_PORT ? Number(env.parsed.DB_PORT) : 5432,
@@ -21,10 +23,7 @@ async function run() {
       database: env.parsed.DB_NAME || 'smg',
       synchronize: true,
       logging: false,
-      entities: [
-        // 'src/entity/*.ts'
-        ...entities,
-      ],
+      entities: [...entities],
     };
     await createDatabase({ ifNotExist: true }, options);
     const connection = await createConnection(options);

@@ -1,28 +1,6 @@
 {
   "version": "2.3.1",
-  "packages": [
-    "example/*",
-    "packages/*"
-  ],
-  "command": {
-    "version": {
-      "allowBranch": "master",
-      "conventionalCommits": true,
-      "exact": true,
-      "forcePublish": true,
-      "message": "chore(release): %s"
-    },
-    "bootstrap": {
-      "npmClientArgs": [
-        "--no-package-lock"
-      ],
-      "yarnClientArgs": [
-        "--no-yarn-lock"
-      ],
-      "forceLocal": true
-    },
-    "publish": {
-      "ignorePrepublish": true
-    }
-  }
+  "packages": ["example/*", "packages/*"],
+  "npmClient": "yarn",
+  "useWorkspaces": true
 }

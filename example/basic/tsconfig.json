@@ -6,10 +6,15 @@
     "target": "ES2017",
     "noImplicitAny": true,
     "resolveJsonModule": true,
-    "moduleResolution": "node",
+    "strict": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "sourceMap": true,
+    "skipLibCheck": true,
     "outDir": "lib",
+    "types": ["jest", "node"],
     "baseUrl": "."
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*"],
+  "exclude": ["lib", "esm"]
 }

@@ -2,9 +2,12 @@
 # Edit at https://www.gitignore.io/?templates=node
 
 lib
+esm
 package-lock.json
 __snapshots__
 *.sqlite
+*.env
+*.environment
 
 ### Node ###
 # Logs

@@ -6,14 +6,13 @@
     "target": "ES2017",
     "noImplicitAny": true,
     "resolveJsonModule": true,
-    "moduleResolution": "node",
     "strict": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
     "outDir": "lib",
     "baseUrl": ".",
-    "typeRoots": ["src/types/*", "node_modules/@types/*"]
+    "types": ["jest", "node"]
   },
   "include": ["src/**/*"]
 }

@@ -11,7 +11,7 @@ export default (conf: Configuration, env: string, options: LoaderConfOptions) =>
   conf = rawModules(conf, env, { ...options });
   conf = scopePluginOptions(conf, env, {
     ...options,
-    allowedFiles: [path.resolve(process.cwd(), 'README.md')],
+    allowedFiles: [path.resolve(process.cwd()), path.resolve(process.cwd(), 'README.md')],
   });
   conf = lessModules(conf, env, options);
   // Get the project version.

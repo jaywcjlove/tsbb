@@ -6,11 +6,9 @@
   "scripts": {
     "start": "npm run build && node lib/main.js",
     "tsdev": "ts-node-dev --respawn --transpile-only src/main.ts",
-    "dev": "npm run build && nodemon --inspect lib/main.js",
-    "types": "tsbb types",
-    "types:watch": "tsbb types --watch",
-    "watch": "tsbb watch",
-    "build": "tsbb build",
+    "dev": "npm run build && nodemon --inspect esm/main.js",
+    "watch": "tsbb watch --entry ./src/main.ts --no-esm",
+    "build": "tsbb build --entry ./src/main.ts --no-esm",
     "test": "tsbb test",
     "coverage": "tsbb test --coverage"
   },
@@ -33,9 +31,9 @@
     "@types/express": "4.17.13",
     "@types/express-session": "1.17.4",
     "@types/http-errors": "1.8.1",
-    "@types/node": "16.4.2",
+    "@types/node": "16.6.2",
     "nodemon": "2.0.12",
-    "ts-node": "10.1.0",
+    "ts-node": "10.2.1",
     "ts-node-dev": "1.1.8",
     "tsbb": "2.3.1"
   },
@@ -49,8 +47,8 @@
     "http-errors": "1.8.0",
     "pg": "8.7.1",
     "reflect-metadata": "0.1.13",
-    "typeorm": "0.2.35",
-    "typeorm-extension": "0.2.7",
+    "typeorm": "0.2.37",
+    "typeorm-extension": "0.2.9",
     "typeorm-store": "2.0.0"
   }
 }

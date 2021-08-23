@@ -3,30 +3,22 @@
   "version": "2.3.1",
   "description": "React Component Example for TypeScript.",
   "private": true,
-  "main": "lib/cjs/index.js",
-  "module": "lib/esm/index.js",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
   "scripts": {
     "doc": "kkt build --app-src ./website",
     "start": "kkt start --app-src ./website",
-    "build": "npm run build:lib && npm run doc",
-    "build:lib": "npm run ts:build && npm run types:esm && npm run types:cjs && npm run css:build && npm run css:build:dist",
-    "watch": "npm run ts:watch & npm run types:watch & npm run css:watch",
-    "types:build": "tsbb types --sourceRoot src --target ESNEXT",
-    "types:watch": "npm run types:esm -- --watch & npm run types:cjs -- --watch",
-    "types:esm": "npm run types:build -- --outDir ../lib/esm",
-    "types:cjs": "npm run types:build -- --outDir ../lib/cjs",
-    "css:build": "compile-less -d src -o lib/esm",
-    "css:watch": "compile-less -d src -o lib/esm --watch",
+    "watch": "tsbb watch",
+    "build": "tsbb build && npm run css:build",
+    "css:build": "compile-less -d src -o esm",
+    "css:watch": "compile-less -d src -o esm --watch",
     "css:build:dist": "compile-less -d src --combine lib/dist.css --rm-global",
-    "ts:watch": "tsbb watch --env-name esm:dev --env-name cjs --target react",
-    "ts:build": "tsbb build --target react",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\""
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kktjs/kkt.git"
+    "url": "https://github.com/jaywcjlove/tsbb/tree/master/example/react-component-tsx"
   },
-  "author": "",
   "license": "MIT",
   "husky": {
     "hooks": {
@@ -51,6 +43,7 @@
     "@kkt/less-modules": "6.11.0",
     "@kkt/raw-modules": "6.11.0",
     "@kkt/scope-plugin-options": "6.11.0",
+    "@tsbb/babel-preset-tsbb": "1.14.2",
     "@types/react": "17.0.15",
     "@types/react-dom": "17.0.9",
     "compile-less-cli": "1.8.0",
