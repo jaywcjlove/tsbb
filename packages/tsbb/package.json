@@ -47,7 +47,7 @@
     "identity-obj-proxy": "3.0.0",
     "jest": "27.0.6",
     "recursive-readdir-files": "1.0.3",
-    "ora": "5.4.1",
+    "ora": "6.0.0",
     "semver": "7.3.5",
     "typescript": "4.3.5",
     "yargs-parser": "20.2.9"
