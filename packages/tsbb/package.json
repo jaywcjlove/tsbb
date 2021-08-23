@@ -35,6 +35,7 @@
     "@types/babel__core": "7.1.15",
     "@types/fs-extra": "9.0.12",
     "@types/yargs-parser": "20.2.1",
+    "@types/yargs": "17.0.2",
     "@types/semver": "7.3.8",
     "@types/node": "16.6.1",
     "@types/jest": "27.0.1",

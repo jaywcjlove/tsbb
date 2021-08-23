@@ -18,11 +18,6 @@ export async function watchCompile(
   const compilerOptions: ts.CompilerOptions = {
     ...tsOptions,
     outDir: cjs || esm,
-    // noEmitOnError: true,
-    // noImplicitAny: true,
-    // noEmit: true,
-    target: tsOptions.target || ts.ScriptTarget.ES5,
-    module: tsOptions.module || ts.ModuleKind.CommonJS,
   };
 
   await compile([options.entry], tsOptions, options);

@@ -26,7 +26,7 @@ export async function compile(
         dirToFiles.map(async (item) => {
           if (cjs) {
             const cjsPath = item.path.replace(entryDir, cjs);
-            if (/\.(ts|tsx|js|jsx)$/.test(item.path)) {
+            if (/\.(ts|tsx|js|jsx)$/.test(item.path) && !/\.(d.ts)$/.test(item.path)) {
               transform(item.path, { entryDir, cjs, ...other });
             } else {
               await copyFiles(item.path, cjsPath);
@@ -34,7 +34,7 @@ export async function compile(
           }
           if (esm) {
             const esmPath = item.path.replace(entryDir, esm);
-            if (/\.(ts|tsx|js|jsx)$/.test(item.path)) {
+            if (/\.(ts|tsx|js|jsx)$/.test(item.path) && !/\.(d.ts)$/.test(item.path)) {
               transform(item.path, { entryDir, esm, ...other });
             } else {
               await copyFiles(item.path, esmPath);
