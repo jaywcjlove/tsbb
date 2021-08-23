@@ -51,9 +51,9 @@ jobs:
     - name: example @example/react-component-tsx
       working-directory: example/react-component-tsx
       run: |
-        npm run build:lib
+        npm run build
         npm run doc
-        cd lib/cjs
+        cd lib/
         ls -al
 
     - name: example @example/transform-typescript
