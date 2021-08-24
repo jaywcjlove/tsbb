@@ -54,6 +54,9 @@ export function transform(filename: string, options?: TransformHandleOptions): P
         version: require('@babel/helpers/package.json').version,
       },
     ]);
+    babelOptions.plugins.push([require.resolve('babel-plugin-transform-remove-imports'), {
+      test: "\\.(less|css)$"
+    }]);
   }
 
   if (esm) {

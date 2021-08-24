@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './style/index.module.less';
 import './style/index.less';
 
 export interface ButtonProps {
@@ -23,7 +22,6 @@ export default function Button(props: ButtonProps = {}) {
   const cls = [
     className,
     prefixCls,
-    styles.test,
     size ? `${prefixCls}-${size}` : false,
     type ? `${prefixCls}-${type}` : false,
     basic ? `${prefixCls}-basic` : false,
