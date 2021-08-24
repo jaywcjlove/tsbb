@@ -77,6 +77,9 @@ export function transform(filename: string, options?: TransformHandleOptions): P
       transformRuntime.useESModules = !semver.gte(runtimeVersion, '7.13.0');
     }
     babelOptions.plugins.push([require.resolve('@babel/plugin-transform-runtime'), transformRuntime]);
+    babelOptions.plugins.push([require.resolve('babel-plugin-transform-rename-import'), {
+      original: '^(.+?)\\.less$', replacement: '$1.css'
+    }]);
   }
   if (envName) {
     babelOptions = {};
