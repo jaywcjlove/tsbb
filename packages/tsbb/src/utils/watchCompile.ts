@@ -31,14 +31,20 @@ export async function watchCompile(
       if (esm) {
         const output = filepath.replace(entryDir, esm);
         const result = ts.sys.readFile(filepath);
-        outputFiles(output, result);
-        transform(filepath, { entryDir, esm, ...other });
+        if (/\.(ts|tsx|js|jsx)$/.test(filepath) && !/\.(d.ts)$/.test(filepath)) {
+          transform(filepath, { entryDir, esm, ...other });
+        } else {
+          outputFiles(output, result);
+        }
       }
       if (cjs) {
         const output = filepath.replace(entryDir, cjs);
         const result = ts.sys.readFile(filepath);
-        outputFiles(output, result);
-        transform(filepath, { entryDir, cjs, ...other });
+        if (/\.(ts|tsx|js|jsx)$/.test(filepath) && !/\.(d.ts)$/.test(filepath)) {
+          transform(filepath, { entryDir, cjs, ...other });
+        } else {
+          outputFiles(output, result);
+        }
       }
       return;
     }
