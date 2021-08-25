@@ -20,13 +20,13 @@ export async function compile(
     try {
       await FS.remove(outDir);
       const dirToFiles = await recursiveReaddirFiles(path.dirname(entry), {
-        exclude: /(tsconfig.json)$/,
+        exclude: /(tsconfig.json|__tests__|__snapshots__|.test.ts)$/,
       });
       await Promise.all(
         dirToFiles.map(async (item) => {
           if (cjs) {
             const cjsPath = item.path.replace(entryDir, cjs);
-            if (/\.(ts|tsx|js|jsx)$/.test(item.path) && !/\.(d.ts)$/.test(item.path)) {
+            if (/\.(ts|tsx|js|jsx)$/.test(item.path) && !/\.(d.ts|test.ts)$/.test(item.path)) {
               transform(item.path, { entryDir, cjs, ...other });
             } else {
               await copyFiles(item.path, cjsPath);
@@ -34,7 +34,7 @@ export async function compile(
           }
           if (esm) {
             const esmPath = item.path.replace(entryDir, esm);
-            if (/\.(ts|tsx|js|jsx)$/.test(item.path) && !/\.(d.ts)$/.test(item.path)) {
+            if (/\.(ts|tsx|js|jsx)$/.test(item.path) && !/\.(d.ts|test.ts)$/.test(item.path)) {
               transform(item.path, { entryDir, esm, ...other });
             } else {
               await copyFiles(item.path, esmPath);

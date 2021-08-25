@@ -27,26 +27,23 @@ export async function watchCompile(
   });
 
   watcher.on('change', async (filepath) => {
-    if (!/\.(ts|tsx)/.test(filepath)) {
-      if (esm) {
-        const output = filepath.replace(entryDir, esm);
+    if (esm) {
+      const output = filepath.replace(entryDir, esm);
+      if (/\.(ts|tsx|js|jsx)$/.test(filepath) && !/\.(d.ts|test.ts)$/.test(filepath)) {
+        transform(filepath, { entryDir, esm, ...other });
+      } else if (!/\.(test.ts)$/.test(filepath)) {
         const result = ts.sys.readFile(filepath);
-        if (/\.(ts|tsx|js|jsx)$/.test(filepath) && !/\.(d.ts)$/.test(filepath)) {
-          transform(filepath, { entryDir, esm, ...other });
-        } else {
-          outputFiles(output, result);
-        }
+        outputFiles(output, result);
       }
-      if (cjs) {
-        const output = filepath.replace(entryDir, cjs);
+    }
+    if (cjs) {
+      const output = filepath.replace(entryDir, cjs);
+      if (/\.(ts|tsx|js|jsx)$/.test(filepath) && !/\.(d.ts|test.ts)$/.test(filepath)) {
+        transform(filepath, { entryDir, cjs, ...other });
+      } else if (!/\.(test.ts)$/.test(filepath)) {
         const result = ts.sys.readFile(filepath);
-        if (/\.(ts|tsx|js|jsx)$/.test(filepath) && !/\.(d.ts)$/.test(filepath)) {
-          transform(filepath, { entryDir, cjs, ...other });
-        } else {
-          outputFiles(output, result);
-        }
+        outputFiles(output, result);
       }
-      return;
     }
   });
 

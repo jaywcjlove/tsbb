@@ -1,10 +1,8 @@
 {
   "version": "independent",
   "packages": ["example/*", "packages/*"],
-  "npmClient": "yarn",
   "command": {
     "bootstrap": {
-      "yarnClientArgs": ["--no-yarn-lock", "--no-package-lock"],
       "forceLocal": true
     }
   }
