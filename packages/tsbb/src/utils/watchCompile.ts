@@ -46,6 +46,10 @@ export async function watchCompile(
       }
     }
   });
+  if (tsOptions.noEmit) {
+    return;
+  }
+  compilerOptions.noEmit = false;
 
   const sysOverride: ts.System = {} as ts.System;
   for (let key in ts.sys) {

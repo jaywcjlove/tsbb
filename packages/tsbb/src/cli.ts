@@ -33,33 +33,36 @@ const argv: ArgvArguments = parser(process.argv.slice(2), {
   if (argv.h) {
     return help();
   }
+  try {
+    argv.entry = path.resolve(process.cwd(), argv.entry || 'src/index.tsx');
+    if (ts.sys.fileExists(argv.entry.replace(/\.tsx$/, '.ts'))) {
+      argv.entry = argv.entry.replace(/\.tsx$/, '.ts');
+    }
 
-  argv.entry = path.resolve(process.cwd(), argv.entry || 'src/index.tsx');
-  if (ts.sys.fileExists(argv.entry.replace(/\.tsx$/, '.ts'))) {
-    argv.entry = argv.entry.replace(/\.tsx$/, '.ts');
+    const configPath = ts.findConfigFile(path.dirname(argv.entry), ts.sys.fileExists);
+    let tsConf = { compilerOptions: {} as ts.CompilerOptions };
+
+    if (!configPath) {
+      tsConf.compilerOptions.noEmit = true;
+    } else {
+      const data = ts.readConfigFile(configPath, ts.sys.readFile);
+      const configParseResult = ts.parseJsonConfigFileContent(data.config, ts.sys, path.dirname(configPath));
+      tsConf.compilerOptions = configParseResult.options;
+    }
+    if (argv._[0] === 'build') {
+      return build(argv, { ...tsConf.compilerOptions });
+    }
+
+    if (argv._[0] === 'watch') {
+      return watch(argv, { ...tsConf.compilerOptions });
+    }
+
+    if (argv._[0] === 'test') {
+      return jest(argv);
+    }
+
+    help();
+  } catch (error) {
+    console.log('ERROR:', error);
   }
-
-  const configPath = ts.findConfigFile(path.dirname(argv.entry), ts.sys.fileExists);
-  let tsConf = { compilerOptions: {} };
-
-  if (!configPath) {
-    // throw new Error("Could not find a valid 'tsconfig.json'.");
-  } else {
-    const data = ts.readConfigFile(configPath, ts.sys.readFile);
-    const configParseResult = ts.parseJsonConfigFileContent(data.config, ts.sys, path.dirname(configPath));
-    tsConf.compilerOptions = configParseResult.options;
-  }
-  if (argv._[0] === 'build') {
-    return build(argv, { ...tsConf.compilerOptions });
-  }
-
-  if (argv._[0] === 'watch') {
-    return watch(argv, { ...tsConf.compilerOptions });
-  }
-
-  if (argv._[0] === 'test') {
-    return jest(argv);
-  }
-
-  help();
 })();

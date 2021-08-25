@@ -47,6 +47,7 @@ export async function compile(
       const createdFiles: Record<string, string> = {};
       tsOptions = { ...tsOptions, outDir: cjs || esm, target: tsOptions.target || ts.ScriptTarget.ESNext };
       if (tsOptions.noEmit) {
+        resolve();
         return;
       }
 

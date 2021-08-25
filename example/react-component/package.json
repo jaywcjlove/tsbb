@@ -4,10 +4,8 @@
   "private": true,
   "description": "React Component Example.",
   "scripts": {
-    "watch": "npm run watch:ts",
-    "build": "npm run build:ts",
-    "watch:ts": "tsbb watch",
-    "build:ts": "tsbb build",
+    "watch": "tsbb watch --entry src/index.jsx",
+    "build": "tsbb build --entry src/index.jsx && npm run css:build && npm run css:build:dist",
     "css:build": "compile-less -d src -o esm",
     "css:watch": "compile-less -d src -o esm --watch",
     "css:build:dist": "compile-less -d src --combine dist/markdown-editor.css --rm-global",
@@ -22,6 +20,7 @@
   },
   "files": [
     "typings",
+    "esm",
     "lib"
   ],
   "keywords": [],
