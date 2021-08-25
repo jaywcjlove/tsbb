@@ -1,58 +1,58 @@
 {
-  "name": "tsbb",
+	"name": "tsbb",
   "version": "2.3.1",
-  "description": "TSBB is a zero-config CLI that helps you develop, test, and publish modern TypeScript project.",
-  "author": "kenny wang <wowohoo@qq.com>",
-  "license": "MIT",
-  "bin": {
-    "tsbb": ".bin/tsbb"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jaywcjlove/tsbb.git"
-  },
-  "homepage": "https://github.com/jaywcjlove/tsbb",
-  "files": [
-    ".bin",
-    "lib",
-    "src"
-  ],
-  "keywords": [
-    "typescript",
-    "babel",
-    "react",
-    "node.js"
-  ],
-  "dependencies": {
-    "@babel/plugin-proposal-export-default-from": "7.14.5",
-    "@babel/plugin-proposal-class-properties": "7.14.5",
-    "@babel/plugin-proposal-decorators": "7.14.5",
-    "@babel/plugin-transform-runtime": "7.15.0",
-    "@babel/preset-env": "7.15.0",
-    "@babel/preset-typescript": "7.15.0",
-    "@babel/preset-react": "7.14.5",
-    "@babel/core": "7.15.0",
-    "@types/babel__core": "7.1.15",
-    "@types/fs-extra": "9.0.12",
-    "@types/yargs-parser": "20.2.1",
-    "@types/yargs": "17.0.2",
-    "@types/semver": "7.3.8",
-    "@types/node": "16.6.1",
-    "@types/jest": "27.0.1",
-    "babel-plugin-add-module-exports": "1.0.4",
-    "babel-plugin-transform-typescript-metadata": "0.3.2",
-    "babel-plugin-transform-rename-import": "2.3.0",
-    "babel-plugin-transform-remove-imports": "1.5.5",
-    "camelcase": "6.2.0",
-    "chalk": "4.1.1",
-    "chokidar": "3.5.2",
-    "execa": "5.1.1",
-    "fs-extra": "10.0.0",
-    "identity-obj-proxy": "3.0.0",
-    "jest": "27.0.6",
-    "recursive-readdir-files": "1.0.3",
-    "semver": "7.3.5",
-    "typescript": "4.3.5",
-    "yargs-parser": "20.2.9"
-  }
+	"description": "TSBB is a zero-config CLI that helps you develop, test, and publish modern TypeScript project.",
+	"author": "kenny wang <wowohoo@qq.com>",
+	"license": "MIT",
+	"bin": {
+		"tsbb": "bin/tsbb"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/jaywcjlove/tsbb.git"
+	},
+	"homepage": "https://github.com/jaywcjlove/tsbb",
+	"files": [
+		"bin",
+		"lib",
+		"src"
+	],
+	"keywords": [
+		"typescript",
+		"babel",
+		"react",
+		"node.js"
+	],
+	"dependencies": {
+		"@babel/core": "7.15.0",
+		"@babel/plugin-proposal-class-properties": "7.14.5",
+		"@babel/plugin-proposal-decorators": "7.14.5",
+		"@babel/plugin-proposal-export-default-from": "7.14.5",
+		"@babel/plugin-transform-runtime": "7.15.0",
+		"@babel/preset-env": "7.15.0",
+		"@babel/preset-react": "7.14.5",
+		"@babel/preset-typescript": "7.15.0",
+		"@types/babel__core": "7.1.15",
+		"@types/fs-extra": "9.0.12",
+		"@types/jest": "27.0.1",
+		"@types/node": "16.6.1",
+		"@types/semver": "7.3.8",
+		"@types/yargs": "17.0.2",
+		"@types/yargs-parser": "20.2.1",
+		"babel-plugin-add-module-exports": "1.0.4",
+		"babel-plugin-transform-remove-imports": "1.5.5",
+		"babel-plugin-transform-rename-import": "2.3.0",
+		"babel-plugin-transform-typescript-metadata": "0.3.2",
+		"camelcase": "6.2.0",
+		"chalk": "4.1.1",
+		"chokidar": "3.5.2",
+		"execa": "5.1.1",
+		"fs-extra": "10.0.0",
+		"identity-obj-proxy": "3.0.0",
+		"jest": "27.0.6",
+		"recursive-readdir-files": "1.0.3",
+		"semver": "7.3.5",
+		"typescript": "4.3.5",
+		"yargs-parser": "20.2.9"
+	}
 }

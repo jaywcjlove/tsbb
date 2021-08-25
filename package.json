@@ -27,6 +27,8 @@
     "pretty-quick": "pretty-quick",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
     "version": "lerna version --no-changelog --no-git-tag-version --no-push --yes",
+    "bootstrap": "lerna bootstrap",
+    "hoist": "lerna bootstrap --hoist",
     "publish": "lerna publish from-package"
   },
   "dependencies": {
@@ -35,44 +37,6 @@
     "prettier": "2.3.2",
     "pretty-quick": "3.1.1",
     "typescript": "4.3.5"
-  },
-  "workspaces": {
-    "packages": [
-      "example/*",
-      "packages/*"
-    ],
-    "nohoist": [
-      "**/@babel/preset-env",
-      "**/@parcel",
-      "**/@parcel/**",
-      "**/@types",
-      "**/@types/**",
-      "**/tsbb",
-      "**/tsbb/**",
-      "**/parcel",
-      "**/parcel/**",
-      "**/create-kkt",
-      "**/create-kkt/**",
-      "**/react",
-      "**/react/**",
-      "**/react*",
-      "**/react*/**",
-      "**/react-dom",
-      "**/react-dom/**",
-      "**/recursive-readdir-files",
-      "**/yargs*",
-      "**/yargs*/**",
-      "**/jest",
-      "**/jest/**",
-      "**/babel-*",
-      "**/babel-*/**",
-      "**/@babel*",
-      "**/@babel*/**",
-      "**/@babel/*",
-      "**/@babel/preset-*",
-      "**/@babel",
-      "**/@babel/**"
-    ]
   },
   "devDependencies": {
     "@parcel/transformer-less": "2.0.0-rc.0"

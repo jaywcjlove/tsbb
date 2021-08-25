@@ -1,6 +1,11 @@
 {
-  "version": "2.3.1",
+  "version": "independent",
   "packages": ["example/*", "packages/*"],
   "npmClient": "yarn",
-  "useWorkspaces": true
+  "command": {
+    "bootstrap": {
+      "yarnClientArgs": ["--no-yarn-lock", "--no-package-lock"],
+      "forceLocal": true
+    }
+  }
 }

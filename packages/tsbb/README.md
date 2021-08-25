@@ -228,6 +228,13 @@ export declare type Argv = Arguments<Partial<{
 }>>;
 ```
 
+## Development
+
+```bash
+$ npm i
+$ npm run bootstrap
+```
+
 ## License
 
 MIT © [Kenny Wong](https://wangchujiang.com)
