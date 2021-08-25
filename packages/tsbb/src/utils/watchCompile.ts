@@ -29,18 +29,18 @@ export async function watchCompile(
   watcher.on('change', async (filepath) => {
     if (esm) {
       const output = filepath.replace(entryDir, esm);
-      if (/\.(ts|tsx|js|jsx)$/.test(filepath) && !/\.(d.ts|test.ts)$/.test(filepath)) {
+      if (/\.(ts|tsx|js|jsx)$/.test(filepath) && !/\.(d.ts|.(test|spec).(ts|tsx|js|jsx))$/.test(filepath)) {
         transform(filepath, { entryDir, esm, ...other });
-      } else if (!/\.(test.ts)$/.test(filepath)) {
+      } else if (!/\.(.(test|spec).(ts|tsx|js|jsx))$/.test(filepath)) {
         const result = ts.sys.readFile(filepath);
         outputFiles(output, result);
       }
     }
     if (cjs) {
       const output = filepath.replace(entryDir, cjs);
-      if (/\.(ts|tsx|js|jsx)$/.test(filepath) && !/\.(d.ts|test.ts)$/.test(filepath)) {
+      if (/\.(ts|tsx|js|jsx)$/.test(filepath) && !/\.(d.ts|.(test|spec).(ts|tsx|js|jsx))$/.test(filepath)) {
         transform(filepath, { entryDir, cjs, ...other });
-      } else if (!/\.(test.ts)$/.test(filepath)) {
+      } else if (!/\.(.(test|spec).(ts|tsx|js|jsx))$/.test(filepath)) {
         const result = ts.sys.readFile(filepath);
         outputFiles(output, result);
       }
