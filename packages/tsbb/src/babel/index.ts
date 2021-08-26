@@ -20,7 +20,16 @@ export function transform(filename: string, options?: TransformHandleOptions): P
     path.basename(filename),
   );
   let babelOptions: TransformOptions = {
-    presets: [require.resolve('@babel/preset-react'), require.resolve('@babel/preset-typescript')],
+    presets: [
+      [require.resolve('@babel/preset-react'), {
+        /**
+         * Fix: ReferenceError: React is not defined
+         * https://github.com/facebook/create-react-app/issues/9882
+         */
+        runtime: 'automatic'
+      }],
+      require.resolve('@babel/preset-typescript')
+    ],
     sourceMaps: true,
     sourceFileName,
     plugins: [
