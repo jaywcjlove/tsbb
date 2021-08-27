@@ -86,13 +86,14 @@ jobs:
         name: ${{ steps.create_tag.outputs.version }}
         tag: ${{ steps.create_tag.outputs.version }}
         body: |
-          [![](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/tsbb@${{steps.create_tag.outputs.versionNumber}}/file/README.md) [![](https://img.shields.io/github/issues/jaywcjlove/tsbb.svg)](https://github.com/jaywcjlove/tsbb/releases) [![](https://img.shields.io/github/forks/jaywcjlove/tsbb.svg)](https://github.com/jaywcjlove/tsbb/network) [![](https://img.shields.io/github/stars/jaywcjlove/compile-less.svg)](https://github.com/jaywcjlove/svgtofont/stargazers) [![](https://img.shields.io/github/release/jaywcjlove/compile-less.svg)](https://github.com/jaywcjlove/svgtofont/releases)
+          [![](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/tsbb@${{steps.create_tag.outputs.versionNumber}}/file/README.md)
 
           ```bash
           npm i tsbb@${{steps.create_tag.outputs.versionNumber}}
           ```
-          
+
           ${{ steps.changelog.outputs.compareurl }}
+
           ${{ steps.changelog.outputs.changelog }}
 
     - run: mkdir -p zip
