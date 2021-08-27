@@ -1,6 +1,9 @@
 {
-  "version": "independent",
-  "packages": ["example/*", "packages/*"],
+  "version": "3.0.0",
+  "packages": [
+    "example/*",
+    "packages/*"
+  ],
   "command": {
     "bootstrap": {
       "forceLocal": true
