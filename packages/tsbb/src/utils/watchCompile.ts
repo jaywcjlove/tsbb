@@ -5,7 +5,7 @@ import * as ts from 'typescript';
 import { WatchOptions } from '../watch';
 import { compile } from './compile';
 import { transform } from '../babel';
-import { outputFiles } from './output';
+import { outputFiles, outputLog } from './output';
 
 export interface WatchCompileOptions extends WatchOptions {}
 export async function watchCompile(
@@ -13,7 +13,7 @@ export async function watchCompile(
   tsOptions: ts.CompilerOptions,
   options: WatchCompileOptions,
 ) {
-  let { entry, cjs = tsOptions.outDir || 'lib', esm = 'esm', ...other } = options || {};
+  let { entry, cjs = tsOptions.outDir || 'lib', esm = 'esm', disableBabel, ...other } = options || {};
   const entryDir = path.dirname(entry);
   cjs = path.relative(ts.sys.getCurrentDirectory(), cjs);
   const compilerOptions: ts.CompilerOptions = {
@@ -21,16 +21,16 @@ export async function watchCompile(
     outDir: cjs || esm,
   };
 
-  await compile([options.entry], tsOptions, options);
-
+  if (!disableBabel) {
+    await compile([options.entry], tsOptions, options);
+  }
   const watcher = chokidar.watch(path.dirname(entry), {
     persistent: true,
   });
-
   watcher.on('change', async (filepath) => {
     if (esm) {
       const output = filepath.replace(entryDir, esm);
-      if (isMatch(output, ['**/*.[jt]s?(x)']) && !isMatch(output, ['**/?(*.)+(spec|test).[jt]s?(x)'])) {
+      if (!disableBabel && isMatch(output, ['**/*.[jt]s?(x)']) && !isMatch(output, ['**/?(*.)+(spec|test).[jt]s?(x)'])) {
         transform(filepath, { entryDir, esm, ...other });
       } else if (!isMatch(output, ['**/?(*.)+(spec|test).[jt]s?(x)', 'tsconfig.json'])) {
         const result = ts.sys.readFile(filepath);
@@ -39,7 +39,7 @@ export async function watchCompile(
     }
     if (cjs) {
       const output = filepath.replace(entryDir, cjs);
-      if (isMatch(output, ['**/*.[jt]s?(x)']) && !isMatch(output, ['**/?(*.)+(spec|test).[jt]s?(x)'])) {
+      if (!disableBabel && isMatch(output, ['**/*.[jt]s?(x)']) && !isMatch(output, ['**/?(*.)+(spec|test).[jt]s?(x)'])) {
         transform(filepath, { entryDir, cjs, ...other });
       } else if (!isMatch(output, ['**/?(*.)+(spec|test).[jt]s?(x)', 'tsconfig.json'])) {
         const result = ts.sys.readFile(filepath);
@@ -47,11 +47,10 @@ export async function watchCompile(
       }
     }
   });
-  if (tsOptions.noEmit) {
+  if (tsOptions.noEmit && disableBabel) {
     return;
   }
   compilerOptions.noEmit = false;
-
   const sysOverride: ts.System = {} as ts.System;
   for (let key in ts.sys) {
     (sysOverride as any)[key] = (ts.sys as any)[key];
@@ -72,6 +71,9 @@ export async function watchCompile(
           outputFiles(fileEsm, content);
         }
       }
+    } else if (disableBabel) {
+      outputLog(file);
+      ts.sys.writeFile(file, content);
     }
   };
 

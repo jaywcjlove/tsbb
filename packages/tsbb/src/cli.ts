@@ -15,6 +15,7 @@ interface ArgvArguments extends Arguments {
 
 const argv: ArgvArguments = parser(process.argv.slice(2), {
   alias: {
+    entry: ['e'],
     output: ['o'],
     help: ['h'],
     version: ['v'],
@@ -48,6 +49,9 @@ const argv: ArgvArguments = parser(process.argv.slice(2), {
       const data = ts.readConfigFile(configPath, ts.sys.readFile);
       const configParseResult = ts.parseJsonConfigFileContent(data.config, ts.sys, path.dirname(configPath));
       tsConf.compilerOptions = configParseResult.options;
+    }
+    if (argv.disableBabel === undefined) {
+      argv.disableBabel = false;
     }
     if (argv._[0] === 'build') {
       return build(argv, { ...tsConf.compilerOptions });

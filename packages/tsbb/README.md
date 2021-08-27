@@ -35,13 +35,13 @@ TSBB is a zero-config CLI that helps you develop, test, and publish modern TypeS
 
 #### `Features`
 
-⏱ Quickly initialize the example project and quickly enter the development mode.  
-♻️ Recompile the code when project files get added, removed or modified.  
-📚 Readable source code that encourages learning and contribution  
-🚀 Faster, Faster compilation speed.  
-⚛️ Support [react](https://reactjs.org/) component compilation.  
-⛑ [Jest](https://jestjs.io/) test runner setup with defaults `tsbb test`  
-🔥 Zero-config, single dependency.  
+- ⏱ Quickly initialize the example project and quickly enter the development mode.  
+- ♻️ Recompile the code when project files get added, removed or modified.  
+- 📚 Readable source code that encourages learning and contribution  
+- 🚀 Faster, Faster compilation speed.  
+- ⚛️ Support [react](https://reactjs.org/) component compilation.  
+- ⛑ [Jest](https://jestjs.io/) test runner setup with defaults `tsbb test`  
+- 🔥 Zero-config, single dependency.  
 
 ## Quick Start
 
@@ -97,23 +97,33 @@ Below is a help of commands you might find useful.
 ▶ tsbb --help
 
 Usage: tsbb <command>
-Version 2.3.1
+Version 3.0.0-rc.14
 
 Commands:
 
-  tsbb build [options]                Build your project once and exit.
-  tsbb watch [options]                Recompile files on changes.
-  tsbb test [options]                 Run jest test runner in watch mode.
+  tsbb build [options]         Build your project once and exit.
+  tsbb watch [options]         Recompile files on changes.
+  tsbb test [options]          Run jest test runner in watch mode.
+
+Options:[build|watch]
+
+  --entry, -e               Specify the entry directory.
+  --envName                 The current active environment used during configuration loading.
+  --disable-babel           Disable Babel.
+  --disable-babel-option    Disable Babel Option.
+  --esm                     Output "esm" directory.
+  --cjs                     Output "cjs" directory.
 
 Examples:
 
-  $ tsbb build                         Build your project.
-  $ tsbb build --entry src/index.ts    Specify the entry directory.
-  $ tsbb build --esm ./es              Output directory.
-  $ tsbb watch --disableBabelOption    Disable Babel Option.
-  $ tsbb watch --cjs ./cjs             Watch Output directory.
-  $ tsbb test                          Run test suites related
-  $ tsbb test --coverage               Test coverage information should be collected
+  $ tsbb build                           Build your project.
+  $ tsbb build --entry src/index.ts      Specify the entry directory.
+  $ tsbb build --esm ./es                Output directory.
+  $ tsbb watch --disable-babel-option    Disable Babel Option.
+  $ tsbb watch --disable-babel           Disable Babel.
+  $ tsbb watch --cjs ./cjs               Watch Output directory.
+  $ tsbb test                            Run test suites related
+  $ tsbb test --coverage                 Test coverage information should be collected
 
 Options:
 

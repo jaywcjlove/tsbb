@@ -5,8 +5,8 @@
   "description": "Basic Example.",
   "scripts": {
     "start": "node lib/index.js",
-    "watch": "tsbb watch --no-esm",
-    "build": "tsbb build --no-esm",
+    "watch": "tsbb watch --no-esm --disable-babel",
+    "build": "tsbb build --no-esm --disable-babel",
     "test": "tsbb test",
     "coverage": "tsbb test --coverage"
   },

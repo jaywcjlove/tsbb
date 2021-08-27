@@ -10,6 +10,8 @@ export interface BuildOptions extends Arguments {
   entry?: string;
   /** Disable Babel Option */
   disableBabelOption?: boolean;
+  /** Disable Babel */
+  disableBabel?: boolean;
   /**
    * The current active environment used during configuration loading.
    * This value is used as the key when resolving ["env"](https://babeljs.io/docs/en/options#env) configs,

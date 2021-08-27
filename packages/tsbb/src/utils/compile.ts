@@ -5,7 +5,7 @@ import path from 'path';
 import recursiveReaddirFiles from 'recursive-readdir-files';
 import { transform } from '../babel';
 import { BuildOptions } from '../build';
-import { outputFiles, copyFiles } from '../utils/output';
+import { outputFiles, outputLog, copyFiles } from '../utils/output';
 
 export interface CompileOptions extends BuildOptions {}
 export async function compile(
@@ -13,7 +13,7 @@ export async function compile(
   tsOptions: ts.CompilerOptions = {},
   options: CompileOptions,
 ): Promise<void> {
-  let { entry, cjs = tsOptions.outDir || 'lib', esm = 'esm', ...other } = options || {};
+  let { entry, disableBabel, cjs = tsOptions.outDir || 'lib', esm = 'esm', ...other } = options || {};
   const outDir = path.resolve(process.cwd(), tsOptions.outDir || cjs);
   const entryDir = path.dirname(entry);
   cjs = path.relative(ts.sys.getCurrentDirectory(), cjs);
@@ -25,6 +25,9 @@ export async function compile(
       });
       await Promise.all(
         dirToFiles.map(async (item) => {
+          if (disableBabel) {
+            return;
+          }
           if (cjs) {
             const cjsPath = item.path.replace(entryDir, cjs);
             if (isMatch(item.path, ['**/*.[jt]s?(x)']) && !isMatch(item.path, ['**/?(*.)+(spec|test).[jt]s?(x)', '**/*.d.ts'])) {
@@ -74,6 +77,10 @@ export async function compile(
       await Promise.all(
         Object.keys(createdFiles).map(async (filepath) => {
           try {
+            if (disableBabel) {
+              ts.sys.writeFile(filepath, createdFiles[filepath]);
+              outputLog(filepath);
+            }
             if (/\.d\.ts$/.test(filepath)) {
               if (new RegExp(`${esm}`).test(filepath)) {
                 outputFiles(filepath, createdFiles[filepath]);
