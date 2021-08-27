@@ -1,4 +1,5 @@
 import * as ts from 'typescript';
+import { isMatch } from 'micromatch';
 import FS from 'fs-extra';
 import path from 'path';
 import recursiveReaddirFiles from 'recursive-readdir-files';
@@ -26,7 +27,7 @@ export async function compile(
         dirToFiles.map(async (item) => {
           if (cjs) {
             const cjsPath = item.path.replace(entryDir, cjs);
-            if (/\.(ts|tsx|js|jsx)$/.test(item.path) && !/\.(d.ts)$/.test(item.path)) {
+            if (isMatch(item.path, ['**/*.[jt]s?(x)']) && !isMatch(item.path, ['**/?(*.)+(spec|test).[jt]s?(x)', '**/*.d.ts'])) {
               transform(item.path, { entryDir, cjs, ...other });
             } else {
               await copyFiles(item.path, cjsPath);
@@ -34,7 +35,7 @@ export async function compile(
           }
           if (esm) {
             const esmPath = item.path.replace(entryDir, esm);
-            if (/\.(ts|tsx|js|jsx)$/.test(item.path) && !/\.(d.ts)$/.test(item.path)) {
+            if (isMatch(item.path, ['**/*.[jt]s?(x)']) && !isMatch(item.path, ['**/?(*.)+(spec|test).[jt]s?(x)', '**/*.d.ts'])) {
               transform(item.path, { entryDir, esm, ...other });
             } else {
               await copyFiles(item.path, esmPath);

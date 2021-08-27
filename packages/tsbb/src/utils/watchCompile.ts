@@ -1,5 +1,6 @@
 import path from 'path';
 import chokidar from 'chokidar';
+import { isMatch } from 'micromatch';
 import * as ts from 'typescript';
 import { WatchOptions } from '../watch';
 import { compile } from './compile';
@@ -29,18 +30,18 @@ export async function watchCompile(
   watcher.on('change', async (filepath) => {
     if (esm) {
       const output = filepath.replace(entryDir, esm);
-      if (/\.(ts|tsx|js|jsx)$/.test(filepath) && !/\.(d.ts|.(test|spec).(ts|tsx|js|jsx))$/.test(filepath)) {
+      if (isMatch(output, ['**/*.[jt]s?(x)']) && !isMatch(output, ['**/?(*.)+(spec|test).[jt]s?(x)'])) {
         transform(filepath, { entryDir, esm, ...other });
-      } else if (!/\.(.(test|spec).(ts|tsx|js|jsx))$/.test(filepath)) {
+      } else if (!isMatch(output, ['**/?(*.)+(spec|test).[jt]s?(x)', 'tsconfig.json'])) {
         const result = ts.sys.readFile(filepath);
         outputFiles(output, result);
       }
     }
     if (cjs) {
       const output = filepath.replace(entryDir, cjs);
-      if (/\.(ts|tsx|js|jsx)$/.test(filepath) && !/\.(d.ts|.(test|spec).(ts|tsx|js|jsx))$/.test(filepath)) {
+      if (isMatch(output, ['**/*.[jt]s?(x)']) && !isMatch(output, ['**/?(*.)+(spec|test).[jt]s?(x)'])) {
         transform(filepath, { entryDir, cjs, ...other });
-      } else if (!/\.(.(test|spec).(ts|tsx|js|jsx))$/.test(filepath)) {
+      } else if (!isMatch(output, ['**/?(*.)+(spec|test).[jt]s?(x)', 'tsconfig.json'])) {
         const result = ts.sys.readFile(filepath);
         outputFiles(output, result);
       }
