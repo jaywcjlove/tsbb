@@ -10,8 +10,7 @@
     "sourceMap": true,
     "skipLibCheck": true,
     "outDir": "lib",
-    "baseUrl": ".",
-    "types": ["node"]
+    "baseUrl": "."
   },
   "include": ["src/**/*"]
 }

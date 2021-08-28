@@ -63,12 +63,9 @@ export function transform(filename: string, options?: TransformHandleOptions): P
         version: require('@babel/helpers/package.json').version,
       },
     ]);
-<<<<<<< HEAD
-=======
     babelOptions.plugins.push([require.resolve('babel-plugin-transform-remove-imports'), {
       test: "\\.(less|css)$"
     }]);
->>>>>>> dev
   }
 
   if (esm) {
@@ -92,12 +89,9 @@ export function transform(filename: string, options?: TransformHandleOptions): P
       transformRuntime.useESModules = !semver.gte(runtimeVersion, '7.13.0');
     }
     babelOptions.plugins.push([require.resolve('@babel/plugin-transform-runtime'), transformRuntime]);
-<<<<<<< HEAD
-=======
     babelOptions.plugins.push([require.resolve('babel-plugin-transform-rename-import'), {
       original: '^(.+?)\\.less$', replacement: '$1.css'
     }]);
->>>>>>> dev
   }
   if (envName) {
     babelOptions = {};
