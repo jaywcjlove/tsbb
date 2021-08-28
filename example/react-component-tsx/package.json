@@ -1,6 +1,6 @@
 {
   "name": "@template/react-component-tsx",
-  "version": "2.3.1",
+  "version": "3.0.0",
   "description": "React Component Example for TypeScript.",
   "private": true,
   "main": "lib/index.js",
@@ -39,21 +39,21 @@
     "prop-types": "15.7.2"
   },
   "devDependencies": {
-    "@babel/runtime": "7.14.6",
+    "@babel/runtime": "7.15.3",
     "@kkt/less-modules": "6.11.0",
     "@kkt/raw-modules": "6.11.0",
     "@kkt/scope-plugin-options": "6.11.0",
     "@tsbb/babel-preset-tsbb": "1.14.2",
-    "@types/react": "17.0.15",
+    "@types/react": "17.0.19",
     "@types/react-dom": "17.0.9",
-    "compile-less-cli": "1.8.0",
+    "compile-less-cli": "1.8.1",
     "husky": "4.3.8",
     "kkt": "6.11.0",
     "lint-staged": "11.0.0",
     "prettier": "2.3.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "tsbb": "2.3.1"
+    "tsbb": "^3.0.0"
   },
   "eslintConfig": {
     "extends": [

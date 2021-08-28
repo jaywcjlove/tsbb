@@ -2,6 +2,7 @@
 # Edit at https://www.gitignore.io/?templates=node
 
 esm
+cjs
 lib
 package-lock.json
 __snapshots__

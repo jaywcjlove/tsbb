@@ -10,9 +10,16 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
+    "skipLibCheck": true,
     "outDir": "lib",
+<<<<<<< HEAD
     "baseUrl": ".",
     "types": ["jest", "node"]
   },
   "include": ["src/**/*"]
+=======
+    "types": ["jest", "node"],
+    "baseUrl": "."
+  }
+>>>>>>> dev
 }

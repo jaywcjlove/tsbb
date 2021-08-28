@@ -11,8 +11,6 @@
     "experimentalDecorators": true,
     "sourceMap": true,
     "skipLibCheck": true,
-    "outDir": "lib",
-    "types": ["jest", "node"],
     "baseUrl": "."
   },
   "include": ["src/**/*"],

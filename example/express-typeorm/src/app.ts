@@ -1,5 +1,3 @@
-/// <reference path="./types/global.d.ts" />
-
 import path from 'path';
 import compression from 'compression';
 import createError from 'http-errors';

@@ -1,12 +1,12 @@
 {
   "name": "@template/basic",
   "private": true,
-  "version": "2.3.1",
+  "version": "3.0.0",
   "description": "Basic Example.",
   "scripts": {
     "start": "node lib/index.js",
-    "watch": "tsbb watch --no-esm",
-    "build": "tsbb build --no-esm",
+    "watch": "tsbb watch --no-esm --disable-babel",
+    "build": "tsbb build --no-esm --disable-babel",
     "test": "tsbb test",
     "coverage": "tsbb test --coverage"
   },
@@ -17,6 +17,6 @@
   "keywords": [],
   "license": "MIT",
   "devDependencies": {
-    "tsbb": "2.3.1"
+    "tsbb": "^3.0.0"
   }
 }
