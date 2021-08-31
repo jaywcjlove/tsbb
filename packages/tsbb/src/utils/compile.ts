@@ -33,7 +33,7 @@ export async function compile(
             if (isMatch(item.path, ['**/*.[jt]s?(x)']) && !isMatch(item.path, ['**/?(*.)+(spec|test).[jt]s?(x)', '**/*.d.ts'])) {
               transform(item.path, { entryDir, cjs, ...other });
             } else {
-              await copyFiles(item.path, cjsPath);
+              copyFiles(item.path, cjsPath);
             }
           }
           if (esm) {
@@ -41,7 +41,7 @@ export async function compile(
             if (isMatch(item.path, ['**/*.[jt]s?(x)']) && !isMatch(item.path, ['**/?(*.)+(spec|test).[jt]s?(x)', '**/*.d.ts'])) {
               transform(item.path, { entryDir, esm, ...other });
             } else {
-              await copyFiles(item.path, esmPath);
+              copyFiles(item.path, esmPath);
             }
           }
         }),
