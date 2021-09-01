@@ -36,6 +36,12 @@ export function transform(filename: string, options?: TransformHandleOptions): P
       require.resolve('@babel/plugin-syntax-dynamic-import'),
       require.resolve('babel-plugin-add-module-exports'),
       require.resolve('babel-plugin-transform-typescript-metadata'),
+      /**
+       * Use the legacy (stage 1) decorators syntax and behavior.
+       * https://babeljs.io/docs/en/babel-plugin-proposal-decorators#legacy
+       * If you are including your plugins manually and using `@babel/plugin-proposal-class-properties`,
+       * make sure that `@babel/plugin-proposal-decorators` comes before `@babel/plugin-proposal-class-properties`.
+       */
       [require.resolve('@babel/plugin-proposal-decorators'), { legacy: true }],
     ],
   };
@@ -43,33 +49,41 @@ export function transform(filename: string, options?: TransformHandleOptions): P
   if (!babelOptions.envName) {
     babelOptions.envName = process.env.BABEL_ENV;
   }
-
+  const runtimeVersion = semver.clean(require('@babel/runtime/package.json').version);
   if (cjs) {
     babelOptions.presets.push([
-      require.resolve('@babel/preset-env'),
-      {
-        loose: true,
+      require.resolve('@babel/preset-env'), {
+        modules: 'cjs',
+        loose: false,
       },
     ]);
     babelOptions.envName = 'cjs';
-    babelOptions.plugins.push([
-      require.resolve('@babel/plugin-transform-runtime'), {
-        useESModules: false,
-        loose: false,
-        modules: 'cjs',
-        // https://github.com/babel/babel/issues/10261#issuecomment-549940457
-        version: require('@babel/helpers/package.json').version,
-      },
-    ]);
+    const transformRuntime = {
+      modules: 'cjs',
+      loose: false,
+      /**
+       * transform-runtime regression, not requiring _objectSpread helper
+       * https://github.com/babel/babel/issues/10261#issuecomment-549940457
+       */
+      version: require('@babel/helpers/package.json').version,
+    };
+    if (!semver.gte(runtimeVersion, '7.13.0')) {
+      /**
+       * ⚠️ This option has been deprecated: starting from version 7.13.0,
+       * @babel/runtime's package.json uses "exports" option to automatically choose between CJS and ESM helpers.
+       * https://babeljs.io/docs/en/babel-plugin-transform-runtime#useesmodules
+       */
+      (transformRuntime as any).useESModules = !semver.gte(runtimeVersion, '7.13.0');
+    }
+    babelOptions.plugins.push([require.resolve('@babel/plugin-transform-runtime'), transformRuntime]);
     babelOptions.plugins.push([require.resolve('babel-plugin-transform-remove-imports'), {
       test: "\\.(less|css)$"
     }]);
-    babelOptions.plugins.push(["@babel/plugin-proposal-class-properties", { loose: true }]);
-    babelOptions.plugins.push(["@babel/plugin-transform-classes", { loose: true }]);
+    babelOptions.plugins.push(["@babel/plugin-proposal-class-properties", { loose: false }]);
+    babelOptions.plugins.push(["@babel/plugin-transform-classes", { loose: false }]);
   }
 
   if (esm) {
-    const runtimeVersion = semver.clean(require('@babel/runtime/package.json').version);
     babelOptions.presets.push([
       require.resolve('@babel/preset-env'), {
         modules: false,
@@ -81,21 +95,26 @@ export function transform(filename: string, options?: TransformHandleOptions): P
     ]);
     babelOptions.envName = 'esm';
     const transformRuntime = {
-      useESModules: true,
       loose: false,
       modules: 'auto',
-      // https://github.com/babel/babel/issues/10261#issuecomment-549940457
+      /**
+       * transform-runtime regression, not requiring _objectSpread helper
+       * https://github.com/babel/babel/issues/10261#issuecomment-549940457
+       */
       version: require('@babel/helpers/package.json').version,
     };
     if (!semver.gte(runtimeVersion, '7.13.0')) {
-      transformRuntime.useESModules = !semver.gte(runtimeVersion, '7.13.0');
+      /**
+       * ⚠️ This option has been deprecated: starting from version 7.13.0,
+       * @babel/runtime's package.json uses "exports" option to automatically choose between CJS and ESM helpers.
+       * https://babeljs.io/docs/en/babel-plugin-transform-runtime#useesmodules
+       */
+      (transformRuntime as any).useESModules = !semver.gte(runtimeVersion, '7.13.0');
     }
     babelOptions.plugins.push([require.resolve('@babel/plugin-transform-runtime'), transformRuntime]);
-    babelOptions.plugins.push([require.resolve('@babel/plugin-proposal-class-properties'), {
-      loose: true
-    }]);
+    babelOptions.plugins.push([require.resolve('@babel/plugin-proposal-class-properties'), { loose: true }]);
     babelOptions.plugins.push([require.resolve('babel-plugin-transform-rename-import'), {
-      original: '^(.+?)\\.less$', replacement: '$1.css'
+      original: '^(.+?)\\.(less|scss|sass|styl)$', replacement: '$1.css'
     }]);
   }
   if (envName) {
