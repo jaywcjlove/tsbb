@@ -37,7 +37,6 @@ export function transform(filename: string, options?: TransformHandleOptions): P
       require.resolve('babel-plugin-add-module-exports'),
       require.resolve('babel-plugin-transform-typescript-metadata'),
       [require.resolve('@babel/plugin-proposal-decorators'), { legacy: true }],
-      [require.resolve('@babel/plugin-proposal-class-properties'), { loose: true }],
     ],
   };
 
@@ -54,8 +53,7 @@ export function transform(filename: string, options?: TransformHandleOptions): P
     ]);
     babelOptions.envName = 'cjs';
     babelOptions.plugins.push([
-      require.resolve('@babel/plugin-transform-runtime'),
-      {
+      require.resolve('@babel/plugin-transform-runtime'), {
         useESModules: false,
         loose: false,
         modules: 'cjs',
@@ -66,15 +64,19 @@ export function transform(filename: string, options?: TransformHandleOptions): P
     babelOptions.plugins.push([require.resolve('babel-plugin-transform-remove-imports'), {
       test: "\\.(less|css)$"
     }]);
+    babelOptions.plugins.push(["@babel/plugin-proposal-class-properties", { loose: true }]);
+    babelOptions.plugins.push(["@babel/plugin-transform-classes", { loose: true }]);
   }
 
   if (esm) {
     const runtimeVersion = semver.clean(require('@babel/runtime/package.json').version);
     babelOptions.presets.push([
-      require.resolve('@babel/preset-env'),
-      {
+      require.resolve('@babel/preset-env'), {
         modules: false,
         loose: true,
+        targets: {
+          esmodules: true
+        },
       },
     ]);
     babelOptions.envName = 'esm';
@@ -89,6 +91,9 @@ export function transform(filename: string, options?: TransformHandleOptions): P
       transformRuntime.useESModules = !semver.gte(runtimeVersion, '7.13.0');
     }
     babelOptions.plugins.push([require.resolve('@babel/plugin-transform-runtime'), transformRuntime]);
+    babelOptions.plugins.push([require.resolve('@babel/plugin-proposal-class-properties'), {
+      loose: true
+    }]);
     babelOptions.plugins.push([require.resolve('babel-plugin-transform-rename-import'), {
       original: '^(.+?)\\.less$', replacement: '$1.css'
     }]);
