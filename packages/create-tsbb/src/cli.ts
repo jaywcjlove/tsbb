@@ -5,12 +5,26 @@ import { create } from 'create-kkt';
 
 async function run(): Promise<void> {
   try {
-    const argvs = minimist(process.argv.slice(2));
+    const argvs = minimist(process.argv.slice(2), {
+      alias: {
+        output: 'o',
+        force: 'f',
+        path: 'p',
+        example: 'e',
+      },
+      default: {
+        path: 'http://jaywcjlove.github.io/tsbb/',
+        output: '.',
+        force: false,
+        example: 'basic',
+      },
+    });
     if (argvs.h || argvs.help) {
       console.log('\n  Usage: create-tsbb <app-name> [options] [--help|h]');
       console.log('\n  Options:');
       console.log('    --version, -v', 'Show version number');
       console.log('    --help, -h', 'Displays help information.');
+      console.log('    --output, -o', 'Output directory.');
       console.log(
         '    --example, -e',
         'Example from: \x1b[34mhttp://jaywcjlove.github.io/tsbb/ \x1b[0m , default: "basic"',
@@ -31,9 +45,7 @@ async function run(): Promise<void> {
       return;
     }
     argvs.appName = argvs._[0];
-    argvs.path = argvs.p = argvs.path || argvs.p || 'http://jaywcjlove.github.io/tsbb/';
-    argvs.force = argvs.f = argvs.force || argvs.f || false;
-    argvs.example = argvs.e = (argvs.example || argvs.e || 'basic').toLocaleLowerCase();
+    argvs.example = argvs.e = String(argvs.example).toLocaleLowerCase();
     create(argvs, exampleHelp);
   } catch (error) {
     console.log(`\x1b[31m${error.message}\x1b[0m`);

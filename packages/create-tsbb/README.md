@@ -45,6 +45,7 @@ Usage: create-tsbb <app-name> [options] [--help|h]
 Options:
   --version, -v Show version number
   --help, -h Displays help information.
+  --output, -o Output directory.
   --example, -e Example from: https://jaywcjlove.github.io/tsbb , default: "basic"
   --force, -f Overwrite target directory if it exists. default: false
   --path, -p Specify the download target git address. default: "https://jaywcjlove.github.io/tsbb"
