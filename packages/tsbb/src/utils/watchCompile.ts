@@ -30,18 +30,18 @@ export async function watchCompile(
   watcher.on('change', async (filepath) => {
     if (esm) {
       const output = filepath.replace(entryDir, esm);
-      if (!disableBabel && isMatch(output, ['**/*.[jt]s?(x)']) && !isMatch(output, ['**/?(*.)+(spec|test).[jt]s?(x)'])) {
+      if (!disableBabel && isMatch(output, ['**/*.[jt]s?(x)']) && !isMatch(output, ['**/?(*.)+(spec|test).[jt]s?(x)', '**/?(*.)+d.ts'])) {
         transform(filepath, { entryDir, esm, ...other });
-      } else if (!isMatch(output, ['**/?(*.)+(spec|test).[jt]s?(x)', 'tsconfig.json'])) {
+      } else if (!isMatch(output, ['**/?(*.)+(spec|test).[jt]s?(x)', 'tsconfig.json', '**/?(*.)+d.ts'])) {
         const result = ts.sys.readFile(filepath);
         outputFiles(output, result);
       }
     }
     if (cjs) {
       const output = filepath.replace(entryDir, cjs);
-      if (!disableBabel && isMatch(output, ['**/*.[jt]s?(x)']) && !isMatch(output, ['**/?(*.)+(spec|test).[jt]s?(x)'])) {
+      if (!disableBabel && isMatch(output, ['**/*.[jt]s?(x)']) && !isMatch(output, ['**/?(*.)+(spec|test).[jt]s?(x)', '**/?(*.)+d.ts'])) {
         transform(filepath, { entryDir, cjs, ...other });
-      } else if (!isMatch(output, ['**/?(*.)+(spec|test).[jt]s?(x)', 'tsconfig.json'])) {
+      } else if (!isMatch(output, ['**/?(*.)+(spec|test).[jt]s?(x)', 'tsconfig.json', '**/?(*.)+d.ts'])) {
         const result = ts.sys.readFile(filepath);
         outputFiles(output, result);
       }
