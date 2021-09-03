@@ -3,6 +3,7 @@ import { test } from './utils/Test';
 
 class Test {
   constructor() {}
+  public a: string = 'A';
   count() {
     return 10;
   }

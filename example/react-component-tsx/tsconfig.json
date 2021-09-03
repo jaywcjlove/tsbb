@@ -18,5 +18,5 @@
     "moduleResolution": "node",
     "noEmit": true
   },
-  "include": ["src", "react-app-env.d.ts"]
+  "include": ["src"]
 }
