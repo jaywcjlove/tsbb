@@ -1,9 +1,6 @@
 {
-  "version": "3.0.4",
-  "packages": [
-    "example/*",
-    "packages/*"
-  ],
+  "version": "3.1.0",
+  "packages": ["example/*", "packages/*"],
   "command": {
     "bootstrap": {
       "forceLocal": true
