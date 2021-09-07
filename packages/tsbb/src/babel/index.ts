@@ -21,28 +21,31 @@ export function transform(filename: string, options?: TransformHandleOptions): P
   );
   let babelOptions: TransformOptions = {
     presets: [
-      [require.resolve('@babel/preset-react'), {
-        /**
-         * Fix: ReferenceError: React is not defined
-         * https://github.com/facebook/create-react-app/issues/9882
-         */
-        runtime: 'automatic'
-      }],
-      require.resolve('@babel/preset-typescript')
+      [
+        require('@babel/preset-react').default,
+        {
+          /**
+           * Fix: ReferenceError: React is not defined
+           * https://github.com/facebook/create-react-app/issues/9882
+           */
+          runtime: 'automatic',
+        },
+      ],
+      require('@babel/preset-typescript').default,
     ],
     sourceMaps: true,
     sourceFileName,
     plugins: [
-      require.resolve('@babel/plugin-syntax-dynamic-import'),
-      require.resolve('babel-plugin-add-module-exports'),
-      require.resolve('babel-plugin-transform-typescript-metadata'),
+      require('@babel/plugin-syntax-dynamic-import').default,
+      require('babel-plugin-add-module-exports').default,
+      require('babel-plugin-transform-typescript-metadata').default,
       /**
        * Use the legacy (stage 1) decorators syntax and behavior.
        * https://babeljs.io/docs/en/babel-plugin-proposal-decorators#legacy
        * If you are including your plugins manually and using `@babel/plugin-proposal-class-properties`,
        * make sure that `@babel/plugin-proposal-decorators` comes before `@babel/plugin-proposal-class-properties`.
        */
-      [require.resolve('@babel/plugin-proposal-decorators'), { legacy: true }],
+      [require('@babel/plugin-proposal-decorators').default, { legacy: true }],
     ],
   };
 
@@ -52,7 +55,8 @@ export function transform(filename: string, options?: TransformHandleOptions): P
   const runtimeVersion = semver.clean(require('@babel/runtime/package.json').version);
   if (cjs) {
     babelOptions.presets.push([
-      require.resolve('@babel/preset-env'), {
+      require('@babel/preset-env').default,
+      {
         modules: 'cjs',
         loose: false,
       },
@@ -75,21 +79,25 @@ export function transform(filename: string, options?: TransformHandleOptions): P
        */
       (transformRuntime as any).useESModules = !semver.gte(runtimeVersion, '7.13.0');
     }
-    babelOptions.plugins.push([require.resolve('@babel/plugin-transform-runtime'), transformRuntime]);
-    babelOptions.plugins.push([require.resolve('babel-plugin-transform-remove-imports'), {
-      test: "\\.(less|css)$"
-    }]);
-    babelOptions.plugins.push(["@babel/plugin-proposal-class-properties", { loose: false }]);
-    babelOptions.plugins.push(["@babel/plugin-transform-classes", { loose: false }]);
+    babelOptions.plugins.push([require('@babel/plugin-transform-runtime').default, transformRuntime]);
+    babelOptions.plugins.push([
+      require('babel-plugin-transform-remove-imports').default,
+      {
+        test: '\\.(less|css)$',
+      },
+    ]);
+    babelOptions.plugins.push([require('@babel/plugin-proposal-class-properties').default, { loose: false }]);
+    babelOptions.plugins.push([require('@babel/plugin-transform-classes').default, { loose: false }]);
   }
 
   if (esm) {
     babelOptions.presets.push([
-      require.resolve('@babel/preset-env'), {
+      require('@babel/preset-env').default,
+      {
         modules: false,
         loose: true,
         targets: {
-          esmodules: true
+          esmodules: true,
         },
       },
     ]);
@@ -111,11 +119,15 @@ export function transform(filename: string, options?: TransformHandleOptions): P
        */
       (transformRuntime as any).useESModules = !semver.gte(runtimeVersion, '7.13.0');
     }
-    babelOptions.plugins.push([require.resolve('@babel/plugin-transform-runtime'), transformRuntime]);
-    babelOptions.plugins.push([require.resolve('@babel/plugin-proposal-class-properties'), { loose: true }]);
-    babelOptions.plugins.push([require.resolve('babel-plugin-transform-rename-import'), {
-      original: '^(.+?)\\.(less|scss|sass|styl)$', replacement: '$1.css'
-    }]);
+    babelOptions.plugins.push([require('@babel/plugin-transform-runtime').default, transformRuntime]);
+    babelOptions.plugins.push([require('@babel/plugin-proposal-class-properties').default, { loose: true }]);
+    babelOptions.plugins.push([
+      require('babel-plugin-transform-rename-import').default,
+      {
+        original: '^(.+?)\\.(less|scss|sass|styl)$',
+        replacement: '$1.css',
+      },
+    ]);
   }
   if (envName) {
     babelOptions = {};
