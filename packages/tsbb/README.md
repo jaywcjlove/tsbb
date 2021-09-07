@@ -80,6 +80,8 @@ You can download the following examples directly. [Download page](https://jaywcj
 - [**`Hapi`**](https://github.com/jaywcjlove/tsbb/tree/master/example/hapi) - The [Hapi](https://hapijs.com/) base application example.
 - [**`react-component`**](https://github.com/jaywcjlove/tsbb/tree/master/example/react-component) - The react component base application example.
 - [**`react-component-tsx`**](https://github.com/jaywcjlove/tsbb/tree/master/example/react-component-tsx) - The react component and website base application example.
+- [**`transform-typescript`**](https://github.com/jaywcjlove/tsbb/tree/master/example/transform-typescript) - Reconfigure the babel configuration example.
+- [**`umd`**](https://github.com/jaywcjlove/tsbb/tree/master/example/umd) - umd bundle example.
 
 ## Command Help
 
