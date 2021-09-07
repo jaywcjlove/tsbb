@@ -1,23 +1,17 @@
 [![tsbb](https://user-images.githubusercontent.com/1680273/57547188-94c60100-7390-11e9-93b2-5ebf085bb925.png)](https://github.com/jaywcjlove/tsbb)
 
 <p align="center">
-  <a href="https://github.com/jaywcjlove/tsbb/actions">
-    <img src="https://github.com/jaywcjlove/tsbb/workflows/Build%20&%20Deploy/badge.svg">
-  </a>
-  <a href="https://github.com/jaywcjlove/tsbb/issues">
-    <img src="https://img.shields.io/github/issues/jaywcjlove/tsbb.svg">
-  </a>
-  <a href="https://github.com/jaywcjlove/tsbb/network">
-    <img src="https://img.shields.io/github/forks/jaywcjlove/tsbb.svg">
-  </a>
-  <a href="https://github.com/jaywcjlove/tsbb/stargazers">
-    <img src="https://img.shields.io/github/stars/jaywcjlove/tsbb.svg">
-  </a>
-  <a href="https://github.com/jaywcjlove/tsbb/releases">
-    <img src="https://img.shields.io/github/release/jaywcjlove/tsbb.svg">
+  <a href="https://github.com/jaywcjlove/tsbb/actions/workflows/ci.yml">
+    <img alt="Build & Deploy" src="https://github.com/jaywcjlove/tsbb/actions/workflows/ci.yml/badge.svg">
   </a>
   <a href="https://www.npmjs.com/package/tsbb">
-    <img src="https://img.shields.io/npm/v/tsbb.svg">
+    <img alt="NPM Downloads" src="https://img.shields.io/npm/dm/tsbb.svg?style=flat">
+  </a>
+  <a href="https://uiwjs.github.io/npm-unpkg/#/pkg/tsbb/file/README.md">
+    <img alt="Open in unpkg" src="https://img.shields.io/badge/Open%20in-unpkg-blue">
+  </a>
+  <a href="https://www.npmjs.com/package/tsbb">
+    <img alt="npm version" src="https://img.shields.io/npm/v/tsbb.svg">
   </a>
 </p>
 
