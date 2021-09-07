@@ -37,7 +37,8 @@ export function transform(filename: string, options?: TransformHandleOptions): P
     sourceFileName,
     plugins: [
       require('@babel/plugin-syntax-dynamic-import').default,
-      require('babel-plugin-add-module-exports').default,
+      require('@babel/plugin-transform-modules-commonjs').default,
+      // require('babel-plugin-add-module-exports'),
       require('babel-plugin-transform-typescript-metadata').default,
       /**
        * Use the legacy (stage 1) decorators syntax and behavior.
