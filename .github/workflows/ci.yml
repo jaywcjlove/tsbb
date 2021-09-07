@@ -33,12 +33,12 @@ jobs:
       working-directory: example/express
       run: npm run build
 
-    - name: example @example/hapi
-      working-directory: example/hapi
-      run: npm run build
-
     - name: example @example/express-typeorm
       working-directory: example/express-typeorm
+      run: npm run build
+
+    - name: example @example/hapi
+      working-directory: example/hapi
       run: npm run build
 
     - name: example @example/koa
@@ -61,9 +61,13 @@ jobs:
       working-directory: example/transform-typescript
       run: npm run build
 
+    - name: example @example/umd
+      working-directory: example/umd
+      run: npm run build
+
     - name: Is a tag created auto?
       id: create_tag
-      uses: jaywcjlove/create-tag-action@v1.2.0
+      uses: jaywcjlove/create-tag-action@v1.2.1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         package-path: ./packages/tsbb/package.json
@@ -99,39 +103,49 @@ jobs:
     - run: mkdir -p zip
 
     - name: Compress basic Example.
-      run: zip -r -y basic.zip . -x "node_modules/*" -x "build/*" -x "coverage/*" -x ".eslintcache" -x "sandbox.config.json"
+      run: zip -r -y basic.zip . -x "node_modules/*" -x "build/*" -x "lib/*" -x "coverage/*" -x ".eslintcache" -x "sandbox.config.json"
       working-directory: example/basic
     - run: cp -rp example/basic/basic.zip ./zip
 
     - name: Compress express Example.
-      run: zip -r -y express.zip . -x "node_modules/*" -x "build/*" -x "coverage/*" -x ".eslintcache" -x "sandbox.config.json"
+      run: zip -r -y express.zip . -x "node_modules/*" -x "build/*" -x "lib/*" -x "coverage/*" -x ".eslintcache" -x "sandbox.config.json"
       working-directory: example/express
     - run: cp -rp example/express/express.zip ./zip
 
+    - name: Compress express-typeorm Example.
+      run: zip -r -y express-typeorm.zip . -x "node_modules/*" -x "build/*" -x "lib/*" -x "coverage/*" -x ".eslintcache" -x "sandbox.config.json"
+      working-directory: example/express-typeorm
+    - run: cp -rp example/express-typeorm/express-typeorm.zip ./zip
+
     - name: Compress hapi Example.
-      run: zip -r -y hapi.zip . -x "node_modules/*" -x "build/*" -x "coverage/*" -x ".eslintcache" -x "sandbox.config.json"
+      run: zip -r -y hapi.zip . -x "node_modules/*" -x "build/*" -x "lib/*" -x "coverage/*" -x ".eslintcache" -x "sandbox.config.json"
       working-directory: example/hapi
     - run: cp -rp example/hapi/hapi.zip ./zip
 
     - name: Compress koa Example.
-      run: zip -r -y koa.zip . -x "node_modules/*" -x "build/*" -x "coverage/*" -x ".eslintcache" -x "sandbox.config.json"
+      run: zip -r -y koa.zip . -x "node_modules/*" -x "build/*" -x "lib/*" -x "coverage/*" -x ".eslintcache" -x "sandbox.config.json"
       working-directory: example/koa
     - run: cp -rp example/koa/koa.zip ./zip
 
     - name: Compress react-component Example.
-      run: zip -r -y react-component.zip . -x "node_modules/*" -x "build/*" -x "coverage/*" -x ".eslintcache" -x "sandbox.config.json"
+      run: zip -r -y react-component.zip . -x "node_modules/*" -x "build/*" -x "lib/*" -x "esm/*" -x "dist/*" -x "doc/*" -x "coverage/*" -x ".eslintcache" -x "sandbox.config.json"
       working-directory: example/react-component
     - run: cp -rp example/react-component/react-component.zip ./zip
 
     - name: Compress react-component-tsx Example.
-      run: zip -r -y react-component-tsx.zip . -x "node_modules/*" -x "build/*" -x "coverage/*" -x ".eslintcache" -x "sandbox.config.json"
+      run: zip -r -y react-component-tsx.zip . -x "node_modules/*" -x "build/*" -x "lib/*" -x "esm/*" -x "coverage/*" -x ".eslintcache" -x "sandbox.config.json"
       working-directory: example/react-component-tsx
     - run: cp -rp example/react-component-tsx/react-component-tsx.zip ./zip
 
-    - name: Compress express-typeorm Example.
-      run: zip -r -y express-typeorm.zip . -x "node_modules/*" -x "build/*.sqlite" -x "build/*" -x "coverage/*" -x ".eslintcache" -x "sandbox.config.json"
-      working-directory: example/express-typeorm
-    - run: cp -rp example/express-typeorm/express-typeorm.zip ./zip
+    - name: Compress transform-typescript Example.
+      run: zip -r -y transform-typescript.zip . -x "node_modules/*" -x "build/*" -x "lib/*" -x "coverage/*" -x ".eslintcache" -x "sandbox.config.json"
+      working-directory: example/transform-typescript
+    - run: cp -rp example/transform-typescript/transform-typescript.zip ./zip
+
+    - name: Compress umd Example.
+      run: zip -r -y umd.zip . -x "node_modules/*" -x "build/*.sqlite" -x "build/*" -x "lib/*" -x "coverage/*" -x ".eslintcache" -x "sandbox.config.json"
+      working-directory: example/umd
+    - run: cp -rp example/umd/umd.zip ./zip
 
     - name: Compress TSBB Example Download webpage.
       working-directory: zip

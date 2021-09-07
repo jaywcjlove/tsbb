@@ -4,9 +4,12 @@
   "license": "MIT",
   "scripts": {
     "prepare": "husky install",
+    "build:example": "lerna exec \"npm run build\" --scope @template/*",
     "build:basic": "lerna exec \"npm run build\" --scope @template/basic",
     "watch:basic": "lerna exec \"npm run watch\" --scope @template/basic",
     "test:basic": "lerna exec \"npm run coverage\" --scope @template/basic",
+    "build:umd": "lerna exec \"npm run build\" --scope @template/umd",
+    "watch:umd": "lerna exec \"npm run watch\" --scope @template/umd",
     "build:express": "lerna exec \"npm run build\" --scope @template/express",
     "watch:express": "lerna exec \"npm run watch\" --scope @template/express",
     "build:express-typeorm": "lerna exec \"npm run build\" --scope @template/express-typeorm",

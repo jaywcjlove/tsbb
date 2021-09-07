@@ -61,3 +61,7 @@ jobs:
     - name: example @example/transform-typescript
       working-directory: example/transform-typescript
       run: npm run build
+
+    - name: example @example/umd
+      working-directory: example/umd
+      run: npm run build
