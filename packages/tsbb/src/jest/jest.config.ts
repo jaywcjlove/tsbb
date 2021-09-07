@@ -8,65 +8,71 @@ interface IJestConfig extends Jest.Config.InitialOptions {
 export default (resolve: Function, rootDir: string) => {
   const conf: IJestConfig = {
     rootDir: rootDir,
-    /**
-     * Alias: -w. Specifies the maximum number of workers the worker-pool will spawn for running tests.
-     * In single run mode, this defaults to the number of the cores available on your machine minus one for the main thread.
-     * In watch mode, this defaults to half of the available cores on your machine to ensure Jest is unobtrusive and does not grind your machine to a halt.
-     * It may be useful to adjust this in resource limited environments like CIs but the defaults should be adequate for most use-cases.
-     * For environments with variable CPUs available, you can use percentage based configuration: --maxWorkers=50%
-     */
-    maxWorkers: '50%',
-    collectCoverageFrom: ['src/**/*.{ts,tsx}', '!src/**/*.d.ts'],
-    testMatch: ['<rootDir>/**/__tests__/**/*.{js,jsx,ts,tsx}', '<rootDir>/**/?(*.)(spec|test).{js,jsx,ts,tsx}'],
-    testURL: 'http://localhost',
+    collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}', '!src/**/*.d.ts'],
+    testMatch: ['<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}', '<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}'],
+    testEnvironment: 'jsdom',
+    testRunner: require.resolve('jest-circus/runner'),
     transform: {
-      '^.+\\.(js|jsx|ts|tsx)$': resolve('lib/jest/babelTransform.js'),
-      '^.+\\.(css|less|sass|scss)$': resolve('lib/jest/cssTransform.js'),
-      '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': resolve('lib/jest/fileTransform.js'),
+      '^.+\\.(js|jsx|mjs|cjs|ts|tsx)$': resolve('lib/jest/babelTransform.js'),
+      '^.+\\.css$': resolve('lib/jest/cssTransform.js'),
+      '^(?!.*\\.(js|jsx|mjs|cjs|ts|tsx|css|json)$)': resolve('lib/jest/fileTransform.js'),
     },
-    transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$'],
+    transformIgnorePatterns: [
+      '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$',
+      '^.+\\.module\\.(css|less|styl|sass|scss)$',
+    ],
     moduleNameMapper: {
-      '^.+\\.module\\.(css|less|sass|scss)$': 'identity-obj-proxy',
+      '^react-native$': 'react-native-web',
+      '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
     },
+    watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
+    resetMocks: true,
   };
 
   const overrides: IJestConfig = Object.assign({}, require(path.join(rootDir, 'package.json')).jest);
 
   if (overrides) {
     const supportedKeys: string[] = [
+      'clearMocks',
       'collectCoverageFrom',
+      'coveragePathIgnorePatterns',
       'coverageReporters',
       'coverageThreshold',
-      'globals',
-      'mapCoverage',
-      'moduleFileExtensions',
-      'modulePathIgnorePatterns',
+      'displayName',
+      'extraGlobals',
+      'globalSetup',
+      'globalTeardown',
       'moduleNameMapper',
-      'modulePaths',
+      'resetMocks',
+      'resetModules',
+      'restoreMocks',
       'snapshotSerializers',
-      'setupFiles',
       'testMatch',
-      'testEnvironmentOptions',
-      'testResultsProcessor',
       'transform',
       'transformIgnorePatterns',
-      'reporters',
+      'watchPathIgnorePatterns',
     ];
     supportedKeys.forEach((key: string) => {
       if (overrides.hasOwnProperty(key)) {
-        conf[key] = overrides[key];
+        if (Array.isArray(conf[key]) || typeof conf[key] !== 'object') {
+          // for arrays or primitive types, directly override the config key
+          conf[key] = overrides[key];
+        } else {
+          // for object types, extend gracefully
+          conf[key] = Object.assign({}, conf[key], overrides[key]);
+        }
         delete overrides[key];
       }
     });
     const unsupportedKeys = Object.keys(overrides);
     if (unsupportedKeys.length) {
       console.error(
-        '\x1b[1;31mOut of the box, kkt only supports overriding \x1b[0m' +
+        '\x1b[1;31mOut of the box, TSBB only supports overriding \x1b[0m' +
           '\x1b[1;31mthese Jest options:\x1b[0m\n\n' +
           supportedKeys.map((key) => '  \u2022 ' + key).join('\n') +
           '.\n\n' +
           '\x1b[1;31mThese options in your package.json Jest configuration \x1b[0m' +
-          '\x1b[1;31mare not currently supported by kkt:\x1b[0m\n\n' +
+          '\x1b[1;31mare not currently supported by TSBB App:\x1b[0m\n\n' +
           unsupportedKeys.map((key) => '  \u2022 ' + key).join('\n'),
       );
       process.exit(1);

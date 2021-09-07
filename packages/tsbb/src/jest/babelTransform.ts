@@ -2,13 +2,30 @@ import babelJest from 'babel-jest';
 
 module.exports = babelJest.createTransformer({
   presets: [
-    require.resolve('@babel/preset-env'),
-    require.resolve('@babel/preset-typescript'),
-    require.resolve('@babel/preset-react'),
+    [
+      require('@babel/preset-env').default,
+      {
+        targets: {
+          node: 'current',
+        },
+      },
+    ],
+    require('@babel/preset-typescript').default,
+    require('@babel/preset-react').default,
   ],
   plugins: [
-    require.resolve('@babel/plugin-transform-runtime'),
-    require.resolve('@babel/plugin-proposal-class-properties'),
-    require.resolve('@babel/plugin-proposal-object-rest-spread'),
+    require('@babel/plugin-transform-runtime').default,
+    // require('babel-plugin-add-module-exports').default,
+    // require('@babel/plugin-proposal-object-rest-spread').default,
+    // require('babel-plugin-transform-typescript-metadata').default,
+    // [require('@babel/plugin-proposal-decorators').default],
+    // [require('@babel/plugin-transform-classes').default],
+    // // ["@babel/plugin-proposal-private-property-in-object", { "loose": false }],
+    // [require('@babel/plugin-proposal-private-property-in-object').default, {
+    //   loose: false,
+    // }],
+    // [require('@babel/plugin-proposal-class-properties').default, {
+    //   loose: false,
+    // }]
   ],
 });

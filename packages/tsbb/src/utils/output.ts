@@ -18,6 +18,7 @@ export function copyFiles(src: string, dest: string) {
 }
 
 export function outputLog(filename: string) {
+  filename = path.relative(process.cwd(), filename);
   const pkg = getPkg();
   const extname = path.extname(filename).replace('.', '');
   const name = `\x1b[35m ${pkg.name}\x1b[0m`;
@@ -30,7 +31,9 @@ export function outputLog(filename: string) {
   } else if (extname == 'js') {
     console.log(`♻️ ${name}\x1b[33;1m JS \x1b[0m ┈┈▶ \x1b[32;1m${filename}\x1b[0m`);
   } else {
-    console.log(`♻️ ${name}\x1b[37;1m ${(extname || '***').toLocaleUpperCase()} \x1b[0m ┈┈▶ \x1b[32;1m${filename}\x1b[0m`);
+    console.log(
+      `♻️ ${name}\x1b[37;1m ${(extname || '***').toLocaleUpperCase()} \x1b[0m ┈┈▶ \x1b[32;1m${filename}\x1b[0m`,
+    );
   }
 }
 
