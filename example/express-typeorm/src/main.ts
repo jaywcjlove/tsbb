@@ -14,6 +14,7 @@ const env = dotenv.config();
 async function run() {
   try {
     const entities = await getEntity();
+    console.log('entities:', entities);
     if (!env.parsed) env.parsed = {};
     const options: PostgresConnectionOptions = {
       type: 'postgres',

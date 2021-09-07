@@ -4,7 +4,6 @@
   "version": "3.0.4",
   "description": "Transform Typescript Example.",
   "scripts": {
-    "start": "node lib/index.js",
     "watch": "tsbb watch --disable-babel-option --no-esm",
     "build": "tsbb build --disable-babel-option --no-esm",
     "test": "tsbb test",

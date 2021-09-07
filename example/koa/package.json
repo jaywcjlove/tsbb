@@ -4,7 +4,7 @@
   "private": true,
   "description": "Koa Example",
   "scripts": {
-    "start": "node lib/app.js",
+    "start": "npm run build && node lib/app.js",
     "dev": "nodemon --inspect lib/app.js",
     "watch": "tsbb watch --entry ./src/app.ts --no-esm",
     "build": "tsbb build --entry ./src/app.ts --no-esm",
