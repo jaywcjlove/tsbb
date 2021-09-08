@@ -19,7 +19,12 @@ export async function compile(
   cjs = path.relative(ts.sys.getCurrentDirectory(), cjs);
   return new Promise(async (resolve, reject) => {
     try {
-      await FS.remove(outDir);
+      if (tsOptions.outDir || cjs) {
+        await FS.remove(outDir);
+      }
+      if (esm) {
+        await FS.remove(path.resolve(process.cwd(), esm));
+      }
       const dirToFiles = await recursiveReaddirFiles(path.dirname(entry), {
         exclude: /(tsconfig.json|.d.ts|.(test|spec).(ts|tsx|js|jsx))$/,
       });
