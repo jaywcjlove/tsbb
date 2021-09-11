@@ -37,7 +37,6 @@ export function transform(filename: string, options?: TransformHandleOptions): P
     sourceFileName,
     plugins: [
       require('@babel/plugin-syntax-dynamic-import').default,
-      // require('babel-plugin-add-module-exports'),
       require('babel-plugin-transform-typescript-metadata').default,
       /**
        * Use the legacy (stage 1) decorators syntax and behavior.
@@ -80,6 +79,7 @@ export function transform(filename: string, options?: TransformHandleOptions): P
       (transformRuntime as any).useESModules = !semver.gte(runtimeVersion, '7.13.0');
     }
     babelOptions.plugins.push(require('@babel/plugin-transform-modules-commonjs').default);
+    babelOptions.plugins.push(require('babel-plugin-add-module-exports'));
     babelOptions.plugins.push([require('@babel/plugin-transform-runtime').default, transformRuntime]);
     babelOptions.plugins.push([
       require('babel-plugin-transform-remove-imports').default,
