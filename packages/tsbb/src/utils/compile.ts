@@ -28,28 +28,34 @@ export async function compile(
       const dirToFiles = await recursiveReaddirFiles(path.dirname(entry), {
         exclude: /(tsconfig.json|.d.ts|.(test|spec).(ts|tsx|js|jsx))$/,
       });
-      if (!disableBabel) {
-        await Promise.all(
-          dirToFiles.map(async (item) => {
-            if (cjs) {
-              const cjsPath = item.path.replace(entryDir, cjs);
-              if (isMatch(item.path, ['**/*.[jt]s?(x)']) && !isMatch(item.path, ['**/?(*.)+(spec|test).[jt]s?(x)'])) {
-                transform(item.path, { entryDir, cjs, ...other });
-              } else {
-                copyFiles(item.path, cjsPath);
-              }
+      await Promise.all(
+        dirToFiles.map(async (item) => {
+          if (cjs) {
+            const cjsPath = item.path.replace(entryDir, cjs);
+            if (
+              !disableBabel &&
+              isMatch(item.path, ['**/*.[jt]s?(x)']) &&
+              !isMatch(item.path, ['**/?(*.)+(spec|test).[jt]s?(x)'])
+            ) {
+              transform(item.path, { entryDir, cjs, ...other });
+            } else {
+              copyFiles(item.path, cjsPath);
             }
-            if (esm) {
-              const esmPath = item.path.replace(entryDir, esm);
-              if (isMatch(item.path, ['**/*.[jt]s?(x)']) && !isMatch(item.path, ['**/?(*.)+(spec|test).[jt]s?(x)'])) {
-                transform(item.path, { entryDir, esm, ...other });
-              } else {
-                copyFiles(item.path, esmPath);
-              }
+          }
+          if (esm) {
+            const esmPath = item.path.replace(entryDir, esm);
+            if (
+              !disableBabel &&
+              isMatch(item.path, ['**/*.[jt]s?(x)']) &&
+              !isMatch(item.path, ['**/?(*.)+(spec|test).[jt]s?(x)'])
+            ) {
+              transform(item.path, { entryDir, esm, ...other });
+            } else {
+              copyFiles(item.path, esmPath);
             }
-          }),
-        );
-      }
+          }
+        }),
+      );
 
       // Create a Program with an in-memory emit
       const createdFiles: Record<string, string> = {};
