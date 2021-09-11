@@ -26,7 +26,7 @@ export async function compile(
         await FS.remove(path.resolve(process.cwd(), esm));
       }
       const dirToFiles = await recursiveReaddirFiles(path.dirname(entry), {
-        exclude: /(tsconfig.json|.d.ts|.(test|spec).(ts|tsx|js|jsx))$/,
+        exclude: /(tsconfig.json|\.d\.ts|\.(test|spec)\.(ts|tsx|js|jsx))$/,
       });
       await Promise.all(
         dirToFiles.map(async (item) => {
