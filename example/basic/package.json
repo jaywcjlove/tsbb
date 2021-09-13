@@ -7,8 +7,8 @@
     "start": "node lib/index.js",
     "watch": "tsbb watch --no-esm --disable-babel",
     "build": "tsbb build --no-esm --disable-babel",
-    "test": "tsbb test",
-    "coverage": "tsbb test --coverage"
+    "test": "npm run build && tsbb test",
+    "coverage": "npm run build && tsbb test --coverage"
   },
   "repository": {
     "type": "git",

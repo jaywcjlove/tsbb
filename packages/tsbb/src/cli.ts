@@ -35,7 +35,7 @@ const argv: ArgvArguments = parser(process.argv.slice(2), {
     return help();
   }
   try {
-    argv.entry = argv.entry || 'src/index.tsx';
+    argv.entry = path.resolve(process.cwd(), argv.entry || 'src/index.tsx');
     if (ts.sys.fileExists(argv.entry.replace(/\.tsx$/, '.ts'))) {
       argv.entry = argv.entry.replace(/\.tsx$/, '.ts');
     }

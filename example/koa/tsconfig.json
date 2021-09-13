@@ -10,7 +10,6 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
-    "outDir": "lib",
     "baseUrl": ".",
     "types": ["jest", "node"]
   },
