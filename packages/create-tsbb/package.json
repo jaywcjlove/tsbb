@@ -1,6 +1,6 @@
 {
   "name": "create-tsbb",
-  "version": "3.1.9",
+  "version": "3.1.10",
   "description": "Creates a TSBB application using the command line.",
   "homepage": "https://jaywcjlove.github.io/tsbb",
   "author": "Kenny Wong <wowohoo@qq.com> (https://github.com/jaywcjlove)",
@@ -36,7 +36,7 @@
     "frontend"
   ],
   "devDependencies": {
-    "tsbb": "^3.1.9"
+    "tsbb": "^3.1.10"
   },
   "dependencies": {
     "create-kkt": "2.3.0"
