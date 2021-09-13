@@ -28,12 +28,12 @@ export interface BuildOptions extends Arguments {
    * Output ESM directory.
    * @example `--no-esm`
    */
-  esm?: string;
+  esm?: boolean | string;
 }
 
 export async function build(options: BuildOptions, compilerOptions?: ts.CompilerOptions) {
   try {
-    await compile([options.entry], compilerOptions, options);
+    await compile(options.fileNames, compilerOptions, options);
   } catch (error) {
     console.error('ERROR', error);
     process.exit(1);

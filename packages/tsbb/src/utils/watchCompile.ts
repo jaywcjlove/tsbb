@@ -16,19 +16,22 @@ export async function watchCompile(
   let { entry, cjs = tsOptions.outDir || 'lib', esm = 'esm', disableBabel, ...other } = options || {};
   const entryDir = path.dirname(entry);
   cjs = path.relative(ts.sys.getCurrentDirectory(), cjs);
-  const compilerOptions: ts.CompilerOptions = {
-    ...tsOptions,
-    outDir: cjs || esm,
-  };
+
+  const compilerOptions: ts.CompilerOptions = { ...tsOptions };
+  const outDirPath = cjs || esm;
+  if (typeof outDirPath === 'string') {
+    tsOptions.outDir = outDirPath;
+  }
 
   if (!disableBabel) {
     await compile([options.entry], tsOptions, options);
   }
+
   const watcher = chokidar.watch(path.dirname(entry), {
     persistent: true,
   });
   watcher.on('change', async (filepath) => {
-    if (esm) {
+    if (typeof esm === 'string') {
       const output = filepath.replace(entryDir, esm);
       if (
         !disableBabel &&
@@ -41,7 +44,7 @@ export async function watchCompile(
         outputFiles(output, result);
       }
     }
-    if (cjs) {
+    if (typeof cjs === 'string') {
       const output = filepath.replace(entryDir, cjs);
       if (
         !disableBabel &&
@@ -67,14 +70,14 @@ export async function watchCompile(
     if (/\.d\.ts$/.test(file)) {
       if (new RegExp(`${esm}`).test(file)) {
         outputFiles(file, content);
-        if (cjs) {
+        if (cjs && typeof esm === 'string') {
           const fileCjs = file.replace(esm, cjs);
           outputFiles(fileCjs, content);
         }
       }
       if (new RegExp(`${cjs}`).test(file)) {
         outputFiles(file, content);
-        if (esm) {
+        if (esm && typeof esm === 'string') {
           const fileEsm = file.replace(cjs, esm);
           outputFiles(fileEsm, content);
         }

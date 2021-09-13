@@ -10,7 +10,11 @@ import { help } from './help';
 import { jest } from './jest';
 
 interface ArgvArguments extends Arguments {
+  disableBabel?: boolean;
+  esm?: boolean | string;
+  cjs?: string;
   entry?: string;
+  fileNames?: string | string[];
 }
 
 const argv: ArgvArguments = parser(process.argv.slice(2), {
@@ -24,7 +28,6 @@ const argv: ArgvArguments = parser(process.argv.slice(2), {
 
 (() => {
   const version = require('../package.json').version;
-
   if (argv.v) {
     console.log();
     console.log(` Version \x1b[32;1m ${version}\x1b[0m`);
@@ -38,6 +41,26 @@ const argv: ArgvArguments = parser(process.argv.slice(2), {
     argv.entry = path.resolve(process.cwd(), argv.entry || 'src/index.tsx');
     if (ts.sys.fileExists(argv.entry.replace(/\.tsx$/, '.ts'))) {
       argv.entry = argv.entry.replace(/\.tsx$/, '.ts');
+    }
+
+    if (typeof argv.fileNames === 'string') {
+      argv.fileNames = [argv.fileNames];
+    }
+
+    if (argv.fileNames && Array.isArray(argv.fileNames)) {
+      argv.fileNames = argv.fileNames.map((filename: string) => path.resolve(process.cwd(), filename));
+      argv.fileNames = [argv.entry, ...argv.fileNames];
+      argv.fileNames = Array.from(new Set(argv.fileNames));
+    }
+
+    if (!argv.fileNames) {
+      argv.fileNames = [argv.entry];
+    }
+
+    argv.fileNames = argv.fileNames.map((item) => item.replace(/\.tsx$/, '.ts'));
+
+    if (argv.disableBabel) {
+      argv.esm = false;
     }
 
     const configPath = ts.findConfigFile(path.dirname(argv.entry), ts.sys.fileExists);

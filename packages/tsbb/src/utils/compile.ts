@@ -22,7 +22,7 @@ export async function compile(
       if (tsOptions.outDir || cjs) {
         await FS.remove(outDir);
       }
-      if (esm) {
+      if (typeof esm === 'string') {
         await FS.remove(path.resolve(process.cwd(), esm));
       }
       const dirToFiles = await recursiveReaddirFiles(path.dirname(entry), {
@@ -42,7 +42,7 @@ export async function compile(
               copyFiles(item.path, cjsPath);
             }
           }
-          if (esm) {
+          if (typeof esm === 'string') {
             const esmPath = item.path.replace(entryDir, esm);
             if (
               !disableBabel &&
@@ -59,7 +59,11 @@ export async function compile(
 
       // Create a Program with an in-memory emit
       const createdFiles: Record<string, string> = {};
-      tsOptions = { ...tsOptions, outDir: cjs || esm, target: tsOptions.target || ts.ScriptTarget.ESNext };
+      const outDirPath = cjs || esm;
+      tsOptions = { ...tsOptions, target: tsOptions.target || ts.ScriptTarget.ESNext };
+      if (typeof outDirPath === 'string') {
+        tsOptions.outDir = outDirPath;
+      }
       if (tsOptions.noEmit) {
         resolve();
         return;
@@ -90,21 +94,21 @@ export async function compile(
       await Promise.all(
         Object.keys(createdFiles).map(async (filepath) => {
           try {
-            if (disableBabel) {
+            if (disableBabel && !/\.d\.ts$/.test(filepath)) {
               ts.sys.writeFile(filepath, createdFiles[filepath]);
               outputLog(filepath);
             }
             if (/\.d\.ts$/.test(filepath)) {
               if (new RegExp(`${esm}`).test(filepath)) {
                 outputFiles(filepath, createdFiles[filepath]);
-                if (cjs) {
+                if (cjs && typeof esm === 'string') {
                   const fileCjs = filepath.replace(esm, cjs);
                   outputFiles(fileCjs, createdFiles[filepath]);
                 }
               }
               if (new RegExp(`${cjs}`).test(filepath)) {
                 outputFiles(filepath, createdFiles[filepath]);
-                if (esm) {
+                if (esm && typeof esm === 'string') {
                   const fileEsm = filepath.replace(cjs, esm);
                   outputFiles(fileEsm, createdFiles[filepath]);
                 }
