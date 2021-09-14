@@ -68,6 +68,7 @@ export async function compile(
         resolve();
         return;
       }
+      tsOptions.noEmit = false;
 
       const host = ts.createCompilerHost(tsOptions, true);
       // ts.getParsedCommandLineOfConfigFile('', tsOptions, host)

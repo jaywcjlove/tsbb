@@ -57,8 +57,6 @@ const argv: ArgvArguments = parser(process.argv.slice(2), {
       argv.fileNames = [argv.entry];
     }
 
-    argv.fileNames = argv.fileNames.map((item) => item.replace(/\.tsx$/, '.ts'));
-
     if (argv.disableBabel) {
       argv.esm = false;
     }

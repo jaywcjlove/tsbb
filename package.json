@@ -24,6 +24,7 @@
     "watch:react-component": "lerna exec \"npm run watch\" --scope @template/react-component",
     "start:react-component": "lerna exec \"npm run doc:dev\" --scope @template/react-component",
     "build:react-component-tsx": "lerna exec \"npm run build\" --scope @template/react-component-tsx",
+    "watch:react-component-tsx": "lerna exec \"npm run watch\" --scope @template/react-component-tsx",
     "watch": "lerna exec \"tsc -p ./ --types --outDir lib --watch\" --scope tsbb",
     "build": "lerna exec \"tsc -p ./ --types --outDir lib\" --scope create-tsbb --scope tsbb --stream",
     "type-check": "lerna exec \"tsc --noEmit\" --scope create-tsbb --scope tsbb --stream",
