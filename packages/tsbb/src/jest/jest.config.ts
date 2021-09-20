@@ -31,6 +31,7 @@ export default (resolve: Function, rootDir: string) => {
     },
     watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
     resetMocks: true,
+    coverageReporters: ['lcov', 'json-summary'],
   };
 
   const overrides: IJestConfig = Object.assign({}, require(path.join(rootDir, 'package.json')).jest);
