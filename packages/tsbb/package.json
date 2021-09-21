@@ -35,7 +35,7 @@
 		"@babel/preset-typescript": "7.15.0",
 		"@types/babel__core": "7.1.16",
 		"@types/fs-extra": "9.0.12",
-		"@types/jest": "27.0.1",
+		"@types/jest": "27.0.2",
 		"@types/micromatch": "4.0.2",
 		"@types/node": "16.7.10",
 		"@types/semver": "7.3.8",
