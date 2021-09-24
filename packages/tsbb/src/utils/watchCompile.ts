@@ -58,7 +58,12 @@ export async function watchCompile(
       }
     }
   });
-  if (tsOptions.noEmit && disableBabel) {
+  // if ((tsOptions.noEmit && disableBabel) || (tsOptions.noEmit && !disableBabel)) {
+  if ((tsOptions.noEmit && disableBabel) || (tsOptions.noEmit && !disableBabel)) {
+    return;
+  }
+
+  if (tsOptions.noEmit || !disableBabel) {
     return;
   }
   compilerOptions.noEmit = false;
