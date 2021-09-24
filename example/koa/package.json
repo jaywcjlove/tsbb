@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@types/koa": "2.13.4",
-    "nodemon": "2.0.12",
+    "nodemon": "2.0.13",
     "tsbb": "^3.3.0"
   },
   "dependencies": {

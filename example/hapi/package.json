@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@types/hapi__hapi": "20.0.9",
-    "nodemon": "2.0.12",
+    "nodemon": "2.0.13",
     "tsbb": "^3.3.0"
   },
   "dependencies": {
