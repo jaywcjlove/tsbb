@@ -36,10 +36,10 @@ export async function watchCompile(
       if (
         !disableBabel &&
         isMatch(output, ['**/*.[jt]s?(x)']) &&
-        !isMatch(output, ['**/?(*.)+(spec|test).[jt]s?(x)', '**/*.d.ts'])
+        !isMatch(output, ['**/?(*.)+(spec|test).[jt]s?(x)', '**/*.d.ts', '**/tsconfig.json'])
       ) {
         transform(filepath, { entryDir, esm, ...other });
-      } else if (!isMatch(output, ['**/?(*.)+(spec|test).[jt]s?(x)', 'tsconfig.json', '**/*.d.ts'])) {
+      } else if (!isMatch(output, ['**/?(*.)+(spec|test).[jt]s?(x)', '**/tsconfig.json', '**/*.d.ts'])) {
         const result = ts.sys.readFile(filepath);
         outputFiles(output, result);
       }
@@ -52,13 +52,12 @@ export async function watchCompile(
         !isMatch(output, ['**/?(*.)+(spec|test).[jt]s?(x)', '**/*.d.ts'])
       ) {
         transform(filepath, { entryDir, cjs, ...other });
-      } else if (!isMatch(output, ['**/?(*.)+(spec|test).[jt]s?(x)', 'tsconfig.json', '**/*.d.ts'])) {
+      } else if (!isMatch(output, ['**/?(*.)+(spec|test).[jt]s?(x)', '**/tsconfig.json', '**/*.d.ts'])) {
         const result = ts.sys.readFile(filepath);
         outputFiles(output, result);
       }
     }
   });
-  // if ((tsOptions.noEmit && disableBabel) || (tsOptions.noEmit && !disableBabel)) {
   if ((tsOptions.noEmit && disableBabel) || (tsOptions.noEmit && !disableBabel)) {
     return;
   }
