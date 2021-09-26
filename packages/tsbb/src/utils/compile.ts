@@ -14,12 +14,12 @@ export async function compile(
   options: CompileOptions,
 ): Promise<void> {
   let { entry, disableBabel, cjs = tsOptions.outDir || 'lib', esm = 'esm', ...other } = options || {};
-  const outDir = path.resolve(process.cwd(), tsOptions.outDir || cjs);
+  const outDir = path.resolve(process.cwd(), cjs || tsOptions.outDir);
   const entryDir = path.dirname(entry);
   cjs = path.relative(ts.sys.getCurrentDirectory(), cjs);
   return new Promise(async (resolve, reject) => {
     try {
-      if (tsOptions.outDir || cjs) {
+      if (cjs || tsOptions.outDir) {
         await FS.remove(outDir);
       }
       if (typeof esm === 'string') {
