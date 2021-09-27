@@ -61,10 +61,6 @@ export async function watchCompile(
   if ((tsOptions.noEmit && disableBabel) || (tsOptions.noEmit && !disableBabel)) {
     return;
   }
-
-  if (tsOptions.noEmit || !disableBabel) {
-    return;
-  }
   compilerOptions.noEmit = false;
   const sysOverride: ts.System = {} as ts.System;
   for (let key in ts.sys) {
