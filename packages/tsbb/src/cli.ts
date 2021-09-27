@@ -74,6 +74,11 @@ const argv: ArgvArguments = parser(process.argv.slice(2), {
     if (argv.disableBabel === undefined) {
       argv.disableBabel = false;
     }
+
+    if (!tsConf.compilerOptions.outDir) {
+      tsConf.compilerOptions.outDir = 'lib';
+    }
+
     if (argv._[0] === 'build') {
       return build(argv, { ...tsConf.compilerOptions });
     }
