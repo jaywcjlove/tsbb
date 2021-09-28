@@ -15,10 +15,10 @@ jobs:
         node-version: 14
 
     - name: Look Changelog
-      uses: jaywcjlove/changelog-generator@v1.4.3
+      uses: jaywcjlove/changelog-generator@v1.4.6
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        filter-author: (jaywcjlove|小弟调调™|dependabot\[bot\]|Renovate Bot|renovate\-bot)
+        filter-author: (小弟调调™|renovate\-bot)
         filter: '[R|r]elease[d]\s+[v|V]\d(\.\d+){0,2}'
 
     - run: npm install
@@ -205,6 +205,9 @@ jobs:
         </div>
         </body></html>
         EOF
+
+    - run: npm i markdown-to-html-cli -g
+    - run: markdown-to-html --output zip/index.html --source packages/tsbb/README.md
 
     - name: Build and Deploy
       uses: peaceiris/actions-gh-pages@v3
