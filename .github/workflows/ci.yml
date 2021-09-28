@@ -207,7 +207,7 @@ jobs:
         EOF
 
     - run: npm i markdown-to-html-cli -g
-    - run: markdown-to-html --output zip/index.html --source packages/tsbb/README.md
+    - run: markdown-to-html --output zip/doc.html --source packages/tsbb/README.md
 
     - name: Build and Deploy
       uses: peaceiris/actions-gh-pages@v3
