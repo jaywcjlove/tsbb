@@ -164,11 +164,14 @@ jobs:
         body, html { height: 100%; font-size: 12px; font-family: Avenir Next,PingFang SC,Hiragino Sans GB,Droid Sans Fallback,Microsoft YaHei,sans-serif; }
         h1 { font-size: 2.6rem; font-weight: 300; }
         h1 sup { color: #7b7b7b; font-size: 14px; position: absolute; font-weight: normal;}
+        .docbtn { background: #2196f3; display: inline-block; padding: 5px 12px; color: #fff; border-radius: 2px; transition: all 0.3s; }
+        .docbtn:hover { background: #377eb7; }
         a:hover { color: #0949d1; }
         .header { position: relative; width: 100%; height: 60%; text-align: center; }
         .list { border-spacing: 0; border-collapse: collapse; margin: 0 auto 0 auto;}
         .list td { padding: 3px 10px; line-height: 21px; }
         .list td svg { display: block; }
+        .list tr { transition: all 0.3s; }
         .list tr:hover { background-color: #f1f1f1; }
         .links { text-align: center; padding: 50px 0 0 0; font-size: 14px; }
         .footer { color: #696969; text-align: center; padding: 10px 0 90px 0; }
@@ -178,6 +181,7 @@ jobs:
         <body>
         <table class="header"> <tbody> <tr> <td>
           <h1>TSBB Example Zip Files<sup>v$VERSION_NUMBER</sup></h1>
+          <a target="__blank" class="docbtn" href="doc.html">Document</a>
         </td> </tr> </tbody> </table>
 
         <table class="list">
