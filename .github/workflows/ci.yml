@@ -164,8 +164,8 @@ jobs:
         body, html { height: 100%; font-size: 12px; font-family: Avenir Next,PingFang SC,Hiragino Sans GB,Droid Sans Fallback,Microsoft YaHei,sans-serif; }
         h1 { font-size: 2.6rem; font-weight: 300; }
         h1 sup { color: #7b7b7b; font-size: 14px; position: absolute; font-weight: normal;}
-        .docbtn { background: #2196f3; display: inline-block; padding: 5px 12px; color: #fff; border-radius: 2px; transition: all 0.3s; }
-        .docbtn:hover { background: #377eb7; }
+        .docbtn { background: #2196f3; display: inline-block; padding: 5px 12px; color: #fff; border-radius: 2px; transition: all 0.3s; position: fixed; left: 10px; top: 10px; }
+        .docbtn:hover { background: #377eb7; color: #fff; }
         a:hover { color: #0949d1; }
         .header { position: relative; width: 100%; height: 60%; text-align: center; }
         .list { border-spacing: 0; border-collapse: collapse; margin: 0 auto 0 auto;}
