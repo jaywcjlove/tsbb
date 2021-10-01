@@ -23,6 +23,7 @@ const argv: ArgvArguments = parser(process.argv.slice(2), {
     output: ['o'],
     help: ['h'],
     version: ['v'],
+    'file-names': ['f'],
   },
 });
 
