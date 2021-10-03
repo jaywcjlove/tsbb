@@ -2,6 +2,11 @@
   "name": "tsbb",
   "private": true,
   "license": "MIT",
+  "description": "TSBB is a zero-config CLI that helps you develop, test, and publish modern TypeScript project.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaywcjlove/tsbb.git"
+  },
   "scripts": {
     "prepare": "husky install",
     "build:example": "lerna exec \"npm run build\" --scope @template/*",
