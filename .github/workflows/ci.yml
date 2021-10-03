@@ -184,7 +184,7 @@ jobs:
           <h1>TSBB Example Zip Files<sup>v$VERSION_NUMBER</sup></h1>
           <div class="docbtn">
             <a target="__blank" href="doc.html">Document</a>
-            <a target="__blank" href="create-tsbb.html">Document</a>
+            <a target="__blank" href="create-tsbb.html">Create TSBB Document</a>
             <a target="__blank" href="https://github.com/jaywcjlove/tsbb">Github</a>
           </div>
         </td> </tr> </tbody> </table>
