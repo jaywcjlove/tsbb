@@ -39,7 +39,14 @@ export async function watchCompile(
         !isMatch(path.resolve(output), ['**/?(*.)+(spec|test).[jt]s?(x)', '**/*.d.ts', '**/tsconfig.json'])
       ) {
         transform(filepath, { entryDir, esm, ...other });
-      } else if (!isMatch(path.resolve(output), ['**/?(*.)+(spec|test).[jt]s?(x)', '**/tsconfig.json', '**/*.d.ts'])) {
+      } else if (
+        !isMatch(path.resolve(output), [
+          '**/?(*.)+(spec|test).[jt]s?(x)',
+          '**/*.[jt]s?(x)',
+          '**/tsconfig.json',
+          '**/*.d.ts',
+        ])
+      ) {
         const result = ts.sys.readFile(filepath);
         outputFiles(output, result);
       }
@@ -52,7 +59,14 @@ export async function watchCompile(
         !isMatch(path.resolve(output), ['**/?(*.)+(spec|test).[jt]s?(x)', '**/*.d.ts'])
       ) {
         transform(filepath, { entryDir, cjs, ...other });
-      } else if (!isMatch(path.resolve(output), ['**/?(*.)+(spec|test).[jt]s?(x)', '**/tsconfig.json', '**/*.d.ts'])) {
+      } else if (
+        !isMatch(path.resolve(output), [
+          '**/?(*.)+(spec|test).[jt]s?(x)',
+          '**/*.[jt]s?(x)',
+          '**/tsconfig.json',
+          '**/*.d.ts',
+        ])
+      ) {
         const result = ts.sys.readFile(filepath);
         outputFiles(output, result);
       }
