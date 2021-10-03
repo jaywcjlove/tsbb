@@ -2,7 +2,7 @@
   "name": "create-tsbb",
   "version": "3.4.0",
   "description": "Creates a TSBB application using the command line.",
-  "homepage": "https://jaywcjlove.github.io/tsbb",
+  "homepage": "https://jaywcjlove.github.io/tsbb/create-tsbb.html",
   "author": "Kenny Wong <wowohoo@qq.com> (https://github.com/jaywcjlove)",
   "main": "lib/index.js",
   "license": "MIT",
@@ -12,10 +12,6 @@
   },
   "bin": {
     "create-tsbb": "lib/cli.js"
-  },
-  "scripts": {
-    "build": "tsbb build --no-esm",
-    "watch": "tsbb watch --no-esm"
   },
   "files": [
     "lib",
@@ -35,9 +31,6 @@
     "framework",
     "frontend"
   ],
-  "devDependencies": {
-    "tsbb": "^3.4.0"
-  },
   "dependencies": {
     "create-kkt": "2.3.0"
   }
