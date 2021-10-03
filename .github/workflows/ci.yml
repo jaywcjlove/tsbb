@@ -182,7 +182,7 @@ jobs:
         <body>
         <table class="header"> <tbody> <tr> <td>
           <h1>TSBB Example Zip Files<sup>v$VERSION_NUMBER</sup></h1>
-          <div>
+          <div class="docbtn">
             <a target="__blank" href="doc.html">Document</a>
             <a target="__blank" href="create-tsbb.html">Document</a>
           </div>
