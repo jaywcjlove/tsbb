@@ -54,7 +54,7 @@
     "jest": "27.2.4",
     "jest-watch-typeahead": "1.0.0",
     "micromatch": "4.0.4",
-    "recursive-readdir-files": "2.0.0",
+    "recursive-readdir-files": "2.0.1",
     "semver": "7.3.5",
     "typescript": "4.4.3",
     "yargs-parser": "20.2.9"
