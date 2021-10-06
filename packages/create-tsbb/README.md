@@ -4,21 +4,12 @@
   <a href="https://github.com/jaywcjlove/tsbb/actions">
     <img src="https://github.com/jaywcjlove/tsbb/workflows/Build%20&%20Deploy/badge.svg">
   </a>
-  <a href="https://github.com/jaywcjlove/tsbb/issues">
-    <img src="https://img.shields.io/github/issues/jaywcjlove/tsbb.svg">
-  </a>
-  <a href="https://github.com/jaywcjlove/tsbb/network">
-    <img src="https://img.shields.io/github/forks/jaywcjlove/tsbb.svg">
-  </a>
-  <a href="https://github.com/jaywcjlove/tsbb/stargazers">
-    <img src="https://img.shields.io/github/stars/jaywcjlove/tsbb.svg">
-  </a>
   <a href="https://www.npmjs.com/package/create-tsbb">
     <img src="https://img.shields.io/npm/v/create-tsbb.svg">
   </a>
 </p>
 
-Creates a [`tsbb`](https://www.travis-ci.org/jaywcjlove/tsbb) application using the command line.
+Creates a [`tsbb`](http://jaywcjlove.github.io/tsbb) application using the command line.
 
 ### Usage
 
