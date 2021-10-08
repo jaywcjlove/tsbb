@@ -50,11 +50,13 @@ const argv: ArgvArguments = parser(process.argv.slice(2), {
 
     if (argv.fileNames && Array.isArray(argv.fileNames)) {
       argv.fileNames = argv.fileNames.map((filename: string) => path.resolve(process.cwd(), filename));
-      argv.fileNames = [argv.entry, ...argv.fileNames];
+      if (ts.sys.fileExists(argv.entry)) {
+        argv.fileNames = [argv.entry, ...argv.fileNames];
+      }
       argv.fileNames = Array.from(new Set(argv.fileNames));
     }
 
-    if (!argv.fileNames) {
+    if (!argv.fileNames && ts.sys.fileExists(argv.entry)) {
       argv.fileNames = [argv.entry];
     }
 
