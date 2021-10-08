@@ -56,8 +56,8 @@ const argv: ArgvArguments = parser(process.argv.slice(2), {
       argv.fileNames = Array.from(new Set(argv.fileNames));
     }
 
-    if (!argv.fileNames && ts.sys.fileExists(argv.entry)) {
-      argv.fileNames = [argv.entry];
+    if (!argv.fileNames) {
+      argv.fileNames = ts.sys.fileExists(argv.entry) ? [argv.entry] : [];
     }
 
     if (argv.disableBabel) {
