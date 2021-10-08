@@ -1,7 +1,7 @@
 {
   "name": "@template/umd",
   "private": true,
-  "version": "3.4.3",
+  "version": "3.4.4",
   "description": "UMD Example.",
   "scripts": {
     "watch": "tsbb watch --no-esm --disable-babel",
@@ -12,6 +12,6 @@
   "keywords": [],
   "license": "MIT",
   "devDependencies": {
-    "tsbb": "^3.4.3"
+    "tsbb": "^3.4.4"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@template/express-typeorm",
-  "version": "3.4.3",
+  "version": "3.4.4",
   "private": true,
   "description": "Express Typeorm Example.",
   "scripts": {
@@ -35,7 +35,7 @@
     "nodemon": "2.0.13",
     "ts-node": "10.2.1",
     "ts-node-dev": "1.1.8",
-    "tsbb": "^3.4.3"
+    "tsbb": "^3.4.4"
   },
   "dependencies": {
     "compression": "1.7.4",
