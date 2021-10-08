@@ -1,6 +1,6 @@
 {
   "name": "@template/hapi",
-  "version": "3.4.2",
+  "version": "3.4.3",
   "private": true,
   "description": "hapi Example.",
   "main": "index.js",
@@ -30,7 +30,7 @@
   "devDependencies": {
     "@types/hapi__hapi": "20.0.9",
     "nodemon": "2.0.13",
-    "tsbb": "^3.4.2"
+    "tsbb": "^3.4.3"
   },
   "dependencies": {
     "@babel/runtime": "7.15.4",
