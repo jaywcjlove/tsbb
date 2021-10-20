@@ -44,7 +44,7 @@
     "@kkt/scope-plugin-options": "6.11.0",
     "@tsbb/babel-preset-tsbb": "1.14.2",
     "@types/react": "17.0.29",
-    "@types/react-dom": "17.0.9",
+    "@types/react-dom": "17.0.10",
     "compile-less-cli": "1.8.9",
     "husky": "7.0.2",
     "kkt": "6.11.0",
