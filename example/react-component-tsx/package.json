@@ -8,7 +8,7 @@
   "scripts": {
     "doc": "kkt build --app-src ./website",
     "start": "kkt start --app-src ./website",
-    "watch": "tsbb watch",
+    "watch": "tsbb watch & npm run css:watch",
     "build": "tsbb build && npm run css:build",
     "css:build": "compile-less -d src -o esm",
     "css:watch": "compile-less -d src -o esm --watch",
