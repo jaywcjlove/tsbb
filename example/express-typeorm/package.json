@@ -32,7 +32,7 @@
     "@types/express-session": "1.17.4",
     "@types/http-errors": "1.8.1",
     "@types/node": "16.11.6",
-    "nodemon": "2.0.13",
+    "nodemon": "2.0.14",
     "ts-node": "10.4.0",
     "ts-node-dev": "1.1.8",
     "tsbb": "^3.4.4"
