@@ -42,7 +42,7 @@
     "publish": "lerna publish from-package"
   },
   "dependencies": {
-    "husky": "7.0.2",
+    "husky": "7.0.4",
     "lerna": "4.0.0",
     "prettier": "2.4.1",
     "pretty-quick": "3.1.1",

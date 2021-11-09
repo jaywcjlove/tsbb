@@ -46,7 +46,7 @@
     "@types/react": "17.0.34",
     "@types/react-dom": "17.0.11",
     "compile-less-cli": "1.8.9",
-    "husky": "7.0.2",
+    "husky": "7.0.4",
     "kkt": "6.11.0",
     "lint-staged": "11.2.6",
     "prettier": "2.4.1",
