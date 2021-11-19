@@ -146,7 +146,7 @@ jobs:
     - run: cp -rp example/umd/umd.zip ./zip
 
     - name: Compress vue Example.
-      run: zip -r -y vue.zip . -x "node_modules/*" -x "build/*" -x "cjs/*" -x "esm/*""
+      run: zip -r -y vue.zip . -x "node_modules/*" -x "build/*" -x "cjs/*" -x "esm/*"
       working-directory: example/vue
     - run: cp -rp example/vue/vue.zip ./zip
 
