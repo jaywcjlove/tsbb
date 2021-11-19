@@ -85,7 +85,7 @@ jobs:
     - name: Create Release
       uses: jaywcjlove/create-tag-action@v1.3.4
       with:
-        package-path: ./packages/core/package.json
+        package-path: ./packages/tsbb/package.json
         release: true
         body: |
           [![](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/tsbb@${{steps.create_tag.outputs.versionNumber}}/file/README.md)
