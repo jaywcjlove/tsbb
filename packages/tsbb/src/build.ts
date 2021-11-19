@@ -20,6 +20,11 @@ export interface BuildOptions extends Arguments {
    */
   envName?: string;
   /**
+   * To add Vue JSX support.
+   * @default false
+   */
+  useVue?: boolean;
+  /**
    * Output CJS directory.
    * @example `--no-cjs`
    */

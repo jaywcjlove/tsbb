@@ -33,7 +33,7 @@ TSBB is a zero-config CLI that helps you develop, test, and publish modern TypeS
 - ♻️ Recompile the code when project files get added, removed or modified.  
 - 📚 Readable source code that encourages learning and contribution  
 - 🚀 Faster, Faster compilation speed.  
-- ⚛️ Support [react](https://reactjs.org/) component compilation.  
+- ⚛️ Support [react](https://reactjs.org/), [vue 3](https://vuejs.org/) component compilation.  
 - ⛑ [Jest](https://jestjs.io/) test runner setup with defaults `tsbb test`  
 - 🔥 Zero-config, single dependency.  
 
@@ -82,6 +82,7 @@ You can download the following examples directly. [Download page](https://jaywcj
 - [**`react-component-tsx`**](https://github.com/jaywcjlove/tsbb/tree/master/example/react-component-tsx) - The react component and website base application example.
 - [**`transform-typescript`**](https://github.com/jaywcjlove/tsbb/tree/master/example/transform-typescript) - Reconfigure the babel configuration example.
 - [**`umd`**](https://github.com/jaywcjlove/tsbb/tree/master/example/umd) - umd bundle example.
+- [**`vue 3`**](https://github.com/jaywcjlove/tsbb/tree/master/example/vue) - To add Vue JSX support.
 
 ## Command Help
 
@@ -93,7 +94,7 @@ Below is a help of commands you might find useful.
 ▶ tsbb --help
 
 Usage: tsbb <command>
-Version 3.0.0-rc.14
+Version 3.4.4
 
 Commands:
 
@@ -121,6 +122,7 @@ Examples:
   $ tsbb build                           Build your project.
   $ tsbb build --entry src/index.ts      Specify the entry directory.
   $ tsbb build --esm ./es                Output directory.
+  $ tsbb build --use-vue                 To add Vue JSX support.
   $ tsbb watch --disable-babel-option    Disable Babel Option.
   $ tsbb watch --disable-babel           Disable Babel.
   $ tsbb watch --cjs ./cjs               Watch Output directory.

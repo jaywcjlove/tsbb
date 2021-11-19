@@ -13,7 +13,7 @@ interface TransformBabelFileResult extends BabelFileResult {
  * @param filename `/basic/src/utils/a/a.ts`
  */
 export function transform(filename: string, options?: TransformHandleOptions): Promise<TransformBabelFileResult> {
-  const { cjs, esm, entryDir, disableBabelOption, envName } = options;
+  const { cjs, esm, entryDir, disableBabelOption, envName, useVue } = options;
   const outputDir = filename.replace(entryDir, cjs || esm);
   const sourceFileName = path.join(
     path.relative(path.dirname(outputDir), path.dirname(filename)),
@@ -119,6 +119,9 @@ export function transform(filename: string, options?: TransformHandleOptions): P
        * https://babeljs.io/docs/en/babel-plugin-transform-runtime#useesmodules
        */
       (transformRuntime as any).useESModules = !semver.gte(runtimeVersion, '7.13.0');
+    }
+    if (useVue) {
+      babelOptions.plugins.push(require('@vue/babel-plugin-jsx').default);
     }
     babelOptions.plugins.push([require('@babel/plugin-transform-runtime').default, transformRuntime]);
     babelOptions.plugins.push([require('@babel/plugin-proposal-class-properties').default, { loose: true }]);

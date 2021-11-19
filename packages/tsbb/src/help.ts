@@ -32,6 +32,7 @@ export function help() {
   console.log(`   $\x1b[35;1m tsbb\x1b[0m build                           Build your project.`);
   console.log(`   $\x1b[35;1m tsbb\x1b[0m build --entry src/index.ts      Specify the entry directory.`);
   console.log(`   $\x1b[35;1m tsbb\x1b[0m build --esm ./es                Output directory.`);
+  console.log(`   $\x1b[35;1m tsbb\x1b[0m build --use-vue                 To add Vue JSX support.`);
   console.log(`   $\x1b[35;1m tsbb\x1b[0m watch --disable-babel-option    Disable Babel Option.`);
   console.log(`   $\x1b[35;1m tsbb\x1b[0m watch --disable-babel           Disable Babel.`);
   console.log(`   $\x1b[35;1m tsbb\x1b[0m watch --cjs ./cjs               Watch Output directory.`);
