@@ -15,10 +15,10 @@ jobs:
         node-version: 14
 
     - name: Look Changelog
-      uses: jaywcjlove/changelog-generator@v1.4.6
+      uses: jaywcjlove/changelog-generator@v1.4.8
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        filter-author: (小弟调调™|renovate\-bot)
+        filter-author: (renovate-bot|Renovate Bot)
         filter: '[R|r]elease[d]\s+[v|V]\d(\.\d+){0,2}'
 
     - run: npm install
@@ -67,28 +67,26 @@ jobs:
 
     - name: Is a tag created auto?
       id: create_tag
-      uses: jaywcjlove/create-tag-action@v1.2.1
+      uses: jaywcjlove/create-tag-action@v1.3.4
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
         package-path: ./packages/tsbb/package.json
 
     - name: Generate Changelog
       id: changelog
-      uses: jaywcjlove/changelog-generator@v1.4.6
+      uses: jaywcjlove/changelog-generator@v1.4.8
       if: steps.create_tag.outputs.successful
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         head-ref: ${{ steps.create_tag.outputs.version }}
-        filter-author: (小弟调调™|Renovate Bot)
+        filter-author: (renovate-bot|Renovate Bot)
         filter: '[R|r]elease[d]\s+[v|V]\d(\.\d+){0,2}'
 
+
     - name: Create Release
-      uses: ncipollo/release-action@v1
-      if: steps.create_tag.outputs.successful
+      uses: jaywcjlove/create-tag-action@v1.3.4
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        name: ${{ steps.create_tag.outputs.version }}
-        tag: ${{ steps.create_tag.outputs.version }}
+        package-path: ./packages/core/package.json
+        release: true
         body: |
           [![](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/tsbb@${{steps.create_tag.outputs.versionNumber}}/file/README.md)
 
@@ -143,9 +141,14 @@ jobs:
     - run: cp -rp example/transform-typescript/transform-typescript.zip ./zip
 
     - name: Compress umd Example.
-      run: zip -r -y umd.zip . -x "node_modules/*" -x "build/*.sqlite" -x "build/*" -x "lib/*" -x "coverage/*" -x ".eslintcache" -x "sandbox.config.json"
+      run: zip -r -y umd.zip . -x "node_modules/*" -x "lib/*" -x "coverage/*"
       working-directory: example/umd
     - run: cp -rp example/umd/umd.zip ./zip
+
+    - name: Compress vue Example.
+      run: zip -r -y vue.zip . -x "node_modules/*" -x "build/*" -x "cjs/*" -x "esm/*""
+      working-directory: example/vue
+    - run: cp -rp example/vue/vue.zip ./zip
 
     - name: Compress TSBB Example Download webpage.
       working-directory: zip
@@ -227,6 +230,14 @@ jobs:
         publish_branch: gh-pages
         publish_dir: ./zip
 
-    - run: npm install @jsdevtools/npm-publish -g
-    - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/tsbb/package.json
-    - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/create-tsbb/package.json
+    - name: 📦  tsbb publish to NPM
+      uses: JS-DevTools/npm-publish@v1
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
+        package: ./packages/tsbb/package.json
+
+    - name: 📦  create-tsbb publish to NPM
+      uses: JS-DevTools/npm-publish@v1
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
+        package: ./packages/create-tsbb/package.json

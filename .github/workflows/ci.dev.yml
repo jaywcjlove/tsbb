@@ -15,10 +15,10 @@ jobs:
         node-version: 14
 
     - name: Look Changelog
-      uses: jaywcjlove/changelog-generator@v1.4.6
+      uses: jaywcjlove/changelog-generator@v1.4.8
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        filter-author: (小弟调调™|renovate\-bot)
+        filter-author: (renovate-bot|Renovate Bot)
         filter: '[R|r]elease[d]\s+[v|V]\d(\.\d+){0,2}'
 
     - run: npm install
@@ -64,4 +64,8 @@ jobs:
 
     - name: example @example/umd
       working-directory: example/umd
+      run: npm run build
+
+    - name: example @example/vue
+      working-directory: example/vue
       run: npm run build
