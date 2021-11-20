@@ -2,19 +2,24 @@
   "compilerOptions": {
     "strict": true,
     "strictNullChecks": true,
-    "jsx": "react",
+    "jsx": "preserve",
     "baseUrl": ".",
     "outDir": "cjs",
     "noEmit": false,
     "jsxFactory": "h",
     "jsxFragmentFactory": "Fragment",
     "module": "ES6",
-    "moduleResolution": "Node",
-    "declaration": true,
-    "forceConsistentCasingInFileNames": true,
-    "composite": true,
+    "moduleResolution": "node",
     "target": "ES6",
+    "declaration": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
     "esModuleInterop": true,
-    "lib": ["ESNext", "DOM"]
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true
   }
 }

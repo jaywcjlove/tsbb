@@ -1,5 +1,7 @@
 import { defineComponent, h } from 'vue';
 
+export * from './comp';
+
 export default defineComponent({
   name: 'Login',
   render() {
