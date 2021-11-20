@@ -57,7 +57,7 @@
     "micromatch": "4.0.4",
     "recursive-readdir-files": "1.1.2",
     "semver": "7.3.5",
-    "typescript": "4.4.4",
+    "typescript": "4.5.2",
     "yargs-parser": "20.2.9"
   }
 }
