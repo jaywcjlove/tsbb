@@ -47,7 +47,7 @@
     "http-errors": "1.8.0",
     "pg": "8.7.1",
     "reflect-metadata": "0.1.13",
-    "typeorm": "0.2.38",
+    "typeorm": "0.2.41",
     "typeorm-extension": "1.0.1",
     "typeorm-store": "2.0.0"
   }
