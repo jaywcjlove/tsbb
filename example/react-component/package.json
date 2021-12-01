@@ -1,6 +1,6 @@
 {
   "name": "@template/react-component",
-  "version": "3.5.1",
+  "version": "3.5.2",
   "private": true,
   "description": "React Component Example.",
   "scripts": {
@@ -42,7 +42,7 @@
     "less": "4.1.2",
     "parcel": "2.0.1",
     "react-test-renderer": "17.0.2",
-    "tsbb": "^3.5.1"
+    "tsbb": "^3.5.2"
   },
   "dependencies": {
     "@parcel/transformer-react-refresh-wrap": "2.0.1",
