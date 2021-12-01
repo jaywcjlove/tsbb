@@ -39,7 +39,7 @@
     "@types/micromatch": "4.0.2",
     "@types/node": "16.11.11",
     "@types/semver": "7.3.9",
-    "@types/yargs": "17.0.5",
+    "@types/yargs": "17.0.7",
     "@types/yargs-parser": "20.2.1",
     "@vue/babel-plugin-jsx": "1.1.1",
     "babel-plugin-add-module-exports": "1.0.4",
