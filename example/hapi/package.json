@@ -28,7 +28,7 @@
     "delay": "2500"
   },
   "devDependencies": {
-    "@types/hapi__hapi": "20.0.9",
+    "@types/hapi__hapi": "20.0.10",
     "nodemon": "2.0.15",
     "tsbb": "^3.5.2"
   },
