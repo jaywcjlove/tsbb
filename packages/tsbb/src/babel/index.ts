@@ -13,7 +13,7 @@ interface TransformBabelFileResult extends BabelFileResult {
  * @param filename `/basic/src/utils/a/a.ts`
  */
 export function transform(filename: string, options?: TransformHandleOptions): Promise<TransformBabelFileResult> {
-  const { cjs, esm, entryDir, disableBabelOption, envName, useVue } = options;
+  const { cjs, esm, entryDir, disableBabelOption, envName, useVue, sourceMaps = true, ...other } = options;
   const outputDir = filename.replace(entryDir, cjs || esm);
   const sourceFileName = path.join(
     path.relative(path.dirname(outputDir), path.dirname(filename)),
@@ -33,7 +33,7 @@ export function transform(filename: string, options?: TransformHandleOptions): P
       ],
       require('@babel/preset-typescript').default,
     ],
-    sourceMaps: true,
+    sourceMaps,
     sourceFileName,
     plugins: [
       require('@babel/plugin-syntax-dynamic-import').default,

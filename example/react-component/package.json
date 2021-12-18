@@ -5,7 +5,7 @@
   "description": "React Component Example.",
   "scripts": {
     "watch": "tsbb watch --entry src/index.jsx",
-    "build": "tsbb build --entry src/index.jsx && npm run css:build && npm run css:build:dist",
+    "build": "tsbb build --entry src/index.jsx --no-source-maps&& npm run css:build && npm run css:build:dist",
     "css:build": "compile-less -d src -o esm",
     "css:watch": "compile-less -d src -o esm --watch",
     "css:build:dist": "compile-less -d src --combine dist/markdown-editor.css --rm-global",
