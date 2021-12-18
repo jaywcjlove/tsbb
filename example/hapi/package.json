@@ -33,7 +33,7 @@
     "tsbb": "^3.5.3"
   },
   "dependencies": {
-    "@babel/runtime": "7.16.0",
+    "@babel/runtime": "7.16.5",
     "@hapi/hapi": "20.2.1"
   }
 }
