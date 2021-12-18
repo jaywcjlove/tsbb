@@ -123,6 +123,7 @@ Examples:
   $ tsbb build --entry src/index.ts      Specify the entry directory.
   $ tsbb build --esm ./es                Output directory.
   $ tsbb build --use-vue                 To add Vue JSX support.
+  $ tsbb build --no-source-maps          No ".js.map" file is generated. (Can't disable babel)
   $ tsbb watch --disable-babel-option    Disable Babel Option.
   $ tsbb watch --disable-babel           Disable Babel.
   $ tsbb watch --cjs ./cjs               Watch Output directory.
