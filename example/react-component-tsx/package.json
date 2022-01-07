@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@babel/runtime": "7.16.5",
-    "@kkt/less-modules": "6.11.0",
+    "@kkt/less-modules": "7.0.5",
     "@kkt/raw-modules": "6.11.0",
     "@kkt/scope-plugin-options": "6.11.0",
     "@tsbb/babel-preset-tsbb": "1.14.2",
