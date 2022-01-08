@@ -43,7 +43,7 @@
     "@kkt/raw-modules": "7.0.5",
     "@kkt/scope-plugin-options": "7.0.5",
     "@tsbb/babel-preset-tsbb": "1.14.2",
-    "@types/react": "17.0.37",
+    "@types/react": "17.0.38",
     "@types/react-dom": "17.0.11",
     "compile-less-cli": "1.8.11",
     "husky": "7.0.4",
