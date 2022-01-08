@@ -33,7 +33,7 @@
     "@babel/preset-env": "7.16.5",
     "@babel/preset-react": "7.16.5",
     "@babel/preset-typescript": "7.16.5",
-    "@types/babel__core": "7.1.17",
+    "@types/babel__core": "7.1.18",
     "@types/fs-extra": "9.0.13",
     "@types/jest": "27.0.3",
     "@types/micromatch": "4.0.2",
