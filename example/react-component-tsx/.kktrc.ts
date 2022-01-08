@@ -7,7 +7,7 @@ import rawModules from '@kkt/raw-modules';
 import scopePluginOptions from '@kkt/scope-plugin-options';
 import pkg from './package.json';
 
-export default (conf: Configuration, env: string, options: LoaderConfOptions) => {
+export default (conf: Configuration, env: 'development' | 'production', options: LoaderConfOptions) => {
   conf = rawModules(conf, env, { ...options });
   conf = scopePluginOptions(conf, env, {
     ...options,
@@ -20,7 +20,9 @@ export default (conf: Configuration, env: string, options: LoaderConfOptions) =>
       VERSION: JSON.stringify(pkg.version),
     }),
   );
-  conf.output = { ...conf.output, publicPath: './' };
+  if (env === 'production') {
+    conf.output = { ...conf.output, publicPath: './' };
+  }
   return conf;
 };
 
