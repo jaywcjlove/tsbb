@@ -35,6 +35,7 @@
     "watch": "lerna exec \"tsc -p ./ --types --outDir lib --watch\" --scope tsbb",
     "build": "lerna exec \"tsc -p ./ --types --outDir lib\" --scope create-tsbb --scope tsbb --stream",
     "type-check": "lerna exec \"tsc --noEmit\" --scope create-tsbb --scope tsbb --stream",
+    "remove": "npm run clean && lerna exec \"rm -rf package-lock.json\" --scope @template/* --scope tsbb --scope create-tsbb",
     "clean": "lerna clean --yes",
     "pretty-quick": "pretty-quick",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
