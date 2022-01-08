@@ -10,7 +10,7 @@
     "watch": "tsbb watch --entry ./src/app.ts --no-esm",
     "build": "tsbb build --entry ./src/app.ts --no-esm",
     "test": "tsbb test",
-    "coverage": "tsbb test --coverage"
+    "coverage": "tsbb test --coverage --bail"
   },
   "keywords": [],
   "author": "",

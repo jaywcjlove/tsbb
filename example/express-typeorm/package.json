@@ -10,7 +10,7 @@
     "watch": "tsbb watch --entry ./src/main.ts --no-esm",
     "build": "tsbb build --entry ./src/main.ts --no-esm",
     "test": "tsbb test",
-    "coverage": "tsbb test --coverage"
+    "coverage": "tsbb test --coverage --bail"
   },
   "author": "jaywcjlove",
   "license": "MIT",

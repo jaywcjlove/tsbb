@@ -8,7 +8,7 @@
     "watch": "tsbb watch --disable-babel --file-names src/index.ts --file-names src/main.ts",
     "build": "tsbb build --disable-babel --file-names src/index.ts --file-names src/main.ts",
     "test": "npm run build && tsbb test",
-    "coverage": "npm run build && tsbb test --coverage"
+    "coverage": "npm run build && tsbb test --coverage --bail"
   },
   "repository": {
     "type": "git",

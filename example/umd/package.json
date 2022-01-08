@@ -7,7 +7,7 @@
     "watch": "tsbb watch --no-esm --disable-babel",
     "build": "tsbb build --no-esm --disable-babel",
     "test": "tsbb test",
-    "coverage": "tsbb test --coverage"
+    "coverage": "tsbb test --coverage --bail"
   },
   "keywords": [],
   "license": "MIT",
