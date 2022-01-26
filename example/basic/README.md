@@ -4,7 +4,7 @@ Basic Example
 ## Quick Start
 
 ```shell
-$ npx create-kkt my-app 
+$ npx create-tsbb my-app 
 cd my-app
 $ npm install
 
