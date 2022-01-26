@@ -248,6 +248,12 @@ $ npm run hoist
 $ npm run build
 ```
 
+## Contributors
+
+<a href="https://github.com/jaywcjlove/tsbb/graphs/contributors">
+  <img src="http://jaywcjlove.github.io/tsbb/CONTRIBUTORS.svg" />
+</a>
+
 ## License
 
 MIT © [Kenny Wong](https://wangchujiang.com)
