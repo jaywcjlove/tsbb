@@ -21,7 +21,7 @@ interface IJestConfig extends Jest.Config.InitialOptions {
 
 export default (resolve: Function, rootDir: string) => {
   const conf: IJestConfig = {
-    roots: ['<rootDir>/src'],
+    roots: ['<rootDir>'],
     collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}', '!src/**/*.d.ts'],
     testMatch: [
       '<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}',
