@@ -13,13 +13,13 @@ interface TransformBabelFileResult extends BabelFileResult {
  * @param filename `/basic/src/utils/a/a.ts`
  */
 export function transform(filename: string, options?: TransformHandleOptions): Promise<TransformBabelFileResult> {
-  const { cjs, esm, entryDir, disableBabelOption, envName, useVue, sourceMaps = true, ...other } = options;
+  const { cjs, esm, entryDir, babelOption, envName, useVue, sourceMaps = true, ...other } = options;
   const outputDir = filename.replace(entryDir, cjs || esm);
   const sourceFileName = path.join(
     path.relative(path.dirname(outputDir), path.dirname(filename)),
     path.basename(filename),
   );
-  let babelOptions: TransformOptions = {
+  let option: TransformOptions = {
     presets: [
       [
         require('@babel/preset-react').default,
@@ -48,19 +48,19 @@ export function transform(filename: string, options?: TransformHandleOptions): P
     ],
   };
 
-  if (!babelOptions.envName) {
-    babelOptions.envName = process.env.BABEL_ENV;
+  if (!option.envName) {
+    option.envName = process.env.BABEL_ENV;
   }
   const runtimeVersion = semver.clean(require('@babel/runtime/package.json').version);
   if (cjs) {
-    babelOptions.presets.push([
+    option.presets.push([
       require('@babel/preset-env').default,
       {
         modules: 'cjs',
         loose: false,
       },
     ]);
-    babelOptions.envName = 'cjs';
+    option.envName = 'cjs';
     const transformRuntime = {
       modules: 'cjs',
       loose: false,
@@ -78,21 +78,21 @@ export function transform(filename: string, options?: TransformHandleOptions): P
        */
       (transformRuntime as any).useESModules = !semver.gte(runtimeVersion, '7.13.0');
     }
-    babelOptions.plugins.push(require('@babel/plugin-transform-modules-commonjs').default);
-    babelOptions.plugins.push(require('babel-plugin-add-module-exports'));
-    babelOptions.plugins.push([require('@babel/plugin-transform-runtime').default, transformRuntime]);
-    babelOptions.plugins.push([
+    option.plugins.push(require('@babel/plugin-transform-modules-commonjs').default);
+    option.plugins.push(require('babel-plugin-add-module-exports'));
+    option.plugins.push([require('@babel/plugin-transform-runtime').default, transformRuntime]);
+    option.plugins.push([
       require('babel-plugin-transform-remove-imports').default,
       {
         test: '\\.(less|css)$',
       },
     ]);
-    babelOptions.plugins.push([require('@babel/plugin-proposal-class-properties').default, { loose: false }]);
-    babelOptions.plugins.push([require('@babel/plugin-transform-classes').default, { loose: false }]);
+    option.plugins.push([require('@babel/plugin-proposal-class-properties').default, { loose: false }]);
+    option.plugins.push([require('@babel/plugin-transform-classes').default, { loose: false }]);
   }
 
   if (esm) {
-    babelOptions.presets.push([
+    option.presets.push([
       require('@babel/preset-env').default,
       {
         modules: false,
@@ -102,7 +102,7 @@ export function transform(filename: string, options?: TransformHandleOptions): P
         },
       },
     ]);
-    babelOptions.envName = 'esm';
+    option.envName = 'esm';
     const transformRuntime = {
       loose: false,
       modules: 'auto',
@@ -121,11 +121,11 @@ export function transform(filename: string, options?: TransformHandleOptions): P
       (transformRuntime as any).useESModules = !semver.gte(runtimeVersion, '7.13.0');
     }
     if (useVue) {
-      babelOptions.plugins.push(require('@vue/babel-plugin-jsx').default);
+      option.plugins.push(require('@vue/babel-plugin-jsx').default);
     }
-    babelOptions.plugins.push([require('@babel/plugin-transform-runtime').default, transformRuntime]);
-    babelOptions.plugins.push([require('@babel/plugin-proposal-class-properties').default, { loose: true }]);
-    babelOptions.plugins.push([
+    option.plugins.push([require('@babel/plugin-transform-runtime').default, transformRuntime]);
+    option.plugins.push([require('@babel/plugin-proposal-class-properties').default, { loose: true }]);
+    option.plugins.push([
       require('babel-plugin-transform-rename-import').default,
       {
         original: '^(.+?)\\.(less|scss|sass|styl)$',
@@ -134,14 +134,20 @@ export function transform(filename: string, options?: TransformHandleOptions): P
     ]);
   }
   if (envName) {
-    babelOptions = {};
+    option = {};
     loadOptions({ envName: envName });
   }
-  if (disableBabelOption) {
-    babelOptions = {};
+  console.log(babelOption);
+  if (typeof babelOption === 'boolean' && babelOption === false) {
+    option = {};
+  }
+  if (typeof babelOption === 'string') {
+    try {
+      option = JSON.parse(babelOption);
+    } catch (error) {}
   }
   return new Promise((resolve, reject) => {
-    transformFile(filename, babelOptions, (err: Error, result: TransformBabelFileResult) => {
+    transformFile(filename, option, (err: Error, result: TransformBabelFileResult) => {
       if (err) {
         return reject(err);
       }
@@ -150,7 +156,7 @@ export function transform(filename: string, options?: TransformHandleOptions): P
           .replace(entryDir, cjs || esm)
           .replace(/\.(ts|tsx)$/, '.js')
           .replace(/\.jsx$/, '.js');
-        if (!babelOptions.sourceMaps) {
+        if (!option.sourceMaps) {
           outputFiles(output, result.code, result.map);
         } else {
           outputFiles(output, `${result.code}\n//# sourceMappingURL=${path.parse(output).base}.map`, result.map);

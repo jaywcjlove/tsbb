@@ -4,8 +4,8 @@
   "version": "3.5.6",
   "description": "Transform Typescript Example.",
   "scripts": {
-    "watch": "tsbb watch --disable-babel-option --no-esm",
-    "build": "tsbb build --disable-babel-option --no-esm",
+    "watch": "tsbb watch --babel-option '{\"presets\": [\"@babel/preset-typescript\"] }' --no-esm",
+    "build": "tsbb build --babel-option '{\"presets\": [\"@babel/preset-typescript\"] }' --no-esm",
     "test": "tsbb test",
     "coverage": "tsbb test --coverage --bail"
   },

@@ -94,7 +94,6 @@ Below is a help of commands you might find useful.
 ▶ tsbb --help
 
 Usage: tsbb <command>
-Version 3.4.4
 
 Commands:
 
@@ -107,7 +106,7 @@ Options:[build|watch]
   --entry, -e                Specify the entry directory.
   --env-name                 The current active environment used during configuration loading.
   --disable-babel            Disable Babel.
-  --disable-babel-option     Disable Babel Option.
+  --no-babel-option          Disable Babel Option.
   --file-names, -f           A set of root files.
   --esm                      Output "esm" directory.
   --cjs                      Output "cjs" directory.
@@ -124,15 +123,17 @@ Examples:
   $ tsbb build --esm ./es                Output directory.
   $ tsbb build --use-vue                 To add Vue JSX support.
   $ tsbb build --no-source-maps          No ".js.map" file is generated. (Can't disable babel)
-  $ tsbb watch --disable-babel-option    Disable Babel Option.
   $ tsbb watch --disable-babel           Disable Babel.
+  $ tsbb watch --no-babel-option         Disable Babel Option.
+  $ tsbb watch --babel-option '{"presets": ["@babel/preset-typescript"] }'
+                                        Babel Option.
   $ tsbb watch --cjs ./cjs               Watch Output directory.
   $ tsbb build --disable-babel --file-names src/index.ts --file-names src/main.ts
                                         A set of root files.
   $ tsbb test                            Run test suites related
   $ tsbb test --coverage                 Test coverage information should be collected
 
-Copyright 2021
+Copyright 2022
 ```
 
 ### ~~`tsbb create`~~

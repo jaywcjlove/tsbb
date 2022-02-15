@@ -10,7 +10,15 @@ import { help } from './help';
 import { jest } from './jest';
 
 interface ArgvArguments extends Arguments {
+  /**
+   * Disable Babel Option
+   * @deprecated
+   */
+  disableBabelOption?: boolean;
+  /** Disable Babel */
   disableBabel?: boolean;
+  /** Babel Option */
+  babelOption?: boolean;
   esm?: boolean | string;
   cjs?: string;
   entry?: string;
@@ -80,6 +88,10 @@ const argv: ArgvArguments = parser(process.argv.slice(2), {
 
     if (!tsConf.compilerOptions.outDir) {
       tsConf.compilerOptions.outDir = 'lib';
+    }
+
+    if (argv.disableBabelOption) {
+      argv.babelOption = false;
     }
 
     if (argv._[0] === 'build') {
