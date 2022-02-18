@@ -4,6 +4,7 @@
   "description": "TSBB is a zero-config CLI that helps you develop, test, and publish modern TypeScript project.",
   "author": "kenny wang <wowohoo@qq.com>",
   "license": "MIT",
+  "main": "./lib/index.js",
   "bin": {
     "tsbb": "bin/tsbb"
   },
