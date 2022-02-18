@@ -16,6 +16,8 @@ export function help() {
   console.log(
     `   \x1b[35;1m--env-name\x1b[0m                 The current active environment used during configuration loading.`,
   );
+  console.log(`   \x1b[35;1m--emit-type\x1b[0m                Emit d.ts type files.`);
+  console.log(`   \x1b[35;1m--no-emit-type\x1b[0m             No emit d.ts type files.`);
   console.log(`   \x1b[35;1m--disable-babel\x1b[0m            Disable Babel.`);
   console.log(`   \x1b[35;1m--no-babel-option\x1b[0m          Disable Babel Option.`);
   console.log(`   \x1b[35;1m--file-names, -f\x1b[0m           A set of root files.`);
@@ -37,6 +39,7 @@ export function help() {
     `   $\x1b[35;1m tsbb\x1b[0m build --no-source-maps          No ".js.map" file is generated. (Can't disable babel)`,
   );
   console.log(`   $\x1b[35;1m tsbb\x1b[0m watch --disable-babel           Disable Babel.`);
+  console.log(`   $\x1b[35;1m tsbb\x1b[0m watch --no-emit-type            No emit d.ts type files.`);
   console.log(`   $\x1b[35;1m tsbb\x1b[0m watch --no-babel-option         Disable Babel Option.`);
   console.log(`   $\x1b[35;1m tsbb\x1b[0m watch --babel-option '{\"presets\": [\"@babel/preset-typescript\"] }'`);
   console.log(`                                          Babel Option.`);

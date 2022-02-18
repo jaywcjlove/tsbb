@@ -4,8 +4,8 @@ import { transformFile, BabelFileResult, TransformOptions, loadOptions } from '@
 import { outputFiles } from '../utils/output';
 import { BuildOptions } from '../build';
 
-interface TransformHandleOptions extends Omit<BuildOptions, '_'>, BabelFileResult {}
-interface TransformBabelFileResult extends BabelFileResult {
+export interface TransformHandleOptions extends Omit<BuildOptions, '_'>, BabelFileResult {}
+export interface TransformBabelFileResult extends BabelFileResult {
   options: TransformOptions;
 }
 
@@ -137,13 +137,17 @@ export function transform(filename: string, options?: TransformHandleOptions): P
     option = {};
     loadOptions({ envName: envName });
   }
-  console.log(babelOption);
   if (typeof babelOption === 'boolean' && babelOption === false) {
     option = {};
   }
   if (typeof babelOption === 'string') {
     try {
       option = JSON.parse(babelOption);
+    } catch (error) {}
+  }
+  if (typeof babelOption === 'object') {
+    try {
+      option = babelOption;
     } catch (error) {}
   }
   return new Promise((resolve, reject) => {

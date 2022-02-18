@@ -18,7 +18,8 @@ interface ArgvArguments extends Arguments {
   /** Disable Babel */
   disableBabel?: boolean;
   /** Babel Option */
-  babelOption?: boolean;
+  babelOption?: boolean | string;
+  emitType?: boolean;
   esm?: boolean | string;
   cjs?: string;
   entry?: string;
@@ -92,6 +93,10 @@ const argv: ArgvArguments = parser(process.argv.slice(2), {
 
     if (argv.disableBabelOption) {
       argv.babelOption = false;
+    }
+
+    if (argv.emitType !== undefined) {
+      tsConf.compilerOptions.noEmit = !argv.emitType;
     }
 
     if (argv._[0] === 'build') {

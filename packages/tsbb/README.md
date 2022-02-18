@@ -105,6 +105,8 @@ Options:[build|watch]
 
   --entry, -e                Specify the entry directory.
   --env-name                 The current active environment used during configuration loading.
+  --emit-type                Emit d.ts type files.
+  --no-emit-type             No emit d.ts type files.
   --disable-babel            Disable Babel.
   --no-babel-option          Disable Babel Option.
   --file-names, -f           A set of root files.
@@ -124,6 +126,7 @@ Examples:
   $ tsbb build --use-vue                 To add Vue JSX support.
   $ tsbb build --no-source-maps          No ".js.map" file is generated. (Can't disable babel)
   $ tsbb watch --disable-babel           Disable Babel.
+  $ tsbb watch --no-emit-type            No emit d.ts type files.
   $ tsbb watch --no-babel-option         Disable Babel Option.
   $ tsbb watch --babel-option '{"presets": ["@babel/preset-typescript"] }'
                                         Babel Option.
@@ -251,9 +254,13 @@ $ npm run build
 
 ## Contributors
 
+As always, thanks to our amazing contributors!
+
 <a href="https://github.com/jaywcjlove/tsbb/graphs/contributors">
   <img src="http://jaywcjlove.github.io/tsbb/CONTRIBUTORS.svg" />
 </a>
+
+Made with [github-action-contributors](https://github.com/jaywcjlove/github-action-contributors).
 
 ## License
 
