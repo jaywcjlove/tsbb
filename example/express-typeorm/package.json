@@ -31,7 +31,7 @@
     "@types/express": "4.17.13",
     "@types/express-session": "1.17.4",
     "@types/http-errors": "1.8.2",
-    "@types/node": "16.11.19",
+    "@types/node": "16.11.26",
     "nodemon": "2.0.15",
     "ts-node": "10.4.0",
     "ts-node-dev": "1.1.8",
