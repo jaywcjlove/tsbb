@@ -14,13 +14,6 @@ jobs:
       with:
         node-version: 14
 
-    - name: Look Changelog
-      uses: jaywcjlove/changelog-generator@v1.4.8
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        filter-author: (renovate-bot|Renovate Bot)
-        filter: '[R|r]elease[d]\s+[v|V]\d(\.\d+){0,2}'
-
     - run: npm install
     - run: npm run hoist
     - run: npm run build
@@ -64,39 +57,6 @@ jobs:
     - name: example @example/umd
       working-directory: example/umd
       run: npm run build
-
-    - name: Is a tag created auto?
-      id: create_tag
-      uses: jaywcjlove/create-tag-action@v1.3.4
-      with:
-        package-path: ./packages/tsbb/package.json
-
-    - name: Generate Changelog
-      id: changelog
-      uses: jaywcjlove/changelog-generator@v1.4.8
-      if: steps.create_tag.outputs.successful
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        head-ref: ${{ steps.create_tag.outputs.version }}
-        filter-author: (renovate-bot|Renovate Bot)
-        filter: '[R|r]elease[d]\s+[v|V]\d(\.\d+){0,2}'
-
-
-    - name: Create Release
-      uses: jaywcjlove/create-tag-action@v1.3.4
-      with:
-        package-path: ./packages/tsbb/package.json
-        release: true
-        body: |
-          [![](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/tsbb@${{steps.create_tag.outputs.versionNumber}}/file/README.md)
-
-          ```bash
-          npm i tsbb@${{steps.create_tag.outputs.versionNumber}}
-          ```
-
-          ${{ steps.changelog.outputs.compareurl }}
-
-          ${{ steps.changelog.outputs.changelog }}
 
     - run: mkdir -p zip
 
@@ -149,6 +109,23 @@ jobs:
       run: zip -r -y vue.zip . -x "node_modules/*" -x "build/*" -x "cjs/*" -x "esm/*"
       working-directory: example/vue
     - run: cp -rp example/vue/vue.zip ./zip
+
+    - run: npm i markdown-to-html-cli -g
+    - run: markdown-to-html --output zip/doc.html --source packages/tsbb/README.md
+    - run: markdown-to-html --output zip/create-tsbb.html --source packages/create-tsbb/README.md
+
+    - name: Generate Contributors Images
+      uses: jaywcjlove/github-action-contributors@main
+      with:
+        filter-author: (renovate\[bot\]|renovate-bot|dependabot\[bot\])
+        output: ./zip/CONTRIBUTORS.svg
+        avatarSize: 36
+
+    - name: Is a tag created auto?
+      id: create_tag
+      uses: jaywcjlove/create-tag-action@v1.3.6
+      with:
+        package-path: ./packages/tsbb/package.json
 
     - name: Compress TSBB Example Download webpage.
       working-directory: zip
@@ -218,24 +195,46 @@ jobs:
         </body></html>
         EOF
 
-    - run: npm i markdown-to-html-cli -g
-    - run: markdown-to-html --output zip/doc.html --source packages/tsbb/README.md
-    - run: markdown-to-html --output zip/create-tsbb.html --source packages/create-tsbb/README.md
-
-    - name: Generate Contributors Images
-      uses: jaywcjlove/github-action-contributors@main
-      with:
-        filter-author: (renovate\[bot\]|renovate-bot|dependabot\[bot\])
-        output: ./zip/CONTRIBUTORS.svg
-        avatarSize: 36
+    - name: get tag version
+      id: tag_version
+      uses: jaywcjlove/changelog-generator@v1.5.0
 
     - name: Build and Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
+        commit_message: ${{steps.tag_version.outputs.tag}} ${{ github.event.head_commit.message }}
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
         force_orphan: true
         publish_branch: gh-pages
         publish_dir: ./zip
+
+    - name: Generate Changelog
+      id: changelog
+      uses: jaywcjlove/changelog-generator@v1.5.0
+      if: steps.create_tag.outputs.successful
+      with:
+        head-ref: ${{ steps.create_tag.outputs.version }}
+        filter-author: (renovate-bot|Renovate Bot)
+        filter: '[R|r]elease[d]\s+[v|V]\d(\.\d+){0,2}'
+
+    - name: Create Release
+      uses: jaywcjlove/create-tag-action@v1.3.6
+      with:
+        package-path: ./packages/tsbb/package.json
+        release: true
+        body: |
+          [![](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/tsbb@${{steps.create_tag.outputs.versionNumber}}/file/README.md)
+
+          Documentation ${{ steps.changelog.outputs.tag }}: https://raw.githack.com/jaywcjlove/tsbb/${{ steps.changelog.outputs.gh-pages-short-hash }}/index.html  
+          Comparing Changes: ${{ steps.changelog.outputs.compareurl }}  
+
+          ```bash
+          npm i tsbb@${{steps.create_tag.outputs.versionNumber}}
+          ```
+
+          ${{ steps.changelog.outputs.changelog }}
 
     - name: 📦  tsbb publish to NPM
       uses: JS-DevTools/npm-publish@v1
