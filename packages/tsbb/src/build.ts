@@ -2,7 +2,7 @@ import { Arguments } from 'yargs-parser';
 import ts from 'typescript';
 import { compile } from './utils/compile';
 
-export interface BuildOptions extends Arguments {
+export interface BuildOptions extends Partial<Arguments> {
   /**
    * Entry ts/js file
    * @default `src/index.ts`

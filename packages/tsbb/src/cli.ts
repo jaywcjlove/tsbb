@@ -7,9 +7,9 @@ import parser, { Arguments } from 'yargs-parser';
 import { build } from './build';
 import { watch } from './watch';
 import { help } from './help';
-import { jest } from './jest';
+import { jest, JestOptions } from './jest';
 
-interface ArgvArguments extends Arguments {
+interface ArgvArguments extends Partial<Arguments>, JestOptions {
   /**
    * Disable Babel Option
    * @deprecated
@@ -26,7 +26,7 @@ interface ArgvArguments extends Arguments {
   fileNames?: string | string[];
 }
 
-const argv: ArgvArguments = parser(process.argv.slice(2), {
+const argv: Partial<ArgvArguments> = parser(process.argv.slice(2), {
   alias: {
     entry: ['e'],
     output: ['o'],

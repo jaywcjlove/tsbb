@@ -3,7 +3,7 @@ import { runCLI } from '@jest/core';
 import { Config } from '@jest/types';
 import createJestConfig from './jest.config';
 
-export interface JestOptions extends Config.Argv {}
+export interface JestOptions extends Partial<Config.Argv> {}
 export function jest(options: JestOptions) {
   const { env, coverage = false, rootDir = process.cwd() } = options;
   const config = createJestConfig(
@@ -17,5 +17,5 @@ export function jest(options: JestOptions) {
   } else if (!process.env.CI) {
     options.watchAll = true;
   }
-  runCLI({ ...options, env, coverage, rootDir }, [process.cwd()]);
+  runCLI({ ...options, env, coverage, rootDir } as Config.Argv, [process.cwd()]);
 }
