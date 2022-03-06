@@ -32,6 +32,6 @@
     "frontend"
   ],
   "dependencies": {
-    "create-kkt": "3.0.0"
+    "create-kkt": "~3.0.0"
   }
 }

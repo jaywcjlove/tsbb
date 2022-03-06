@@ -31,18 +31,18 @@
     "react-dom": ">=16.7.0"
   },
   "devDependencies": {
-    "@babel/runtime": "7.16.7",
-    "@parcel/transformer-less": "2.3.2",
-    "compile-less-cli": "1.8.11",
-    "less": "4.1.2",
-    "parcel": "2.3.2",
-    "react-test-renderer": "17.0.2",
+    "@babel/runtime": "~7.16.7",
+    "@parcel/transformer-less": "~2.3.2",
+    "compile-less-cli": "~1.8.11",
+    "less": "~4.1.2",
+    "parcel": "~2.3.2",
+    "react-test-renderer": "~17.0.2",
     "tsbb": "^3.7.1"
   },
   "dependencies": {
-    "@parcel/transformer-react-refresh-wrap": "2.3.2",
-    "classnames": "2.3.1",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "@parcel/transformer-react-refresh-wrap": "~2.3.2",
+    "classnames": "~2.3.1",
+    "react": "~17.0.2",
+    "react-dom": "~17.0.2"
   }
 }
