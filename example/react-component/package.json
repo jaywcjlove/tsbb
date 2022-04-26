@@ -36,13 +36,13 @@
     "compile-less-cli": "~1.8.11",
     "less": "~4.1.2",
     "parcel": "~2.5.0",
-    "react-test-renderer": "~17.0.2",
+    "react-test-renderer": "~18.0.0",
     "tsbb": "^3.7.2"
   },
   "dependencies": {
     "@parcel/transformer-react-refresh-wrap": "~2.5.0",
     "classnames": "~2.3.1",
-    "react": "~17.0.2",
-    "react-dom": "~17.0.2"
+    "react": "~18.0.0",
+    "react-dom": "~18.0.0"
   }
 }
