@@ -42,7 +42,7 @@
     "@kkt/less-modules": "~7.1.1",
     "@kkt/raw-modules": "~7.1.1",
     "@kkt/scope-plugin-options": "~7.1.1",
-    "@types/react": "~17.0.39",
+    "@types/react": "~18.0.0",
     "@types/react-dom": "~18.0.0",
     "compile-less-cli": "~1.8.11",
     "husky": "~7.0.4",
