@@ -1,12 +1,14 @@
 /// <reference path="./types/global.d.ts" />
 import 'reflect-metadata';
 import crypto from 'crypto';
+import { createDatabase } from 'typeorm-extension';
 import { expressApp } from './app';
 import { User } from './entity/User';
-import { appDataSource } from './app-data-source';
+import { appDataSource, options } from './app-data-source';
 
 async function run() {
   try {
+    await createDatabase({ ifNotExist: true, options });
     const dataSource = await appDataSource.initialize();
     if (!dataSource.isInitialized) {
       throw new Error('Initialization and establishment of initial connection/connection pool to database failed.');
