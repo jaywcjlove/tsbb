@@ -1,22 +1,20 @@
-import { getRepository, EntityManager } from 'typeorm';
+import { EntityManager } from 'typeorm';
 import { NextFunction, Request, Response } from 'express';
 import crypto from 'crypto';
 import { User } from '../entity/User';
 import pagination from '../middleware/pagination';
+import { appDataSource } from '../app-data-source';
 
 export class UserController {
-  private userRepository = getRepository(User);
-  constructor(private manager: EntityManager) {
-    this.manager = manager;
-  }
-
+  private repository = appDataSource.getRepository(User);
+  constructor() {}
   async all(request: Request, response: Response) {
-    return pagination<User>(this.userRepository)(request, response);
+    return pagination<User>(this.repository)(request, response);
   }
 
   async one(request: Request, response: Response, next: NextFunction) {
     const { params } = request;
-    return this.userRepository.findOne(params.id).then((user) => {
+    return this.repository.findOneBy({ id: params.id as unknown as number }).then((user) => {
       if (!user) {
         response.status(401);
         return { message: 'Not found user data' };
@@ -26,7 +24,7 @@ export class UserController {
   }
 
   async create(request: Request, response: Response, next: NextFunction) {
-    return this.userRepository
+    return this.repository
       .save(request.body)
       .then((user) => {
         delete user.password;
@@ -40,23 +38,17 @@ export class UserController {
 
   async update(request: Request, response: Response, next: NextFunction) {
     const { id } = request.body;
-    return this.manager
-      .update(User, id, { ...request.body })
-      .then(({ affected }) => {
-        if (affected === 0) {
-          response.status(422);
-          return Promise.resolve({ message: '修改失败！' });
-        }
-        return Promise.resolve({ message: '修改用户信息成功！' });
-      })
-      .catch((err) => {
-        response.status(400);
-        return Promise.resolve({ message: '修改失败！' });
-      });
+
+    const user = await this.repository.findOneBy({
+      id: request.body.id as unknown as number,
+    });
+    await this.repository.merge(user, request.body);
+    const results = await this.repository.save(user);
+    return response.send(results);
   }
 
   async remove(request: Request) {
-    return this.userRepository.softDelete(request.params.id).then(() => {
+    return this.repository.softDelete(request.params.id).then(() => {
       return Promise.resolve({ message: '删除成功！' });
     });
   }
@@ -72,21 +64,15 @@ export class UserController {
       return Promise.resolve({ code: 2, message: '请输入登录密码' });
     }
     const hashPassword = crypto.createHmac('sha256', password).digest('hex');
-    let userInfo = await this.userRepository.findOne(
-      {
-        username,
-        password: hashPassword,
-      },
-      {
-        select: ['username', 'id'],
-      },
-    );
+    let userInfo = await this.repository.findOne({
+      where: { username, password: hashPassword },
+      select: ['username', 'id'],
+    });
 
     if (!userInfo) {
       res.status(401);
       return Promise.resolve({ code: 3, message: '用户名或密码错误' });
     }
-
     if (req.session.token) {
       const { token, userInfo: sessionUserInfo } = req.session;
       return Promise.resolve({ token, ...sessionUserInfo });
@@ -109,11 +95,13 @@ export class UserController {
   }
 
   async logout(req: Request, res: Response) {
-    if (req.session) {
-      req.session.token = undefined;
-      req.session.userInfo = undefined;
-      req.session.userId = undefined;
-    }
-    return Promise.resolve({ message: 'Sign out successfully!' });
+    req.session.destroy((error) => {
+      res.status(error ? 500 : 200);
+      let data = { message: 'Sign out successfully!' };
+      if (error) {
+        data = { ...error };
+      }
+      return Promise.resolve({ ...data });
+    });
   }
 }

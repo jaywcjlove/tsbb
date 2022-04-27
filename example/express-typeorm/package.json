@@ -38,6 +38,7 @@
     "tsbb": "^3.7.2"
   },
   "dependencies": {
+    "@wcj/connect-typeorm": "^1.1.4",
     "compression": "~1.7.4",
     "cookie-parser": "~1.4.6",
     "dotenv": "~16.0.0",
@@ -47,8 +48,6 @@
     "http-errors": "~2.0.0",
     "pg": "~8.7.1",
     "reflect-metadata": "~0.1.13",
-    "typeorm": "~0.3.0",
-    "typeorm-extension": "~2.1.0",
-    "typeorm-store": "~2.0.0"
+    "typeorm": "~0.3.0"
   }
 }

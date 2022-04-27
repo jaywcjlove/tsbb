@@ -1,15 +1,20 @@
-import { BaseEntity, Column, Entity, PrimaryColumn } from 'typeorm';
-import { SessionEntity } from 'typeorm-store';
+import { Column, Entity, Index, PrimaryColumn, DeleteDateColumn } from 'typeorm';
+import { ISession } from '@wcj/connect-typeorm';
+
 import 'express-session';
 
 @Entity()
-export class Session extends BaseEntity implements SessionEntity {
-  @PrimaryColumn()
-  id: string;
+export class Session implements ISession {
+  @Index()
+  @Column('bigint', { transformer: { from: Number, to: Number } })
+  public expiredAt = Date.now();
 
-  @Column()
-  expiresAt: number;
+  @PrimaryColumn('varchar', { length: 255 })
+  public id = '';
 
-  @Column()
-  data: string;
+  @DeleteDateColumn()
+  public destroyedAt?: Date;
+
+  @Column('text')
+  public json = '';
 }

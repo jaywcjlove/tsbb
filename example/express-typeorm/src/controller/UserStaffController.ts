@@ -1,18 +1,16 @@
-import { getRepository, EntityManager } from 'typeorm';
+import { EntityManager, DataSource } from 'typeorm';
 import { NextFunction, Request, Response } from 'express';
 import { UserStaff } from '../entity/UserStaff';
 import pagination from '../middleware/pagination';
+import { appDataSource } from '../app-data-source';
 
 export class UserStaffController {
-  private repository = getRepository(UserStaff);
-  constructor(private manager: EntityManager) {
-    this.manager = manager;
-  }
-
+  private repository = appDataSource.getRepository(UserStaff);
+  constructor() {}
   async create(request: Request, response: Response, next: NextFunction) {
     const { body } = request;
-    const user = this.manager.create(UserStaff, { ...body });
-    return this.manager.save(user);
+    const user = this.repository.create({ ...body });
+    return this.repository.save(user);
   }
 
   async all(request: Request, response: Response) {
@@ -21,7 +19,7 @@ export class UserStaffController {
 
   async one(request: Request, response: Response) {
     const { params } = request;
-    return this.repository.findOne(params.id).then((user) => {
+    return this.repository.findOneBy({ id: params.id as unknown as number }).then((user) => {
       if (!user) {
         response.status(404);
         return { message: 'Not found user data' };
@@ -37,19 +35,11 @@ export class UserStaffController {
   }
 
   async update(request: Request, response: Response, next: NextFunction) {
-    const { id } = request.params;
-    return this.manager
-      .update(UserStaff, id || request.body.id, { ...request.body })
-      .then(({ affected }) => {
-        if (affected === 0) {
-          response.status(422);
-          return Promise.resolve({ message: '修改失败！' });
-        }
-        return Promise.resolve({ message: '修改员工信息成功！' });
-      })
-      .catch((err) => {
-        response.status(400);
-        return Promise.resolve({ message: '修改失败！' });
-      });
+    const user = await this.repository.findOneBy({
+      id: request.params.id as unknown as number,
+    });
+    await this.repository.merge(user, request.body);
+    const results = await this.repository.save(user);
+    return response.send(results);
   }
 }

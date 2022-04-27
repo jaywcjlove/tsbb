@@ -12,10 +12,9 @@ router.get('/', (req: Request, res: Response, next: NextFunction) => {
 });
 
 router.get('/logout', (req: Request, res: Response, next: NextFunction) => {
-  req.session.token = undefined;
-  req.session.userInfo = undefined;
-  req.session.userId = undefined;
-  res.redirect('/');
+  req.session.destroy(() => {
+    res.redirect('/');
+  });
 });
 
 export default router;

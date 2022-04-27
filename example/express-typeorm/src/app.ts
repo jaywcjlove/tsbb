@@ -3,13 +3,12 @@ import compression from 'compression';
 import createError from 'http-errors';
 import cookieParser from 'cookie-parser';
 import express, { Express, Response, Request, NextFunction } from 'express';
-import { EntityManager } from 'typeorm';
 import basicAuth from './middleware/basicAuth';
 import routes from './routes/index';
 import { Routes } from './api';
 import { createSession } from './utils/session';
 
-export async function expressApp(manager: EntityManager): Promise<Express> {
+export async function expressApp(): Promise<Express> {
   const app: Express = express();
   app.use(createSession());
   app.disable('x-powered-by');
@@ -25,9 +24,9 @@ export async function expressApp(manager: EntityManager): Promise<Express> {
   // register express routes from defined application routes
   Routes.forEach((route) => {
     app[route.method](route.route, basicAuth(route.auth), (req: Request, res: Response, next: NextFunction) => {
-      const result = (new route.controller(manager) as any)[route.action](req, res, next);
+      const result = (new route.controller() as any)[route.action](req, res, next);
       if (result instanceof Promise) {
-        result.then((result) => (result !== null && result !== undefined ? res.send(result) : undefined));
+        result.then((json) => res.send(json || {}));
       } else if (result !== null && result !== undefined) {
         res.json(result);
       }
