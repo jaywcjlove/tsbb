@@ -1,6 +1,6 @@
 {
   "name": "@template/express-typeorm",
-  "version": "3.7.2",
+  "version": "3.7.3",
   "private": true,
   "description": "Express Typeorm Example.",
   "scripts": {
@@ -33,7 +33,7 @@
     "@types/node": "~16.11.26",
     "nodemon": "~2.0.15",
     "ts-node": "~10.7.0",
-    "tsbb": "^3.7.2"
+    "tsbb": "^3.7.3"
   },
   "dependencies": {
     "@wcj/connect-typeorm": "^1.1.4",
