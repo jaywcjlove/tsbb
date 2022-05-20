@@ -153,7 +153,10 @@ export function transform(filename: string, options?: TransformHandleOptions): P
   return new Promise((resolve, reject) => {
     transformFile(filename, option, (err: Error, result: TransformBabelFileResult) => {
       if (err) {
-        return reject(err);
+        if (err instanceof Error) {
+          console.log(`\x1b[31;1m Err:Babel:Transform: ${err.message} \x1b[0m`);
+        }
+        return reject();
       }
       try {
         const output = result.options.filename

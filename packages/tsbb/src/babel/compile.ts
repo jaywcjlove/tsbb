@@ -49,7 +49,7 @@ export function babelCompile(options: BuildOptions): Promise<void> {
       resolve();
     } catch (error) {
       if (error instanceof Error) {
-        console.log(`\x1b[31;1m Err:Babel:Transform: ${error.message} \x1b[0m`);
+        console.log(`\x1b[31;1m Err:Babel:Compile: ${error.message} \x1b[0m`);
       }
       reject(error);
     }
