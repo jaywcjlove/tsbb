@@ -156,7 +156,7 @@ export function transform(filename: string, options?: TransformHandleOptions): P
         if (err instanceof Error) {
           console.log(`\x1b[31;1m Err:Babel:Transform: ${err.message} \x1b[0m`);
         }
-        return reject();
+        return resolve(result);
       }
       try {
         const output = result.options.filename
