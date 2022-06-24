@@ -9,13 +9,12 @@ jobs:
   build-deploy:
     runs-on: ubuntu-18.04
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
       with:
-        node-version: 14
+        node-version: 16
 
     - run: npm install
-    - run: npm run hoist
     - run: npm run build
 
     - name: example @example/basic
@@ -123,7 +122,7 @@ jobs:
 
     - name: Is a tag created auto?
       id: create_tag
-      uses: jaywcjlove/create-tag-action@v1.3.6
+      uses: jaywcjlove/create-tag-action@v1.3.7
       with:
         package-path: ./packages/tsbb/package.json
 
@@ -197,7 +196,7 @@ jobs:
 
     - name: get tag version
       id: tag_version
-      uses: jaywcjlove/changelog-generator@v1.5.0
+      uses: jaywcjlove/changelog-generator@v1.5.7
 
     - name: Build and Deploy
       uses: peaceiris/actions-gh-pages@v3
@@ -212,7 +211,7 @@ jobs:
 
     - name: Generate Changelog
       id: changelog
-      uses: jaywcjlove/changelog-generator@v1.5.0
+      uses: jaywcjlove/changelog-generator@v1.5.7
       if: steps.create_tag.outputs.successful
       with:
         head-ref: ${{ steps.create_tag.outputs.version }}
@@ -220,7 +219,7 @@ jobs:
         filter: '[R|r]elease[d]\s+[v|V]\d(\.\d+){0,2}'
 
     - name: Create Release
-      uses: jaywcjlove/create-tag-action@v1.3.6
+      uses: jaywcjlove/create-tag-action@v1.3.7
       with:
         package-path: ./packages/tsbb/package.json
         release: true
