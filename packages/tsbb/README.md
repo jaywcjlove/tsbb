@@ -248,7 +248,6 @@ export declare type Argv = Arguments<Partial<{
 
 ```bash
 $ npm i
-$ npm run hoist
 $ npm run build
 ```
 
