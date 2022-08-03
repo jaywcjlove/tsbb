@@ -32,15 +32,15 @@
   },
   "devDependencies": {
     "@babel/runtime": "~7.18.0",
-    "@parcel/transformer-less": "~2.6.0",
+    "@parcel/transformer-less": "~2.7.0",
     "compile-less-cli": "~1.8.11",
     "less": "~4.1.2",
-    "parcel": "~2.6.0",
+    "parcel": "~2.7.0",
     "react-test-renderer": "~18.2.0",
     "tsbb": "^3.7.6"
   },
   "dependencies": {
-    "@parcel/transformer-react-refresh-wrap": "~2.6.0",
+    "@parcel/transformer-react-refresh-wrap": "~2.7.0",
     "classnames": "~2.3.1",
     "react": "~18.2.0",
     "react-dom": "~18.2.0"
