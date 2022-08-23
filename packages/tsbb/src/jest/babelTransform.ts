@@ -15,6 +15,11 @@ module.exports = babelJest.createTransformer({
   ],
   plugins: [
     require('@babel/plugin-transform-runtime').default,
+    /**
+     * Fix: Cannot use 'import.meta' outside a module
+     * https://github.com/facebook/jest/issues/12183#issuecomment-1004320665
+     */
+    require('babel-plugin-transform-import-meta').default,
     // require('babel-plugin-add-module-exports').default,
     // require('@babel/plugin-proposal-object-rest-spread').default,
     // require('babel-plugin-transform-typescript-metadata').default,
