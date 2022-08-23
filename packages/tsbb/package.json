@@ -45,6 +45,7 @@
     "@vue/babel-plugin-jsx": "~1.1.1",
     "babel-jest": "~27.5.0",
     "babel-plugin-add-module-exports": "~1.0.4",
+    "babel-plugin-transform-import-meta": "^2.2.0",
     "babel-plugin-transform-remove-imports": "~1.7.0",
     "babel-plugin-transform-rename-import": "~2.3.0",
     "babel-plugin-transform-typescript-metadata": "~0.3.2",
