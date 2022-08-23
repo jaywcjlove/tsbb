@@ -7,7 +7,7 @@ env:
   SKIP_PREFLIGHT_CHECK: true
 jobs:
   build-deploy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
