@@ -44,7 +44,7 @@
     "express": "~4.18.0",
     "express-session": "~1.17.2",
     "http-errors": "~2.0.0",
-    "pg": "~8.7.1",
+    "pg": "~8.8.0",
     "reflect-metadata": "~0.1.13",
     "typeorm": "~0.3.0",
     "typeorm-extension": "^2.1.0"
