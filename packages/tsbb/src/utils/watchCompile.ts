@@ -134,9 +134,10 @@ const formatHost: ts.FormatDiagnosticsHost = {
 
 function reportDiagnostic(diagnostic: ts.Diagnostic) {
   console.error(
-    'ERROR:',
+    '\x1b[31;1mTSBB\x1b[0m:ERROR:',
     diagnostic.code,
-    ':',
+    ':1:',
     ts.flattenDiagnosticMessageText(diagnostic.messageText, formatHost.getNewLine()),
   );
+  console.error(`  \x1b[31;1mERROR:FROM:\x1b[0m \x1b[34;1m${diagnostic.file.fileName}\x1b[0m`);
 }
