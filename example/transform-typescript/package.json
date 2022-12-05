@@ -1,7 +1,7 @@
 {
   "name": "@template/transform-typescript",
   "private": true,
-  "version": "3.7.8",
+  "version": "3.7.9",
   "description": "Transform Typescript Example.",
   "scripts": {
     "watch": "tsbb watch --babel-option '{\"presets\": [\"@babel/preset-typescript\"] }' --no-esm",
@@ -17,6 +17,6 @@
   "keywords": [],
   "license": "MIT",
   "devDependencies": {
-    "tsbb": "^3.7.8"
+    "tsbb": "^3.7.9"
   }
 }
