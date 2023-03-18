@@ -31,7 +31,7 @@
     "react-dom": ">=16.7.0"
   },
   "devDependencies": {
-    "@babel/runtime": "~7.18.0",
+    "@babel/runtime": "~7.21.0",
     "@parcel/transformer-less": "~2.8.0",
     "compile-less-cli": "~1.8.13",
     "less": "~4.1.3",
