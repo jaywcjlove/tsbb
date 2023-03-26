@@ -2,9 +2,11 @@ name: Build & Deploy
 on:
   push:
     branches:
-      - master
+      - v3
+
 env:
   SKIP_PREFLIGHT_CHECK: true
+
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
@@ -13,6 +15,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+          registry-url: 'https://registry.npmjs.org'
 
       - run: npm install
       - run: npm run build
@@ -206,7 +209,7 @@ jobs:
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
           force_orphan: true
-          publish_branch: gh-pages
+          publish_branch: v3-doc
           publish_dir: ./zip
 
       - name: Generate Changelog
@@ -235,14 +238,16 @@ jobs:
 
             ${{ steps.changelog.outputs.changelog }}
 
-      - name: 📦  tsbb publish to NPM
-        uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          package: ./packages/tsbb/package.json
+      - run: npm publish --access public
+        name: 📦  tsbb publish to NPM
+        continue-on-error: true
+        working-directory: packages/tsbb
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: 📦  create-tsbb publish to NPM
-        uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          package: ./packages/create-tsbb/package.json
+      - run: npm publish --access public
+        name: 📦  create-tsbb publish to NPM
+        continue-on-error: true
+        working-directory: packages/create-tsbb
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
