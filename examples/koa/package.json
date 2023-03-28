@@ -1,0 +1,36 @@
+{
+  "name": "@template/koa",
+  "version": "4.0.0-alpha.0",
+  "private": true,
+  "description": "Koa Example",
+  "scripts": {
+    "start": "npm run build && node lib/app.js",
+    "dev": "nodemon --inspect lib/app.js",
+    "watch": "tsbb watch --entry ./src/app.ts --no-esm",
+    "build": "tsbb build --entry ./src/app.ts --no-esm",
+    "test": "tsbb test",
+    "coverage": "tsbb test --coverage --bail"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaywcjlove/tsbb/tree/master/example/koa"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "test/*",
+      "node_modules/*"
+    ],
+    "delay": "2500"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.13.5",
+    "nodemon": "~2.0.22",
+    "tsbb": "4.0.0-alpha.0"
+  },
+  "dependencies": {
+    "koa": "^2.14.1"
+  }
+}

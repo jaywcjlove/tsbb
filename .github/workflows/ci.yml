@@ -3,8 +3,7 @@ on:
   push:
     branches:
       - master
-env:
-  SKIP_PREFLIGHT_CHECK: true
+
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
@@ -13,9 +12,15 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+          registry-url: 'https://registry.npmjs.org'
 
       - run: npm install
       - run: npm run build
+      - run: npm run type-check
+
+      - name: example @example/babel-transform-ts
+        working-directory: example/babel-transform-ts
+        run: npm run build
 
       - name: example @example/basic
         working-directory: example/basic
@@ -23,10 +28,6 @@ jobs:
 
       - name: example @example/express
         working-directory: example/express
-        run: npm run build
-
-      - name: example @example/express-typeorm
-        working-directory: example/express-typeorm
         run: npm run build
 
       - name: example @example/hapi
@@ -49,75 +50,27 @@ jobs:
           cd lib/
           ls -al
 
-      - name: example @example/transform-typescript
-        working-directory: example/transform-typescript
+      - name: example @example/typenexus
+        working-directory: example/typenexus
         run: npm run build
 
       - name: example @example/umd
         working-directory: example/umd
         run: npm run build
 
-      - run: mkdir -p zip
-
-      - name: Compress basic Example.
-        run: zip -r -y basic.zip . -x "node_modules/*" -x "build/*" -x "lib/*" -x "coverage/*" -x ".eslintcache" -x "sandbox.config.json"
-        working-directory: example/basic
-      - run: cp -rp example/basic/basic.zip ./zip
-
-      - name: Compress express Example.
-        run: zip -r -y express.zip . -x "node_modules/*" -x "build/*" -x "lib/*" -x "coverage/*" -x ".eslintcache" -x "sandbox.config.json"
-        working-directory: example/express
-      - run: cp -rp example/express/express.zip ./zip
-
-      - name: Compress express-typeorm Example.
-        run: zip -r -y express-typeorm.zip . -x "node_modules/*" -x "build/*" -x "lib/*" -x "coverage/*" -x ".eslintcache" -x "sandbox.config.json"
-        working-directory: example/express-typeorm
-      - run: cp -rp example/express-typeorm/express-typeorm.zip ./zip
-
-      - name: Compress hapi Example.
-        run: zip -r -y hapi.zip . -x "node_modules/*" -x "build/*" -x "lib/*" -x "coverage/*" -x ".eslintcache" -x "sandbox.config.json"
-        working-directory: example/hapi
-      - run: cp -rp example/hapi/hapi.zip ./zip
-
-      - name: Compress koa Example.
-        run: zip -r -y koa.zip . -x "node_modules/*" -x "build/*" -x "lib/*" -x "coverage/*" -x ".eslintcache" -x "sandbox.config.json"
-        working-directory: example/koa
-      - run: cp -rp example/koa/koa.zip ./zip
-
-      - name: Compress react-component Example.
-        run: zip -r -y react-component.zip . -x "node_modules/*" -x "build/*" -x "lib/*" -x "esm/*" -x "dist/*" -x "doc/*" -x "coverage/*" -x ".eslintcache" -x "sandbox.config.json"
-        working-directory: example/react-component
-      - run: cp -rp example/react-component/react-component.zip ./zip
-
-      - name: Compress react-component-tsx Example.
-        run: zip -r -y react-component-tsx.zip . -x "node_modules/*" -x "build/*" -x "lib/*" -x "esm/*" -x "coverage/*" -x ".eslintcache" -x "sandbox.config.json"
-        working-directory: example/react-component-tsx
-      - run: cp -rp example/react-component-tsx/react-component-tsx.zip ./zip
-
-      - name: Compress transform-typescript Example.
-        run: zip -r -y transform-typescript.zip . -x "node_modules/*" -x "build/*" -x "lib/*" -x "coverage/*" -x ".eslintcache" -x "sandbox.config.json"
-        working-directory: example/transform-typescript
-      - run: cp -rp example/transform-typescript/transform-typescript.zip ./zip
-
-      - name: Compress umd Example.
-        run: zip -r -y umd.zip . -x "node_modules/*" -x "lib/*" -x "coverage/*"
-        working-directory: example/umd
-      - run: cp -rp example/umd/umd.zip ./zip
-
-      - name: Compress vue Example.
-        run: zip -r -y vue.zip . -x "node_modules/*" -x "build/*" -x "cjs/*" -x "esm/*"
+      - name: example @example/vue
         working-directory: example/vue
-      - run: cp -rp example/vue/vue.zip ./zip
+        run: npm run build
 
-      - run: npm i markdown-to-html-cli -g
-      - run: markdown-to-html --output zip/doc.html --source packages/tsbb/README.md
-      - run: markdown-to-html --output zip/create-tsbb.html --source packages/create-tsbb/README.md
+      - run: npm install idoc@1.25.0 -g
+      - run: idoc -s "TSBB {{version}}"
+        working-directory: packages/tsbb
 
       - name: Generate Contributors Images
         uses: jaywcjlove/github-action-contributors@main
         with:
           filter-author: (renovate\[bot\]|renovate-bot|dependabot\[bot\])
-          output: ./zip/CONTRIBUTORS.svg
+          output: ./packages/tsbb/dist/CONTRIBUTORS.svg
           avatarSize: 36
 
       - name: Is a tag created auto?
@@ -126,77 +79,9 @@ jobs:
         with:
           package-path: ./packages/tsbb/package.json
 
-      - name: Compress TSBB Example Download webpage.
-        working-directory: zip
-        run: |
-          ICON='<svg viewBox="0 0 1024 1024" width="14" height="14"><path d="M192 384h640a42.666667 42.666667 0 0 1 42.666667 42.666667v362.666666a42.666667 42.666667 0 0 1-42.666667 42.666667H192v106.666667a21.333333 21.333333 0 0 0 21.333333 21.333333h725.333334a21.333333 21.333333 0 0 0 21.333333-21.333333V308.821333L949.909333 298.666667h-126.528A98.048 98.048 0 0 1 725.333333 200.618667V72.661333L716.714667 64H213.333333a21.333333 21.333333 0 0 0-21.333333 21.333333v298.666667zM128 832H42.666667a42.666667 42.666667 0 0 1-42.666667-42.666667V426.666667a42.666667 42.666667 0 0 1 42.666667-42.666667h85.333333V85.333333a85.333333 85.333333 0 0 1 85.333333-85.333333h530.026667L1024 282.453333V938.666667a85.333333 85.333333 0 0 1-85.333333 85.333333H213.333333a85.333333 85.333333 0 0 1-85.333333-85.333333v-106.666667z m32.661333-359.509333v38.4h147.072l-158.592 200.448V746.666667h226.176v-38.4H207.893333l158.208-200.064v-35.712h-205.44z m251.136 0V746.666667h44.928V472.490667h-44.928z m98.688 0V746.666667h44.928v-105.216h67.968c66.816 0 100.224-28.416 100.224-84.864 0-56.064-33.408-84.096-99.456-84.096h-113.664z m44.928 38.4h65.28c19.584 0 34.176 3.456 43.392 10.752 9.216 6.912 14.208 18.432 14.208 34.944 0 16.512-4.608 28.416-13.824 35.712-9.216 6.912-23.808 10.752-43.776 10.752h-65.28v-92.16z" fill="currentColor"></path></svg> '
-          CodeSandbox='https://codesandbox.io/s/github/jaywcjlove/tsbb/tree/master/example/'
-          GITHUBREADME='https://github.com/jaywcjlove/tsbb/tree/master/example/'
-          VERSION_NUMBER=$(echo "${{ steps.create_tag.outputs.versionNumber || steps.create_tag.outputs.version || steps.create_tag.outputs.preversion }}")
-          cat > index.html << EOF
-          <!DOCTYPE html><html lang="en">
-          <head>
-          <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <link rel="icon" type="image/x-icon" href="https://github.githubassets.com/favicon.ico">
-          <title>TSBB Example Zip Files</title>
-          <style type="text/css">
-          body, html { height: 100%; font-size: 12px; font-family: Avenir Next,PingFang SC,Hiragino Sans GB,Droid Sans Fallback,Microsoft YaHei,sans-serif; }
-          h1 { font-size: 2.6rem; font-weight: 300; }
-          h1 sup { color: #7b7b7b; font-size: 14px; position: absolute; font-weight: normal;}
-          .docbtn { display: flex; color: #fff; position: fixed; left: 10px; top: 10px; }
-          .docbtn a { background: #2196f3; padding: 5px 12px; color: #fff; border-radius: 2px; transition: all 0.3s; margin-right: 10px; }
-          .docbtn a:hover { background: #377eb7; color: #fff; }
-          a:hover { color: #0949d1; }
-          .header { position: relative; width: 100%; height: 60%; text-align: center; }
-          .list { border-spacing: 0; border-collapse: collapse; margin: 0 auto 0 auto;}
-          .list td { padding: 3px 10px; line-height: 21px; }
-          .list td svg { display: block; }
-          .list tr { transition: all 0.3s; }
-          .list tr:hover { background-color: #f1f1f1; }
-          .links { text-align: center; padding: 50px 0 0 0; font-size: 14px; }
-          .footer { color: #696969; text-align: center; padding: 10px 0 90px 0; }
-          .footer a { padding: 10px 0 90px 0; color: #696969 }
-          </style>
-          </head>
-          <body>
-          <table class="header"> <tbody> <tr> <td>
-            <h1>TSBB Example Zip Files<sup>v$VERSION_NUMBER</sup></h1>
-            <div class="docbtn">
-              <a target="__blank" href="doc.html">Document</a>
-              <a target="__blank" href="create-tsbb.html">Create TSBB Document</a>
-              <a target="__blank" href="https://github.com/jaywcjlove/tsbb">Github</a>
-            </div>
-          </td> </tr> </tbody> </table>
-
-          <table class="list">
-            <tbody>
-          $(for file in $(ls *.zip); do
-            echo "<tr>"
-            echo "<td>${ICON}</td>"
-            echo "<td><a href=\"${file}\">$file</a></td>"
-            echo "<td><a target=\"__blank\" href=\"$GITHUBREADME${file//.zip/}\">Document</a></td>"
-            echo "</tr>"
-          done)
-            </tbody>
-          </table>
-          <div class="links">
-            <a target="__blank" href="https://github.com/jaywcjlove/tsbb">GitHub</a> ·
-            <a target="__blank" href="https://github.com/jaywcjlove/tsbb/issues">Feedback</a> ·
-            <a target="__blank" href="https://github.com/jaywcjlove/tsbb/tree/master/packages/create-tsbb">Create TSBB Project</a> ·
-            <a target="__blank" href="https://github.com/kktjs/kkt">KKT</a>
-          </div>
-          <div class="footer">
-            Licensed under MIT. (Yes it's free and open-sourced)
-            <div>
-              Created By <a target="__blank" href="https://github.com/jaywcjlove">小弟调调™</a>
-            </div>
-          </div>
-          </body></html>
-          EOF
-
       - name: get tag version
         id: tag_version
-        uses: jaywcjlove/changelog-generator@v1.5.7
+        uses: jaywcjlove/changelog-generator@main
 
       - name: Build and Deploy
         uses: peaceiris/actions-gh-pages@v3
@@ -207,7 +92,7 @@ jobs:
           user_email: 'github-actions[bot]@users.noreply.github.com'
           force_orphan: true
           publish_branch: gh-pages
-          publish_dir: ./zip
+          publish_dir: ./packages/tsbb/dist/
 
       - name: Generate Changelog
         id: changelog
@@ -235,14 +120,44 @@ jobs:
 
             ${{ steps.changelog.outputs.changelog }}
 
-      - name: 📦  tsbb publish to NPM
-        uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          package: ./packages/tsbb/package.json
+      - run: npm publish --access public
+        name: 📦  tsbb publish to NPM
+        continue-on-error: true
+        working-directory: packages/tsbb
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: 📦  create-tsbb publish to NPM
-        uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          package: ./packages/create-tsbb/package.json
+      - run: npm publish --access public
+        name: 📦  create-tsbb publish to NPM
+        continue-on-error: true
+        working-directory: packages/create-tsbb
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - run: npm publish --access public
+        name: 📦  @tsbb/typescript publish to NPM
+        continue-on-error: true
+        working-directory: packages/typescript
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - run: npm publish --access public
+        name: 📦  @tsbb/jest publish to NPM
+        continue-on-error: true
+        working-directory: packages/jest
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - run: npm publish --access public
+        name: 📦  @tsbb/core publish to NPM
+        continue-on-error: true
+        working-directory: packages/core
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - run: npm publish --access public
+        name: 📦  @tsbb/babel publish to NPM
+        continue-on-error: true
+        working-directory: packages/babel
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

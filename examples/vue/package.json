@@ -1,0 +1,20 @@
+{
+  "name": "@template/vue",
+  "private": true,
+  "version": "4.0.0-alpha.0",
+  "description": "",
+  "main": "./cjs/index.js",
+  "module": "./esm/index.js",
+  "author": "jaywcjlove",
+  "license": "ISC",
+  "scripts": {
+    "watch": "tsbb watch src/*.tsx --use-vue --use-babel --cjs cjs",
+    "build": "tsbb build src/*.tsx --use-vue --use-babel --cjs cjs"
+  },
+  "dependencies": {
+    "vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "tsbb": "4.0.0-alpha.0"
+  }
+}

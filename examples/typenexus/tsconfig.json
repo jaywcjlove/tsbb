@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "module": "Node16",
+    "target": "ESNext",
+    "outDir": "./dist",
+    "strict": true,
+    "esModuleInterop": true,
+
+    "declaration": false,
+    "noImplicitAny": true,
+    "resolveJsonModule": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "emitDeclarationOnly": false,
+
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
+}

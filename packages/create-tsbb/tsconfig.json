@@ -1,16 +1,13 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "esModuleInterop": true,
+    "module": "Node16",
+    "target": "ESNext",
+    "moduleResolution": "Node16",
+    "strict": true,
     "declaration": true,
-    "target": "es2017",
-    "noImplicitAny": true,
-    "resolveJsonModule": true,
-    "moduleResolution": "node",
-    "sourceMap": true,
-    "outDir": "lib",
-    "baseUrl": ".",
-    "typeRoots": ["node_modules/@types/*", "src/type/*"]
+    "skipLibCheck": true,
+    "esModuleInterop": true
   },
-  "include": ["src/**/*"]
+  "include": ["./src/**/*.ts"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
 }

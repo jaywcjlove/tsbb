@@ -1,0 +1,52 @@
+{
+  "name": "@tsbb/babel",
+  "version": "4.0.0-alpha.0",
+  "description": "TSBB is a zero-config CLI that helps you develop, test, and publish modern TypeScript project.",
+  "author": "kenny wang <wowohoo@qq.com>",
+  "homepage": "http://jaywcjlove.github.io/tsbb",
+  "license": "MIT",
+  "type": "module",
+  "types": "./lib/index.d.ts",
+  "exports": "./lib/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaywcjlove/tsbb.git"
+  },
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "typescript",
+    "babel",
+    "react",
+    "tsbb",
+    "node.js"
+  ],
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "dependencies": {
+    "@babel/core": "~7.21.3",
+    "@babel/plugin-proposal-class-properties": "~7.18.6",
+    "@babel/plugin-proposal-decorators": "~7.21.0",
+    "@babel/plugin-proposal-export-default-from": "~7.18.10",
+    "@babel/plugin-transform-runtime": "~7.21.0",
+    "@babel/preset-env": "~7.20.2",
+    "@babel/preset-react": "~7.18.6",
+    "@babel/preset-typescript": "~7.21.0",
+    "@types/semver": "~7.3.13",
+    "@types/babel__core": "^7.20.0",
+    "@tsbb/typescript": "4.0.0-alpha.0",
+    "@vue/babel-plugin-jsx": "~1.1.1",
+    "babel-plugin-add-module-exports": "~1.0.4",
+    "babel-plugin-transform-import-meta": "~2.2.0",
+    "babel-plugin-transform-remove-imports": "~1.7.0",
+    "babel-plugin-transform-rename-import": "~2.3.0",
+    "babel-plugin-transform-typescript-metadata": "~0.3.2",
+    "semver": "~7.3.8"
+  }
+}

@@ -1,10 +1,12 @@
 {
   "name": "create-tsbb",
-  "version": "3.7.2",
+  "version": "4.0.0-alpha.0",
   "description": "Creates a TSBB application using the command line.",
   "homepage": "https://jaywcjlove.github.io/tsbb/create-tsbb.html",
   "author": "Kenny Wong <wowohoo@qq.com> (https://github.com/jaywcjlove)",
-  "main": "lib/index.js",
+  "type": "module",
+  "types": "./lib/index.d.ts",
+  "exports": "./lib/index.js",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -13,11 +15,20 @@
   "bin": {
     "create-tsbb": "lib/cli.js"
   },
+  "scripts": {
+    "start": "node lib/cli.js",
+    "watch": "tsbb watch",
+    "build": "tsbb build",
+    "test": "tsbb test",
+    "coverage": "tsbb test --coverage --bail",
+    "copy": "node lib/copy.js"
+  },
   "files": [
+    "!lib/copy.js",
+    "!lib/copy.d.ts",
     "lib",
     "src"
   ],
-  "jest": {},
   "keywords": [
     "kkt",
     "tsbb",
@@ -31,7 +42,18 @@
     "framework",
     "frontend"
   ],
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "dependencies": {
-    "create-kkt": "~3.0.0"
+    "@types/which": "~3.0.0",
+    "fs-extra": "^11.1.1",
+    "execa": "^7.1.0",
+    "meow": "^11.0.0",
+    "which": "^3.0.0"
+  },
+  "devDependencies": {
+    "cpy": "^9.0.1",
+    "tsbb": "4.0.0-alpha.0"
   }
 }

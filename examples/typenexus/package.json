@@ -1,0 +1,38 @@
+{
+  "name": "@template/typenexus",
+  "private": true,
+  "type": "module",
+  "version": "4.0.0-alpha.0",
+  "description": "TypeNexus Example.",
+  "scripts": {
+    "start": "npm run build && node dist/main.js",
+    "dev": "nodemon --inspect dist/main.js",
+    "watch": "tsbb watch",
+    "build": "tsbb build",
+    "test": "tsbb test",
+    "coverage": "tsbb test --coverage --bail",
+    "t": "ts-node-esm ./test/main.test.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaywcjlove/tsbb/tree/master/example/typenexus"
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/?!(.*)"
+    ]
+  },
+  "keywords": [],
+  "license": "MIT",
+  "dependencies": {
+    "typenexus": "0.3.0"
+  },
+  "devDependencies": {
+    "@types/supertest": "~2.0.12",
+    "nodemon": "^2.0.20",
+    "supertest": "^6.3.3",
+    "supertest-session": "^4.1.0",
+    "ts-node": "^10.9.1",
+    "tsbb": "4.0.0-alpha.0"
+  }
+}

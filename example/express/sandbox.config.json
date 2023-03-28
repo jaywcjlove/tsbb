@@ -1,8 +1,0 @@
-{
-  "template": "node",
-  "container": {
-    "node": "12",
-    "startScript": "tsnd",
-    "port": 3000
-  }
-}

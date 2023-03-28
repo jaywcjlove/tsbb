@@ -1,0 +1,22 @@
+{
+  "name": "@template/babel-transform-ts",
+  "private": true,
+  "version": "4.0.0-alpha.0",
+  "description": "Transform Typescript Example.",
+  "scripts": {
+    "watch": "tsbb watch 'src/**/*.ts' --use-babel --no-esm",
+    "build": "tsbb build 'src/**/*.ts' --use-babel --no-esm",
+    "test": "tsbb test",
+    "coverage": "tsbb test --coverage --bail"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaywcjlove/tsbb/tree/master/example/babel-transform-ts"
+  },
+  "jest": {},
+  "keywords": [],
+  "license": "MIT",
+  "devDependencies": {
+    "tsbb": "4.0.0-alpha.0"
+  }
+}

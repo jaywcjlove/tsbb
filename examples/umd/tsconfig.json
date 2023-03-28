@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "UMD",
+    "target": "es2015",
+    "lib": ["es5", "es6", "dom"],
+    "outDir": "./lib",
+    "strict": true,
+    "declaration": true,
+    "moduleResolution": "nodenext",
+    "skipLibCheck": true
+  },
+  "files": ["src/index.ts", "src/utils/sum.ts", "src/utils/Test.ts", "src/utils/a/a.ts"],
+  "include": ["./src/**/*.ts"],
+  "exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts"]
+}

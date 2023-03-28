@@ -1,0 +1,21 @@
+{
+  "name": "@template/umd",
+  "private": true,
+  "version": "4.0.0-alpha.0",
+  "description": "UMD Example.",
+  "scripts": {
+    "watch": "tsbb watch",
+    "build": "tsbb build",
+    "test": "tsbb test",
+    "coverage": "tsbb test --coverage --bail"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaywcjlove/tsbb/tree/master/example/basic"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "devDependencies": {
+    "tsbb": "4.0.0-alpha.0"
+  }
+}

@@ -1,22 +1,26 @@
 {
   "name": "tsbb",
-  "version": "3.7.9",
+  "version": "4.0.0-alpha.0",
   "description": "TSBB is a zero-config CLI that helps you develop, test, and publish modern TypeScript project.",
   "author": "kenny wang <wowohoo@qq.com>",
+  "homepage": "http://jaywcjlove.github.io/tsbb",
   "license": "MIT",
-  "main": "./lib/index.js",
+  "type": "module",
+  "types": "./lib/index.d.ts",
+  "exports": "./lib/index.js",
   "bin": {
-    "tsbb": "bin/tsbb"
+    "tsbb": "./lib/cli.js"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/jaywcjlove/tsbb.git"
   },
-  "homepage": "http://jaywcjlove.github.io/tsbb",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc --watch"
+  },
   "files": [
-    "bin",
-    "lib",
-    "src"
+    "lib"
   ],
   "keywords": [
     "typescript",
@@ -25,42 +29,10 @@
     "tsbb",
     "node.js"
   ],
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "dependencies": {
-    "@babel/core": "~7.18.0",
-    "@babel/plugin-proposal-class-properties": "~7.18.0",
-    "@babel/plugin-proposal-decorators": "~7.18.0",
-    "@babel/plugin-proposal-export-default-from": "~7.18.0",
-    "@babel/plugin-transform-runtime": "~7.18.0",
-    "@babel/preset-env": "~7.18.0",
-    "@babel/preset-react": "~7.18.0",
-    "@babel/preset-typescript": "~7.18.0",
-    "@types/babel__core": "~7.1.18",
-    "@types/fs-extra": "~9.0.13",
-    "@types/jest": "~27.5.0",
-    "@types/micromatch": "~4.0.2",
-    "@types/node": "~16.11.26",
-    "@types/semver": "~7.3.9",
-    "@types/yargs": "~17.0.9",
-    "@types/yargs-parser": "~21.0.0",
-    "@vue/babel-plugin-jsx": "~1.1.1",
-    "babel-jest": "~27.5.0",
-    "babel-plugin-add-module-exports": "~1.0.4",
-    "babel-plugin-transform-import-meta": "^2.2.0",
-    "babel-plugin-transform-remove-imports": "~1.7.0",
-    "babel-plugin-transform-rename-import": "~2.3.0",
-    "babel-plugin-transform-typescript-metadata": "~0.3.2",
-    "camelcase": "~6.3.0",
-    "chalk": "~4.1.2",
-    "chokidar": "~3.5.3",
-    "execa": "~5.1.1",
-    "fs-extra": "~10.1.0",
-    "identity-obj-proxy": "~3.0.0",
-    "jest": "~27.5.0",
-    "jest-watch-typeahead": "~1.1.0",
-    "micromatch": "~4.0.4",
-    "recursive-readdir-files": "~1.1.2",
-    "semver": "~7.3.5",
-    "typescript": "~4.8.0",
-    "yargs-parser": "~21.1.0"
+    "@tsbb/core": "4.0.0-alpha.0"
   }
 }

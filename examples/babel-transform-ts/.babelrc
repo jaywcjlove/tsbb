@@ -1,0 +1,7 @@
+{
+  "env": {
+    "cjs": {
+      "presets": ["@babel/preset-typescript"]
+    }
+  }
+}

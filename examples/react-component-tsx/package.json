@@ -1,0 +1,74 @@
+{
+  "name": "@template/react-component-tsx",
+  "version": "4.0.0-alpha.0",
+  "description": "React Component Example for TypeScript.",
+  "private": true,
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "scripts": {
+    "doc": "kkt build --app-src ./website",
+    "start": "kkt start --app-src ./website",
+    "watch": "tsbb watch src/*.{tsx,ts} --useBabel & npm run css:watch",
+    "build": "tsbb build src/*.{tsx,ts} --useBabel && npm run css:build",
+    "css:build": "compile-less -d src -o esm",
+    "css:watch": "compile-less -d src -o esm --watch",
+    "css:build:dist": "compile-less -d src --combine lib/dist.css --rm-global",
+    "test": "tsbb test",
+    "coverage": "tsbb test --coverage --bail",
+    "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaywcjlove/tsbb/tree/master/example/react-component-tsx"
+  },
+  "license": "MIT",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,tsx,ts,less,md,json}": [
+      "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\""
+    ]
+  },
+  "peerDependencies": {
+    "@babel/runtime": ">=7.10.0",
+    "react": ">=16.9.0",
+    "react-dom": ">=16.9.0"
+  },
+  "devDependencies": {
+    "@babel/runtime": "^7.21.0",
+    "@kkt/less-modules": "^7.4.9",
+    "@kkt/raw-modules": "^7.4.9",
+    "@kkt/scope-plugin-options": "^7.4.9",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "compile-less-cli": "^1.8.13",
+    "husky": "~8.0.0",
+    "kkt": "^7.4.9",
+    "lint-staged": "~13.2.0",
+    "prettier": "^2.8.6",
+    "react": "~18.2.0",
+    "react-dom": "~18.2.0",
+    "tsbb": "4.0.0-alpha.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

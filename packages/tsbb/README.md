@@ -23,19 +23,19 @@
   <a href="#license">License</a>
 </p>
 
-TSBB is a zero-config CLI that helps you develop, test, and publish modern TypeScript [Node.js](https://nodejs.org/en/) project.
+TSBB is a CLI tool that enables the development, testing, and publishing of modern TypeScript [Node.js](https://nodejs.org/en/) projects with zero configuration needed.
 
 `TypeScript + Babel` = `TSBB`
 
 #### `Features`
 
-- ⏱ Quickly initialize the example project and quickly enter the development mode.  
-- ♻️ Recompile the code when project files get added, removed or modified.  
-- 📚 Readable source code that encourages learning and contribution  
-- 🚀 Faster, Faster compilation speed.  
-- ⚛️ Support [react](https://reactjs.org/), [vue 3](https://vuejs.org/) component compilation.  
-- ⛑ [Jest](https://jestjs.io/) test runner setup with defaults `tsbb test`  
-- 🔥 Zero-config, single dependency.  
+🔥 Single dependency zero-configuration
+⏱ Quick initialization of example projects and entering development mode
+♻️ Automatic recompilation of code when files are added, modified, or removed
+📚 Readable source code that encourages learning and contribution
+🚀 Faster compilation speeds
+⚛️ Support for [React](https://react.dev) and [Vue 3](https://vuejs.org) component compilation
+⛑ [Jest](https://jestjs.io/) test runner setup with defaults of `tsbb test`
 
 ## Quick Start
 
@@ -75,7 +75,7 @@ You can download the following examples directly. [Download page](https://jaywcj
 
 - [**`Basic`**](https://github.com/jaywcjlove/tsbb/tree/master/example/basic) - The [Node.js](https://nodejs.org/en/) base application example.
 - [**`Express`**](https://github.com/jaywcjlove/tsbb/tree/master/example/express) - The [Express](https://expressjs.com/) base application example.
-- [**`express-typeorm`**](https://github.com/jaywcjlove/tsbb/tree/master/example/express-typeorm) - The [Express](https://expressjs.com/) & [TypeORM](https://github.com/typeorm/typeorm) base application example.
+- [**`TypeNexus`**](https://github.com/jaywcjlove/tsbb/tree/master/example/express-typeorm) - The [Express](https://expressjs.com/) & [TypeORM](https://github.com/typeorm/typeorm) base application example.
 - [**`Koa`**](https://github.com/jaywcjlove/tsbb/tree/master/example/koa) - The [Koa](https://koajs.com/) base application example.
 - [**`Hapi`**](https://github.com/jaywcjlove/tsbb/tree/master/example/hapi) - The [Hapi](https://hapijs.com/) base application example.
 - [**`react-component`**](https://github.com/jaywcjlove/tsbb/tree/master/example/react-component) - The react component base application example.
@@ -83,6 +83,81 @@ You can download the following examples directly. [Download page](https://jaywcj
 - [**`transform-typescript`**](https://github.com/jaywcjlove/tsbb/tree/master/example/transform-typescript) - Reconfigure the babel configuration example.
 - [**`umd`**](https://github.com/jaywcjlove/tsbb/tree/master/example/umd) - umd bundle example.
 - [**`vue 3`**](https://github.com/jaywcjlove/tsbb/tree/master/example/vue) - To add Vue JSX support.
+
+## TypeScript Project
+
+To configure the **`tsconfig.json`** properly, you must first define either the **`include`** or **`files`** field(s) to specify which files need to be compiled. Once you've done that, you can then specify the **`outDir`** for the output directory in the configuration.
+
+```typescript
+{
+  "$schema": "http://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "esnext",
+    "outDir": "./lib",
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*"],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+}
+```
+
+After completing `tsconfig.jso` configuration, you can configure _scripts_ in `package.json`:
+
+```javascript
+{
+  "scripts": {
+    "watch": "tsbb watch",
+    "build": "tsbb build"
+  },
+  "devDependencies": {
+    "tsbb": "*"
+  }
+}
+```
+
+## Babel Project
+
+Adding the parameter `--use-babel` to your project enables babel to compile and output **`cjs`**/**`esm`** files simultaneously, while **`ts`** is only needed for *type* output.
+
+```bash
+$ tsbb build "src/*ts" --use-babel
+```
+
+You can change the built-in settings of Babel by adding a **`.babelrc`** configuration file. Additionally, you can modify the **Babel** configurations for **`esm`** and **`cjs`** separately through environment variables. Please refer to the example below:
+
+```js
+{
+  "env": {
+    "cjs": {
+      "presets": ["@babel/preset-typescript"]
+    },
+    "esm": {
+      "presets": ["@babel/preset-env", {
+        "modules": false,
+        "loose": true,
+        "targets": {
+          "esmodules": true,
+        },
+      }]
+    }
+  } 
+}
+```
+
+At compile time, specify the environment variable `--envName='xxx'` to enable reading of relevant configurations from the settings. This environment variable can also be customized.
+
+```js
+{
+  "env": {
+    "xxx": { ... }
+  } 
+}
+```
 
 ## Command Help
 
@@ -97,21 +172,17 @@ Usage: tsbb <command>
 
 Commands:
 
-  tsbb build [options]       Build your project once and exit.
-  tsbb watch [options]       Recompile files on changes.
-  tsbb test [options]        Run jest test runner in watch mode.
+  tsbb build [source…] [options]   Build your project once and exit.
+  tsbb watch [source…] [options]   Recompile files on changes.
+  tsbb test [options]              Run jest test runner in watch mode.
 
 Options:[build|watch]
 
-  --entry, -e                Specify the entry directory.
-  --env-name                 The current active environment used during configuration loading.
-  --emit-type                Emit d.ts type files.
-  --no-emit-type             No emit d.ts type files.
-  --disable-babel            Disable Babel.
-  --no-babel-option          Disable Babel Option.
-  --file-names, -f           A set of root files.
-  --esm                      Output "esm" directory.
-  --cjs                      Output "cjs" directory.
+  --use-babel                Use Babel.(works in babel)
+  --source-maps              Enables the generation of sourcemap files.(works in babel)
+  --env-name                 The current active environment used during configuration loading.(works in babel)
+  --esm                      Output "esm" directory.(works in babel)
+  --cjs                      Output "cjs" directory.(works in babel)
 
 Options:
 
@@ -120,23 +191,17 @@ Options:
 
 Examples:
 
-  $ tsbb build                           Build your project.
-  $ tsbb build --entry src/index.ts      Specify the entry directory.
-  $ tsbb build --esm ./es                Output directory.
-  $ tsbb build --use-vue                 To add Vue JSX support.
-  $ tsbb build --no-source-maps          No ".js.map" file is generated. (Can't disable babel)
-  $ tsbb watch --disable-babel           Disable Babel.
-  $ tsbb watch --no-emit-type            No emit d.ts type files.
-  $ tsbb watch --no-babel-option         Disable Babel Option.
-  $ tsbb watch --babel-option '{"presets": ["@babel/preset-typescript"] }'
-                                        Babel Option.
-  $ tsbb watch --cjs ./cjs               Watch Output directory.
-  $ tsbb build --disable-babel --file-names src/index.ts --file-names src/main.ts
-                                        A set of root files.
-  $ tsbb test                            Run test suites related
-  $ tsbb test --coverage                 Test coverage information should be collected
+  $ tsbb build src/*.ts                    Build your project.
+  $ tsbb build src/main.ts src/good.ts     Specify the entry directory.
+  $ tsbb build src/*.ts --use-babel --no-source-maps   No ".js.map" file is generated. (works in babel)
+  $ tsbb watch src/*.ts --use-babel --cjs ./cjs        Watch Output directory.
+  $ tsbb build src/*.ts --use-babel --esm ./es         Output directory.
+  $ tsbb build src/*.ts --use-babel --use-vue          To add Vue JSX support.
+  $ tsbb test                              Run test suites related
+  $ tsbb test --coverage --bail            Test coverage information should be collected
 
-Copyright 2022
+  Copyright 2023
+
 ```
 
 ### ~~`tsbb create`~~

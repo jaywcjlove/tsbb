@@ -28,27 +28,28 @@ $ npx create-tsbb my-app
 
 ### Command Help
 
-Below is a help of commands you might find useful. The example download is from https://jaywcjlove.github.io/tsbb
+Below is a help of commands you might find useful.
 
 ```bash
 Usage: create-tsbb <app-name> [options] [--help|h]
-
 Options:
-  --version, -v Show version number
-  --help, -h Displays help information.
-  --output, -o Output directory.
-  --example, -e Example from: https://jaywcjlove.github.io/tsbb , default: "basic"
-  --force, -f Overwrite target directory if it exists. default: false
-  --path, -p Specify the download target git address. default: "https://jaywcjlove.github.io/tsbb"
+
+  --version, -v  Show version number
+  --help, -h     Displays help information.
+  --force, -f    Overwrite folder contents.
+  --example, -e  Example: "npm create tsbb my-app -e typenexus",
+                  default: "basic"
 
 Example:
-  npx create-tsbb my-app
-  yarn create tsbb appName
-  npm create tsbb my-app
-  npm create tsbb my-app -f
-  npm create tsbb my-app -p https://jaywcjlove.github.io/tsbb
 
-Copyright 2021
+  yarn create tsbb appName
+  npx create-tsbb my-app
+  npm create tsbb my-app
+  npm create tsbb@latest my-app
+  npm create tsbb my-app -f
+  npm create tsbb my-app -e typenexus
+
+Copyright 2023
 ```
 
 ## License

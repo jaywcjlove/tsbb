@@ -1,0 +1,22 @@
+{
+  "name": "@template/basic",
+  "version": "4.0.0-alpha.0",
+  "description": "Basic Example.",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "node lib/index.js",
+    "watch": "tsbb watch",
+    "build": "tsbb build",
+    "test": "tsbb test",
+    "coverage": "tsbb test --coverage --bail"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaywcjlove/tsbb/tree/master/example/basic"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "tsbb": "4.0.0-alpha.0"
+  }
+}

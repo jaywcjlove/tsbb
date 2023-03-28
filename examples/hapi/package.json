@@ -1,0 +1,37 @@
+{
+  "name": "@template/hapi",
+  "version": "4.0.0-alpha.0",
+  "private": true,
+  "description": "hapi Example.",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build && node lib/app.js",
+    "dev": "nodemon --inspect lib/app.js",
+    "watch": "tsbb watch",
+    "build": "tsbb build",
+    "test": "tsbb test",
+    "coverage": "tsbb test --coverage --bail"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaywcjlove/tsbb/tree/master/example/basic"
+  },
+  "jest": {},
+  "keywords": [],
+  "license": "MIT",
+  "author": "",
+  "nodemonConfig": {
+    "ignore": [
+      "test/*",
+      "node_modules/*"
+    ],
+    "delay": "2500"
+  },
+  "devDependencies": {
+    "nodemon": "~2.0.22",
+    "tsbb": "4.0.0-alpha.0"
+  },
+  "dependencies": {
+    "@hapi/hapi": "^21.3.0"
+  }
+}
