@@ -27,7 +27,7 @@ TSBB is a CLI tool that enables the development, testing, and publishing of mode
 
 `TypeScript + Babel` = `TSBB`
 
-#### `Features`
+## `Features`
 
 - 🔥 Single dependency zero-configuration
 - ⏱ Quick initialization of example projects and entering development mode
