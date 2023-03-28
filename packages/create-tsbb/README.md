@@ -15,13 +15,13 @@ Creates a [`tsbb`](http://jaywcjlove.github.io/tsbb) application using the comma
 
 ```shell
 # npm 6.x
-$ npm init tsbb my-app --example express-typeorm
+$ npm init tsbb my-app --example typenexus
 # npm 7+, extra double-dash is needed:
-$ npm init tsbb my-app -- --example express-typeorm
+$ npm init tsbb my-app -- --example typenexus
 
 $ yarn create tsbb [appName]
 # or npm
-$ npm create tsbb my-app
+$ npm create tsbb@latest my-app
 # or npx
 $ npx create-tsbb my-app
 ```
