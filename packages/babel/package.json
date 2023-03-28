@@ -3,7 +3,7 @@
   "version": "4.0.0-alpha.0",
   "description": "TSBB is a zero-config CLI that helps you develop, test, and publish modern TypeScript project.",
   "author": "kenny wang <wowohoo@qq.com>",
-  "homepage": "http://jaywcjlove.github.io/tsbb",
+  "homepage": "https://jaywcjlove.github.io/tsbb",
   "license": "MIT",
   "type": "module",
   "types": "./lib/index.d.ts",

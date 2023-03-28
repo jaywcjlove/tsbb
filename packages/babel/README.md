@@ -1,6 +1,5 @@
 @tsbb/typescript
 ===
 
-
 Github: https://github.com/jaywcjlove/tsbb  
-Website: http://jaywcjlove.github.io/tsbb  
+Website: https://jaywcjlove.github.io/tsbb  

@@ -50,9 +50,9 @@ $ npm create tsbb my-app -e express
 $ npx create-tsbb my-app -e koa
 
 # npm 6.x
-$ npm init tsbb my-app --example express-typeorm
+$ npm init tsbb my-app --example typenexus
 # npm 7+, extra double-dash is needed:
-$ npm init tsbb my-app -- --example express-typeorm
+$ npm init tsbb my-app -- --example typenexus
 
 $ cd my-project
 
@@ -75,7 +75,7 @@ You can download the following examples directly. [Download page](https://jaywcj
 
 - [**`Basic`**](https://github.com/jaywcjlove/tsbb/tree/master/example/basic) - The [Node.js](https://nodejs.org/en/) base application example.
 - [**`Express`**](https://github.com/jaywcjlove/tsbb/tree/master/example/express) - The [Express](https://expressjs.com/) base application example.
-- [**`TypeNexus`**](https://github.com/jaywcjlove/tsbb/tree/master/example/express-typeorm) - The [Express](https://expressjs.com/) & [TypeORM](https://github.com/typeorm/typeorm) base application example.
+- [**`TypeNexus`**](https://github.com/jaywcjlove/tsbb/tree/master/example/typenexus) - The [Express](https://expressjs.com/) & [TypeORM](https://github.com/typeorm/typeorm) base application example.
 - [**`Koa`**](https://github.com/jaywcjlove/tsbb/tree/master/example/koa) - The [Koa](https://koajs.com/) base application example.
 - [**`Hapi`**](https://github.com/jaywcjlove/tsbb/tree/master/example/hapi) - The [Hapi](https://hapijs.com/) base application example.
 - [**`react-component`**](https://github.com/jaywcjlove/tsbb/tree/master/example/react-component) - The react component base application example.
