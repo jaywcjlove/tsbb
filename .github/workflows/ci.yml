@@ -52,6 +52,8 @@ jobs:
 
       - name: example @example/react-component-tsx
         working-directory: examples/react-component-tsx
+        env:
+          CI: true
         run: |
           npm run build
           npm run doc
