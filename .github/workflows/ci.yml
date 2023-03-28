@@ -21,6 +21,10 @@ jobs:
       - run: npm run build:template
       - run: npm run type-check
 
+      - name: copy create-tsbb examples
+        working-directory: packages/create-tsbb
+        run: npm run copy
+
       - name: example @example/babel-transform-ts
         working-directory: examples/babel-transform-ts
         run: npm run build
