@@ -3,7 +3,7 @@
   "scripts": {
     "prepare": "husky install",
     "build:template": "lerna exec --scope @template/* -- npm run build",
-    "build": "lerna exec --scope @template/* --scope @tsbb/* --scope create-tsbb --scope tsbb -- npm run build",
+    "build": "lerna exec --scope @tsbb/* --scope create-tsbb --scope tsbb -- npm run build",
     "version": "lerna version --exact --force-publish --no-push --no-git-tag-version",
     "type-check": "lerna exec \"tsc --noEmit\" --scope create-tsbb --scope tsbb --scope @tsbb/* --stream",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
