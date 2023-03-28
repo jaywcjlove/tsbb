@@ -116,6 +116,13 @@ jobs:
       - run: markdown-to-html --output zip/doc.html --source packages/tsbb/README.md
       - run: markdown-to-html --output zip/create-tsbb.html --source packages/create-tsbb/README.md
 
+      - name: Create README.md of Build
+        working-directory: zip
+        run: |
+          cat > README.md << EOF
+          Preview the document `tsbb@v3`: https://raw.githack.com/jaywcjlove/tsbb/v3-doc/index.html
+          EOF
+
       - name: Generate Contributors Images
         uses: jaywcjlove/github-action-contributors@main
         with:
