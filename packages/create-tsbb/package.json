@@ -27,6 +27,7 @@
     "!lib/copy.js",
     "!lib/copy.d.ts",
     "lib",
+    "dist",
     "src"
   ],
   "keywords": [
