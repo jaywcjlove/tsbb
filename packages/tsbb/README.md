@@ -29,13 +29,13 @@ TSBB is a CLI tool that enables the development, testing, and publishing of mode
 
 #### `Features`
 
-🔥 Single dependency zero-configuration
-⏱ Quick initialization of example projects and entering development mode
-♻️ Automatic recompilation of code when files are added, modified, or removed
-📚 Readable source code that encourages learning and contribution
-🚀 Faster compilation speeds
-⚛️ Support for [React](https://react.dev) and [Vue 3](https://vuejs.org) component compilation
-⛑ [Jest](https://jestjs.io/) test runner setup with defaults of `tsbb test`
+- 🔥 Single dependency zero-configuration
+- ⏱ Quick initialization of example projects and entering development mode
+- ♻️ Automatic recompilation of code when files are added, modified, or removed
+- 📚 Readable source code that encourages learning and contribution
+- 🚀 Faster compilation speeds
+- ⚛️ Support for [React](https://react.dev) and [Vue 3](https://vuejs.org) component compilation
+- ⛑ [Jest](https://jestjs.io/) test runner setup with defaults of `tsbb test`
 
 ## Quick Start
 
