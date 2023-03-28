@@ -14,7 +14,7 @@
     "css:watch": "compile-less -d src -o esm --watch",
     "css:build:dist": "compile-less -d src --combine lib/dist.css --rm-global",
     "test": "tsbb test",
-    "coverage": "tsbb test --coverage --bail",
+    "coverage": "tsbb test --coverage --bail --updateSnapshot",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\""
   },
   "repository": {
