@@ -10,7 +10,7 @@
     "css:watch": "compile-less -d src -o esm --watch",
     "css:build:dist": "compile-less -d src --combine dist/markdown-editor.css --rm-global",
     "test": "tsbb test",
-    "coverage": "tsbb test --coverage --bail --updateSnapshot",
+    "coverage": "tsbb test --coverage --bail -u",
     "start": "parcel website/index.html",
     "doc": "parcel build website/index.html --dist-dir doc"
   },
