@@ -130,6 +130,10 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      - name: copy example to create-tsbb
+        working-directory: packages/create-tsbb
+        run: npm run copy
+
       - run: npm publish --access public
         name: 📦  create-tsbb publish to NPM
         continue-on-error: true
