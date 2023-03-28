@@ -43,6 +43,8 @@ jobs:
 
       - name: example @example/react-component
         working-directory: examples/react-component
+        env:
+          CI: true
         run: |
           npm run build 
           npm run doc
