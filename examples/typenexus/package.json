@@ -10,8 +10,7 @@
     "watch": "tsbb watch",
     "build": "tsbb build",
     "test": "tsbb test",
-    "coverage": "tsbb test --coverage --bail",
-    "t": "ts-node-esm ./test/main.test.ts"
+    "coverage": "tsbb test --coverage --bail"
   },
   "repository": {
     "type": "git",
@@ -25,7 +24,7 @@
   "keywords": [],
   "license": "MIT",
   "dependencies": {
-    "typenexus": "0.3.0"
+    "typenexus": "0.3.1"
   },
   "devDependencies": {
     "@types/supertest": "~2.0.12",

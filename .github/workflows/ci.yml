@@ -43,23 +43,27 @@ jobs:
 
       - name: example @example/react-component
         working-directory: examples/react-component
-        run: npm run build && npm run doc
+        run: |
+          npm run build 
+          npm run doc
+          npm run coverage
 
       - name: example @example/react-component-tsx
         working-directory: examples/react-component-tsx
         run: |
           npm run build
           npm run doc
+          npm run coverage
           cd lib/
           ls -al
 
       - name: example @example/typenexus
         working-directory: examples/typenexus
-        run: npm run build
+        run: npm run build && npm run coverage
 
       - name: example @example/umd
         working-directory: examples/umd
-        run: npm run build
+        run: npm run build && npm run coverage
 
       - name: example @example/vue
         working-directory: examples/vue
