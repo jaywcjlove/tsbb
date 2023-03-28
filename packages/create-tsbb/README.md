@@ -14,16 +14,16 @@ Creates a [`tsbb`](http://jaywcjlove.github.io/tsbb) application using the comma
 ### Usage
 
 ```shell
-# npm 6.x
-$ npm init tsbb my-app --example typenexus
 # npm 7+, extra double-dash is needed:
 $ npm init tsbb my-app -- --example typenexus
+# npm 6.x
+$ npm init tsbb my-app --example typenexus
 
-$ yarn create tsbb [appName]
-# or npm
-$ npm create tsbb@latest my-app
 # or npx
 $ npx create-tsbb my-app
+# or npm
+$ npm create tsbb@latest my-app
+$ yarn create tsbb [appName]
 ```
 
 ### Command Help
@@ -46,8 +46,9 @@ Example:
   npx create-tsbb my-app
   npm create tsbb my-app
   npm create tsbb@latest my-app
-  npm create tsbb my-app -f
-  npm create tsbb my-app -e typenexus
+  # npm 7+, extra double-dash is needed:
+  npm create tsbb@latest my-app -- -f
+  npm create tsbb@latest my-app -- -e typenexus
 
 Copyright 2023
 ```

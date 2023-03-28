@@ -18,6 +18,7 @@ export const exampleStr = `
     $ \x1b[35mnpx\x1b[0m create-tsbb \x1b[33mmy-app\x1b[0m
     $ \x1b[35mnpm\x1b[0m create tsbb \x1b[33mmy-app\x1b[0m
     $ \x1b[35mnpm\x1b[0m create tsbb@latest \x1b[33mmy-app\x1b[0m
-    $ \x1b[35mnpm\x1b[0m create tsbb \x1b[33mmy-app\x1b[0m -f
-    $ \x1b[35mnpm\x1b[0m create tsbb \x1b[33mmy-app\x1b[0m -e \x1b[34;1mtypenexus\x1b[0m
+    \x1b[30;1m# npm 7+, extra double-dash is needed:\x1b[0m
+    $ \x1b[35mnpm\x1b[0m create tsbb \x1b[33mmy-app\x1b[0m \x1b[32;1m--\x1b[0m -f
+    $ \x1b[35mnpm\x1b[0m create tsbb \x1b[33mmy-app\x1b[0m \x1b[32;1m--\x1b[0m -e \x1b[34;1mtypenexus\x1b[0m
 `;

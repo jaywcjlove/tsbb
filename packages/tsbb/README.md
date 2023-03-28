@@ -44,15 +44,15 @@ You will need `Node.js` installed on your system.
 ```shell
 $ yarn create tsbb [appName]
 # or npm
-$ npm create tsbb@latest my-app -e express
-# --- Example name ---------┴ˇˇˇˇˇˇ
+$ npm create tsbb@latest my-app -- -e express
+# --- Example name ------┴ˇˇˇˇˇ
 # or npx
 $ npx create-tsbb@latest my-app -e koa
 
-# npm 6.x
-$ npm init tsbb my-app --example typenexus
 # npm 7+, extra double-dash is needed:
 $ npm init tsbb my-app -- --example typenexus
+# npm 6.x
+$ npm init tsbb my-app --example typenexus
 
 $ cd my-project
 
