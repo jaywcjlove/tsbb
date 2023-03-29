@@ -1,5 +1,6 @@
 import ts from 'typescript';
 import path from 'node:path';
+import fs from 'fs-extra';
 import {
   writeFile,
   getSourceFile,
@@ -27,6 +28,13 @@ export interface CopyFilesOptions {
    * @example ['src', 'demo']
    */
   rootDirsRelative?: string[];
+  onFilesChange?: (
+    eventName: 'add' | 'addDir' | 'change' | 'unlink' | 'unlinkDir',
+    path: string,
+    stats?: fs.Stats,
+  ) => void;
+  onError?: (error: any) => void;
+  onReady?: () => void;
 }
 
 export interface TsCompileOptions {
