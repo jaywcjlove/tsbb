@@ -6,7 +6,7 @@ import { BabelCompileOptions } from './index.js';
  * Convert suffix
  */
 export const convertExtname = (str: string = '') => {
-  return str.replace(/\.(m?js|m?ts)$/i, '.js').replace(/\.(jsx?|tsx?|c?js)$/i, '.js');
+  return str.replace(/\.(m?ts|m?js|jsx?|tsx?|c?js)(?<!\.d\.ts)$/i, '.js');
 };
 
 interface OutputPathResult {

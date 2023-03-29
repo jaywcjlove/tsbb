@@ -27,8 +27,8 @@ const getLnCol = (text: string = '', pos: number = 0) => {
   return { ln: lineNum, col: lineStartPos, text: lines[lineNum - 1] };
 };
 
-const getEmoji = (extname: string) => {
-  let ext = extname.toLocaleUpperCase().replace(/^\./, '');
+export const getExt = (extname: string) => {
+  let ext = path.extname(extname).toLocaleUpperCase().replace(/^\./, '');
   ext = ext.padEnd(4, ' ');
   if (/^MAP/.test(ext)) {
     return `\x1b[34;1m${ext}\x1b[0m`;
@@ -41,16 +41,20 @@ const getEmoji = (extname: string) => {
   }
 };
 
+export const getEmojiIcon = (fileName: string) => {
+  let icon = /.d.ts$/i.test(fileName) ? '🐳' : '👉';
+  icon = /.js.map$/i.test(fileName) ? '🚩' : icon;
+  return icon;
+};
+
 export const writeFile = (fileName: string, data: string, writeByteOrderMark?: boolean) => {
   const outputFile = path.join(process.cwd(), fileName);
   ts.sys.writeFile(outputFile, data, writeByteOrderMark);
   const log = new Log();
-  let icon = /.d.ts$/i.test(fileName) ? '🐳' : '👉';
-  icon = /.js.map$/i.test(fileName) ? '🚩' : icon;
   log
     .name()
-    .icon(icon)
-    .success(`${getEmoji(path.extname(fileName))}┈┈▶ \x1b[32;1m${fileName}\x1b[0m`);
+    .icon(getEmojiIcon(fileName))
+    .success(`${getExt(fileName)}┈┈▶ \x1b[32;1m${fileName}\x1b[0m`);
 };
 
 export const getSourceFile: ts.CompilerHost['getSourceFile'] = (fileName, languageVersion, onError) => {

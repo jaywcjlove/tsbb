@@ -1,9 +1,8 @@
 import fs from 'fs-extra';
 import path from 'node:path';
-import { Log, __dirname } from '@tsbb/typescript';
+import { Log, getEmojiIcon, getExt, __dirname } from '@tsbb/typescript';
 import { TransformOptions } from '@babel/core';
 import babelPluginJsx from '@vue/babel-plugin-jsx';
-// import { TransformOptions } from '@babel/core';
 import { transform } from './transform.js';
 import { getOutputPath } from './utils.js';
 import { getCjsTransformOption, getESMTransformOption } from './config.js';
@@ -126,13 +125,15 @@ function transformFile(
     .then((result) => {
       fs.ensureFileSync(outputFile);
       fs.writeFile(outputFile, result?.code || '');
-      log.icon('🐶').success(`┈┈▶ \x1b[33;1m${folderFilePath}\x1b[0m => \x1b[33;1m${outFileName}\x1b[0m`);
+      log
+        .icon(getEmojiIcon(outputFile))
+        .success(`${getExt(outFileName)}┈┈▶ \x1b[33;1m${folderFilePath}\x1b[0m => \x1b[33;1m${outFileName}\x1b[0m`);
       if (options.sourceMaps === 'both' || options.sourceMaps) {
         if (result?.map) {
           const sourceMapPath = path.join(outputFile + '.map');
           fs.writeFileSync(sourceMapPath, JSON.stringify(result?.map, null, 2));
           log
-            .icon('🐶')
+            .icon(getEmojiIcon(outputFile))
             .success(
               `┈┈▶ \x1b[33;1m${folderFilePath}\x1b[0m => \x1b[33;1m${path.relative(
                 projectDirectory,
