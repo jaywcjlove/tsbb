@@ -1,6 +1,6 @@
 {
   "name": "@template/react-component-tsx",
-  "version": "4.0.3",
+  "version": "4.0.4",
   "description": "React Component Example for TypeScript.",
   "private": true,
   "main": "lib/index.js",
@@ -51,7 +51,7 @@
     "prettier": "^2.8.6",
     "react": "~18.2.0",
     "react-dom": "~18.2.0",
-    "tsbb": "4.0.3"
+    "tsbb": "4.0.4"
   },
   "eslintConfig": {
     "extends": [
