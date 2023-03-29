@@ -74,27 +74,28 @@ export default async function compile(fileName: string, options: BabelCompileOpt
   if ((options.sourceMaps as string) === 'true') {
     options.sourceMaps = true;
   }
-  let babelOptions =
-    typeof esm === 'string' ? getESMTransformOption() : typeof cjs === 'string' ? getCjsTransformOption() : {};
+
+  let esmBabelOptions = getESMTransformOption();
   if (useVue) {
     // @ts-ignore
-    babelOptions.plugins?.push(babelPluginJsx.default);
-    babelOptions.sourceMaps = options.sourceMaps || babelOptions.sourceMaps;
+    esmBabelOptions.plugins?.push(babelPluginJsx.default);
   }
-  babelOptions.babelrc = true;
-  babelOptions.cwd = dt.projectDirectory;
   if (envName) {
-    babelOptions = {};
-    babelOptions.envName = envName;
+    esmBabelOptions = {};
+    esmBabelOptions.envName = envName;
   }
+  esmBabelOptions.sourceMaps = options.sourceMaps || esmBabelOptions.sourceMaps;
+  esmBabelOptions.babelrc = true;
+  esmBabelOptions.cwd = dt.projectDirectory;
+
   if (typeof esm === 'string') {
-    babelOptions.sourceFileName = path.relative(path.dirname(dt.esm.path), fileName);
-    transform(fileName, { ...babelOptions })
+    esmBabelOptions.sourceFileName = path.relative(path.dirname(dt.esm.path), fileName);
+    transform(fileName, { ...esmBabelOptions })
       .then((result) => {
         fs.ensureFileSync(dt.esm.path);
         fs.writeFile(dt.esm.path, result?.code || '');
         log.icon('🐶').success(`┈┈▶ \x1b[32;1m${dt.folderFilePath}\x1b[0m => \x1b[34;1m${dt.esm.fileName}\x1b[0m`);
-        if (babelOptions.sourceMaps === 'both' || babelOptions.sourceMaps) {
+        if (esmBabelOptions.sourceMaps === 'both' || esmBabelOptions.sourceMaps) {
           if (result?.map) {
             const sourceMapPath = path.join(dt.esm.path + '.map');
             fs.writeFileSync(sourceMapPath, JSON.stringify(result?.map, null, 2));
@@ -117,14 +118,28 @@ export default async function compile(fileName: string, options: BabelCompileOpt
         }
       });
   }
+
+  let cjsBabelOptions = getCjsTransformOption();
+  if (useVue) {
+    // @ts-ignore
+    cjsBabelOptions.plugins?.push(babelPluginJsx.default);
+  }
+  if (envName) {
+    cjsBabelOptions = {};
+    cjsBabelOptions.envName = envName;
+  }
+  cjsBabelOptions.sourceMaps = options.sourceMaps || cjsBabelOptions.sourceMaps;
+  cjsBabelOptions.babelrc = true;
+  cjsBabelOptions.cwd = dt.projectDirectory;
+
   if (typeof cjs === 'string') {
-    babelOptions.sourceFileName = path.relative(path.dirname(dt.cjs.path), fileName);
-    transform(fileName, { ...babelOptions })
+    cjsBabelOptions.sourceFileName = path.relative(path.dirname(dt.cjs.path), fileName);
+    transform(fileName, { ...cjsBabelOptions })
       .then((result) => {
         fs.ensureFileSync(dt.cjs.path);
         fs.writeFile(dt.cjs.path, result?.code || '');
         log.icon('🐶').success(`┈┈▶ \x1b[33;1m${dt.folderFilePath}\x1b[0m => \x1b[33;1m${dt.cjs.fileName}\x1b[0m`);
-        if (babelOptions.sourceMaps === 'both' || babelOptions.sourceMaps) {
+        if (cjsBabelOptions.sourceMaps === 'both' || cjsBabelOptions.sourceMaps) {
           if (result?.map) {
             const sourceMapPath = path.join(dt.cjs.path + '.map');
             fs.writeFileSync(sourceMapPath, JSON.stringify(result?.map, null, 2));

@@ -1,6 +1,5 @@
 import ts from 'typescript';
 import path from 'node:path';
-import fs from 'fs-extra';
 import {
   writeFile,
   getSourceFile,
@@ -28,13 +27,6 @@ export interface CopyFilesOptions {
    * @example ['src', 'demo']
    */
   rootDirsRelative?: string[];
-  onFilesChange?: (
-    eventName: 'add' | 'addDir' | 'change' | 'unlink' | 'unlinkDir',
-    path: string,
-    stats?: fs.Stats,
-  ) => void;
-  onError?: (error: any) => void;
-  onReady?: () => void;
 }
 
 export interface TsCompileOptions {
@@ -123,7 +115,6 @@ export default async function compile(options: TsCompileOptions = {}) {
     ts.createWatchProgram(host);
     if (isCopyFiles && onCopyFiles) {
       await onCopyFiles(rootDirs, { isWatch: options.watch, outputDir, currentDir, rootDirsRelative });
-      // await watcherCopyFiles(rootDirs, { isWatch: options.watch, outputDir, currentDir, rootDirsRelative });
     }
   } else {
     const compilerHost = ts.createCompilerHost(compilerOptions, true);
@@ -149,7 +140,6 @@ export default async function compile(options: TsCompileOptions = {}) {
     diagnostics.forEach(reportDiagnostic);
     if (isCopyFiles && onCopyFiles) {
       await onCopyFiles(rootDirs, { isWatch: options.watch, outputDir, currentDir, rootDirsRelative });
-      // await watcherCopyFiles(rootDirs, { isWatch: options.watch, outputDir, currentDir, rootDirsRelative });
     }
     if (!options.emitDeclarationOnly && onWriteFile) {
       if (emitResult.emitSkipped) {

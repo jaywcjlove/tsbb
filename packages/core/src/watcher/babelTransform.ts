@@ -62,7 +62,7 @@ export function babelTransform(options: CompileOptions = {}) {
       onWriteFile,
     });
   }
-  watcherCopyFiles(entry, { isWatch: options.watch, onFilesChange, onReady });
+  watcherCopyFiles(entry, { isWatch: options.watch, onFilesChange, onReady, rootDirsRelative });
 }
 
 const writeFile = (to: string, target: string, fileName: string, content: string, writeByteOrderMark?: boolean) => {
