@@ -4,8 +4,8 @@
   "private": true,
   "description": "React Component Example.",
   "scripts": {
-    "watch": "tsbb watch src/*.{jsx,js,d.ts} --useBabel",
-    "build": "tsbb build src/*.{jsx,js,d.ts} --useBabel && npm run css:build && npm run css:build:dist",
+    "watch": "tsbb watch src/*.{jsx,js} --useBabel",
+    "build": "tsbb build src/*.{jsx,js} --useBabel && npm run css:build && npm run css:build:dist",
     "css:build": "compile-less -d src -o esm",
     "css:watch": "compile-less -d src -o esm --watch",
     "css:build:dist": "compile-less -d src --combine dist/markdown-editor.css --rm-global",

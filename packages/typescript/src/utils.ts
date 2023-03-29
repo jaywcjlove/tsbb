@@ -39,6 +39,7 @@ export const getExt = (extname: string) => {
   if (/^TS/.test(ext)) {
     return `\x1b[36;1m${ext}\x1b[0m`;
   }
+  return ext;
 };
 
 export const getEmojiIcon = (fileName: string) => {

@@ -11,36 +11,36 @@ export function babelTransform(options: CompileOptions = {}) {
   const rootDirsRelative = [...new Set(getRootsFolderName(options.entry))];
   const entry = rootDirsRelative.map((item) => path.resolve(item));
   const onFilesChange: CopyFilesOptions['onFilesChange'] = (eventName, filepath, stats) => {
-    if (/\.(m?js|jsx?|m?ts|tsx?|c?js)$/i.test(filepath)) {
-      const log = new Log().name();
-      const dt = getOutputPath(filepath, options);
-      if (/^(add|change)$/.test(eventName) && !/\.d\.ts$/i.test(filepath)) {
+    const log = new Log().name();
+    const dt = getOutputPath(filepath, options);
+    if (/\.(m?ts|m?js|jsx?|tsx?|c?js)(?<!\.d\.ts)$/i.test(filepath)) {
+      if (/^(add|change)$/.test(eventName)) {
         babelCompile(filepath, { ...options });
-      } else if (/\.d\.ts$/i.test(filepath)) {
-        if (typeof cjs !== 'boolean') {
-          fs.ensureDirSync(path.dirname(dt.cjs.path));
-          fs.copyFile(filepath, dt.cjs.path);
-          log
-            .icon('🐶')
-            .success(
-              `${getExt(filepath)}┈┈▶ \x1b[32;1m${dt.folderFilePath}\x1b[0m => \x1b[34;1m${dt.cjs.tsFileName}\x1b[0m`,
-            );
-        }
-        if (typeof esm !== 'boolean') {
-          fs.ensureDirSync(path.dirname(dt.esm.path));
-          fs.copyFile(filepath, dt.esm.path);
-          log
-            .icon('🐶')
-            .success(
-              `${getExt(filepath)}┈┈▶ \x1b[32;1m${dt.folderFilePath}\x1b[0m => \x1b[34;1m${dt.esm.tsFileName}\x1b[0m`,
-            );
-        }
       }
-      if (/^(unlink|unlinkDir)$/.test(eventName)) {
-        fs.remove(dt.cjs.path);
-        fs.remove(dt.esm.path);
-        log.icon('🗑️').success(`┈┈▶ \x1b[32;1m${path.relative(process.cwd(), filepath)}\x1b[0m`);
+    } else if (/^(add|change)$/.test(eventName)) {
+      if (typeof cjs !== 'boolean') {
+        fs.ensureDirSync(path.dirname(dt.cjs.path));
+        fs.copyFile(filepath, dt.cjs.path);
+        log
+          .icon('🐶')
+          .success(
+            `${getExt(filepath)}┈┈▶ \x1b[32;1m${dt.folderFilePath}\x1b[0m => \x1b[34;1m${dt.cjs.tsFileName}\x1b[0m`,
+          );
       }
+      if (typeof esm !== 'boolean') {
+        fs.ensureDirSync(path.dirname(dt.esm.path));
+        fs.copyFile(filepath, dt.esm.path);
+        log
+          .icon('🐶')
+          .success(
+            `${getExt(filepath)}┈┈▶ \x1b[32;1m${dt.folderFilePath}\x1b[0m => \x1b[34;1m${dt.esm.tsFileName}\x1b[0m`,
+          );
+      }
+    }
+    if (/^(unlink|unlinkDir)$/.test(eventName)) {
+      fs.remove(dt.cjs.path);
+      fs.remove(dt.esm.path);
+      log.icon('🗑️').success(`┈┈▶ \x1b[32;1m${path.relative(process.cwd(), filepath)}\x1b[0m`);
     }
   };
   const onReady = () => {
