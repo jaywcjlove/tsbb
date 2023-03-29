@@ -17,6 +17,9 @@ export const watcherCopyFiles = (entry: string[] = [], options: CopyFilesOptions
       persistent: true,
     });
     watcher.on('all', async (eventName, filepath, stats) => {
+      if (/\.(test|spec)\.(js|jsx|ts|tsx)$/i.test(filepath)) {
+        return;
+      }
       if (
         !/\.(m?js|jsx?|m?ts|tsx?|c?js)$/i.test(filepath) &&
         rootDirsRelative &&

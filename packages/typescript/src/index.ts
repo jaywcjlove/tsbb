@@ -83,7 +83,8 @@ export default async function compile(options: TsCompileOptions = {}) {
   if (parseResult.errors.length) {
     return parseResult.errors.forEach(reportDiagnostic);
   }
-
+  // Test files are not escaped.
+  parseResult.fileNames = parseResult.fileNames.filter((item) => !/\.(test|spec)\.(js|jsx|ts|tsx)$/i.test(item));
   const currentDir = ts.sys.getCurrentDirectory();
   const rootDirsRelative = [...new Set(getRootsFolderName(parseResult.fileNames))];
   const outputDir = path.resolve(currentDir, compilerOptions.outDir || 'lib');
