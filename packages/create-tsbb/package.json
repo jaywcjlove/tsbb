@@ -1,6 +1,6 @@
 {
   "name": "create-tsbb",
-  "version": "4.0.4",
+  "version": "4.0.5",
   "description": "Creates a TSBB application using the command line.",
   "homepage": "https://jaywcjlove.github.io/tsbb/create-tsbb.html",
   "author": "Kenny Wong <wowohoo@qq.com> (https://github.com/jaywcjlove)",
@@ -55,6 +55,6 @@
   },
   "devDependencies": {
     "cpy": "^9.0.1",
-    "tsbb": "4.0.4"
+    "tsbb": "4.0.5"
   }
 }
