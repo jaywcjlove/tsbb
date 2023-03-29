@@ -1,6 +1,6 @@
 {
   "name": "@tsbb/core",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "TSBB is a zero-config CLI that helps you develop, test, and publish modern TypeScript project.",
   "author": "kenny wang <wowohoo@qq.com>",
   "homepage": "https://jaywcjlove.github.io/tsbb",
@@ -32,9 +32,9 @@
     "node": ">=16.0.0"
   },
   "dependencies": {
-    "@tsbb/babel": "4.0.1",
-    "@tsbb/jest": "4.0.1",
-    "@tsbb/typescript": "4.0.1",
+    "@tsbb/babel": "4.0.2",
+    "@tsbb/jest": "4.0.2",
+    "@tsbb/typescript": "4.0.2",
     "@types/fs-extra": "^11.0.1",
     "chokidar": "~3.5.3",
     "fs-extra": "^11.1.1",
