@@ -26,7 +26,7 @@ import pluginProposalClassProperties from '@babel/plugin-proposal-class-properti
 import pluginTransformClasses from '@babel/plugin-transform-classes';
 // @ts-ignore
 import babelPluginTransformRenameImport from 'babel-plugin-transform-rename-import';
-import { createRequire } from 'module';
+import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
 const pkgRuntime = require('@babel/runtime/package.json');
