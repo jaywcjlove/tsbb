@@ -26,8 +26,14 @@ import pluginProposalClassProperties from '@babel/plugin-proposal-class-properti
 import pluginTransformClasses from '@babel/plugin-transform-classes';
 // @ts-ignore
 import babelPluginTransformRenameImport from 'babel-plugin-transform-rename-import';
-import pkgHelpers from '@babel/helpers/package.json' assert { type: 'json' };
-import pkgRuntime from '@babel/runtime/package.json' assert { type: 'json' };
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
+const pkgRuntime = require('@babel/runtime/package.json');
+const pkgHelpers = require('@babel/helpers/package.json');
+
+// import pkgHelpers from '@babel/helpers/package.json' assert { type: 'json' };
+// import pkgRuntime from '@babel/runtime/package.json' assert { type: 'json' };
 
 const runtimeVersion = semver.clean(pkgRuntime.version);
 
