@@ -17,7 +17,7 @@ export const watcherCopyFiles = (entry: string[] = [], options: CopyFilesOptions
       persistent: true,
     });
     watcher.on('all', async (eventName, filepath, stats) => {
-      if (/\.(test|spec)\.(js|jsx|ts|tsx)$/i.test(filepath) || /\/tsconfig\.json$/i.test(filepath)) {
+      if (/\.(test|spec)\.(js|jsx|ts|tsx)$/i.test(filepath) || /[/\\]tsconfig\.json$/i.test(filepath)) {
         return;
       }
       if (
