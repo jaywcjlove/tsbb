@@ -131,6 +131,8 @@ jobs:
 
             ```bash
             npm i tsbb@${{steps.create_tag.outputs.versionNumber}}
+            npm i create-tsbb@${{steps.create_tag.outputs.versionNumber}}
+            npm init tsbb@latest my-app -- --example typenexus
             ```
 
             ${{ steps.changelog.outputs.changelog }}

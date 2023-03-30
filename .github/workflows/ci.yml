@@ -3,7 +3,86 @@ name: Node.js CI
 on: push
 
 jobs:
-  test:
+  Windows:
+    name: Windows Node.js ${{ matrix.node-version }}
+    # Containers must run in Linux based operating systems
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version:
+          - 18
+          - 16
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - run: npm install
+      - run: npm run build
+      - run: npm install
+      - run: npm run build:create-tsbb
+      - run: npm run build:template
+      - run: npm run type-check
+
+      - name: copy create-tsbb examples
+        working-directory: packages/create-tsbb
+        run: npm run copy
+
+      - name: example @example/babel-transform-ts
+        working-directory: examples/babel-transform-ts
+        run: npm run build
+
+      - name: example @example/basic
+        working-directory: examples/basic
+        run: npm run build && npm run coverage
+
+      - name: example @example/express
+        working-directory: examples/express
+        run: npm run build
+
+      - name: example @example/hapi
+        working-directory: examples/hapi
+        run: npm run build
+
+      - name: example @example/koa
+        working-directory: examples/koa
+        run: npm run build
+
+      - name: example @example/react-component
+        working-directory: examples/react-component
+        env:
+          CI: true
+        run: |
+          npm run build 
+          npm run doc
+          npm run coverage
+
+      - name: example @example/react-component-tsx
+        working-directory: examples/react-component-tsx
+        env:
+          CI: true
+        run: |
+          npm run build
+          npm run doc
+          npm run coverage
+          cd lib/
+          ls -al
+
+      - name: example @example/typenexus
+        working-directory: examples/typenexus
+        run: npm run build && npm run coverage
+
+      - name: example @example/umd
+        working-directory: examples/umd
+        run: npm run build && npm run coverage
+
+      - name: example @example/vue
+        working-directory: examples/vue
+        run: npm run build
+    
+  Ubuntu:
     name: Ubuntu Node.js ${{ matrix.node-version }}
     # Containers must run in Linux based operating systems
     runs-on: ubuntu-latest
