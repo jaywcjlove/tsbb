@@ -30,6 +30,8 @@ export async function compile(options: CompileOptions = {}) {
       '  \x1b[31;1mThe files you need to compile have been indexed:\x1b[0m\n',
     ];
     (options.entry || []).forEach((fileNames) => err.push(`    \x1b[35;1m${fileNames}\x1b[0m`));
+    !options.entry?.length &&
+      err.push('\x1b[33;1mNo files were indexed. Please check your command line arguments.\x1b[0m');
     throw new Error(err.join('\n'));
   }
   babelTransform(options);
