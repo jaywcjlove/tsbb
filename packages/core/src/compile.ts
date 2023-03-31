@@ -24,6 +24,7 @@ export async function compile(options: CompileOptions = {}) {
     '    \x1b[35;1m$\x1b[0m\x1b[36;1m tsbb\x1b[0m build\x1b[33;1m "src/**/*.ts"\x1b[0m --useBabel',
     '    \x1b[35;1m$\x1b[0m\x1b[36;1m tsbb\x1b[0m build\x1b[33;1m src/index.jsx\x1b[0m --useBabel',
     '    \x1b[35;1m$\x1b[0m\x1b[36;1m tsbb\x1b[0m build\x1b[33;1m src/index.jsx\x1b[0m \x1b[33;1m src/main.jsx\x1b[0m --useBabel\n',
+    `    \x1b[31;1m$ tsbb ${process.argv.slice(2).join(' ')}\x1b[0m\n\n`,
   ];
   if (!options.entry?.length) {
     throw new Error(err.join('\n'));
