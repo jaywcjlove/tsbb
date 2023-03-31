@@ -23,7 +23,6 @@ jobs:
       - run: npm run build
       - run: npm install
       - run: npm run build:create-tsbb
-      - run: npm run build:template
       - run: npm run type-check
 
       - name: copy create-tsbb examples
