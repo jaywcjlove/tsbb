@@ -39,6 +39,11 @@ export interface CopyFilesOptions {
 
 export interface TsCompileOptions {
   watch?: boolean;
+  /**
+   * Exit the compile as soon as the compile fails(default: true).
+   * @default `true`
+   */
+  bail?: boolean;
   emitDeclarationOnly?: boolean;
   /**
    * @default true
@@ -52,7 +57,7 @@ export interface TsCompileOptions {
 export const findConfigFile = () => ts.findConfigFile('.', ts.sys.fileExists, 'tsconfig.json');
 
 export default async function compile(options: TsCompileOptions = {}) {
-  const { isCopyFiles = true, onWriteFile, onCopyFiles } = options;
+  const { isCopyFiles = true, onWriteFile, onCopyFiles, bail } = options;
   const tsConfigPath = findConfigFile();
   const log = new Log();
   if (!tsConfigPath) {
@@ -147,6 +152,10 @@ export default async function compile(options: TsCompileOptions = {}) {
     const emitResult = program.emit();
     const diagnostics = ts.getPreEmitDiagnostics(program);
     diagnostics.forEach(reportDiagnostic);
+    if (bail && diagnostics.length) {
+      diagnostics.forEach(reportDiagnostic);
+      process.exitCode = 1;
+    }
     if (isCopyFiles && onCopyFiles) {
       await onCopyFiles(rootDirs, { isWatch: options.watch, outputDir, currentDir, rootDirsRelative });
     }

@@ -7,7 +7,7 @@
     "start": "npm run build && node lib/app.js",
     "dev": "nodemon --inspect lib/app.js",
     "watch": "tsbb watch --entry ./src/app.ts --no-esm",
-    "build": "tsbb build --entry ./src/app.ts --no-esm",
+    "build": "tsbb build --entry ./src/app.ts --no-esm --bail",
     "test": "tsbb test",
     "coverage": "tsbb test --coverage --bail"
   },

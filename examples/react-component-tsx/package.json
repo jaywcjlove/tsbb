@@ -9,7 +9,7 @@
     "doc": "kkt build --app-src ./website",
     "start": "kkt start --app-src ./website",
     "watch": "tsbb watch src/*.{tsx,ts} --useBabel & npm run css:watch",
-    "build": "tsbb build src/*.{tsx,ts} --useBabel && npm run css:build",
+    "build": "tsbb build src/*.{tsx,ts} --useBabel --bail && npm run css:build",
     "css:build": "compile-less -d src -o esm",
     "css:watch": "compile-less -d src -o esm --watch",
     "css:build:dist": "compile-less -d src --combine lib/dist.css --rm-global",

@@ -10,6 +10,7 @@ import { getCjsTransformOption, getESMTransformOption } from './config.js';
 export * from './utils.js';
 
 export interface BabelCompileOptions {
+  watch?: boolean;
   /**
    * The specified entry file, for example:
    * @example
@@ -64,10 +65,15 @@ export interface BabelCompileOptions {
    * @default `false`
    */
   sourceMaps?: TransformOptions['sourceMaps'];
+  /**
+   * Exit the compile as soon as the compile fails(default: true).
+   * @default `true`
+   */
+  bail?: boolean;
 }
 
 export default async function compile(fileName: string, options: BabelCompileOptions = {}) {
-  const { cjs = 'lib', esm = 'esm', envName, useVue = false } = options;
+  const { cjs = 'lib', esm = 'esm', envName, useVue = false, bail, watch } = options;
   const dt = getOutputPath(fileName, options);
   const log = new Log();
   log.name();
@@ -89,7 +95,16 @@ export default async function compile(fileName: string, options: BabelCompileOpt
   esmBabelOptions.cwd = dt.projectDirectory;
 
   if (typeof esm === 'string') {
-    transformFile(fileName, dt.esm.path, dt.folderFilePath, dt.projectDirectory, dt.esm.fileName, esmBabelOptions);
+    transformFile(
+      fileName,
+      dt.esm.path,
+      dt.folderFilePath,
+      dt.projectDirectory,
+      dt.esm.fileName,
+      esmBabelOptions,
+      bail,
+      watch,
+    );
   }
 
   let cjsBabelOptions = getCjsTransformOption();
@@ -106,7 +121,16 @@ export default async function compile(fileName: string, options: BabelCompileOpt
   cjsBabelOptions.cwd = dt.projectDirectory;
 
   if (typeof cjs === 'string') {
-    transformFile(fileName, dt.cjs.path, dt.folderFilePath, dt.projectDirectory, dt.cjs.fileName, cjsBabelOptions);
+    transformFile(
+      fileName,
+      dt.cjs.path,
+      dt.folderFilePath,
+      dt.projectDirectory,
+      dt.cjs.fileName,
+      cjsBabelOptions,
+      bail,
+      watch,
+    );
   }
 }
 
@@ -117,6 +141,8 @@ function transformFile(
   projectDirectory: string,
   outFileName: string,
   options: TransformOptions,
+  bail?: boolean,
+  isWatch?: boolean,
 ) {
   const log = new Log();
   log.name();
@@ -148,6 +174,9 @@ function transformFile(
         log.icon('\n🚨').error(`\x1b[33;1m ${error.message}\x1b[0m\n`);
       } else {
         log.icon('\n🚨').error(`\x1b[33;1m ${JSON.stringify(error)}\x1b[0m\n`);
+      }
+      if (bail && isWatch !== true) {
+        process.exitCode = 1;
       }
     });
 }

@@ -180,6 +180,7 @@ Commands:
 
 Options:[build|watch]
 
+  --bail                     Exit the compile as soon as the compile fails(default: true).
   --use-babel                Use Babel.(works in babel)
   --source-maps              Enables the generation of sourcemap files.(works in babel)
   --env-name                 The current active environment used during configuration loading.(works in babel)

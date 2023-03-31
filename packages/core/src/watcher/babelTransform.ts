@@ -71,6 +71,7 @@ export function babelTransform(options: CompileOptions = {}) {
   const tsConfigPath = findConfigFile();
   if (tsConfigPath) {
     tsCompile({
+      bail: options.bail,
       emitDeclarationOnly: true,
       watch: options.watch,
       isCopyFiles: false,

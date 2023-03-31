@@ -5,7 +5,7 @@
   "description": "Transform Typescript Example.",
   "scripts": {
     "watch": "tsbb watch \"src/**/*.ts\" --use-babel --no-esm",
-    "build": "tsbb build \"src/**/*.ts\" --use-babel --no-esm",
+    "build": "tsbb build \"src/**/*.ts\" --use-babel --no-esm --bail",
     "test": "tsbb test",
     "coverage": "tsbb test --coverage --bail"
   },

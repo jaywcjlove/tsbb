@@ -20,6 +20,10 @@ export async function tsbb() {
       sourceMaps: {
         default: false,
       },
+      bail: {
+        type: 'boolean',
+        default: true,
+      },
     },
   });
   const flags: CamelCase<TypedFlags<CompileOptions>> & Record<string, unknown> = cli.flags;

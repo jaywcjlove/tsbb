@@ -5,6 +5,7 @@ import { watcherCopyFiles } from './watcher/copyFiles.js';
 
 export interface CompileOptions extends BabelCompileOptions {
   watch?: boolean;
+  bail?: boolean;
   build?: boolean;
   entry?: string[];
   [key: string]: any;
@@ -13,6 +14,7 @@ export interface CompileOptions extends BabelCompileOptions {
 export async function compile(options: CompileOptions = {}) {
   if (!options.useBabel) {
     return tsCompile({
+      bail: options.bail,
       watch: options.watch,
       onCopyFiles: watcherCopyFiles,
     });

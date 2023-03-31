@@ -8,7 +8,7 @@
     "start": "npm run build && node lib/app.js",
     "dev": "nodemon --inspect lib/app.js",
     "watch": "tsbb watch",
-    "build": "tsbb build",
+    "build": "tsbb build --bail",
     "test": "tsbb test",
     "coverage": "tsbb test --coverage --bail"
   },

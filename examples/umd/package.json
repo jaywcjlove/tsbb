@@ -5,7 +5,7 @@
   "description": "UMD Example.",
   "scripts": {
     "watch": "tsbb watch",
-    "build": "tsbb build",
+    "build": "tsbb build --bail",
     "test": "tsbb test",
     "coverage": "tsbb test --coverage --bail"
   },

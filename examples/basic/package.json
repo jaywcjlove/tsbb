@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node lib/index.js",
     "watch": "tsbb watch",
-    "build": "tsbb build",
+    "build": "tsbb build --bail",
     "test": "tsbb test",
     "coverage": "tsbb test --coverage --bail"
   },

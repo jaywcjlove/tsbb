@@ -9,11 +9,12 @@ Usage:\x1b[34;1m tsbb\x1b[0m <command>
 
 Options:[build|watch]
 
-  \x1b[35;1m--use-babel\x1b[0m                Use Babel.(works in babel)
-  \x1b[35;1m--source-maps\x1b[0m              Enables the generation of sourcemap files.(works in babel)
-  \x1b[35;1m--env-name\x1b[0m                 The current active environment used during configuration loading.(works in babel)
-  \x1b[35;1m--esm\x1b[0m                      Output "esm" directory.(works in babel)
-  \x1b[35;1m--cjs\x1b[0m                      Output "cjs" directory.(works in babel)
+  \x1b[35;1m--bail\x1b[0m              Exit the compile as soon as the compile fails(default: true).
+  \x1b[35;1m--use-babel\x1b[0m         Use Babel.(works in babel)
+  \x1b[35;1m--source-maps\x1b[0m       Enables the generation of sourcemap files.(works in babel)
+  \x1b[35;1m--env-name\x1b[0m          The current active environment used during configuration loading.(works in babel)
+  \x1b[35;1m--esm\x1b[0m               Output "esm" directory.(works in babel)
+  \x1b[35;1m--cjs\x1b[0m               Output "cjs" directory.(works in babel)
 
 Options:
 

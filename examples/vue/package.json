@@ -9,7 +9,7 @@
   "license": "ISC",
   "scripts": {
     "watch": "tsbb watch src/*.tsx --use-vue --use-babel --cjs cjs",
-    "build": "tsbb build src/*.tsx --use-vue --use-babel --cjs cjs"
+    "build": "tsbb build src/*.tsx --use-vue --use-babel --cjs cjs --bail"
   },
   "dependencies": {
     "vue": "^3.0.0"
