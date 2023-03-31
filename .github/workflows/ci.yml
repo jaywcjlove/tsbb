@@ -67,7 +67,7 @@ jobs:
           npm run doc
           npm run coverage
           cd lib/
-          ls -al
+          ls -Force
 
       - name: example @example/typenexus
         working-directory: examples/typenexus
