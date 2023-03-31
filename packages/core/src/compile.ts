@@ -32,6 +32,12 @@ export async function compile(options: CompileOptions = {}) {
     (options.entry || []).forEach((fileNames) => err.push(`    \x1b[35;1m${fileNames}\x1b[0m`));
     !options.entry?.length &&
       err.push('\x1b[33;1mNo files were indexed. Please check your command line arguments.\x1b[0m');
+    if (process.platform === 'win32') {
+      err.push('\n    Please note that on \x1b[33;1mWindows\x1b[0m platform, double(") quotes should be used to ');
+      err.push("    index file parameters instead of single(') quotes.\n");
+      err.push('    Correct usage: \x1b[32;1m"src/*.tsx"\x1b[0m');
+      err.push("    Incorrect usage: \x1b[31;1m'src/*.tsx'\x1b[0m");
+    }
     throw new Error(err.join('\n'));
   }
   babelTransform(options);
