@@ -55,6 +55,7 @@ export interface TsCompileOptions {
 }
 
 export const findConfigFile = () => ts.findConfigFile('.', ts.sys.fileExists, 'tsconfig.json');
+export const readConfigFile = (tsConfigPath: string) => ts.readConfigFile(path.resolve(tsConfigPath), ts.sys.readFile);
 
 export default async function compile(options: TsCompileOptions = {}) {
   const { isCopyFiles = true, onWriteFile, onCopyFiles, bail } = options;
@@ -67,7 +68,7 @@ export default async function compile(options: TsCompileOptions = {}) {
     return;
   }
 
-  const { config, error } = ts.readConfigFile(path.resolve(tsConfigPath), ts.sys.readFile);
+  const { config, error } = readConfigFile(tsConfigPath);
   if (error) {
     return reportDiagnostic(error);
   }

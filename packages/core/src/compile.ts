@@ -1,4 +1,4 @@
-import tsCompile from '@tsbb/typescript';
+import tsCompile, { findConfigFile, readConfigFile, reportDiagnostic } from '@tsbb/typescript';
 import { BabelCompileOptions } from '@tsbb/babel';
 import { babelTransform } from './watcher/babelTransform.js';
 import { watcherCopyFiles } from './watcher/copyFiles.js';
@@ -41,6 +41,16 @@ export async function compile(options: CompileOptions = {}) {
       err.push("    Incorrect usage: \x1b[31;1m'src/*.tsx'\x1b[0m");
     }
     throw new Error(err.join('\n'));
+  }
+  const tsConfig = findConfigFile();
+  if (tsConfig) {
+    const { config, error } = readConfigFile(tsConfig);
+    if (error) {
+      return reportDiagnostic(error);
+    }
+    if (config.compilerOptions.outDir && !options.cjs) {
+      options.cjs = config.compilerOptions.outDir;
+    }
   }
   babelTransform(options);
 }
