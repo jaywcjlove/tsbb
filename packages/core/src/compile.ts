@@ -48,7 +48,7 @@ export async function compile(options: CompileOptions = {}) {
     if (error) {
       return reportDiagnostic(error);
     }
-    if (config.compilerOptions.outDir && !options.cjs) {
+    if (config.compilerOptions.outDir && !options.cjs && options.cjs !== false) {
       options.cjs = config.compilerOptions.outDir;
     }
   }
