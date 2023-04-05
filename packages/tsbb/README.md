@@ -75,16 +75,16 @@ $ npx create-tsbb my-app -e <Example Name>
 
 You can download the following examples directly. [Download page](https://jaywcjlove.github.io/tsbb).
 
-- [**`Basic`**](https://github.com/jaywcjlove/tsbb/tree/master/example/basic) - The [Node.js](https://nodejs.org/en/) base application example.
-- [**`Express`**](https://github.com/jaywcjlove/tsbb/tree/master/example/express) - The [Express](https://expressjs.com/) base application example.
-- [**`TypeNexus`**](https://github.com/jaywcjlove/tsbb/tree/master/example/typenexus) - The [Express](https://expressjs.com/) & [TypeORM](https://github.com/typeorm/typeorm) base application example.
-- [**`Koa`**](https://github.com/jaywcjlove/tsbb/tree/master/example/koa) - The [Koa](https://koajs.com/) base application example.
-- [**`Hapi`**](https://github.com/jaywcjlove/tsbb/tree/master/example/hapi) - The [Hapi](https://hapijs.com/) base application example.
-- [**`react-component`**](https://github.com/jaywcjlove/tsbb/tree/master/example/react-component) - The react component base application example.
-- [**`react-component-tsx`**](https://github.com/jaywcjlove/tsbb/tree/master/example/react-component-tsx) - The react component and website base application example.
-- [**`transform-typescript`**](https://github.com/jaywcjlove/tsbb/tree/master/example/transform-typescript) - Reconfigure the babel configuration example.
-- [**`umd`**](https://github.com/jaywcjlove/tsbb/tree/master/example/umd) - umd bundle example.
-- [**`vue 3`**](https://github.com/jaywcjlove/tsbb/tree/master/example/vue) - To add Vue JSX support.
+- [**`Basic`**](https://github.com/jaywcjlove/tsbb/tree/master/examples/basic) - The [Node.js](https://nodejs.org/en/) base application example.
+- [**`Express`**](https://github.com/jaywcjlove/tsbb/tree/master/examples/express) - The [Express](https://expressjs.com/) base application example.
+- [**`TypeNexus`**](https://github.com/jaywcjlove/tsbb/tree/master/examples/typenexus) - The [Express](https://expressjs.com/) & [TypeORM](https://github.com/typeorm/typeorm) base application example.
+- [**`Koa`**](https://github.com/jaywcjlove/tsbb/tree/master/examples/koa) - The [Koa](https://koajs.com/) base application example.
+- [**`Hapi`**](https://github.com/jaywcjlove/tsbb/tree/master/examples/hapi) - The [Hapi](https://hapijs.com/) base application example.
+- [**`react-component`**](https://github.com/jaywcjlove/tsbb/tree/master/examples/react-component) - The react component base application example.
+- [**`react-component-tsx`**](https://github.com/jaywcjlove/tsbb/tree/master/examples/react-component-tsx) - The react component and website base application example.
+- [**`transform-typescript`**](https://github.com/jaywcjlove/tsbb/tree/master/examples/transform-typescript) - Reconfigure the babel configuration example.
+- [**`umd`**](https://github.com/jaywcjlove/tsbb/tree/master/examples/umd) - umd bundle example.
+- [**`vue 3`**](https://github.com/jaywcjlove/tsbb/tree/master/examples/vue) - To add Vue JSX support.
 
 ## TypeScript Project
 
