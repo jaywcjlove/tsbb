@@ -103,15 +103,14 @@ export default async function compile(options: TsCompileOptions = {}) {
       if (/^(?!.*\.d\.ts$).*\.(tsx?)+$/.test(fileName)) {
         const sourceFilePath = fileName.indexOf(process.cwd()) > -1 ? path.relative(process.cwd(), fileName) : fileName;
         const finalPath = getSourceFilePath(fileName, rootDirsRelative);
-        fileNameData[
-          path.relative(currentDir, path.join(outputDir, finalPath)).replace(/\.(m?js|jsx?|m?ts|tsx?|c?js)$/, '.d.ts')
-        ] = sourceFilePath;
+        const cur = path.resolve(path.join(outputDir, finalPath)).replace(/\.(m?js|jsx?|m?ts|tsx?|c?js)$/, '.d.ts');
+        fileNameData[cur] = sourceFilePath;
       }
       return ts.sys.readFile(fileName, encoding);
     };
     system.writeFile = (pathName, data, writeByteOrderMark) => {
       if (options.emitDeclarationOnly && onWriteFile) {
-        onWriteFile(pathName, data, fileNameData[pathName], writeByteOrderMark);
+        onWriteFile(pathName, data, fileNameData[path.resolve(currentDir, pathName)], writeByteOrderMark);
       } else {
         writeFile(pathName, data, writeByteOrderMark);
       }
