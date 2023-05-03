@@ -14,7 +14,7 @@ export async function tsbb() {
     flags: {
       useBabel: {
         type: 'boolean',
-        alias: 'b',
+        shortFlag: 'b',
         default: false,
       },
       sourceMaps: {
