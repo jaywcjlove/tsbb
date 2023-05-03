@@ -39,12 +39,12 @@ export async function create() {
       example: {
         default: 'basic',
         type: 'string',
-        alias: 'e',
+        shortFlag: 'e',
       },
       force: {
         default: false,
         type: 'boolean',
-        alias: 'f',
+        shortFlag: 'f',
       },
     },
   });
