@@ -5,7 +5,8 @@ Usage:\x1b[34;1m tsbb\x1b[0m <command>
  
   \x1b[35;1m tsbb\x1b[0m build [source…] [options]       Build your project once and exit.
   \x1b[35;1m tsbb\x1b[0m watch [source…] [options]       Recompile files on changes.
-  \x1b[35;1m tsbb\x1b[0m test [options]        Run jest test runner in watch mode.
+  \x1b[35;1m tsbb\x1b[0m test [options]                  Run jest test runner in watch mode.
+  \x1b[35;1m tsbb\x1b[0m copy|cpy <source …> [options]   Copy files.
 
 Options:[build|watch]
 
@@ -31,6 +32,8 @@ Examples:
   $\x1b[35;1m tsbb\x1b[0m build src/*.ts --use-babel --no-source-maps   No ".js.map" file is generated. (works in babel)
   $\x1b[35;1m tsbb\x1b[0m test                              Run test suites related
   $\x1b[35;1m tsbb\x1b[0m test --coverage --bail            Test coverage information should be collected
+    
+  $\x1b[35;1m tsbb\x1b[0m copy  'src/*.png' 'src/goat.{js,d.ts}' --output dist     Copy files.
 
  Copyright 2023
 `;

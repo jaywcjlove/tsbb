@@ -177,6 +177,7 @@ Commands:
   tsbb build [source…] [options]   Build your project once and exit.
   tsbb watch [source…] [options]   Recompile files on changes.
   tsbb test [options]              Run jest test runner in watch mode.
+  tsbb copy|cpy <source …> [options]   Copy files.
 
 Options:[build|watch]
 
@@ -202,6 +203,7 @@ Examples:
   $ tsbb build src/*.ts --use-babel --use-vue          To add Vue JSX support.
   $ tsbb test                              Run test suites related
   $ tsbb test --coverage --bail            Test coverage information should be collected
+  $ tsbb copy  'src/*.png' '!src/goat.png' --output dist     Copy files.
 
   Copyright 2023
 

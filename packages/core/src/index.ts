@@ -5,6 +5,7 @@ import jest, { JestOptions } from '@tsbb/jest';
 import { Log } from '@tsbb/typescript';
 import { helpStr } from './helpStr.js';
 import { compile, CompileOptions } from './compile.js';
+import { copy, CopyOption } from './copy.js';
 
 export * from './watcher/copyFiles.js';
 
@@ -38,16 +39,21 @@ export async function tsbb() {
   }
   try {
     if (cli.input.length === 0) {
-      throw new Error('Please enter command parameters, such as: (build, watch)');
+      throw new Error('Please enter command parameters, such as: (build, watch, copy)');
     }
     let entry = [...cli.input];
     entry.shift();
-    entry = await glob(entry, { ignore: 'node_modules/**' });
-    if (cli.input[0] === 'build') {
+
+    const commandName = cli.input[0];
+    entry = await glob(entry, /^(copy|cpy)/i.test(commandName) ? {} : { ignore: 'node_modules/**' });
+
+    if (commandName === 'build') {
       compile({ ...flags, build: true, entry } as CompileOptions);
-    } else if (/^(watch|start|dev)/i.test(cli.input[0])) {
+    } else if (/^(copy|cpy)/i.test(commandName)) {
+      copy({ ...flags, entry } as CopyOption);
+    } else if (/^(watch|start|dev)/i.test(commandName)) {
       compile({ ...flags, watch: true, entry } as CompileOptions);
-    } else if (/^(test)/i.test(cli.input[0])) {
+    } else if (/^(test)/i.test(commandName)) {
       // @ts-ignore
       jest.default(flags as unknown as JestOptions);
     } else {
