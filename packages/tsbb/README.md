@@ -204,6 +204,7 @@ Examples:
   $ tsbb test                              Run test suites related
   $ tsbb test --coverage --bail            Test coverage information should be collected
   $ tsbb copy  'src/*.png' '!src/goat.png' --output dist     Copy files.
+  $ tsbb copy  'src/*.png' 'src/goat.{js,d.ts}' --output dist --watch
 
   Copyright 2023
 

@@ -34,6 +34,7 @@ Examples:
   $\x1b[35;1m tsbb\x1b[0m test --coverage --bail            Test coverage information should be collected
     
   $\x1b[35;1m tsbb\x1b[0m copy  'src/*.png' 'src/goat.{js,d.ts}' --output dist     Copy files.
+  $\x1b[35;1m tsbb\x1b[0m copy  'src/*.png' 'src/goat.{js,d.ts}' --output dist --watch
 
  Copyright 2023
 `;
