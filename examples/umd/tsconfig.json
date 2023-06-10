@@ -6,7 +6,7 @@
     "outDir": "./lib",
     "strict": true,
     "declaration": true,
-    "moduleResolution": "nodenext",
+    "moduleResolution": "node",
     "skipLibCheck": true
   },
   "files": ["src/index.ts", "src/utils/sum.ts", "src/utils/Test.ts", "src/utils/a/a.ts"],

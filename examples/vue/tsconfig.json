@@ -19,7 +19,8 @@
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "noFallthroughCasesInSwitch": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "types": ["node"]
   },
   "include": ["src"]
 }
