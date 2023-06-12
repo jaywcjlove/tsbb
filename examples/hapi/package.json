@@ -1,6 +1,6 @@
 {
   "name": "@template/hapi",
-  "version": "4.1.10",
+  "version": "4.1.11",
   "private": true,
   "description": "hapi Example.",
   "main": "index.js",
@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "nodemon": "~2.0.22",
-    "tsbb": "4.1.10"
+    "tsbb": "4.1.11"
   },
   "dependencies": {
     "@hapi/hapi": "^21.3.0"
