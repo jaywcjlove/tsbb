@@ -117,13 +117,7 @@ export default async function compile(options: TsCompileOptions = {}) {
     };
     // Note that there is another overload for `createWatchCompilerHost` that takes
     // a set of root files.
-    const host = ts.createWatchCompilerHost(
-      parseResult.fileNames,
-      compilerOptions,
-      system,
-      createProgram,
-      reportDiagnostic,
-    );
+    const host = ts.createWatchCompilerHost(tsConfigPath, compilerOptions, system, createProgram, reportDiagnostic);
     host.onWatchStatusChange = onWatchStatusChange;
     // Start the TypeScript monitor compiler
     ts.createWatchProgram(host);

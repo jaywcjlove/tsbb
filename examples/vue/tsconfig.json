@@ -22,5 +22,6 @@
     "resolveJsonModule": true,
     "types": ["node"]
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts"]
 }
