@@ -75,6 +75,8 @@ jobs:
       - name: example @example/vue
         working-directory: examples/vue
         run: npm run build
+  
+      - run: npm run coverage
 
       - run: npm install idoc@1.25.0 -g
       - run: idoc -s "TSBB {{version}}"

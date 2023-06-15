@@ -8,7 +8,9 @@
     "version": "lerna version --exact --force-publish --no-push --no-git-tag-version",
     "type-check": "lerna exec \"tsc --noEmit\" --scope create-tsbb --scope tsbb --scope @tsbb/* --stream",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
-    "clean": "lerna clean --yes"
+    "clean": "lerna clean --yes",
+    "test": "node packages/tsbb/lib/cli.js test",
+    "coverage": "node packages/tsbb/lib/cli.js test --coverage --bai"
   },
   "repository": {
     "type": "git",

@@ -1,5 +1,6 @@
 import React from 'react';
 import './style/index.less';
+import png from './logo.png';
 
 export * from './demo';
 
@@ -31,6 +32,7 @@ export default class Button extends React.PureComponent<ButtonProps> {
       .join(' ');
     return (
       <button type={htmlType} className={cls}>
+        <img src={png} />
         {children &&
           React.Children.map(children, (child) => {
             if (!child) return child;

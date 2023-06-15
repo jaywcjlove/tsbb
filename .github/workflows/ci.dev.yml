@@ -71,3 +71,5 @@ jobs:
       - name: example @example/vue
         working-directory: examples/vue
         run: npm run build
+      
+      - run: npm run coverage

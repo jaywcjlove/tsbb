@@ -80,6 +80,8 @@ jobs:
       - name: example @example/vue
         working-directory: examples/vue
         run: npm run build
+  
+      - run: npm run coverage
     
   Ubuntu:
     name: Ubuntu Node.js ${{ matrix.node-version }}
@@ -159,3 +161,5 @@ jobs:
       - name: example @example/vue
         working-directory: examples/vue
         run: npm run build
+    
+      - run: npm run coverage
