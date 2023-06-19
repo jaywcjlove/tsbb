@@ -24,7 +24,7 @@
     "noFallthroughCasesInSwitch": true,
     "resolveJsonModule": true,
 
-    "noEmit": true,
+    "emitDeclarationOnly": true,
     "types": ["jest", "node"]
   },
   "include": ["./src/**/*"],

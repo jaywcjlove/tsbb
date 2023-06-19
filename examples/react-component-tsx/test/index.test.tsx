@@ -13,10 +13,10 @@ describe('<Button />', () => {
     if (tree) {
       expect(tree.type).toBe('button');
       expect(tree.props.className).toBe('w-btn w-btn-default w-btn-danger');
-      expect(tree.children).toHaveLength(1);
+      expect(tree.children).toHaveLength(2);
       if (tree.children) {
-        expect(tree.children[0].type).toBe('span');
-        expect(tree.children[0].children[0]).toEqual('BUTTON');
+        expect(tree.children[0].type).toBe('img');
+        expect(tree.children[0].children).toBeNull();
       }
     }
   });
