@@ -71,6 +71,16 @@ export default async function jestConfig(resolve: Function, rootDir: string): Pr
 
   if (overrides) {
     const supportedKeys: (keyof Jest.Config)[] = [
+      /**
+       * https://www.npmjs.com/package/jest-node-exports-resolver
+       * This is heavily discussed in the following [issue #9771](https://github.com/facebook/jest/issues/9771).
+       * Several alternatives proposed, such as
+       * [using enhanced-resolve](https://github.com/facebook/jest/issues/9771#issuecomment-841624042),
+       * [writing own resolver based on firebase-jest-testing resolver](https://github.com/facebook/jest/issues/9771#issuecomment-677759334),
+       * [using custom resolver written for esfx](https://github.com/facebook/jest/issues/9771#issuecomment-838867473).
+       */
+      'resolver',
+
       'clearMocks',
       'collectCoverageFrom',
       'coveragePathIgnorePatterns',
