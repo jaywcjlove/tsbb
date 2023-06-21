@@ -11,7 +11,8 @@ export const __dirname = dirname(__filename);
  * @param paths `[ 'src/index.jsx', 'test/sum.js' ]`
  * @returns ['src', 'test']
  */
-export const getRootsFolderName = (paths: string[] = []) => paths.map((item) => item.split(path.sep)[0]);
+export const getRootsFolderName = (paths: string[] = []) =>
+  paths.map((item) => item.replace(/[/\\]/g, path.sep).split(path.sep)[0]);
 
 const getLnCol = (text: string = '', pos: number = 0) => {
   const lines = text.split('\n');
