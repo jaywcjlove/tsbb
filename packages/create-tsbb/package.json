@@ -2,7 +2,7 @@
   "name": "create-tsbb",
   "version": "4.1.13",
   "description": "Creates a TSBB application using the command line.",
-  "homepage": "https://jaywcjlove.github.io/tsbb/create-tsbb.html",
+  "homepage": "https://jaywcjlove.github.io/tsbb",
   "author": "Kenny Wong <wowohoo@qq.com> (https://github.com/jaywcjlove)",
   "type": "module",
   "types": "./lib/index.d.ts",
