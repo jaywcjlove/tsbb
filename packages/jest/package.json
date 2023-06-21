@@ -1,6 +1,6 @@
 {
   "name": "@tsbb/jest",
-  "version": "4.1.12",
+  "version": "4.1.13",
   "description": "TSBB is a zero-config CLI that helps you develop, test, and publish modern TypeScript project.",
   "author": "kenny wang <wowohoo@qq.com>",
   "homepage": "https://jaywcjlove.github.io/tsbb",
