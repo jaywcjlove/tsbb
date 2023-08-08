@@ -23,7 +23,7 @@
   <a href="#license">License</a>
 </p>
 
-TSBB is a CLI tool that enables the development, testing, and publishing of modern TypeScript [Node.js](https://nodejs.org/en/) projects with zero configuration needed.
+TSBB is a CLI tool for developing, testing and publishing modern TypeScript projects with zero configuration, and can also be used for module or react component development.
 
 `TypeScript + Babel` = `TSBB`
 
@@ -63,6 +63,38 @@ $ npm run build # compile .ts files.
 $ npm start
 ```
 
+1️⃣ Installation & Setup
+
+```bash
+$ npm i -D microbundle
+```
+
+2️⃣ Set up your `package.json`:
+
+```json
+{
+  "name": "@pkg/basic",
+  "version": "1.0.0",
+  "main": "./cjs/index.js",      // where to generate the CommonJS bundle
+  "module": "./esm/index.js",    // where to generate the ESM bundle
+  "exports": {
+    "require": "./cjs/index.js", // used for require() in Node 12+
+    "default": "./esm/index.js"  // where to generate the modern bundle (see below)
+  },
+  "scripts": {
+    "watch": "tsbb watch",
+    "build": "tsbb build --bail",
+    "test": "tsbb test",
+    "coverage": "tsbb test --coverage --bail"
+  },
+  "devDependencies": {
+    "tsbb": "4.1.14"
+  }
+}
+```
+
+3️⃣ Try it out by running npm run build.
+
 ## Example
 
 [create-tsbb](https://github.com/jaywcjlove/tsbb/tree/master/packages/create-tsbb) initialize the project from one of the examples:
@@ -75,16 +107,17 @@ $ npx create-tsbb my-app -e <Example Name>
 
 You can download the following examples directly. [Download page](https://jaywcjlove.github.io/tsbb).
 
-- [**`Basic`**](https://github.com/jaywcjlove/tsbb/tree/master/examples/basic) - The [Node.js](https://nodejs.org/en/) base application example.
-- [**`Express`**](https://github.com/jaywcjlove/tsbb/tree/master/examples/express) - The [Express](https://expressjs.com/) base application example.
-- [**`TypeNexus`**](https://github.com/jaywcjlove/tsbb/tree/master/examples/typenexus) - The [Express](https://expressjs.com/) & [TypeORM](https://github.com/typeorm/typeorm) base application example.
-- [**`Koa`**](https://github.com/jaywcjlove/tsbb/tree/master/examples/koa) - The [Koa](https://koajs.com/) base application example.
-- [**`Hapi`**](https://github.com/jaywcjlove/tsbb/tree/master/examples/hapi) - The [Hapi](https://hapijs.com/) base application example.
+- [**`basic`**](https://github.com/jaywcjlove/tsbb/tree/master/examples/basic) - The [Node.js](https://nodejs.org/en/) base application example.
+- [**`babel-transform-ts`**](https://github.com/jaywcjlove/tsbb/tree/master/examples/babel-transform-ts) - Babel Transform Typescript Example.
+- [**`express`**](https://github.com/jaywcjlove/tsbb/tree/master/examples/express) - The [Express](https://expressjs.com/) base application example.
+- [**`typenexus`**](https://github.com/jaywcjlove/tsbb/tree/master/examples/typenexus) - The [Express](https://expressjs.com/) & [TypeORM](https://github.com/typeorm/typeorm) base application example.
+- [**`koa`**](https://github.com/jaywcjlove/tsbb/tree/master/examples/koa) - The [Koa](https://koajs.com/) base application example.
+- [**`hapi`**](https://github.com/jaywcjlove/tsbb/tree/master/examples/hapi) - The [Hapi](https://hapijs.com/) base application example.
 - [**`react-component`**](https://github.com/jaywcjlove/tsbb/tree/master/examples/react-component) - The react component base application example.
 - [**`react-component-tsx`**](https://github.com/jaywcjlove/tsbb/tree/master/examples/react-component-tsx) - The react component and website base application example.
 - [**`transform-typescript`**](https://github.com/jaywcjlove/tsbb/tree/master/examples/transform-typescript) - Reconfigure the babel configuration example.
 - [**`umd`**](https://github.com/jaywcjlove/tsbb/tree/master/examples/umd) - umd bundle example.
-- [**`vue 3`**](https://github.com/jaywcjlove/tsbb/tree/master/examples/vue) - To add Vue JSX support.
+- [**`vue`**](https://github.com/jaywcjlove/tsbb/tree/master/examples/vue) - To add Vue 3 JSX support.
 
 ## TypeScript Project
 
