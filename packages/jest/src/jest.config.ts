@@ -1,6 +1,9 @@
 import path from 'path';
 import Jest from 'jest';
 import fs from 'fs-extra';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
 
 const moduleFileExtensions = [
   'web.mjs',
@@ -28,7 +31,8 @@ export default async function jestConfig(resolve: Function, rootDir: string): Pr
       '<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}',
     ],
     // testEnvironment: 'jsdom',
-    testEnvironment: 'jest-environment-jsdom',
+    // testEnvironment: 'jest-environment-jsdom',
+    testEnvironment: require.resolve('jest-environment-jsdom'),
     // testEnvironment: resolve('node_modules/jest-environment-jsdom/build/index.js'),
     // testEnvironmentOptions: {
     //   url: 'http://localhost', // Your testing URL
@@ -58,7 +62,8 @@ export default async function jestConfig(resolve: Function, rootDir: string): Pr
       '^.+\\.module\\.(css|less|styl|sass|scss)$': 'identity-obj-proxy',
     },
     moduleFileExtensions: [...moduleFileExtensions, 'node'].filter((ext) => !ext.includes('mjs')),
-    watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
+    // watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
+    watchPlugins: [require.resolve('jest-watch-typeahead/filename'), require.resolve('jest-watch-typeahead/testname')],
     resetMocks: true,
     coverageReporters: ['lcov', 'json-summary'],
   };

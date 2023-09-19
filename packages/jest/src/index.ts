@@ -1,7 +1,11 @@
-import path from 'path';
+import path, { dirname } from 'path';
 import { runCLI } from '@jest/core';
 import { Config } from '@jest/types';
+import { fileURLToPath } from 'url';
 import createJestConfig from './jest.config.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 export type JestOptions = Partial<Config.Argv>;
 export default async function jest(options: JestOptions = {}) {

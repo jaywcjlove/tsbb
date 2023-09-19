@@ -1,4 +1,7 @@
 import babelJest from 'babel-jest';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
 
 const hasJsxRuntime = (() => {
   if (process.env.DISABLE_NEW_JSX_TRANSFORM === 'true') {

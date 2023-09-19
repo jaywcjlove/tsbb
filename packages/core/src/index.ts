@@ -54,8 +54,7 @@ export async function tsbb() {
     } else if (/^(watch|start|dev)/i.test(commandName)) {
       compile({ ...flags, watch: true, entry } as CompileOptions);
     } else if (/^(test)/i.test(commandName)) {
-      // @ts-ignore
-      jest.default(flags as unknown as JestOptions);
+      jest(flags as unknown as JestOptions);
     } else {
       console.error('\n  \x1b[31;1m The build/watch/jest parameter must be passed in\x1b[0m\n');
       process.exitCode = 1;

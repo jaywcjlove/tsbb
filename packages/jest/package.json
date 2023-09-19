@@ -5,6 +5,7 @@
   "author": "kenny wang <wowohoo@qq.com>",
   "homepage": "https://jaywcjlove.github.io/tsbb",
   "license": "MIT",
+  "type": "module",
   "types": "./lib/index.d.ts",
   "main": "./lib/index.js",
   "scripts": {
