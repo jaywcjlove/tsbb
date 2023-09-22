@@ -29,7 +29,7 @@
     "node.js"
   ],
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=16.7.0"
   },
   "overrides": {
     "typescript": "^5.1.3"

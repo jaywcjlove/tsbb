@@ -44,7 +44,7 @@
     "frontend"
   ],
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=16.7.0"
   },
   "dependencies": {
     "@types/which": "~3.0.0",

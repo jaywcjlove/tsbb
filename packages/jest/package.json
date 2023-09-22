@@ -27,7 +27,7 @@
     "node.js"
   ],
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=16.7.0"
   },
   "dependencies": {
     "@babel/plugin-proposal-decorators": "^7.22.5",
