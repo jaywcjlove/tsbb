@@ -81,8 +81,32 @@ jobs:
   
       - run: npm run coverage
 
-      - run: npm install idoc@1.25.0 -g
-      - run: idoc -s "TSBB {{version}}"
+      - run: npm install idoc@1.27.0 -g
+
+      - name: Create idoc config.
+        working-directory: packages/tsbb
+        run: |
+          cat > idoc.yml << EOF
+          site: "TSBB {{version}}"
+          giscus: 
+            src: https://giscus.app/client.js
+            data-repo: jaywcjlove/tsbb
+            data-repo-id: MDEwOlJlcG9zaXRvcnkxODQ5MTg0NDY=
+            data-category: Q&A
+            data-category-id: DIC_kwDOCwWhrs4CZifu
+            data-mapping: pathname
+            data-strict: 0
+            data-reactions-enabled: 1
+            data-emit-metadata: 0
+            data-input-position: top
+            data-theme: dark
+            data-lang: en
+            data-loading: lazy
+            crossorigin: anonymous
+            async: true
+          EOF
+
+      - run: idoc -s
         working-directory: packages/tsbb
 
       - name: Generate Contributors Images
