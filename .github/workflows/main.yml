@@ -81,7 +81,7 @@ jobs:
   
       - run: npm run coverage
 
-      - run: npm install idoc@1.27.0 -g
+      - run: npm install idoc@1.27.1 -g
 
       - name: Create idoc config.
         working-directory: packages/tsbb
@@ -106,7 +106,7 @@ jobs:
             async: true
           EOF
 
-      - run: idoc -s
+      - run: idoc
         working-directory: packages/tsbb
 
       - name: Generate Contributors Images
