@@ -363,7 +363,7 @@ As always, thanks to our amazing contributors!
   <img src="http://jaywcjlove.github.io/tsbb/CONTRIBUTORS.svg" />
 </a>
 
-Made with [github-action-contributors](https://github.com/jaywcjlove/github-action-contributors).
+Made with [contributors](https://github.com/jaywcjlove/github-action-contributors).
 
 ## License
 

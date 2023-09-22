@@ -53,6 +53,18 @@ Example:
 Copyright 2023
 ```
 
+## Contributors
+
+As always, thanks to our amazing contributors!
+
+<a href="https://github.com/jaywcjlove/tsbb/graphs/contributors">
+  <img src="http://jaywcjlove.github.io/tsbb/CONTRIBUTORS.svg" />
+</a>
+
+Made with [contributors](https://github.com/jaywcjlove/github-action-contributors).
+
+## License
+
 ## License
 
 [MIT © Kenny Wong](https://github.com/jaywcjlove/tsbb/blob/master/LICENSE)
