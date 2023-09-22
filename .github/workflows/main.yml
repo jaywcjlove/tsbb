@@ -7,11 +7,14 @@ on:
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
           registry-url: 'https://registry.npmjs.org'
 
       - run: npm install
@@ -138,7 +141,7 @@ jobs:
 
             ${{ steps.changelog.outputs.changelog }}
 
-      - run: npm publish --access public
+      - run: npm publish --access public --provenance
         name: 📦  tsbb publish to NPM
         continue-on-error: true
         working-directory: packages/tsbb
@@ -149,35 +152,35 @@ jobs:
         working-directory: packages/create-tsbb
         run: npm run copy
 
-      - run: npm publish --access public
+      - run: npm publish --access public --provenance
         name: 📦  create-tsbb publish to NPM
         continue-on-error: true
         working-directory: packages/create-tsbb
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - run: npm publish --access public
+      - run: npm publish --access public --provenance
         name: 📦  @tsbb/typescript publish to NPM
         continue-on-error: true
         working-directory: packages/typescript
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - run: npm publish --access public
+      - run: npm publish --access public --provenance
         name: 📦  @tsbb/jest publish to NPM
         continue-on-error: true
         working-directory: packages/jest
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - run: npm publish --access public
+      - run: npm publish --access public --provenance
         name: 📦  @tsbb/core publish to NPM
         continue-on-error: true
         working-directory: packages/core
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - run: npm publish --access public
+      - run: npm publish --access public --provenance
         name: 📦  @tsbb/babel publish to NPM
         continue-on-error: true
         working-directory: packages/babel
