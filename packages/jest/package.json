@@ -7,7 +7,7 @@
   "license": "MIT",
   "type": "module",
   "types": "./lib/index.d.ts",
-  "main": "./lib/index.js",
+  "exports": "./lib/index.js",
   "scripts": {
     "build": "tsc",
     "start": "tsc --watch"
