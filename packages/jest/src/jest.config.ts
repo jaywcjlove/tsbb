@@ -76,6 +76,12 @@ export default async function jestConfig(resolve: Function, rootDir: string): Pr
 
   if (overrides) {
     const supportedKeys: (keyof Jest.Config)[] = [
+      'preset',
+      /**
+       * ESM Support
+       * https://kulshekhar.github.io/ts-jest/docs/guides/esm-support/
+       */
+      'extensionsToTreatAsEsm',
       /**
        * https://www.npmjs.com/package/jest-node-exports-resolver
        * This is heavily discussed in the following [issue #9771](https://github.com/facebook/jest/issues/9771).
