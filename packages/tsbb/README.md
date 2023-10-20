@@ -220,7 +220,7 @@ Options:[build|watch]
   --env-name                 The current active environment used during configuration loading.(works in babel)
   --esm                      Output "esm" directory.(works in babel)
   --cjs                      Output "cjs" directory.(works in babel)
-
+  --use-vue                  Supports "Vue3", requires "--use-babel" to be used together.
 Options:
 
   --version, -v              Show version number

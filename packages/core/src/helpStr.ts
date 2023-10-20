@@ -16,6 +16,7 @@ Options:[build|watch]
   \x1b[35;1m--env-name\x1b[0m          The current active environment used during configuration loading.(works in babel)
   \x1b[35;1m--esm\x1b[0m               Output "esm" directory.(works in babel)
   \x1b[35;1m--cjs\x1b[0m               Output "cjs" directory.(works in babel)
+  \x1b[35;1m--use-vue\x1b[0m           Supports "Vue3", requires "--use-babel" to be used together.
 
 Options:
 
