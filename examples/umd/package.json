@@ -1,7 +1,7 @@
 {
   "name": "@template/umd",
   "private": true,
-  "version": "4.2.4",
+  "version": "4.2.5",
   "description": "UMD Example.",
   "scripts": {
     "watch": "tsbb watch",
@@ -16,6 +16,6 @@
   "keywords": [],
   "license": "MIT",
   "devDependencies": {
-    "tsbb": "4.2.4"
+    "tsbb": "4.2.5"
   }
 }
