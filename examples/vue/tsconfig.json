@@ -8,7 +8,6 @@
     "strictNullChecks": true,
     "moduleResolution": "node",
     "jsx": "preserve",
-    "baseUrl": ".",
     "noEmit": false,
     "jsxFactory": "h",
     "jsxFragmentFactory": "Fragment",
@@ -20,8 +19,7 @@
     "isolatedModules": true,
     "noFallthroughCasesInSwitch": true,
     "resolveJsonModule": true,
-    "types": ["node"]
   },
   "include": ["src"],
-  "exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts"]
+  "exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts"],
 }
