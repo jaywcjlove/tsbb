@@ -50,6 +50,6 @@
     "babel-plugin-transform-remove-imports": "~1.7.0",
     "babel-plugin-transform-rename-import": "~2.3.0",
     "babel-plugin-transform-typescript-metadata": "~0.3.2",
-    "semver": "~7.5.0"
+    "semver": "~7.6.0"
   }
 }
