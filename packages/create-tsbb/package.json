@@ -1,6 +1,6 @@
 {
   "name": "create-tsbb",
-  "version": "4.2.5",
+  "version": "4.3.0",
   "description": "Creates a TSBB application using the command line.",
   "homepage": "https://jaywcjlove.github.io/tsbb",
   "author": "Kenny Wong <wowohoo@qq.com> (https://github.com/jaywcjlove)",
@@ -44,8 +44,8 @@
     "frontend"
   ],
   "engines": {
-		"node": ">=18"
-	},
+    "node": ">=18"
+  },
   "dependencies": {
     "@types/which": "~3.0.0",
     "execa": "^9.0.0",
@@ -55,6 +55,6 @@
   },
   "devDependencies": {
     "cpy": "^11.0.0",
-    "tsbb": "4.2.5"
+    "tsbb": "4.3.0"
   }
 }

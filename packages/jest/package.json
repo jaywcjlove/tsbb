@@ -1,6 +1,6 @@
 {
   "name": "@tsbb/jest",
-  "version": "4.2.5",
+  "version": "4.3.0",
   "description": "TSBB is a zero-config CLI that helps you develop, test, and publish modern TypeScript project.",
   "author": "kenny wang <wowohoo@qq.com>",
   "homepage": "https://jaywcjlove.github.io/tsbb",
@@ -27,8 +27,8 @@
     "node.js"
   ],
   "engines": {
-		"node": ">=18"
-	},
+    "node": ">=18"
+  },
   "dependencies": {
     "@babel/plugin-proposal-decorators": "^7.22.5",
     "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
