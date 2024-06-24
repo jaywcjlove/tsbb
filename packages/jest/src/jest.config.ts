@@ -123,10 +123,9 @@ export default async function jestConfig(resolve: Function, rootDir: string): Pr
     for (const key of supportedKeys) {
       if (overrides.hasOwnProperty(key)) {
         if (Array.isArray(conf[key]) || typeof conf[key] !== 'object') {
-          // @ts-ignore
-          conf[key] = overrides[key];
+          conf[key] = overrides[key] as any;
         } else {
-          conf[key] = Object.assign({}, conf[key], overrides[key]);
+          conf[key] = Object.assign({}, conf[key], overrides[key]) as any;
         }
         delete overrides[key];
       }
