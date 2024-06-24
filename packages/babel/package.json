@@ -27,8 +27,8 @@
     "node.js"
   ],
   "engines": {
-    "node": ">=16.7.0"
-  },
+		"node": ">=18"
+	},
   "dependencies": {
     "@babel/core": "^7.22.5",
     "@babel/plugin-proposal-class-properties": "~7.18.6",

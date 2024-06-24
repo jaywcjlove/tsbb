@@ -30,8 +30,8 @@
     "node.js"
   ],
   "engines": {
-    "node": ">=16.7.0"
-  },
+		"node": ">=18"
+	},
   "dependencies": {
     "@tsbb/core": "4.2.5"
   }

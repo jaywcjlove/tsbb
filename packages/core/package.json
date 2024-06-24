@@ -29,8 +29,8 @@
     "node.js"
   ],
   "engines": {
-    "node": ">=16.7.0"
-  },
+		"node": ">=18"
+	},
   "dependencies": {
     "@tsbb/babel": "4.2.5",
     "@tsbb/jest": "4.2.5",

@@ -29,8 +29,8 @@
     "node.js"
   ],
   "engines": {
-    "node": ">=16.7.0"
-  },
+		"node": ">=18"
+	},
   "overrides": {
     "typescript": "^5.1.3"
   },
