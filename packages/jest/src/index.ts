@@ -1,6 +1,6 @@
 import path, { dirname } from 'path';
 import { runCLI } from '@jest/core';
-import { Config } from '@jest/types';
+import { type Config } from '@jest/types';
 import { fileURLToPath } from 'url';
 import createJestConfig from './jest.config.js';
 

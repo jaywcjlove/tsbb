@@ -77,6 +77,15 @@ export default async function jestConfig(resolve: Function, rootDir: string): Pr
   if (overrides) {
     const supportedKeys: (keyof Jest.Config)[] = [
       /**
+       * https://jestjs.io/docs/configuration#modulepathignorepatterns-arraystring
+       * ```js
+       * const config = {
+       *    modulePathIgnorePatterns: ['<rootDir>/build/'],
+       * };
+       * ```
+       */
+      'modulePathIgnorePatterns',
+      /**
        * https://jestjs.io/docs/configuration#setupfiles-array
        *
        * ```json
