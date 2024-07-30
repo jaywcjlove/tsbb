@@ -1,6 +1,6 @@
 import path from 'node:path';
 import { getRootsFolderName, __dirname } from '@tsbb/typescript';
-import { BabelCompileOptions } from './index.js';
+import { type BabelCompileOptions } from './index.js';
 
 /**
  * Convert suffix

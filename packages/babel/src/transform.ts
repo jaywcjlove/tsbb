@@ -1,4 +1,4 @@
-import { transformFile, BabelFileResult, TransformOptions, loadPartialConfig } from '@babel/core';
+import { transformFile, type BabelFileResult, type TransformOptions, loadPartialConfig } from '@babel/core';
 
 export interface TransformBabelFileResult extends BabelFileResult {
   options: TransformOptions;

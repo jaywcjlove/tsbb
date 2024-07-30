@@ -1,10 +1,10 @@
 import babelCompile, { getOutputPath } from '@tsbb/babel';
-import tsCompile, { findConfigFile, Log, getExt, getRootsFolderName, CopyFilesOptions } from '@tsbb/typescript';
+import tsCompile, { findConfigFile, Log, getExt, getRootsFolderName, type CopyFilesOptions } from '@tsbb/typescript';
 import path from 'node:path';
 import ts from 'typescript';
 import fs from 'fs-extra';
 import { watcherCopyFiles } from '../watcher/copyFiles.js';
-import { CompileOptions } from '../compile.js';
+import { type CompileOptions } from '../compile.js';
 
 export function babelTransform(options: CompileOptions = {}) {
   const { cjs = 'lib', esm = 'esm' } = options;

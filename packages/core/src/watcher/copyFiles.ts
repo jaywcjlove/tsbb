@@ -1,7 +1,7 @@
 import chokidar from 'chokidar';
 import path from 'node:path';
 import fs from 'fs-extra';
-import { Log, CopyFilesOptions } from '@tsbb/typescript';
+import { Log, type CopyFilesOptions } from '@tsbb/typescript';
 
 /**
  * Used to monitor file changes and copy related files, such as: xx.jpg

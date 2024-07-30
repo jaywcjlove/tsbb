@@ -1,8 +1,7 @@
 import path from 'node:path';
 import fs from 'fs-extra';
 import chokidar from 'chokidar';
-import { Log, CopyFilesOptions } from '@tsbb/typescript';
-import { watcherCopyFiles } from './watcher/copyFiles.js';
+import { Log } from '@tsbb/typescript';
 
 export interface CopyOption {
   entry?: string[];

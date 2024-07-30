@@ -1,5 +1,5 @@
 import semver from 'semver';
-import { TransformOptions } from '@babel/core';
+import { type TransformOptions } from '@babel/core';
 // @ts-ignore
 import presetEnv from '@babel/preset-env';
 // @ts-ignore

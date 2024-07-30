@@ -1,5 +1,5 @@
 import tsCompile, { findConfigFile, readConfigFile, reportDiagnostic } from '@tsbb/typescript';
-import { BabelCompileOptions } from '@tsbb/babel';
+import { type BabelCompileOptions } from '@tsbb/babel';
 import { babelTransform } from './watcher/babelTransform.js';
 import { watcherCopyFiles } from './watcher/copyFiles.js';
 

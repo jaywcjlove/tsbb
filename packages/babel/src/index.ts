@@ -1,7 +1,7 @@
 import fs from 'fs-extra';
 import path from 'node:path';
 import { Log, getEmojiIcon, getExt, __dirname } from '@tsbb/typescript';
-import { TransformOptions } from '@babel/core';
+import { type TransformOptions } from '@babel/core';
 import babelPluginJsx from '@vue/babel-plugin-jsx';
 import { transform } from './transform.js';
 import { getOutputPath } from './utils.js';

@@ -4,8 +4,8 @@ import { glob } from 'glob';
 import jest, { JestOptions } from '@tsbb/jest';
 import { Log } from '@tsbb/typescript';
 import { helpStr } from './helpStr.js';
-import { compile, CompileOptions } from './compile.js';
-import { copy, CopyOption } from './copy.js';
+import { compile, type CompileOptions } from './compile.js';
+import { copy, type CopyOption } from './copy.js';
 
 export * from './watcher/copyFiles.js';
 
