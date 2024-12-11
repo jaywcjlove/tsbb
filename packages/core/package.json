@@ -36,7 +36,7 @@
     "@tsbb/jest": "4.4.0",
     "@tsbb/typescript": "4.4.0",
     "@types/fs-extra": "^11.0.1",
-    "chokidar": "~3.6.0",
+    "chokidar": "~4.0.0",
     "fs-extra": "^11.1.1",
     "glob": "^11.0.0",
     "meow": "^13.0.0",
