@@ -2,7 +2,8 @@ import path from 'path';
 import compression from 'compression'; // compresses requests
 import createError from 'http-errors';
 import cookieParser from 'cookie-parser';
-import express, { Express, Response, Request, NextFunction } from 'express';
+import express from 'express';
+import type { Express, Response, Request, NextFunction } from 'express';
 import routes from './routes';
 
 const app: Express = express();
@@ -11,9 +12,11 @@ app.disable('x-powered-by');
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+// @ts-ignore
 app.use(compression());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+// @ts-ignore
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
 
