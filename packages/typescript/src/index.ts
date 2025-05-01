@@ -29,7 +29,7 @@ export interface CopyFilesOptions {
    */
   rootDirsRelative?: string[];
   onFilesChange?: (
-    eventName: 'add' | 'addDir' | 'change' | 'unlink' | 'unlinkDir',
+    eventName: 'all' | 'raw' | 'error' | 'ready' | 'add' | 'change' | 'addDir' | 'unlink' | 'unlinkDir',
     path: string,
     stats?: fs.Stats,
   ) => void;

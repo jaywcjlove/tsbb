@@ -26,6 +26,8 @@ import pluginProposalClassProperties from '@babel/plugin-proposal-class-properti
 import pluginTransformClasses from '@babel/plugin-transform-classes';
 // @ts-ignore
 import babelPluginTransformRenameImport from 'babel-plugin-transform-rename-import';
+// @ts-ignore
+import babelPluginAddImportExtension from 'babel-plugin-add-import-extension';
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
@@ -141,6 +143,7 @@ export const getESMTransformOption: () => TransformOptions = () => {
   }
   option.plugins?.push([pluginTransformRuntime.default, transformRuntime]);
   option.plugins?.push([pluginProposalClassProperties.default, { loose: true }]);
+  option.plugins?.push([babelPluginAddImportExtension, { extension: 'js' }]);
   option.plugins?.push([
     babelPluginTransformRenameImport.default,
     {

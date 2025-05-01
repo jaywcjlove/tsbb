@@ -28,7 +28,11 @@ export async function copy(options: CopyOption = {}) {
       .success(`Copy \x1b[32;1m${filepath}\x1b[0m ┈┈▶ \x1b[35;1m${path.relative(process.cwd(), outputPath)}\x1b[0m`);
   });
   watcher.on('error', (error) => {
-    log.error(`\n \x1b[33;1m${error.message}\x1b[0m.`);
+    if (error instanceof Error) {
+      log.error(`\n \x1b[33;1m${error.message}\x1b[0m.`);
+    } else {
+      log.error('An unknown error occurred.');
+    }
   });
   watcher.on('ready', () => {
     if (!watch) {
