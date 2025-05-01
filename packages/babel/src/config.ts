@@ -143,7 +143,7 @@ export const getESMTransformOption: () => TransformOptions = () => {
   option.plugins?.push([pluginTransformRuntime.default, transformRuntime]);
   option.plugins?.push([pluginProposalClassProperties.default, { loose: true }]);
   option.plugins?.push([
-    babelPluginAddImportExtension,
+    babelPluginAddImportExtension.default,
     {
       extension: 'js',
       skipUnlistedExtensions: true,
