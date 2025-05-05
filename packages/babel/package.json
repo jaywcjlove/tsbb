@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.22.5",
+    "@babel/helpers": "^7.27.1",
     "@babel/plugin-proposal-class-properties": "~7.18.6",
     "@babel/plugin-proposal-decorators": "^7.22.5",
     "@babel/plugin-proposal-export-default-from": "^7.22.0",
