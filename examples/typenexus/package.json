@@ -2,7 +2,7 @@
   "name": "@template/typenexus",
   "private": true,
   "type": "module",
-  "version": "4.5.1",
+  "version": "4.5.2",
   "description": "TypeNexus Example.",
   "scripts": {
     "start": "npm run build && node dist/main.js",
@@ -32,6 +32,6 @@
     "supertest": "^6.3.3",
     "supertest-session": "^4.1.0",
     "ts-node": "^10.9.1",
-    "tsbb": "4.5.1"
+    "tsbb": "4.5.2"
   }
 }
