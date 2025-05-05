@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TSBB 4.5.5</title>
+    <meta name="description" content="Quick Start ·   Example ·   Command Help ·   npm ·   License">
+    <meta name="keywords" content="typescript,babel,react,tsbb,node.js">
+    <link rel="stylesheet" type="text/css" href="css/main.css?v=1.34.1">
+    <link rel="stylesheet" type="text/css" href="css/tocbot.css?v=1.34.1">
+    <link rel="stylesheet" type="text/css" href="css/media.css?v=1.34.1">
+    <link rel="stylesheet" type="text/css" href="css/sidebar.css?v=1.34.1">
+    <link rel="stylesheet" type="text/css" href="css/copy.css?v=1.34.1">
+    <link rel="stylesheet" type="text/css" href="css/demo-preview.css?v=1.34.1">
+    <link rel="icon" href="data:image/png;base64,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" type="image/x-icon">
+    <script src="js/copy.js?v=1.34.1"></script>
+    <script src="js/dark-mode.js?v=1.34.1"></script>
+    <script src="js/markdown-style.js?v=1.34.1"></script>
+  </head>
+  <body id="idoctotop"><a href="#idoctotop" class="gototop">top</a>
+    <header class="header">
+      <article class="inner warpper"><a class="logo" href="index.html"><img alt="TSBB <sup>4.5.5</sup> logo" src="data:image/png;base64,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">
+<span class="title">TSBB <sup>4.5.5</sup></span></a>
+        <div class="content">
+          <ul class="menu"></ul><a href="https://github.com/jaywcjlove/tsbb.git" target="_blank" rel="noopener noreferrer" title="Github" name="Github" class="github"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg></a>
+          <dark-mode permanent=""></dark-mode>
+        </div>
+      </article>
+    </header>
+    <div class="warpper-content warpper">
+      <markdown-style theme-auto-switch-disabled="">
+        <p><a href="https://github.com/jaywcjlove/tsbb"><img src="https://user-images.githubusercontent.com/1680273/57547188-94c60100-7390-11e9-93b2-5ebf085bb925.png" alt="tsbb"></a></p>
+        <p align="center"><a href="https://github.com/jaywcjlove/tsbb/actions/workflows/ci.yml"><img alt="Build &#x26; Deploy" src="https://github.com/jaywcjlove/tsbb/actions/workflows/ci.yml/badge.svg">
+</a><a href="https://www.npmjs.com/package/tsbb"><img alt="NPM Downloads" src="https://img.shields.io/npm/dm/tsbb.svg?style=flat">
+</a><a href="https://uiwjs.github.io/npm-unpkg/#/pkg/tsbb/file/README.md"><img alt="Open in unpkg" src="https://img.shields.io/badge/Open%20in-unpkg-blue">
+</a><a href="https://www.npmjs.com/package/tsbb"><img alt="npm version" src="https://img.shields.io/npm/v/tsbb.svg"></a></p>
+        <p align="center">
+          <a href="#quick-start">Quick Start</a> ·
+          <a href="#example">Example</a> ·
+          <a href="#command-help">Command Help</a> ·
+          <a href="https://www.npmjs.com/package/tsbb">npm</a> ·
+          <a href="#license">License</a>
+        </p>
+        <p>TSBB is a CLI tool for developing, testing and publishing modern TypeScript projects with zero configuration, and can also be used for module or react component development.</p>
+        <p><code>TypeScript + Babel</code> = <code>TSBB</code></p>
+        <p>Migrate from tsbb <a href="https://github.com/jaywcjlove/tsbb/issues/439">3.x to 4.x</a>.</p>
+        <h2 id="features"><a aria-hidden="true" tabindex="-1" href="#features" class="anchor"><span class="icon icon-link"></span></a><code>Features</code></h2>
+        <ul>
+          <li>🔥 Single dependency zero-configuration</li>
+          <li>⏱ Quick initialization of example projects and entering development mode</li>
+          <li>♻️ Automatic recompilation of code when files are added, modified, or removed</li>
+          <li>📚 Readable source code that encourages learning and contribution</li>
+          <li>🚀 Faster compilation speeds</li>
+          <li>⚛️ Support for <a href="https://react.dev">React</a> and <a href="https://vuejs.org">Vue 3</a> component compilation</li>
+          <li>⛑ <a href="https://jestjs.io/">Jest</a> test runner setup with defaults of <code>tsbb test</code></li>
+        </ul>
+        <h2 id="quick-start"><a aria-hidden="true" tabindex="-1" href="#quick-start" class="anchor"><span class="icon icon-link"></span></a>Quick Start</h2>
+        <p>You will need <code>Node.js</code> installed on your system.</p>
+        <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">yarn</span> create tsbb <span class="token punctuation">[</span>appName<span class="token punctuation">]</span>
+</span><span class="code-line line-number" line="2"><span class="token comment"># or npm</span>
+</span><span class="code-line line-number" line="3">$ <span class="token function">npm</span> create tsbb@latest my-app -- <span class="token parameter variable">-e</span> express
+</span><span class="code-line line-number" line="4"><span class="token comment"># --- Example name ------┴ˇˇˇˇˇ</span>
+</span><span class="code-line line-number" line="5"><span class="token comment"># or npx</span>
+</span><span class="code-line line-number" line="6">$ npx create-tsbb@latest my-app <span class="token parameter variable">-e</span> koa
+</span><span class="code-line line-number" line="7">
+</span><span class="code-line line-number" line="8"><span class="token comment"># npm 7+, extra double-dash is needed:</span>
+</span><span class="code-line line-number" line="9">$ <span class="token function">npm</span> init tsbb my-app -- <span class="token parameter variable">--example</span> typenexus
+</span><span class="code-line line-number" line="10"><span class="token comment"># npm 6.x</span>
+</span><span class="code-line line-number" line="11">$ <span class="token function">npm</span> init tsbb my-app <span class="token parameter variable">--example</span> typenexus
+</span><span class="code-line line-number" line="12">
+</span><span class="code-line line-number" line="13">$ <span class="token builtin class-name">cd</span> my-project
+</span><span class="code-line line-number" line="14">
+</span><span class="code-line line-number" line="15">$ <span class="token function">npm</span> run <span class="token function">watch</span> <span class="token comment"># Listen compile .ts files.</span>
+</span><span class="code-line line-number" line="16">$ <span class="token function">npm</span> run build <span class="token comment"># compile .ts files.</span>
+</span><span class="code-line line-number" line="17">$ <span class="token function">npm</span> start
+</span></code><input type="hidden" value="$ yarn create tsbb [appName]
+# or npm
+$ npm create tsbb@latest my-app -- -e express
+# --- Example name ------┴ˇˇˇˇˇ
+# or npx
+$ npx create-tsbb@latest my-app -e koa
+
+# npm 7+, extra double-dash is needed:
+$ npm init tsbb my-app -- --example typenexus
+# npm 6.x
+$ npm init tsbb my-app --example typenexus
+
+$ cd my-project
+
+$ npm run watch # Listen compile .ts files.
+$ npm run build # compile .ts files.
+$ npm start
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <p>1️⃣ Installation &#x26; Setup</p>
+        <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">npm</span> i <span class="token parameter variable">-D</span> microbundle
+</span></code><input type="hidden" value="$ npm i -D microbundle
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <p>2️⃣ Set up your <code>package.json</code>:</p>
+        <pre class="language-json"><code class="language-json code-highlight"><span class="code-line line-number" line="1"><span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="2">  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"@pkg/basic"</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="3">  <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"1.0.0"</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="4">  <span class="token property">"main"</span><span class="token operator">:</span> <span class="token string">"./cjs/index.js"</span><span class="token punctuation">,</span>      <span class="token comment">// where to generate the CommonJS bundle</span>
+</span><span class="code-line line-number" line="5">  <span class="token property">"module"</span><span class="token operator">:</span> <span class="token string">"./esm/index.js"</span><span class="token punctuation">,</span>    <span class="token comment">// where to generate the ESM bundle</span>
+</span><span class="code-line line-number" line="6">  <span class="token property">"exports"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="7">    <span class="token property">"require"</span><span class="token operator">:</span> <span class="token string">"./cjs/index.js"</span><span class="token punctuation">,</span> <span class="token comment">// used for require() in Node 12+</span>
+</span><span class="code-line line-number" line="8">    <span class="token property">"default"</span><span class="token operator">:</span> <span class="token string">"./esm/index.js"</span>  <span class="token comment">// where to generate the modern bundle (see below)</span>
+</span><span class="code-line line-number" line="9">  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="10">  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="11">    <span class="token property">"watch"</span><span class="token operator">:</span> <span class="token string">"tsbb watch"</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="12">    <span class="token property">"build"</span><span class="token operator">:</span> <span class="token string">"tsbb build --bail"</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="13">    <span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"tsbb test"</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="14">    <span class="token property">"coverage"</span><span class="token operator">:</span> <span class="token string">"tsbb test --coverage --bail"</span>
+</span><span class="code-line line-number" line="15">  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="16">  <span class="token property">"devDependencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="17">    <span class="token property">"tsbb"</span><span class="token operator">:</span> <span class="token string">"4.1.14"</span>
+</span><span class="code-line line-number" line="18">  <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="19"><span class="token punctuation">}</span>
+</span></code><input type="hidden" value="{
+  &#x22;name&#x22;: &#x22;@pkg/basic&#x22;,
+  &#x22;version&#x22;: &#x22;1.0.0&#x22;,
+  &#x22;main&#x22;: &#x22;./cjs/index.js&#x22;,      // where to generate the CommonJS bundle
+  &#x22;module&#x22;: &#x22;./esm/index.js&#x22;,    // where to generate the ESM bundle
+  &#x22;exports&#x22;: {
+    &#x22;require&#x22;: &#x22;./cjs/index.js&#x22;, // used for require() in Node 12+
+    &#x22;default&#x22;: &#x22;./esm/index.js&#x22;  // where to generate the modern bundle (see below)
+  },
+  &#x22;scripts&#x22;: {
+    &#x22;watch&#x22;: &#x22;tsbb watch&#x22;,
+    &#x22;build&#x22;: &#x22;tsbb build --bail&#x22;,
+    &#x22;test&#x22;: &#x22;tsbb test&#x22;,
+    &#x22;coverage&#x22;: &#x22;tsbb test --coverage --bail&#x22;
+  },
+  &#x22;devDependencies&#x22;: {
+    &#x22;tsbb&#x22;: &#x22;4.1.14&#x22;
+  }
+}
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <p>3️⃣ Try it out by running npm run build.</p>
+        <h2 id="example"><a aria-hidden="true" tabindex="-1" href="#example" class="anchor"><span class="icon icon-link"></span></a>Example</h2>
+        <p><a href="https://github.com/jaywcjlove/tsbb/tree/master/packages/create-tsbb">create-tsbb</a> initialize the project from one of the examples:</p>
+        <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ npx create-tsbb my-app <span class="token parameter variable">-e</span> <span class="token operator">&#x3C;</span>Example Name<span class="token operator">></span>
+</span><span class="code-line line-number" line="2"><span class="token comment"># --- E.g: ----------------┴ˇˇˇˇˇˇˇˇˇˇˇˇˇˇ</span>
+</span><span class="code-line line-number" line="3"><span class="token comment"># npx create-tsbb my-app -e Basic</span>
+</span></code><input type="hidden" value="$ npx create-tsbb my-app -e <Example Name>
+# --- E.g: ----------------┴ˇˇˇˇˇˇˇˇˇˇˇˇˇˇ
+# npx create-tsbb my-app -e Basic
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <p>You can download the following examples directly. <a href="https://jaywcjlove.github.io/tsbb">Download page</a>.</p>
+        <ul>
+          <li><a href="https://github.com/jaywcjlove/tsbb/tree/master/examples/basic"><strong><code>basic</code></strong></a> - The <a href="https://nodejs.org/en/">Node.js</a> base application example.</li>
+          <li><a href="https://github.com/jaywcjlove/tsbb/tree/master/examples/babel-transform-ts"><strong><code>babel-transform-ts</code></strong></a> - Babel Transform Typescript Example.</li>
+          <li><a href="https://github.com/jaywcjlove/tsbb/tree/master/examples/express"><strong><code>express</code></strong></a> - The <a href="https://expressjs.com/">Express</a> base application example.</li>
+          <li><a href="https://github.com/jaywcjlove/tsbb/tree/master/examples/typenexus"><strong><code>typenexus</code></strong></a> - The <a href="https://expressjs.com/">Express</a> &#x26; <a href="https://github.com/typeorm/typeorm">TypeORM</a> base application example.</li>
+          <li><a href="https://github.com/jaywcjlove/tsbb/tree/master/examples/koa"><strong><code>koa</code></strong></a> - The <a href="https://koajs.com/">Koa</a> base application example.</li>
+          <li><a href="https://github.com/jaywcjlove/tsbb/tree/master/examples/hapi"><strong><code>hapi</code></strong></a> - The <a href="https://hapijs.com/">Hapi</a> base application example.</li>
+          <li><a href="https://github.com/jaywcjlove/tsbb/tree/master/examples/react-component"><strong><code>react-component</code></strong></a> - The react component base application example.</li>
+          <li><a href="https://github.com/jaywcjlove/tsbb/tree/master/examples/react-component-tsx"><strong><code>react-component-tsx</code></strong></a> - The react component and website base application example.</li>
+          <li><a href="https://github.com/jaywcjlove/tsbb/tree/master/examples/transform-typescript"><strong><code>transform-typescript</code></strong></a> - Reconfigure the babel configuration example.</li>
+          <li><a href="https://github.com/jaywcjlove/tsbb/tree/master/examples/umd"><strong><code>umd</code></strong></a> - umd bundle example.</li>
+          <li><a href="https://github.com/jaywcjlove/tsbb/tree/master/examples/vue"><strong><code>vue</code></strong></a> - To add Vue 3 JSX support.</li>
+        </ul>
+        <h2 id="typescript-project"><a aria-hidden="true" tabindex="-1" href="#typescript-project" class="anchor"><span class="icon icon-link"></span></a>TypeScript Project</h2>
+        <p>To configure the <strong><code>tsconfig.json</code></strong> properly, you must first define either the <strong><code>include</code></strong> or <strong><code>files</code></strong> field(s) to specify which files need to be compiled. Once you've done that, you can then specify the <strong><code>outDir</code></strong> for the output directory in the configuration.</p>
+        <pre class="language-typescript"><code class="language-typescript code-highlight"><span class="code-line line-number" line="1"><span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="2">  <span class="token string-property property">"$schema"</span><span class="token operator">:</span> <span class="token string">"http://json.schemastore.org/tsconfig"</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="3">  <span class="token string-property property">"compilerOptions"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="4">    <span class="token string-property property">"module"</span><span class="token operator">:</span> <span class="token string">"commonjs"</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="5">    <span class="token string-property property">"target"</span><span class="token operator">:</span> <span class="token string">"esnext"</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="6">    <span class="token string-property property">"outDir"</span><span class="token operator">:</span> <span class="token string">"./lib"</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="7">    <span class="token string-property property">"strict"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="8">    <span class="token string-property property">"skipLibCheck"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+</span><span class="code-line line-number" line="9">  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="10">  <span class="token string-property property">"include"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"src/**/*"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="11">  <span class="token string-property property">"exclude"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+</span><span class="code-line line-number" line="12">    <span class="token string">"node_modules"</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="13">    <span class="token string">"**/*.spec.ts"</span>
+</span><span class="code-line line-number" line="14">  <span class="token punctuation">]</span>
+</span><span class="code-line line-number" line="15"><span class="token punctuation">}</span>
+</span></code><input type="hidden" value="{
+  &#x22;$schema&#x22;: &#x22;http://json.schemastore.org/tsconfig&#x22;,
+  &#x22;compilerOptions&#x22;: {
+    &#x22;module&#x22;: &#x22;commonjs&#x22;,
+    &#x22;target&#x22;: &#x22;esnext&#x22;,
+    &#x22;outDir&#x22;: &#x22;./lib&#x22;,
+    &#x22;strict&#x22;: true,
+    &#x22;skipLibCheck&#x22;: true
+  },
+  &#x22;include&#x22;: [&#x22;src/**/*&#x22;],
+  &#x22;exclude&#x22;: [
+    &#x22;node_modules&#x22;,
+    &#x22;**/*.spec.ts&#x22;
+  ]
+}
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <p>After completing <code>tsconfig.jso</code> configuration, you can configure <em>scripts</em> in <code>package.json</code>:</p>
+        <pre class="language-javascript"><code class="language-javascript code-highlight"><span class="code-line line-number" line="1"><span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="2">  <span class="token string-property property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="3">    <span class="token string-property property">"watch"</span><span class="token operator">:</span> <span class="token string">"tsbb watch"</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="4">    <span class="token string-property property">"build"</span><span class="token operator">:</span> <span class="token string">"tsbb build"</span>
+</span><span class="code-line line-number" line="5">  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="6">  <span class="token string-property property">"devDependencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="7">    <span class="token string-property property">"tsbb"</span><span class="token operator">:</span> <span class="token string">"*"</span>
+</span><span class="code-line line-number" line="8">  <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="9"><span class="token punctuation">}</span>
+</span></code><input type="hidden" value="{
+  &#x22;scripts&#x22;: {
+    &#x22;watch&#x22;: &#x22;tsbb watch&#x22;,
+    &#x22;build&#x22;: &#x22;tsbb build&#x22;
+  },
+  &#x22;devDependencies&#x22;: {
+    &#x22;tsbb&#x22;: &#x22;*&#x22;
+  }
+}
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h2 id="babel-project"><a aria-hidden="true" tabindex="-1" href="#babel-project" class="anchor"><span class="icon icon-link"></span></a>Babel Project</h2>
+        <p>Adding the parameter <code>--use-babel</code> to your project enables babel to compile and output <strong><code>cjs</code></strong>/<strong><code>esm</code></strong> files simultaneously, while <strong><code>ts</code></strong> is only needed for <em>type</em> output.</p>
+        <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">$ tsbb build <span class="token string">"src/*ts"</span> --use-babel
+</span></code><input type="hidden" value="$ tsbb build &#x22;src/*ts&#x22; --use-babel
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <p>You can change the built-in settings of Babel by adding a <strong><code>.babelrc</code></strong> configuration file. Additionally, you can modify the <strong>Babel</strong> configurations for <strong><code>esm</code></strong> and <strong><code>cjs</code></strong> separately through environment variables. Please refer to the example below:</p>
+        <pre class="language-js"><code class="language-js code-highlight"><span class="code-line line-number" line="1"><span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="2">  <span class="token string-property property">"env"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="3">    <span class="token string-property property">"cjs"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="4">      <span class="token string-property property">"presets"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"@babel/preset-typescript"</span><span class="token punctuation">]</span>
+</span><span class="code-line line-number" line="5">    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="6">    <span class="token string-property property">"esm"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="7">      <span class="token string-property property">"presets"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"@babel/preset-env"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="8">        <span class="token string-property property">"modules"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="9">        <span class="token string-property property">"loose"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="10">        <span class="token string-property property">"targets"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="11">          <span class="token string-property property">"esmodules"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="12">        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+</span><span class="code-line line-number" line="13">      <span class="token punctuation">}</span><span class="token punctuation">]</span>
+</span><span class="code-line line-number" line="14">    <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="15">  <span class="token punctuation">}</span> 
+</span><span class="code-line line-number" line="16"><span class="token punctuation">}</span>
+</span></code><input type="hidden" value="{
+  &#x22;env&#x22;: {
+    &#x22;cjs&#x22;: {
+      &#x22;presets&#x22;: [&#x22;@babel/preset-typescript&#x22;]
+    },
+    &#x22;esm&#x22;: {
+      &#x22;presets&#x22;: [&#x22;@babel/preset-env&#x22;, {
+        &#x22;modules&#x22;: false,
+        &#x22;loose&#x22;: true,
+        &#x22;targets&#x22;: {
+          &#x22;esmodules&#x22;: true,
+        },
+      }]
+    }
+  } 
+}
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <p>At compile time, specify the environment variable <code>--envName='xxx'</code> to enable reading of relevant configurations from the settings. This environment variable can also be customized.</p>
+        <pre class="language-js"><code class="language-js code-highlight"><span class="code-line line-number" line="1"><span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="2">  <span class="token string-property property">"env"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="3">    <span class="token string-property property">"xxx"</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token spread operator">...</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="4">  <span class="token punctuation">}</span> 
+</span><span class="code-line line-number" line="5"><span class="token punctuation">}</span>
+</span></code><input type="hidden" value="{
+  &#x22;env&#x22;: {
+    &#x22;xxx&#x22;: { ... }
+  } 
+}
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h2 id="command-help"><a aria-hidden="true" tabindex="-1" href="#command-help" class="anchor"><span class="icon icon-link"></span></a>Command Help</h2>
+        <p>Below is a help of commands you might find useful.</p>
+        <h3 id="tsbb"><a aria-hidden="true" tabindex="-1" href="#tsbb" class="anchor"><span class="icon icon-link"></span></a><code>tsbb</code></h3>
+        <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">▶ tsbb <span class="token parameter variable">--help</span>
+</span><span class="code-line line-number" line="2">
+</span><span class="code-line line-number" line="3">Usage: tsbb <span class="token operator">&#x3C;</span>command<span class="token operator">></span>
+</span><span class="code-line line-number" line="4">
+</span><span class="code-line line-number" line="5">Commands:
+</span><span class="code-line line-number" line="6">
+</span><span class="code-line line-number" line="7">  tsbb build <span class="token punctuation">[</span>source…<span class="token punctuation">]</span> <span class="token punctuation">[</span>options<span class="token punctuation">]</span>   Build your project once and exit.
+</span><span class="code-line line-number" line="8">  tsbb <span class="token function">watch</span> <span class="token punctuation">[</span>source…<span class="token punctuation">]</span> <span class="token punctuation">[</span>options<span class="token punctuation">]</span>   Recompile files on changes.
+</span><span class="code-line line-number" line="9">  tsbb <span class="token builtin class-name">test</span> <span class="token punctuation">[</span>options<span class="token punctuation">]</span>              Run jest <span class="token builtin class-name">test</span> runner <span class="token keyword">in</span> <span class="token function">watch</span> mode.
+</span><span class="code-line line-number" line="10">  tsbb copy<span class="token operator">|</span>cpy <span class="token operator">&#x3C;</span>source …<span class="token operator">></span> <span class="token punctuation">[</span>options<span class="token punctuation">]</span>   Copy files.
+</span><span class="code-line line-number" line="11">
+</span><span class="code-line line-number" line="12">Options:<span class="token punctuation">[</span>build<span class="token operator">|</span>watch<span class="token punctuation">]</span>
+</span><span class="code-line line-number" line="13">
+</span><span class="code-line line-number" line="14">  <span class="token parameter variable">--bail</span>                     Exit the compile as soon as the compile fails<span class="token punctuation">(</span>default: <span class="token boolean">true</span><span class="token punctuation">)</span>.
+</span><span class="code-line line-number" line="15">  --use-babel                Use Babel.<span class="token punctuation">(</span>works <span class="token keyword">in</span> babel<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="16">  --source-maps              Enables the generation of sourcemap files.<span class="token punctuation">(</span>works <span class="token keyword">in</span> babel<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="17">  --env-name                 The current active environment used during configuration loading.<span class="token punctuation">(</span>works <span class="token keyword">in</span> babel<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="18">  <span class="token parameter variable">--esm</span>                      Output <span class="token string">"esm"</span> directory.<span class="token punctuation">(</span>works <span class="token keyword">in</span> babel<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="19">  <span class="token parameter variable">--cjs</span>                      Output <span class="token string">"cjs"</span> directory.<span class="token punctuation">(</span>works <span class="token keyword">in</span> babel<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="20">  --use-vue                  Supports <span class="token string">"Vue3"</span>, requires <span class="token string">"--use-babel"</span> to be used together.
+</span><span class="code-line line-number" line="21">Options:
+</span><span class="code-line line-number" line="22">
+</span><span class="code-line line-number" line="23">  --version, <span class="token parameter variable">-v</span>              Show version number
+</span><span class="code-line line-number" line="24">  --help, <span class="token parameter variable">-h</span>                 Show <span class="token builtin class-name">help</span>
+</span><span class="code-line line-number" line="25">
+</span><span class="code-line line-number" line="26">Examples:
+</span><span class="code-line line-number" line="27">
+</span><span class="code-line line-number" line="28">  $ tsbb build src/*.ts                    Build your project.
+</span><span class="code-line line-number" line="29">  $ tsbb build src/main.ts src/good.ts     Specify the entry directory.
+</span><span class="code-line line-number" line="30">  $ tsbb build src/*.ts --use-babel --no-source-maps   No <span class="token string">".js.map"</span> <span class="token function">file</span> is generated. <span class="token punctuation">(</span>works <span class="token keyword">in</span> babel<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="31">  $ tsbb <span class="token function">watch</span> src/*.ts --use-babel <span class="token parameter variable">--cjs</span> ./cjs        Watch Output directory.
+</span><span class="code-line line-number" line="32">  $ tsbb build src/*.ts --use-babel <span class="token parameter variable">--esm</span> ./es         Output directory.
+</span><span class="code-line line-number" line="33">  $ tsbb build src/*.ts --use-babel --use-vue          To <span class="token function">add</span> Vue JSX support.
+</span><span class="code-line line-number" line="34">  $ tsbb <span class="token builtin class-name">test</span>                              Run <span class="token builtin class-name">test</span> suites related
+</span><span class="code-line line-number" line="35">  $ tsbb <span class="token builtin class-name">test</span> <span class="token parameter variable">--coverage</span> <span class="token parameter variable">--bail</span>            Test coverage information should be collected
+</span><span class="code-line line-number" line="36">  $ tsbb copy  <span class="token string">'src/*.png'</span> <span class="token string">'!src/goat.png'</span> <span class="token parameter variable">--output</span> dist     Copy files.
+</span><span class="code-line line-number" line="37">  $ tsbb copy  <span class="token string">'src/*.png'</span> <span class="token string">'src/goat.{js,d.ts}'</span> <span class="token parameter variable">--output</span> dist <span class="token parameter variable">--watch</span>
+</span><span class="code-line line-number" line="38">
+</span><span class="code-line line-number" line="39">  Copyright <span class="token number">2023</span>
+</span><span class="code-line line-number" line="40">
+</span></code><input type="hidden" value="▶ tsbb --help
+
+Usage: tsbb <command>
+
+Commands:
+
+  tsbb build [source…] [options]   Build your project once and exit.
+  tsbb watch [source…] [options]   Recompile files on changes.
+  tsbb test [options]              Run jest test runner in watch mode.
+  tsbb copy|cpy <source …> [options]   Copy files.
+
+Options:[build|watch]
+
+  --bail                     Exit the compile as soon as the compile fails(default: true).
+  --use-babel                Use Babel.(works in babel)
+  --source-maps              Enables the generation of sourcemap files.(works in babel)
+  --env-name                 The current active environment used during configuration loading.(works in babel)
+  --esm                      Output &#x22;esm&#x22; directory.(works in babel)
+  --cjs                      Output &#x22;cjs&#x22; directory.(works in babel)
+  --use-vue                  Supports &#x22;Vue3&#x22;, requires &#x22;--use-babel&#x22; to be used together.
+Options:
+
+  --version, -v              Show version number
+  --help, -h                 Show help
+
+Examples:
+
+  $ tsbb build src/*.ts                    Build your project.
+  $ tsbb build src/main.ts src/good.ts     Specify the entry directory.
+  $ tsbb build src/*.ts --use-babel --no-source-maps   No &#x22;.js.map&#x22; file is generated. (works in babel)
+  $ tsbb watch src/*.ts --use-babel --cjs ./cjs        Watch Output directory.
+  $ tsbb build src/*.ts --use-babel --esm ./es         Output directory.
+  $ tsbb build src/*.ts --use-babel --use-vue          To add Vue JSX support.
+  $ tsbb test                              Run test suites related
+  $ tsbb test --coverage --bail            Test coverage information should be collected
+  $ tsbb copy  &#x27;src/*.png&#x27; &#x27;!src/goat.png&#x27; --output dist     Copy files.
+  $ tsbb copy  &#x27;src/*.png&#x27; &#x27;src/goat.{js,d.ts}&#x27; --output dist --watch
+
+  Copyright 2023
+
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h3 id="tsbb-create"><a aria-hidden="true" tabindex="-1" href="#tsbb-create" class="anchor"><span class="icon icon-link"></span></a><del><code>tsbb create</code></del></h3>
+        <p>Please use <a href="https://github.com/jaywcjlove/tsbb/tree/master/packages/create-tsbb">create-tsbb</a> to create an example.</p>
+        <h3 id="tsbb-test"><a aria-hidden="true" tabindex="-1" href="#tsbb-test" class="anchor"><span class="icon icon-link"></span></a><code>tsbb test</code></h3>
+        <p>Runs the test watcher (<a href="https://jestjs.io/docs/cli">Jest</a>) in an interactive mode.</p>
+        <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">$ tsbb <span class="token builtin class-name">test</span>                          Run <span class="token builtin class-name">test</span> suites related
+</span><span class="code-line line-number" line="2">$ tsbb <span class="token builtin class-name">test</span> <span class="token parameter variable">--coverage</span> --no-color    Test coverage information should be collected
+</span></code><input type="hidden" value="$ tsbb test                          Run test suites related
+$ tsbb test --coverage --no-color    Test coverage information should be collected
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <pre class="language-ts"><code class="language-ts code-highlight"><span class="code-line line-number" line="1"><span class="token keyword">export</span> <span class="token keyword">declare</span> <span class="token keyword">type</span> <span class="token class-name">Argv</span> <span class="token operator">=</span> Arguments<span class="token operator">&#x3C;</span>Partial<span class="token operator">&#x3C;</span><span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="2">  all<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="3">  automock<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="4">  bail<span class="token operator">:</span> <span class="token builtin">boolean</span> <span class="token operator">|</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="5">  cache<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="6">  cacheDirectory<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="7">  changedFilesWithAncestor<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="8">  changedSince<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="9">  ci<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="10">  clearCache<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="11">  clearMocks<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="12">  collectCoverage<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="13">  collectCoverageFrom<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="14">  collectCoverageOnlyFrom<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&#x3C;</span><span class="token builtin">string</span><span class="token operator">></span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="15">  color<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="16">  colors<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="17">  config<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="18">  coverage<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="19">  coverageDirectory<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="20">  coveragePathIgnorePatterns<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&#x3C;</span><span class="token builtin">string</span><span class="token operator">></span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="21">  coverageReporters<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&#x3C;</span><span class="token builtin">string</span><span class="token operator">></span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="22">  coverageThreshold<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="23">  debug<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="24">  env<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="25">  expand<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="26">  findRelatedTests<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="27">  forceExit<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="28">  globals<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="29">  globalSetup<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="30">  globalTeardown<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="31">  haste<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="32">  init<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="33">  injectGlobals<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="34">  json<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="35">  lastCommit<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="36">  logHeapUsage<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="37">  maxWorkers<span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">|</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="38">  moduleDirectories<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&#x3C;</span><span class="token builtin">string</span><span class="token operator">></span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="39">  moduleFileExtensions<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&#x3C;</span><span class="token builtin">string</span><span class="token operator">></span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="40">  moduleNameMapper<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="41">  modulePathIgnorePatterns<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&#x3C;</span><span class="token builtin">string</span><span class="token operator">></span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="42">  modulePaths<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&#x3C;</span><span class="token builtin">string</span><span class="token operator">></span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="43">  noStackTrace<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="44">  notify<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="45">  notifyMode<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="46">  onlyChanged<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="47">  onlyFailures<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="48">  outputFile<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="49">  preset<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="50">  projects<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&#x3C;</span><span class="token builtin">string</span><span class="token operator">></span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="51">  prettierPath<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="52">  resetMocks<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="53">  resetModules<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="54">  resolver<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="55">  restoreMocks<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="56">  rootDir<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="57">  roots<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&#x3C;</span><span class="token builtin">string</span><span class="token operator">></span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="58">  runInBand<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="59">  selectProjects<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&#x3C;</span><span class="token builtin">string</span><span class="token operator">></span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="60">  setupFiles<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&#x3C;</span><span class="token builtin">string</span><span class="token operator">></span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="61">  setupFilesAfterEnv<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&#x3C;</span><span class="token builtin">string</span><span class="token operator">></span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="62">  showConfig<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="63">  silent<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="64">  snapshotSerializers<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&#x3C;</span><span class="token builtin">string</span><span class="token operator">></span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="65">  testEnvironment<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="66">  testFailureExitCode<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="67">  testMatch<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&#x3C;</span><span class="token builtin">string</span><span class="token operator">></span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="68">  testNamePattern<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="69">  testPathIgnorePatterns<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&#x3C;</span><span class="token builtin">string</span><span class="token operator">></span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="70">  testPathPattern<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&#x3C;</span><span class="token builtin">string</span><span class="token operator">></span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="71">  testRegex<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">|</span> <span class="token builtin">Array</span><span class="token operator">&#x3C;</span><span class="token builtin">string</span><span class="token operator">></span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="72">  testResultsProcessor<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="73">  testRunner<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="74">  testSequencer<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="75">  testURL<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="76">  testTimeout<span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="77">  timers<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="78">  transform<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="79">  transformIgnorePatterns<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&#x3C;</span><span class="token builtin">string</span><span class="token operator">></span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="80">  unmockedModulePathPatterns<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&#x3C;</span><span class="token builtin">string</span><span class="token operator">></span> <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token operator">|</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="81">  updateSnapshot<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="82">  useStderr<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="83">  verbose<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="84">  version<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="85">  watch<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="86">  watchAll<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="87">  watchman<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="88">  watchPathIgnorePatterns<span class="token operator">:</span> <span class="token builtin">Array</span><span class="token operator">&#x3C;</span><span class="token builtin">string</span><span class="token operator">></span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="89"><span class="token punctuation">}</span><span class="token operator">>></span><span class="token punctuation">;</span>
+</span></code><input type="hidden" value="export declare type Argv = Arguments<Partial<{
+  all: boolean;
+  automock: boolean;
+  bail: boolean | number;
+  cache: boolean;
+  cacheDirectory: string;
+  changedFilesWithAncestor: boolean;
+  changedSince: string;
+  ci: boolean;
+  clearCache: boolean;
+  clearMocks: boolean;
+  collectCoverage: boolean;
+  collectCoverageFrom: string;
+  collectCoverageOnlyFrom: Array<string>;
+  color: boolean;
+  colors: boolean;
+  config: string;
+  coverage: boolean;
+  coverageDirectory: string;
+  coveragePathIgnorePatterns: Array<string>;
+  coverageReporters: Array<string>;
+  coverageThreshold: string;
+  debug: boolean;
+  env: string;
+  expand: boolean;
+  findRelatedTests: boolean;
+  forceExit: boolean;
+  globals: string;
+  globalSetup: string | null | undefined;
+  globalTeardown: string | null | undefined;
+  haste: string;
+  init: boolean;
+  injectGlobals: boolean;
+  json: boolean;
+  lastCommit: boolean;
+  logHeapUsage: boolean;
+  maxWorkers: number | string;
+  moduleDirectories: Array<string>;
+  moduleFileExtensions: Array<string>;
+  moduleNameMapper: string;
+  modulePathIgnorePatterns: Array<string>;
+  modulePaths: Array<string>;
+  noStackTrace: boolean;
+  notify: boolean;
+  notifyMode: string;
+  onlyChanged: boolean;
+  onlyFailures: boolean;
+  outputFile: string;
+  preset: string | null | undefined;
+  projects: Array<string>;
+  prettierPath: string | null | undefined;
+  resetMocks: boolean;
+  resetModules: boolean;
+  resolver: string | null | undefined;
+  restoreMocks: boolean;
+  rootDir: string;
+  roots: Array<string>;
+  runInBand: boolean;
+  selectProjects: Array<string>;
+  setupFiles: Array<string>;
+  setupFilesAfterEnv: Array<string>;
+  showConfig: boolean;
+  silent: boolean;
+  snapshotSerializers: Array<string>;
+  testEnvironment: string;
+  testFailureExitCode: string | null | undefined;
+  testMatch: Array<string>;
+  testNamePattern: string;
+  testPathIgnorePatterns: Array<string>;
+  testPathPattern: Array<string>;
+  testRegex: string | Array<string>;
+  testResultsProcessor: string;
+  testRunner: string;
+  testSequencer: string;
+  testURL: string;
+  testTimeout: number | null | undefined;
+  timers: string;
+  transform: string;
+  transformIgnorePatterns: Array<string>;
+  unmockedModulePathPatterns: Array<string> | null | undefined;
+  updateSnapshot: boolean;
+  useStderr: boolean;
+  verbose: boolean;
+  version: boolean;
+  watch: boolean;
+  watchAll: boolean;
+  watchman: boolean;
+  watchPathIgnorePatterns: Array<string>;
+}>>;
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h2 id="development"><a aria-hidden="true" tabindex="-1" href="#development" class="anchor"><span class="icon icon-link"></span></a>Development</h2>
+        <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">$ <span class="token function">npm</span> i
+</span><span class="code-line line-number" line="2">$ <span class="token function">npm</span> run build
+</span></code><input type="hidden" value="$ npm i
+$ npm run build
+"><div onclick="copied(this)" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+        <h2 id="contributors"><a aria-hidden="true" tabindex="-1" href="#contributors" class="anchor"><span class="icon icon-link"></span></a>Contributors</h2>
+        <p>As always, thanks to our amazing contributors!</p><a href="https://github.com/jaywcjlove/tsbb/graphs/contributors"><img src="http://jaywcjlove.github.io/tsbb/CONTRIBUTORS.svg"></a>
+        <p>Made with <a href="https://github.com/jaywcjlove/github-action-contributors">contributors</a>.</p>
+        <h2 id="license"><a aria-hidden="true" tabindex="-1" href="#license" class="anchor"><span class="icon icon-link"></span></a>License</h2>
+        <p>MIT © <a href="https://wangchujiang.com">Kenny Wong</a></p>
+        <script src="https://giscus.app/client.js" data-repo="jaywcjlove/tsbb" data-repo-id="MDEwOlJlcG9zaXRvcnkxODQ5MTg0NDY=" data-category="Q&#x26;A" data-category-id="DIC_kwDOCwWhrs4CZifu" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="dark" data-lang="en" data-loading="lazy" crossorigin="anonymous" async="true" data-script-id="giscus"></script>
+        <div class=".giscus"></div>
+        <script src="js/giscus.js?v=1.34.1"></script>
+      </markdown-style>
+      <nav class="tocs">
+        <aside class="inner toc">
+          <ol class="tocs-list">
+            <li><a href="#features" class="tocs-link">Features</a></li>
+            <li><a href="#quick-start" class="tocs-link">Quick Start</a></li>
+            <li><a href="#example" class="tocs-link">Example</a></li>
+            <li><a href="#typescript-project" class="tocs-link">TypeScript Project</a></li>
+            <li><a href="#babel-project" class="tocs-link">Babel Project</a></li>
+            <li><a href="#command-help" class="tocs-link">Command Help</a>
+              <ol class="tocs-list is-collapsed">
+                <li><a href="#tsbb" class="tocs-link">tsbb</a></li>
+                <li><a href="#tsbb-create" class="tocs-link">tsbb create</a></li>
+                <li><a href="#tsbb-test" class="tocs-link">tsbb test</a></li>
+              </ol>
+            </li>
+            <li><a href="#development" class="tocs-link">Development</a></li>
+            <li><a href="#contributors" class="tocs-link">Contributors</a></li>
+            <li><a href="#license" class="tocs-link">License</a></li>
+          </ol>
+        </aside>
+      </nav>
+    </div>
+    <script src="js/demo-preview.js?v=1.34.1"></script>
+    <div class="footer warpper">Released under the MIT License. Copyright © 2025 Kenny Wong<br>Generated by <a href="https://github.com/jaywcjlove/idoc" target="_blank">idoc</a> v1.34.1</div>
+    <script src="js/tocbot.js?v=1.34.1"></script>
+  </body>
+</html>
