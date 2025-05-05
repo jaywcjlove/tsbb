@@ -35,6 +35,7 @@
     "typescript": "^5.1.3"
   },
   "dependencies": {
+    "fs-extra": "^11.3.0",
     "typescript": "^5.1.3"
   }
 }
