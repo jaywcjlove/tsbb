@@ -11,10 +11,10 @@ jobs:
       contents: write
       id-token: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 24
           registry-url: 'https://registry.npmjs.org'
 
       - run: npm install
@@ -169,8 +169,6 @@ jobs:
         name: 📦  tsbb publish to NPM
         continue-on-error: true
         working-directory: packages/tsbb
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: copy example to create-tsbb
         working-directory: packages/create-tsbb
@@ -180,33 +178,23 @@ jobs:
         name: 📦  create-tsbb publish to NPM
         continue-on-error: true
         working-directory: packages/create-tsbb
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - run: npm publish --access public --provenance
         name: 📦  @tsbb/typescript publish to NPM
         continue-on-error: true
         working-directory: packages/typescript
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - run: npm publish --access public --provenance
         name: 📦  @tsbb/jest publish to NPM
         continue-on-error: true
         working-directory: packages/jest
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - run: npm publish --access public --provenance
         name: 📦  @tsbb/core publish to NPM
         continue-on-error: true
         working-directory: packages/core
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - run: npm publish --access public --provenance
         name: 📦  @tsbb/babel publish to NPM
         continue-on-error: true
         working-directory: packages/babel
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
