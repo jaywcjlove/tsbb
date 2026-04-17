@@ -40,7 +40,7 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   res.render('error');
 });
 
-app.listen(app.get('port'), () => {
+const server = app.listen(app.get('port'), () => {
   console.log('\n  App is running at\x1b[32;1m http://localhost:%d\x1b[0m in %s mode', app.get('port'), app.get('env'));
   console.log('  Press\x1b[33;1m CTRL-C\x1b[0m to stop\n');
 });
@@ -48,7 +48,7 @@ app.listen(app.get('port'), () => {
 /**
  * Event listener for HTTP server "error" event.
  */
-app.on('error', (error: any) => {
+server.on('error', (error: any) => {
   if (error.syscall !== 'listen') {
     throw error;
   }
