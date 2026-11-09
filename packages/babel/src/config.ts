@@ -27,6 +27,7 @@ import pluginTransformClasses from '@babel/plugin-transform-classes';
 // @ts-ignore
 import babelPluginTransformRenameImport from 'babel-plugin-transform-rename-import';
 import babelPluginAddImportExtension from '@uiw/babel-plugin-add-import-extension';
+import dottedFilenameExtension from './dotted-filename-extension.js';
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
@@ -149,6 +150,11 @@ export const getESMTransformOption: () => TransformOptions = () => {
       skipUnlistedExtensions: true,
     },
   ]);
+  /**
+   * `path.extname('./Editor.nohighlight')` is `.nohighlight`, so the plugin above
+   * skips it when `skipUnlistedExtensions` is set. Node ESM still needs `.js`.
+   */
+  option.plugins?.push(dottedFilenameExtension);
   option.plugins?.push([
     babelPluginTransformRenameImport.default,
     {
