@@ -395,6 +395,14 @@ $ npm i
 $ npm run build
 ```
 
+Package  | Version/unpkg
+----- | ----
+[`@tsbb/core`](http://jaywcjlove.github.io/tsbb) Integrate all packages |  [![npm version](https://img.shields.io/npm/v/@tsbb/core.svg)](https://www.npmjs.com/package/@tsbb/core) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@tsbb/core/file/README.md)
+[`@tsbb/jest`](http://jaywcjlove.github.io/tsbb) |  [![npm version](https://img.shields.io/npm/v/@tsbb/jest.svg)](https://www.npmjs.com/package/@tsbb/jest) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@tsbb/jest/file/README.md)
+[`@tsbb/typescript`](http://jaywcjlove.github.io/tsbb) |  [![npm version](https://img.shields.io/npm/v/@tsbb/typescript.svg)](https://www.npmjs.com/package/@tsbb/typescript) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@tsbb/typescript/file/README.md)
+[`@tsbb/babel`](http://jaywcjlove.github.io/tsbb) |  [![npm version](https://img.shields.io/npm/v/@tsbb/babel.svg)](https://www.npmjs.com/package/@tsbb/babel) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@tsbb/babel/file/README.md)
+[`create-tsbb`](http://jaywcjlove.github.io/tsbb) |  [![npm version](https://img.shields.io/npm/v/create-tsbb.svg)](https://www.npmjs.com/package/create-tsbb) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/create-tsbb/file/README.md)
+
 ## Contributors
 
 As always, thanks to our amazing contributors!
