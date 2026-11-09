@@ -165,7 +165,7 @@ jobs:
 
             ${{ steps.changelog.outputs.changelog }}
 
-      - run: npm publish --access public --provenance
+      - run: NODE_AUTH_TOKEN="" npm publish --access public --provenance
         name: 📦  tsbb publish to NPM
         continue-on-error: true
         working-directory: packages/tsbb
@@ -174,27 +174,27 @@ jobs:
         working-directory: packages/create-tsbb
         run: npm run copy
 
-      - run: npm publish --access public --provenance
+      - run: NODE_AUTH_TOKEN="" npm publish --access public --provenance
         name: 📦  create-tsbb publish to NPM
         continue-on-error: true
         working-directory: packages/create-tsbb
 
-      - run: npm publish --access public --provenance
+      - run: NODE_AUTH_TOKEN="" npm publish --access public --provenance
         name: 📦  @tsbb/typescript publish to NPM
         continue-on-error: true
         working-directory: packages/typescript
 
-      - run: npm publish --access public --provenance
+      - run: NODE_AUTH_TOKEN="" npm publish --access public --provenance
         name: 📦  @tsbb/jest publish to NPM
         continue-on-error: true
         working-directory: packages/jest
 
-      - run: npm publish --access public --provenance
+      - run: NODE_AUTH_TOKEN="" npm publish --access public --provenance
         name: 📦  @tsbb/core publish to NPM
         continue-on-error: true
         working-directory: packages/core
 
-      - run: npm publish --access public --provenance
+      - run: NODE_AUTH_TOKEN="" npm publish --access public --provenance
         name: 📦  @tsbb/babel publish to NPM
         continue-on-error: true
         working-directory: packages/babel
