@@ -1,7 +1,12 @@
 import fs from 'fs';
 import path from 'path';
+import { buildExample } from '../scripts/build-example';
 
 const dirPath = path.resolve(process.cwd(), 'examples/basic');
+
+beforeAll(() => {
+  buildExample('basic', ['build', '--bail']);
+});
 
 it('basic example test case', async () => {
   const dirs = await fs.promises.readdir(dirPath);

@@ -1,7 +1,12 @@
 import fs from 'fs';
 import path from 'path';
+import { buildExample } from '../scripts/build-example';
 
 const vueDirPath = path.resolve(process.cwd(), 'examples/vue');
+
+beforeAll(() => {
+  buildExample('vue', ['build', 'src/*.tsx', '--use-vue', '--use-babel', '--cjs', 'cjs', '--bail']);
+});
 
 it('vue example test case', async () => {
   const dirs = await fs.promises.readdir(vueDirPath);

@@ -1,7 +1,12 @@
 import fs from 'fs';
 import path from 'path';
+import { buildExample } from '../scripts/build-example';
 
 const dirPath = path.resolve(process.cwd(), 'examples/react-component-tsx');
+
+beforeAll(() => {
+  buildExample('react-component-tsx', ['build', 'src/*.{tsx,ts}', '--useBabel', '--bail']);
+});
 
 it('react-component-tsx example test case', async () => {
   const dirs = await fs.promises.readdir(dirPath);
